@@ -6,8 +6,8 @@
 </head>
 <body>
 	<ul>
-	<li><a href="nadador/list.html">Gestió de Nadadors</a></li>
-	<li><a href="prova/list.html">Gestió de Proves</a>
-	<li><a href="classificacio/list.html">Gestió de Classificacio</a>
+	<li><a href="nadador/list.html">Gestio de Nadadors</a></li>
+	<li><a href="prova/list.html">Gestio de Proves</a>
+	<li><a href="classificacio/list.html">Gestio de Classificacio</a>
 	</ul>
 </body>
