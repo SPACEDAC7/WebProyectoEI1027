@@ -1,371 +1,91 @@
 package es.uji.ei1027.proyecto.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.logging.Logger;
+import java.sql.ResultSet;
 
-import conection.ConnectionManager;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
 import es.uji.ei1027.proyecto.domain.Usuario;
 
+@Repository
 public class UsuarioDao {
-	private final static Logger Log = Logger.getLogger(UsuarioDao.class.getName());
+
+	private JdbcTemplate jdbcTemplate;
 	
-	public Set<Usuario> getUsuarios() {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return null;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return null;
-		}
-		HashSet<Usuario> usuarios = new HashSet<Usuario>();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = conn.prepareStatement("select id_usuario, id_credencial, nombre"
-					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
-					+ ", estado_usuario from usuario");
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				Usuario usuario = new Usuario();
-				usuario.setIdUsuario(rs.getInt("id_usuario"));
-				usuario.setIdCredencial(rs.getInt("id_credencial"));
-				usuario.setNombre(rs.getString("nombre"));
-				usuario.setApellido(rs.getString("apellido"));
-				usuario.setNif(rs.getString("nif"));
-				usuario.setEmail(rs.getString("email"));
-				usuario.setIdDireccion(rs.getInt("id_direccion"));
-				usuario.setFechaRegistro(rs.getDate("fecha_registro"));
-				usuario.setTelefono(rs.getInt("telefono"));
-				usuario.setEstadoUsuario(rs.getBoolean("estado_usuario"));
-				usuarios.add(usuario);
-			}
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-			return null;
-		}
-		finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				}
-				catch (SQLException e) {
-					Log.warning("Error tancant ResultSet");
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
-		return usuarios;
+	@Autowired
+	public void setDataSource(DataSource dataSource){
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public Usuario getUsuario(int idUsuarioABuscar) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
+	private static final class UsuarioMapper implements RowMapper<Usuario>{
+		public Usuario mapRow(ResultSet rs, int rowNum)throws SQLException{
+			Usuario usuario = new Usuario();
+			usuario.setIdUsuario(rs.getInt("id_usuario"));
+			usuario.setIdCredencial(rs.getInt("id_credencial"));
+			usuario.setNombre(rs.getString("nombre"));
+			usuario.setApellido(rs.getString("apellido"));
+			usuario.setNif(rs.getString("nif"));
+			usuario.setEmail(rs.getString("email"));
+			usuario.setIdDireccion(rs.getInt("id_direccion"));
+			usuario.setFechaRegistro(rs.getDate("fecha_registro"));
+			usuario.setTelefono(rs.getInt("telefono"));
+			usuario.setEstadoUsuario(rs.getBoolean("estado_usuario"));
+			return usuario;
 		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return null;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return null;
-		}
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		Usuario usuario = null;
-		try {
-			String sql = "select id_usuario, id_credencial, nombre"
+	}
+	public List<Usuario> getUsuarios() {
+		return this.jdbcTemplate.query("select id_usuario, id_credencial, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
-					+ ", estado_usuario from usuario where id_usuario=?;";
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idUsuarioABuscar);
-			rs = stmt.executeQuery();
-			usuario = new Usuario();
-			if (rs != null) {
-				while (rs.next()) {
-					usuario.setIdUsuario(rs.getInt(1));
-					usuario.setIdCredencial(rs.getInt(2));
-					usuario.setNombre(rs.getString(3));
-					usuario.setApellido(rs.getString(4));
-					usuario.setNif(rs.getString(5));
-					usuario.setEmail(rs.getString(6));
-					usuario.setIdDireccion(rs.getInt(7));
-					usuario.setFechaRegistro(rs.getDate(8));
-					usuario.setTelefono(rs.getInt(9));
-					usuario.setEstadoUsuario(rs.getBoolean(10));
-				}
-			}
-		} 
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-			return null;
-		}
-		finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				}
-				catch (SQLException e) {
-					Log.warning("Error tancant ResultSet");
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
-		return usuario;
+					+ ", estado_usuario from usuario", new UsuarioMapper());
+	}
+	
+	public Usuario getUsuario(int id_usuario) {
+		return this.jdbcTemplate.queryForObject("select id_usuario, id_credencial, nombre"
+					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
+					+ ", estado_usuario from usuario where id_usuario=?;", new Object[] {id_usuario}, new UsuarioMapper());
 	}
 	
 	
 	public void addUsuario(Usuario usuario) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return;
-		}
-		PreparedStatement stmt = null;
-		try {
-			 stmt = conn.prepareStatement(
+		this.jdbcTemplate.update(
 					"insert into usuario(id_usuario, id_credencial, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
-					+ ", estado_usuario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			stmt.setInt(1, usuario.getIdUsuario());
-			stmt.setInt(2, usuario.getIdCredencial());
-			stmt.setString(3, usuario.getNombre());
-			stmt.setString(4, usuario.getApellido());
-			stmt.setString(5, usuario.getNif());
-			stmt.setString(6, usuario.getEmail());
-			stmt.setInt(7, usuario.getIdDireccion());
-			stmt.setDate(8, usuario.getFechaRegistro());
-			stmt.setInt(9, usuario.getTelefono());
-			stmt.setBoolean(10, usuario.getEstadoUsuario());
-			stmt.execute();	
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-		}
-		finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
+					+ ", estado_usuario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+					usuario.getIdUsuario(),usuario.getIdCredencial(),
+					usuario.getNombre(),usuario.getApellido(),
+					usuario.getNif(),usuario.getEmail(),
+					usuario.getIdDireccion(),usuario.getFechaRegistro(),
+					usuario.getTelefono(),usuario.getEstadoUsuario());
 	}
 	
 	
 	public void updateUsuario(Usuario usuario) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return;
-		}
-		PreparedStatement stmt = null;
-		try {
-			stmt = conn.prepareStatement(
-					"update usuario "
-					+ "set id_credencial = ?,"
-					+ "nombre = ?,"
-					+ "apellido = ?,"
-					+ "nif = ?,"
-					+ "email = ?,"
-					+ "id_direccion = ?,"
-					+ "fecha_registro = ?,"
-					+ "telefono = ?,"
-					+ "estado_usuario = ? "
-					+ "where id_usuario = ?");
-			
-			stmt.setInt(1, usuario.getIdCredencial());
-			stmt.setString(2, usuario.getNombre());
-			stmt.setString(3, usuario.getApellido());
-			stmt.setString(4, usuario.getNif());
-			stmt.setString(5, usuario.getEmail());
-			stmt.setInt(6, usuario.getIdDireccion());
-			stmt.setDate(7, usuario.getFechaRegistro());
-			stmt.setInt(8, usuario.getTelefono());
-			stmt.setBoolean(9, usuario.getEstadoUsuario());
-			stmt.setInt(10, usuario.getIdUsuario());
-			stmt.execute();	
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-		}
-		finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
+		this.jdbcTemplate.update("update usuario "
+					+ "set id_credencial = ?,nombre = ?,"
+					+ "apellido = ?,nif = ?,"
+					+ "email = ?,id_direccion = ?,"
+					+ "fecha_registro = ?,telefono = ?,"
+					+ "estado_usuario = ? where id_usuario = ?",
+					usuario.getIdCredencial(),usuario.getNombre(),usuario.getApellido(),
+					usuario.getNif(),usuario.getEmail(),
+					usuario.getIdDireccion(),usuario.getFechaRegistro(),
+					usuario.getTelefono(),usuario.getEstadoUsuario(),
+					usuario.getIdUsuario());
 	}
 	
 	public void deleteUsuario(Usuario usuario) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return;
-		}
-		PreparedStatement stmt = null;
-		try {
-			String sql = "DELETE FROM usuario WHERE id_usuario=?";
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, usuario.getIdUsuario());
-			stmt.executeUpdate();
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-		}
-		finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
+		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", usuario.getIdUsuario());
 	}
 	
 	public void deleteUsuario(int idUsuario) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return;
-		}
-		PreparedStatement stmt = null;
-		try {
-			String sql = "DELETE FROM usuario WHERE id_usuario=?";
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idUsuario);
-			stmt.executeUpdate();
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-		}
-		finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
+		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", idUsuario);
 	}
 	
 }
