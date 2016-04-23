@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.proyecto.domain.Credencial;
 
+@Repository
 public class CredencialDao {
 	
 	private JdbcTemplate jdbcTemplate;

@@ -1,170 +1,51 @@
 package es.uji.ei1027.proyecto.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.logging.Logger;
+import java.sql.ResultSet;
 
-import conection.ConnectionManager;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
 import es.uji.ei1027.proyecto.domain.Imagen;
 
+@Repository
 public class ImagenDao {
 
+	private JdbcTemplate jdbcTemplate;
 
-	private final static Logger Log = Logger.getLogger(DireccionDao.class.getName()); 
-	private Connection conn = null;
-
-	public Set<Imagen> getImagenes() {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return null;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return null;
-		}
-		HashSet<Imagen> imagenes = new HashSet<Imagen>();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = conn.prepareStatement("select id_imagen, id_propiedad, pie_foto , referencia"
-					+ " from imagen");
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				Imagen imagen = new Imagen();
-				imagen.setId_imagen(rs.getInt("id_imagen"));
-				imagen.setId_propiedad(rs.getInt("id_propiedad"));
-				imagen.setPie_foto(rs.getString("pie_foto"));
-				imagen.setReferencia(rs.getString("referencia"));
-				imagenes.add(imagen);
-			}
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-			return null;
-		}
-		finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				}
-				catch (SQLException e) {
-					Log.warning("Error tancant ResultSet");
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
-		return imagenes;
+	
+	@Autowired
+	public void setDataSource(DataSource dataSource){
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public Set<Imagen> getImagenesPropiedad(int id_propiedad) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
+	private static final class ImagenMapper implements RowMapper<Imagen>{
+		public Imagen mapRow(ResultSet rs, int rowNum) throws SQLException{
+			Imagen imagen = new Imagen();
+			imagen.setId_imagen(rs.getInt("id_imagen"));
+			imagen.setId_propiedad(rs.getInt("id_propiedad"));
+			imagen.setPie_foto(rs.getString("pie_foto"));
+			imagen.setReferencia(rs.getString("referencia"));
+			return imagen;
 		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return null;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexió JDBC");
-			e.printStackTrace();
-			return null;
-		}
-		HashSet<Imagen> imagenes = new HashSet<Imagen>();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			stmt = conn.prepareStatement("select id_imagen, id_propiedad, pie_foto, referencia"
-					+ " from imagen where id_propiedad = ?");
-			stmt.setInt(1, id_propiedad);
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				Imagen imagen = new Imagen();
-				imagen.setId_imagen(rs.getInt("id_imagen"));
-				imagen.setId_propiedad(rs.getInt("id_propiedad"));
-				imagen.setPie_foto(rs.getString("pie_foto"));
-				imagen.setReferencia(rs.getString("referencia"));
-				imagenes.add(imagen);
-			}
-		}
-		catch (SQLException e) {
-			Log.severe("Error executant PreparedStatement");
-			e.printStackTrace();
-			return null;
-		}
-		finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				}
-				catch (SQLException e) {
-					Log.warning("Error tancant ResultSet");
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					Log.warning("Error tancant PreparedStatement");
-					e.printStackTrace();
-				}
-			}
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				Log.warning("Error tancant connexió JDBC");				
-				e.printStackTrace();
-			}
-		}
-		return imagenes;
+	}
+	
+	public List<Imagen> getImagenes(){
+		return this.jdbcTemplate.query("select id_imagen, id_propiedad, pie_foto , referencia from imagen", new ImagenMapper());
+	}
+	//No se muy bien como sacar esta consulta
+	public List<Imagen> getImagenesPropiedad(int id_propiedad) {
+		return this.jdbcTemplate.query("select id_imagen, id_propiedad, pie_foto, referencia from imagen where id_propiedad = ?"/*, id_propiedad*/, new ImagenMapper());
 	}
 	
 	public Imagen getImagen(int id_imagen) {
-		Connection conn = null;
-		try {
-			conn = ConnectionManager.getConnection();
-		}
-		catch (ClassNotFoundException e) {
-			Log.severe("Driver JDBC no trobat");
-			e.printStackTrace();
-			return null;
-		}
-		catch (SQLException e) {
-			Log.severe("Error creant connexi� JDBC");
-			e.printStackTrace();
-			return null;
-		}
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		Imagen imagen = null;
-		try {
+		
 			String sql = "SELECT id_imagen, id_propiedad, pie_foto, referencia " + 
 					"FROM imagen WHERE id_imagen = ?";
 			stmt = conn.prepareStatement(sql);

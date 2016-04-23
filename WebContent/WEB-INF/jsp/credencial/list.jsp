@@ -8,27 +8,25 @@
 <title>Gestionar Credenciales</title>
 </head>
 <body>
-	<h1>Llista de Nadadors</h1>
+	<h1>Llista de Credenciales</h1>
 	<table>
 		<tr>
-			<th>NumFederat</th>
-			<th>Nom</th>
-			<th>Pais</th>
-			<th>Edat</th>
-			<th>Sexe</th>
+			<th>Id Cedencial</th>
+			<th>Nick usuario</th>
+			<th>Password</th>
+			<th>Rol</th>
 		</tr>
-		<c:forEach items="${nadadors}" var="nadador">
+		<c:forEach items="${credenciales}" var="credencial">
 			<tr>
-				<td class="linea">${nadador.numFederat}</td>
-				<td class="linea">${nadador.nom}</td>
-				<td class="linea">${nadador.pais}</td>
-				<td class="linea">${nadador.edat}</td>
-				<td class="linea">${nadador.sexe}</td>
-				<td><a href="update/${nadador.nom}.html">Edita</a>
-				<td><a href="delete/${nadador.nom}.html">Esborra</a>
+				<td class="linea">${credencial.id_credencial}</td>
+				<td class="linea">${credencial.nick_usuario}</td>
+				<td class="linea">${credencial.password}</td>
+				<td class="linea">${credencial.rol}</td>
+				<td><a href="update/${credencial.id_credencial}.html">Edita</a>
+				<td><a href="delete/${credencial.id_credencial}.html">Esborra</a>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="add.html">Afegeix nadador</a>
+	<a href="add.html">Afegeix credencial</a>
 </body>
 </html>
