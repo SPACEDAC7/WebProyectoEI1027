@@ -6,8 +6,6 @@
 </head>
 <body>
 	<ul>
-	<li><a href="nadador/list.html">Gestio de Nadadors</a></li>
-	<li><a href="prova/list.html">Gestio de Proves</a>
-	<li><a href="classificacio/list.html">Gestio de Classificacio</a>
+	<li><a href="credencial/list.html">Gestio de credenciales</a></li>
 	</ul>
 </body>
