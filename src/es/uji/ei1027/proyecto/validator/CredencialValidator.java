@@ -1,4 +1,4 @@
-package es.uji.ei1027.proyecto.controller;
+package es.uji.ei1027.proyecto.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

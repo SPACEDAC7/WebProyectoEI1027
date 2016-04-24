@@ -52,9 +52,12 @@ public class CredencialDao {
 	public void updateCredencial(Credencial credencial) {
 		this.jdbcTemplate.update("update Credencial set nick_usuario = ?, password = ?, rol = ? where id_credencial = ?", credencial.getNick_usuario(),credencial.getPassword(),credencial.getRol(),credencial.getId_credencial());
 	}
-	//No se si deberiamos borrar con un argumento credencial o con un argumento int id_credencial
 	public void deleteCredencial(Credencial credencial) {
 		this.jdbcTemplate.update("DELETE FROM Credencial WHERE id_credencial = ?", credencial.getId_credencial());
+	}
+	
+	public void deleteCredencial(int id_credencial) {
+		this.jdbcTemplate.update("DELETE FROM Credencial WHERE id_credencial = ?", id_credencial);
 	}
 	
 }

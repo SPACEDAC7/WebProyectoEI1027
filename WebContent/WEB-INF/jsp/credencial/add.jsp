@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/natacio.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
 <title>Easy Rent - Crear nova credencial</title>
 </head>
 <body>
 	<h2>Nova credencial</h2>
-	<form:form method="post" modelAttribute="nadador">
+	<form:form method="post" modelAttribute="credencial">
 		<table>
 			<tr>
 				<td><form:label path="id_credencial">ID. Credencial</form:label></td>

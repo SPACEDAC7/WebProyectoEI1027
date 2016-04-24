@@ -4,31 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Competició Natació - Modificar un nadador</title>
+<title>Easy Rent - Modificar una credencial</title>
 </head>
 <body>
-	<h2>Modificar nadador</h2>
-	<form:form method="post" modelAttribute="nadador">
+	<h2>Modificar credencial</h2>
+	<form:form method="post" modelAttribute="credencial">
 		<table>
 			<tr>
-				<td><form:label path="nom">Nom</form:label></td>
-				<td><form:input path="nom" /></td>
+				<td><form:label path="id_credencial">ID. Credencial</form:label></td>
+				<td><form:input path="id_credencial" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="numFederat">Num. Federat </form:label></td>
-				<td><form:input path="numFederat" /></td>
+				<td><form:label path="nick_usuario">Nick </form:label></td>
+				<td><form:input path="nick_usuario" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="pais">Pais </form:label></td>
-				<td><form:input path="pais" /></td>
+				<td><form:label path="password">Password </form:label></td>
+				<td><form:input path="password" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="edat">Edat</form:label></td>
-				<td><form:input path="edat" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="sexe">Sexe</form:label></td>
-				<td><form:input path="sexe" /></td>
+				<td><form:label path="rol">Rol</form:label></td>
+				<td><form:input path="rol" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Modificar nadador" />

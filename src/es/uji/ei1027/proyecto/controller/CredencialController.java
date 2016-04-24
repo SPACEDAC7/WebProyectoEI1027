@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
+import es.uji.ei1027.proyecto.validator.CredencialValidator;
 
 @Controller
 @RequestMapping("/credencial")
@@ -41,31 +42,32 @@ public class CredencialController {
 			CredencialValidator credencialValidator = new CredencialValidator();
 			credencialValidator.validate(credencial, bindingResult); 
 			if (bindingResult.hasErrors())
-					return "nadador/add";
+					return "credencial/add";
 			 credencialDao.addCredencial(credencial);
 			 return "redirect:list.html";
 		 }
-		/*	//Actualizar	
-		@RequestMapping(value="/update/{nom}", method = RequestMethod.GET)
-		public String editNadador(Model model, @PathVariable String nom) {
-			model.addAttribute("nadador", nadadorDao.getNadador(nom));
-			return "nadador/update"; 
+		//Actualizar	
+		@RequestMapping(value="/update/{id_credencial}", method = RequestMethod.GET)
+		public String editNadador(Model model, @PathVariable int id_credencial) {
+			model.addAttribute("credencial", credencialDao.getCredencial(id_credencial));
+			return "credencial/update"; 
 		}
 		
-		@RequestMapping(value="/update/{nom}", method = RequestMethod.POST) 
-		public String processUpdateSubmit(@PathVariable String nom, 
-	                            @ModelAttribute("nadador") Nadador nadador, 
+		@RequestMapping(value="/update/{id_credencial}", method = RequestMethod.POST) 
+		public String processUpdateSubmit(@PathVariable int id_credencial, 
+	                            @ModelAttribute("credencial") Credencial credencial, 
 	                            BindingResult bindingResult) {
 			 if (bindingResult.hasErrors()) 
-				 return "nadador/update";
-			 nadadorDao.updateNadador(nadador);
+				 return "credencial/update";
+			 credencialDao.updateCredencial(credencial);
 			 return "redirect:../list.html"; 
 		  }
+		
 	//Borrar	
-		@RequestMapping(value="/delete/{nom}")
-		 public String processDelete(@PathVariable String nom) {
-		           nadadorDao.deleteNadador(nom);
+		@RequestMapping(value="/delete/{id_credencial}")
+		 public String processDelete(@PathVariable int id_credencial) {
+		           credencialDao.deleteCredencial(id_credencial);
 		           return "redirect:../list.html"; 
 		 }
-		 */
+		 
 }
