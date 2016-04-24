@@ -6,6 +6,7 @@
 </head>
 <body>
 	<ul>
-	<li><a href="credencial/list.html">Gestio de credenciales</a></li>
+	<li><a href="credencial/list.html">Gestion de credenciales</a></li>
+	<li><a href="direccion/list.html">Gestion de direcciones</a></li>
 	</ul>
 </body>

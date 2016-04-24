@@ -27,7 +27,7 @@
 				<td><form:input path="rol" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Modificar nadador" />
+				<td colspan="2"><input type="submit" value="Modificar credencial" />
 				</td>
 			</tr>
 		</table>

@@ -56,4 +56,8 @@ public class DireccionDao {
 	public void deleteDireccion(Direccion direccion) {		
 		this.jdbcTemplate.update("delete from direccion where id_direccion=?", direccion.getId_direccion());	
 	}
+	
+	public void deleteDireccion(int id_direccion) {		
+		this.jdbcTemplate.update("delete from direccion where id_direccion=?", id_direccion);	
+	}
 }
