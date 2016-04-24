@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.CredencialDao;
+import es.uji.ei1027.proyecto.domain.Credencial;
 
 @Controller
 @RequestMapping("/credencial")
@@ -27,22 +28,24 @@ public class CredencialController {
 		return "credencial/list";
 	}
 	
-/*	//Añadir	
+	//Añadir	
 		@RequestMapping(value="/add") 
 		public String addNadador(Model model) {
-			model.addAttribute("nadador", new Nadador());
-			return "nadador/add";
+			model.addAttribute("credencial", new Credencial());
+			return "credencial/add";
 		}
 
-//		@RequestMapping(value="/add", method=RequestMethod.POST) 
-//		public String processAddSubmit(@ModelAttribute("nadador") Nadador nadador,
-//		                                BindingResult bindingResult) { 
-//			 if (bindingResult.hasErrors())
-//					return "nadador/add";
-//			 nadadorDao.addNadador(nadador);
-//			 return "redirect:list.html";
-//		 }
-	//Actualizar	
+		@RequestMapping(value="/add", method=RequestMethod.POST) 
+		public String processAddSubmit(@ModelAttribute("credencial") Credencial credencial,
+		                                BindingResult bindingResult) { 
+			CredencialValidator credencialValidator = new CredencialValidator();
+			credencialValidator.validate(credencial, bindingResult); 
+			if (bindingResult.hasErrors())
+					return "nadador/add";
+			 credencialDao.addCredencial(credencial);
+			 return "redirect:list.html";
+		 }
+		/*	//Actualizar	
 		@RequestMapping(value="/update/{nom}", method = RequestMethod.GET)
 		public String editNadador(Model model, @PathVariable String nom) {
 			model.addAttribute("nadador", nadadorDao.getNadador(nom));
@@ -64,14 +67,5 @@ public class CredencialController {
 		           nadadorDao.deleteNadador(nom);
 		           return "redirect:../list.html"; 
 		 }
-	//Correccion
-		@RequestMapping(value="/add", method=RequestMethod.POST) 
-		public String processAddSubmit(@ModelAttribute("nadador") Nadador nadador,BindingResult bindingResult) {
-			 NadadorValidator nadadorValidator = new NadadorValidator();
-			 nadadorValidator.validate(nadador, bindingResult);
-			 if (bindingResult.hasErrors()) 
-				return "nadador/add";
-			 nadadorDao.addNadador(nadador);
-			 return "redirect:list.html";
-		 }*/
+		 */
 }
