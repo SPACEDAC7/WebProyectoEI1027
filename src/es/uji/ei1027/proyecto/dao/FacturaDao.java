@@ -64,4 +64,8 @@ public class FacturaDao {
 	public void deleteFactura(Factura factura) {
 		this.jdbcTemplate.update("DELETE FROM factura WHERE id_factura=?",factura.getIdFactura() );
 	}
+	
+	public void deleteFactura(int id_factura) {
+		this.jdbcTemplate.update("DELETE FROM factura WHERE id_factura=?",id_factura );
+	}
 }

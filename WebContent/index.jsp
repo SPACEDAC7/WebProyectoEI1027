@@ -8,5 +8,6 @@
 	<ul>
 	<li><a href="credencial/list.html">Gestion de credenciales</a></li>
 	<li><a href="direccion/list.html">Gestion de direcciones</a></li>
+	<li><a href="factura/list.html">Gestion de facturas</a></li>
 	</ul>
 </body>

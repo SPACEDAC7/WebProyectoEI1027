@@ -69,5 +69,4 @@ public class CredencialController {
 		           credencialDao.deleteCredencial(id_credencial);
 		           return "redirect:../list.html"; 
 		 }
-		 
 }
