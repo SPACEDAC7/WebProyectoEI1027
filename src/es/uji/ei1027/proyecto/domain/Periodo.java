@@ -4,34 +4,34 @@ import java.sql.Date;
 
 public class Periodo {
 
-	public Periodo(int id_periodo, int id_propiedad, Date inicio, Date fin) {
-		super();
-		this.idPeriodo = id_periodo;
-		this.idPropiedad = id_propiedad;
-		this.inicio = inicio;
-		this.fin = fin;
-	}
+	private int id_periodo;
+	private int id_propiedad;
+	private Date inicio;
+	private Date fin;
 	
 	public Periodo() {
 		super();
 	}
 	
-	private int idPeriodo;
-	private int idPropiedad;
-	private Date inicio;
-	private Date fin;
-		
+	public Periodo(int id_periodo, int id_propiedad, Date inicio, Date fin) {
+		super();
+		this.id_periodo = id_periodo;
+		this.id_propiedad = id_propiedad;
+		this.inicio = inicio;
+		this.fin = fin;
+	}
+
 	public int getIdPeriodo() {
-		return idPeriodo;
+		return id_periodo;
 	}
 	public void setIdPeriodo(int id_periodo) {
-		this.idPeriodo = id_periodo;
+		this.id_periodo = id_periodo;
 	}
 	public int getIdPropiedad() {
-		return idPropiedad;
+		return id_propiedad;
 	}
 	public void setIdPropiedad(int id_propiedad) {
-		this.idPropiedad = id_propiedad;
+		this.id_propiedad = id_propiedad;
 	}
 	public Date getInicio() {
 		return inicio;
@@ -48,7 +48,7 @@ public class Periodo {
 	
 	@Override
 	public String toString() {
-		return "Periodo [idPeriodo=" + idPeriodo + ", idPropiedad=" + idPropiedad + ", inicio="
+		return "Periodo [idPeriodo=" + id_periodo + ", idPropiedad=" + id_propiedad + ", inicio="
 				+ inicio.toString() + ", fin=" + fin.toString() + "]";
 	}
 	

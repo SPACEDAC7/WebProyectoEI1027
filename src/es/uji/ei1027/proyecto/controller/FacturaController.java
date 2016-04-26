@@ -48,7 +48,7 @@ public class FacturaController {
 	}
 	//Actualizar	
 	@RequestMapping(value="/update/{id_factura}", method = RequestMethod.GET)
-	public String editNadador(Model model, @PathVariable int id_factura) {
+	public String editFactura(Model model, @PathVariable int id_factura) {
 		model.addAttribute("factura", facturaDao.getFactura(id_factura));
 		return "factura/update"; 
 	}

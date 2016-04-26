@@ -90,6 +90,8 @@ public class PropiedadDao {
 		this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", propiedad.getId_propiedad());
 	}
 	
-	
+	public void deletePropiedad(int id_propiedad) {
+		this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", id_propiedad);
+	}
 
 }

@@ -30,43 +30,43 @@ public class CredencialController {
 	}
 	
 	//Añadir	
-		@RequestMapping(value="/add") 
-		public String addNadador(Model model) {
-			model.addAttribute("credencial", new Credencial());
-			return "credencial/add";
-		}
+	@RequestMapping(value="/add") 
+	public String addNadador(Model model) {
+		model.addAttribute("credencial", new Credencial());
+		return "credencial/add";
+	}
 
-		@RequestMapping(value="/add", method=RequestMethod.POST) 
-		public String processAddSubmit(@ModelAttribute("credencial") Credencial credencial,
-		                                BindingResult bindingResult) { 
-			CredencialValidator credencialValidator = new CredencialValidator();
-			credencialValidator.validate(credencial, bindingResult); 
-			if (bindingResult.hasErrors())
-					return "credencial/add";
-			 credencialDao.addCredencial(credencial);
-			 return "redirect:list.html";
-		 }
-		//Actualizar	
-		@RequestMapping(value="/update/{id_credencial}", method = RequestMethod.GET)
-		public String editNadador(Model model, @PathVariable int id_credencial) {
-			model.addAttribute("credencial", credencialDao.getCredencial(id_credencial));
-			return "credencial/update"; 
-		}
-		
-		@RequestMapping(value="/update/{id_credencial}", method = RequestMethod.POST) 
-		public String processUpdateSubmit(@PathVariable int id_credencial, 
-	                            @ModelAttribute("credencial") Credencial credencial, 
-	                            BindingResult bindingResult) {
-			 if (bindingResult.hasErrors()) 
-				 return "credencial/update";
-			 credencialDao.updateCredencial(credencial);
-			 return "redirect:../list.html"; 
-		  }
-		
+	@RequestMapping(value="/add", method=RequestMethod.POST) 
+	public String processAddSubmit(@ModelAttribute("credencial") Credencial credencial,
+			BindingResult bindingResult) { 
+		CredencialValidator credencialValidator = new CredencialValidator();
+		credencialValidator.validate(credencial, bindingResult); 
+		if (bindingResult.hasErrors())
+			return "credencial/add";
+		credencialDao.addCredencial(credencial);
+		return "redirect:list.html";
+	}
+	//Actualizar	
+	@RequestMapping(value="/update/{id_credencial}", method = RequestMethod.GET)
+	public String editCredencial(Model model, @PathVariable int id_credencial) {
+		model.addAttribute("credencial", credencialDao.getCredencial(id_credencial));
+		return "credencial/update"; 
+	}
+
+	@RequestMapping(value="/update/{id_credencial}", method = RequestMethod.POST) 
+	public String processUpdateSubmit(@PathVariable int id_credencial, 
+			@ModelAttribute("credencial") Credencial credencial, 
+			BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) 
+			return "credencial/update";
+		credencialDao.updateCredencial(credencial);
+		return "redirect:../list.html"; 
+	}
+
 	//Borrar	
-		@RequestMapping(value="/delete/{id_credencial}")
-		 public String processDelete(@PathVariable int id_credencial) {
-		           credencialDao.deleteCredencial(id_credencial);
-		           return "redirect:../list.html"; 
-		 }
+	@RequestMapping(value="/delete/{id_credencial}")
+	public String processDelete(@PathVariable int id_credencial) {
+		credencialDao.deleteCredencial(id_credencial);
+		return "redirect:../list.html"; 
+	}
 }

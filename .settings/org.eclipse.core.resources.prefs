@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/es/uji/ei1027/proyecto/validator/CredencialValidator.java=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/FacturaValidator.java=UTF-8
+encoding//src/es/uji/ei1027/proyecto/validator/ImagenValidator.java=UTF-8
+encoding//src/es/uji/ei1027/proyecto/validator/PeriodoValidator.java=UTF-8

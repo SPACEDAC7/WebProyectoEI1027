@@ -50,7 +50,7 @@ public class DireccionController {
 	
 	//Actualizar	
 	@RequestMapping(value="/update/{id_direccion}", method = RequestMethod.GET)
-	public String editNadador(Model model, @PathVariable int id_direccion) {
+	public String editDireccion(Model model, @PathVariable int id_direccion) {
 		model.addAttribute("direccion", direccionDao.getDireccion(id_direccion));
 		return "direccion/update"; 
 	}

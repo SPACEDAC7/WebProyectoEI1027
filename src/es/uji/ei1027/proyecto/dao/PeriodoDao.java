@@ -56,4 +56,7 @@ public class PeriodoDao {
 		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", periodo.getIdPeriodo());
 	}
 	
+	public void deletePeriodo(int id_periodo) {
+		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", id_periodo);
+	}
 }
