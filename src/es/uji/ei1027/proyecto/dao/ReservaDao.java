@@ -27,13 +27,13 @@ public class ReservaDao {
 	private static final class ReservaMapper implements RowMapper<Reserva>{
 		public Reserva mapRow(ResultSet rs, int rowNum) throws SQLException{
 			Reserva reserva = new Reserva();
-			reserva.setIdReserva(rs.getInt("id_reserva"));
-			reserva.setIdUsuario(rs.getInt("id_usuario"));
-			reserva.setIdPropiedad(rs.getInt("id_propiedad"));
-			reserva.setFechaReserva(rs.getDate("fecha_reserva"));
-			reserva.setFechaCheckin(rs.getDate("fecha_checkin"));
-			reserva.setFechaCheckout(rs.getDate("fecha_chechout"));
-			reserva.setPrecioReserva(rs.getFloat("precio_reserva"));
+			reserva.setId_reserva(rs.getInt("id_reserva"));
+			reserva.setId_usuario(rs.getInt("id_usuario"));
+			reserva.setId_propiedad(rs.getInt("id_propiedad"));
+			reserva.setFecha_reserva(rs.getDate("fecha_reserva"));
+			reserva.setFecha_checkin(rs.getDate("fecha_checkin"));
+			reserva.setFecha_checkout(rs.getDate("fecha_chechout"));
+			reserva.setPrecio_reserva(rs.getFloat("precio_reserva"));
 			reserva.setEstado(rs.getString("estado"));
 			return reserva;
 		}
@@ -55,10 +55,10 @@ public class ReservaDao {
 		this.jdbcTemplate.update("insert into reserva(id_reserva, id_usuario, id_propiedad"
 					+ ", fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva"
 					+ ", estado) values(?, ?, ?, ?, ?, ?, ?, ?)",
-					reserva.getIdReserva(), reserva.getIdUsuario(),
-					reserva.getIdPropiedad(),reserva.getFechaReserva(),
-					reserva.getFechaCheckin(),reserva.getFechaCheckout(),
-					reserva.getPrecioReserva(),reserva.getEstado());
+					reserva.getId_reserva(), reserva.getId_usuario(),
+					reserva.getId_propiedad(),reserva.getFecha_reserva(),
+					reserva.getFecha_checkin(),reserva.getFecha_checkout(),
+					reserva.getPrecio_reserva(),reserva.getEstado());
 	}
 	
 	public void updateReserva(Reserva reserva) {
@@ -66,15 +66,15 @@ public class ReservaDao {
 					+ "id_propiedad = ?, fecha_reserva = ?,"
 					+ "fecha_checkin = ?,fecha_checkout = ?,"
 					+ "precio_reserva = ?,estado = ? "
-					+ "where id_reserva = ?",reserva.getIdUsuario(),
-					reserva.getIdPropiedad(),reserva.getFechaReserva(),
-					reserva.getFechaCheckin(),reserva.getFechaCheckout(),
-					reserva.getPrecioReserva(),reserva.getEstado(),
-					reserva.getIdReserva());
+					+ "where id_reserva = ?",reserva.getId_usuario(),
+					reserva.getId_propiedad(),reserva.getFecha_reserva(),
+					reserva.getFecha_checkin(),reserva.getFecha_checkout(),
+					reserva.getPrecio_reserva(),reserva.getEstado(),
+					reserva.getId_reserva());
 	}
 	
 	public void deleteReserva(Reserva reserva) {
-		this.jdbcTemplate.update("DELETE FROM reserva WHERE id_reserva=?", reserva.getIdReserva());
+		this.jdbcTemplate.update("DELETE FROM reserva WHERE id_reserva=?", reserva.getId_reserva());
 	}
 	
 	public void deleteReserva(int idReserva) {

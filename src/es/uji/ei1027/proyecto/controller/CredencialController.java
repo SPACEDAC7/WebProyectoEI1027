@@ -31,7 +31,7 @@ public class CredencialController {
 	
 	//Añadir	
 	@RequestMapping(value="/add") 
-	public String addNadador(Model model) {
+	public String addCredencial(Model model) {
 		model.addAttribute("credencial", new Credencial());
 		return "credencial/add";
 	}

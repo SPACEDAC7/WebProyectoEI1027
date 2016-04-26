@@ -4,26 +4,26 @@ import java.sql.Date;
 
 public class Reserva {
 
-	private int idReserva;
-	private int idUsuario;
-	private int idPropiedad;
-	private Date fechaReserva;
-	private Date fechaCheckin;
-	private Date fechaCheckout;
-	private float precioReserva;
+	private int id_reserva;
+	private int id_usuario;
+	private int id_propiedad;
+	private Date fecha_reserva;
+	private Date fecha_checkin;
+	private Date fecha_checkout;
+	private float precio_reserva;
 	private String estado;
 	
 	public Reserva(int idReserva, int idUsuario, int idPropiedad,
 			Date fechaReserva, Date fechaCheckin, Date fechaCheckout,
 			float precioReserva, String estado) {
 		super();
-		this.idReserva = idReserva;
-		this.idUsuario = idUsuario;
-		this.idPropiedad = idPropiedad;
-		this.fechaReserva = fechaReserva;
-		this.fechaCheckin = fechaCheckin;
-		this.fechaCheckout = fechaCheckout;
-		this.precioReserva = precioReserva;
+		this.id_reserva = idReserva;
+		this.id_usuario = idUsuario;
+		this.id_propiedad = idPropiedad;
+		this.fecha_reserva = fechaReserva;
+		this.fecha_checkin = fechaCheckin;
+		this.fecha_checkout = fechaCheckout;
+		this.precio_reserva = precioReserva;
 		this.estado = estado;
 	}
 	
@@ -31,47 +31,47 @@ public class Reserva {
 		super();
 	}
 	
-	public int getIdReserva() {
-		return idReserva;
+	public int getId_reserva() {
+		return id_reserva;
 	}
-	public void setIdReserva(int idReserva) {
-		this.idReserva = idReserva;
+	public void setId_reserva(int idReserva) {
+		this.id_reserva = idReserva;
 	}
-	public int getIdUsuario() {
-		return idUsuario;
+	public int getId_usuario() {
+		return id_usuario;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId_usuario(int idUsuario) {
+		this.id_usuario = idUsuario;
 	}
-	public int getIdPropiedad() {
-		return idPropiedad;
+	public int getId_propiedad() {
+		return id_propiedad;
 	}
-	public void setIdPropiedad(int idPropiedad) {
-		this.idPropiedad = idPropiedad;
+	public void setId_propiedad(int idPropiedad) {
+		this.id_propiedad = idPropiedad;
 	}
-	public Date getFechaReserva() {
-		return fechaReserva;
+	public Date getFecha_reserva() {
+		return fecha_reserva;
 	}
-	public void setFechaReserva(Date fechaReserva) {
-		this.fechaReserva = fechaReserva;
+	public void setFecha_reserva(Date fechaReserva) {
+		this.fecha_reserva = fechaReserva;
 	}
-	public Date getFechaCheckin() {
-		return fechaCheckin;
+	public Date getFecha_checkin() {
+		return fecha_checkin;
 	}
-	public void setFechaCheckin(Date fechaCheckin) {
-		this.fechaCheckin = fechaCheckin;
+	public void setFecha_checkin(Date fechaCheckin) {
+		this.fecha_checkin = fechaCheckin;
 	}
-	public Date getFechaCheckout() {
-		return fechaCheckout;
+	public Date getFecha_checkout() {
+		return fecha_checkout;
 	}
-	public void setFechaCheckout(Date fechaCheckout) {
-		this.fechaCheckout = fechaCheckout;
+	public void setFecha_checkout(Date fechaCheckout) {
+		this.fecha_checkout = fechaCheckout;
 	}
-	public float getPrecioReserva() {
-		return precioReserva;
+	public float getPrecio_reserva() {
+		return precio_reserva;
 	}
-	public void setPrecioReserva(float precioReserva) {
-		this.precioReserva = precioReserva;
+	public void setPrecio_reserva(float precioReserva) {
+		this.precio_reserva = precioReserva;
 	}
 	public String getEstado() {
 		return estado;
@@ -82,9 +82,9 @@ public class Reserva {
 	
 	@Override
 	public String toString() {
-		return "Reserva [idReserva=" + idReserva + ", idUsuario=" + idUsuario + ", idPropiedad="
-				+ idPropiedad + ", fechaReserva=" + fechaReserva.toString() + ", fechaCheckin=" + fechaCheckin.toString() + ", fechaCheckout=" + fechaCheckout.toString() 
-				+ ", precioReserva=" + precioReserva + ", estado=" + estado + "]";
+		return "Reserva [idReserva=" + id_reserva + ", idUsuario=" + id_usuario + ", idPropiedad="
+				+ id_propiedad + ", fechaReserva=" + fecha_reserva.toString() + ", fechaCheckin=" + fecha_checkin.toString() + ", fechaCheckout=" + fecha_checkout.toString() 
+				+ ", precioReserva=" + precio_reserva + ", estado=" + estado + "]";
 	}
 	
 }
