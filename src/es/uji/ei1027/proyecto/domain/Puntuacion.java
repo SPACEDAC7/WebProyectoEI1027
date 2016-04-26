@@ -1,14 +1,20 @@
 package es.uji.ei1027.proyecto.domain;
 
 public class Puntuacion {
-			
+	
+	private int id_puntuacion;
+	private int id_propiedad;
+	private int id_usuario;
+	private int valor_puntuacion;
+	private String comentario;
+	
 	public Puntuacion(int idPuntuacion, int idPropiedad, int idUsuario,
 			int valorPuntuacion, String comentario) {
 		super();
-		this.idPuntuacion = idPuntuacion;
-		this.idPropiedad = idPropiedad;
-		this.idUsuario = idUsuario;
-		this.valorPuntuacion = valorPuntuacion;
+		this.id_puntuacion = idPuntuacion;
+		this.id_propiedad = idPropiedad;
+		this.id_usuario = idUsuario;
+		this.valor_puntuacion = valorPuntuacion;
 		this.comentario = comentario;
 	}
 	
@@ -16,35 +22,29 @@ public class Puntuacion {
 		super();
 	}
 	
-	private int idPuntuacion;
-	private int idPropiedad;
-	private int idUsuario;
-	private int valorPuntuacion;
-	private String comentario;
-	
-	public int getIdPuntuacion() {
-		return idPuntuacion;
+	public int getId_puntuacion() {
+		return id_puntuacion;
 	}
-	public void setIdPuntuacion(int idPuntuacion) {
-		this.idPuntuacion = idPuntuacion;
+	public void setId_puntuacion(int idPuntuacion) {
+		this.id_puntuacion = idPuntuacion;
 	}
-	public int getIdPropiedad() {
-		return idPropiedad;
+	public int getId_propiedad() {
+		return id_propiedad;
 	}
-	public void setIdPropiedad(int idPropiedad) {
-		this.idPropiedad = idPropiedad;
+	public void setId_propiedad(int idPropiedad) {
+		this.id_propiedad = idPropiedad;
 	}
-	public int getIdUsuario() {
-		return idUsuario;
+	public int getId_usuario() {
+		return id_usuario;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId_usuario(int idUsuario) {
+		this.id_usuario = idUsuario;
 	}
-	public int getValorPuntuacion() {
-		return valorPuntuacion;
+	public int getValor_puntuacion() {
+		return valor_puntuacion;
 	}
-	public void setValorPuntuacion(int valorPuntuacion) {
-		this.valorPuntuacion = valorPuntuacion;
+	public void setValor_puntuacion(int valorPuntuacion) {
+		this.valor_puntuacion = valorPuntuacion;
 	}
 	public String getComentario() {
 		return comentario;
@@ -55,8 +55,8 @@ public class Puntuacion {
 	
 	@Override
 	public String toString() {
-		return "Puntuacion [idPuntuacion=" + idPuntuacion + ", idPropiedad=" + idPropiedad + ", idUsuario="
-				+ idUsuario + ", valorPuntuacion=" + valorPuntuacion + ", comentario " + comentario + "]";
+		return "Puntuacion [idPuntuacion=" + id_puntuacion + ", idPropiedad=" + id_propiedad + ", idUsuario="
+				+ id_usuario + ", valorPuntuacion=" + valor_puntuacion + ", comentario " + comentario + "]";
 	}
 	
 	

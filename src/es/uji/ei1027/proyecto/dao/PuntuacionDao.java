@@ -27,10 +27,10 @@ public class PuntuacionDao {
 	private static final class PuntuacionMapper implements RowMapper<Puntuacion>{
 		public Puntuacion mapRow(ResultSet rs, int rowNum) throws SQLException{
 			Puntuacion puntuacion = new Puntuacion();
-			puntuacion.setIdPuntuacion(rs.getInt("id_puntuacion"));
-			puntuacion.setIdPropiedad(rs.getInt("id_propiedad"));
-			puntuacion.setIdUsuario(rs.getInt("id_usuario"));
-			puntuacion.setValorPuntuacion(rs.getInt("valor_puntuacion"));
+			puntuacion.setId_puntuacion(rs.getInt("id_puntuacion"));
+			puntuacion.setId_propiedad(rs.getInt("id_propiedad"));
+			puntuacion.setId_usuario(rs.getInt("id_usuario"));
+			puntuacion.setValor_puntuacion(rs.getInt("valor_puntuacion"));
 			puntuacion.setComentario(rs.getString("comentario"));
 			return puntuacion;
 		}
@@ -54,10 +54,10 @@ public class PuntuacionDao {
 	public void addPuntuacion(Puntuacion puntuacion) {
 		this.jdbcTemplate.update("insert into puntuacion(id_puntuacion, id_propiedad, id_usuario"
 					+ ", valor_puntuacion, comentario) values(?, ?, ?, ?, ?)",
-					 puntuacion.getIdPuntuacion(),
-					 puntuacion.getIdPropiedad(),
-					 puntuacion.getIdUsuario(),
-					 puntuacion.getValorPuntuacion(),
+					 puntuacion.getId_puntuacion(),
+					 puntuacion.getId_propiedad(),
+					 puntuacion.getId_usuario(),
+					 puntuacion.getValor_puntuacion(),
 					 puntuacion.getComentario());
 	}
 	
@@ -68,15 +68,15 @@ public class PuntuacionDao {
 					+ "valor_puntuacion = ?,"
 					+ "comentario = ? "
 					+ "where id_puntuacion = ?",
-					puntuacion.getIdPropiedad(),
-					puntuacion.getIdUsuario(),
-					puntuacion.getValorPuntuacion(),
+					puntuacion.getId_propiedad(),
+					puntuacion.getId_usuario(),
+					puntuacion.getValor_puntuacion(),
 					puntuacion.getComentario(),
-					puntuacion.getIdPuntuacion());
+					puntuacion.getId_puntuacion());
 	}
 	
 	public void deletePuntuacion(Puntuacion puntuacion) {
-		this.jdbcTemplate.update("DELETE FROM puntuacion WHERE id_puntuacion=?", puntuacion.getIdPuntuacion());
+		this.jdbcTemplate.update("DELETE FROM puntuacion WHERE id_puntuacion=?", puntuacion.getId_puntuacion());
 	}
 	
 	public void deletePuntuacion(int id_puntuacion) {
