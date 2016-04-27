@@ -38,18 +38,18 @@ public class RespuestaPuntuacionDao {
 		return this.jdbcTemplate.query("select id_respuesta, id_puntuacion, respuesta from RespuestaPuntuacion", new RespuestaPuntuacionMapper());
 	}
 	
-	public RespuestaPuntuacion getIdRespuesta(int id_respuesta) {
+	public RespuestaPuntuacion getRespuestaPuntuacion(int id_respuesta) {
 		return this.jdbcTemplate.queryForObject("select id_respuesta, id_puntuacion, respuesta from RespuestaPuntuacion where id_respuesta=?;", new Object[] {id_respuesta}, new RespuestaPuntuacionMapper());
 	}
 	
-	public void addIdRespuesta(RespuestaPuntuacion respuestaPuntuacion) {
+	public void addRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
 		this.jdbcTemplate.update("insert into RespuestaPuntuacion(id_respuesta, id_puntuacion, respuesta) values(?, ?, ?)",
 				respuestaPuntuacion.getId_respuesta(),
 				respuestaPuntuacion.getId_puntuacion(),
 				respuestaPuntuacion.getRespuesta());
 	}
 	
-	public void updateRespuesta(RespuestaPuntuacion respuestaPuntuacion) {
+	public void updateRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
 		this.jdbcTemplate.update(
 					"update RespuestaPuntuacion set id_respuesta = ?,"
 					+ "id_puntuacion = ?,respuesta = ?,"
@@ -59,11 +59,11 @@ public class RespuestaPuntuacionDao {
 					respuestaPuntuacion.getRespuesta());
 	}
 	
-	public void deleteRespuesta(RespuestaPuntuacion respuestaPuntuacion) {
+	public void deleteRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
 		this.jdbcTemplate.update("DELETE FROM RespuestaPuntuacion WHERE id_respuesta=?", respuestaPuntuacion.getId_respuesta());
 	}
 	
-	public void deleteRespuesta(int idRespuesta) {
+	public void deleteRespuestaPuntuacion(int idRespuesta) {
 		this.jdbcTemplate.update("DELETE FROM RespuestaPuntuacion WHERE id_respuesta=?", idRespuesta);
 	}
 }

@@ -13,7 +13,7 @@
 	<li><a href="periodo/list.html">Gestion de periodos</a></li>
 	<li><a href="propiedad/list.html">Gestion de propiedades</a></li>
 	<li><a href="puntuacion/list.html">Gestion de puntuaciones</a></li>
-	<li><a href="respuesta/list.html">Gestion de respuestas</a></li>
+	<li><a href="respuestaPuntuacion/list.html">Gestion de respuestas de puntuacion</a></li>
 	<li><a href="reserva/list.html">Gestion de reservas</a></li>
 	<li><a href="usuario/list.html">Gestion de usuarios</a></li>
 	</ul>

@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class Usuario {
 
-	private int idUsuario;
-	private int idCredencial;
+	private int id_usuario;
+	private int id_credencial;
 	private String nombre;
 	private String apellido;
 	private String nif;
 	private String email;
-	private int idDireccion;
+	private int id_direccion;
 	private Date fechaRegistro;
 	private int telefono;
 	private boolean estadoUsuario;
@@ -23,29 +23,29 @@ public class Usuario {
 			String apellido, String nif, String email, int idDireccion,
 			Date fechaRegistro, int telefono, boolean estadoUsuario) {
 		super();
-		this.idUsuario = idUsuario;
-		this.idCredencial = idCredencial;
+		this.id_usuario = idUsuario;
+		this.id_credencial = idCredencial;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nif = nif;
 		this.email = email;
-		this.idDireccion = idDireccion;
+		this.id_direccion = idDireccion;
 		this.fechaRegistro = fechaRegistro;
 		this.telefono = telefono;
 		this.estadoUsuario = estadoUsuario;
 	}	
 	
 	public int getIdUsuario() {
-		return idUsuario;
+		return id_usuario;
 	}
 	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+		this.id_usuario = idUsuario;
 	}
 	public int getIdCredencial() {
-		return idCredencial;
+		return id_credencial;
 	}
 	public void setIdCredencial(int idCredencial) {
-		this.idCredencial = idCredencial;
+		this.id_credencial = idCredencial;
 	}
 	public String getNombre() {
 		return nombre;
@@ -72,10 +72,10 @@ public class Usuario {
 		this.email = email;
 	}
 	public int getIdDireccion() {
-		return idDireccion;
+		return id_direccion;
 	}
 	public void setIdDireccion(int idDireccion) {
-		this.idDireccion = idDireccion;
+		this.id_direccion = idDireccion;
 	}
 	public Date getFechaRegistro() {
 		return fechaRegistro;
@@ -98,9 +98,9 @@ public class Usuario {
 	
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", idCredencial=" + idCredencial + ", nombre="
+		return "Usuario [idUsuario=" + id_usuario + ", idCredencial=" + id_credencial + ", nombre="
 				+ nombre + ", apellido=" + apellido + ", nif=" + nif + ", email=" + email 
-				+ ", idDireccion=" + idDireccion + ", fechaRegistro=" + fechaRegistro.toString() 
+				+ ", idDireccion=" + id_direccion + ", fechaRegistro=" + fechaRegistro.toString() 
 				+ ", telefono=" + telefono + ", estadoUsuario" + estadoUsuario + "]";
 	}
 	
