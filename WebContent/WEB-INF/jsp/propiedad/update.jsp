@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="num_habitaciones">Num. Habitaciones</form:label></td>
-				<td><form:input path="num_habitacion" /></td>
+				<td><form:input path="num_habitaciones" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="num_camas">Num. Camas</form:label></td>
@@ -54,8 +54,8 @@
 				<td><form:input path="servicios" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="precio">Precio</form:label></td>
-				<td><form:input path="precio" /></td>
+				<td><form:label path="precio_propiedad">Precio</form:label></td>
+				<td><form:input path="precio_propiedad" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_direccion">ID. Direccion</form:label></td>

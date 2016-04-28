@@ -37,7 +37,7 @@
 				<td class="linea">${propiedad.num_camas}</td>
 				<td class="linea">${propiedad.area}</td>
 				<td class="linea">${propiedad.servicios}</td>
-				<td class="linea">${propiedad.precio}</td>
+				<td class="linea">${propiedad.precio_propiedad}</td>
 				<td class="linea">${propiedad.id_direccion}</td>
 				<td class="linea">${propiedad.url_mapa}</td>
 				<td><a href="update/${propiedad.id_propiedad}.html">Edita</a>
