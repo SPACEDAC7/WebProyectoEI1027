@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/natacio.css">
 <title>Easy Rent - Crear nova credencial</title>
 </head>
 <body>

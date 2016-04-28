@@ -35,15 +35,15 @@ public class RespuestaPuntuacionDao {
 	}
 	
 	public List<RespuestaPuntuacion> getRespuestasPuntuaciones() {
-		return this.jdbcTemplate.query("select id_respuesta, id_puntuacion, respuesta from RespuestaPuntuacion", new RespuestaPuntuacionMapper());
+		return this.jdbcTemplate.query("select id_respuesta, id_puntuacion, respuesta from respuesta_puntuacion", new RespuestaPuntuacionMapper());
 	}
 	
 	public RespuestaPuntuacion getRespuestaPuntuacion(int id_respuesta) {
-		return this.jdbcTemplate.queryForObject("select id_respuesta, id_puntuacion, respuesta from RespuestaPuntuacion where id_respuesta=?;", new Object[] {id_respuesta}, new RespuestaPuntuacionMapper());
+		return this.jdbcTemplate.queryForObject("select id_respuesta, id_puntuacion, respuesta from respuesta_puntuacion where id_respuesta=?;", new Object[] {id_respuesta}, new RespuestaPuntuacionMapper());
 	}
 	
 	public void addRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
-		this.jdbcTemplate.update("insert into RespuestaPuntuacion(id_respuesta, id_puntuacion, respuesta) values(?, ?, ?)",
+		this.jdbcTemplate.update("insert into respuesta_puntuacion(id_respuesta, id_puntuacion, respuesta) values(?, ?, ?)",
 				respuestaPuntuacion.getId_respuesta(),
 				respuestaPuntuacion.getId_puntuacion(),
 				respuestaPuntuacion.getRespuesta());
@@ -51,7 +51,7 @@ public class RespuestaPuntuacionDao {
 	
 	public void updateRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
 		this.jdbcTemplate.update(
-					"update RespuestaPuntuacion set id_respuesta = ?,"
+					"update respuesta_puntuacion set id_respuesta = ?,"
 					+ "id_puntuacion = ?,respuesta = ?,"
 					+ "where id_respuesta = ?",
 					respuestaPuntuacion.getId_respuesta(),
@@ -60,10 +60,10 @@ public class RespuestaPuntuacionDao {
 	}
 	
 	public void deleteRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
-		this.jdbcTemplate.update("DELETE FROM RespuestaPuntuacion WHERE id_respuesta=?", respuestaPuntuacion.getId_respuesta());
+		this.jdbcTemplate.update("DELETE FROM respuesta_puntuacion WHERE id_respuesta=?", respuestaPuntuacion.getId_respuesta());
 	}
 	
 	public void deleteRespuestaPuntuacion(int idRespuesta) {
-		this.jdbcTemplate.update("DELETE FROM RespuestaPuntuacion WHERE id_respuesta=?", idRespuesta);
+		this.jdbcTemplate.update("DELETE FROM respuesta_puntuacion WHERE id_respuesta=?", idRespuesta);
 	}
 }

@@ -40,5 +40,6 @@
 		</c:forEach>
 	</table>
 	<a href="add.html">Afegeix usuario</a>
+	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>

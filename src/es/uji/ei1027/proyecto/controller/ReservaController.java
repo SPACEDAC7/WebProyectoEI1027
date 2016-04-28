@@ -26,7 +26,7 @@ private ReservaDao reservaDao;
 	@RequestMapping("/list")
 	public String listReservas(Model model){
 		model.addAttribute("reservas", reservaDao.getReservas());
-		return "credencial/list";
+		return "reserva/list";
 	}
 	
 	//Añadir	

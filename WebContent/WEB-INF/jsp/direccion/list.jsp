@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/natacio.css">
 <title>Gestionar Direcciones</title>
 </head>
 <body>
@@ -32,5 +32,6 @@
 		</c:forEach>
 	</table>
 	<a href="add.html">Afegeix Direccion</a>
+	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>

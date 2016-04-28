@@ -28,5 +28,6 @@
 		</c:forEach>
 	</table>
 	<a href="add.html">Afegeix Periodo</a>
+	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>

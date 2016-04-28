@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>Modificar respuesta</h2>
-	<form:form method="post" modelAttribute="respuesta_puntuacion">
+	<form:form method="post" modelAttribute="respuestaPuntuacion">
 		<table>
 			<tr>
 				<td><form:label path="id_respuesta">ID. Reserva </form:label></td>

@@ -31,7 +31,7 @@ public class DireccionDao {
 			direccion.setNumero(rs.getInt("numero"));
 			direccion.setCodigo_postal(rs.getInt("codigo_postal"));
 			direccion.setLocalidad(rs.getString("localidad"));
-			direccion.setProvincia("provincia");
+			direccion.setProvincia(rs.getString("provincia"));
 			return direccion;
 		}
 	}

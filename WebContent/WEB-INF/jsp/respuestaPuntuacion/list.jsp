@@ -15,16 +15,17 @@
 			<th>Id. Puntuacion</th>
 			<th>Respuesta</th>
 		</tr>
-		<c:forEach items="${respuestas_puntuaciones}" var="respuesta_puntuacion">
+		<c:forEach items="${respuestasPuntuaciones}" var="respuestaPuntuacion">
 			<tr>
-				<td class="linea">${respuesta.id_respuesta}</td>
-				<td class="linea">${respuesta.id_puntuacion}</td>
-				<td class="linea">${respuesta.respuesta}</td>
-				<td><a href="update/${respuesta.id_respuesta}.html">Edita</a>
-				<td><a href="delete/${respuesta.id_respuesta}.html">Esborra</a>
+				<td class="linea">${respuestaPuntuacion.id_respuesta}</td>
+				<td class="linea">${respuestaPuntuacion.id_puntuacion}</td>
+				<td class="linea">${respuestaPuntuacion.respuesta}</td>
+				<td><a href="update/${respuestaPuntuacion.id_respuesta}.html">Edita</a>
+				<td><a href="delete/${respuestaPuntuacion.id_respuesta}.html">Esborra</a>
 			</tr>
 		</c:forEach>
 	</table>
 	<a href="add.html">Afegeix Respuesta</a>
+	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>

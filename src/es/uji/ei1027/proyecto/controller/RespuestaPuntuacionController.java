@@ -14,8 +14,8 @@ import es.uji.ei1027.proyecto.domain.RespuestaPuntuacion;
 import es.uji.ei1027.proyecto.validator.RespuestaPuntuacionValidator;
 
 @Controller
-@RequestMapping("/respuesta_puntuacion")
-public class RespuestaPntuacionController {
+@RequestMapping("/respuestaPuntuacion")
+public class RespuestaPuntuacionController {
 	private RespuestaPuntuacionDao respuestaPuntuacionDao;
 	
 	@Autowired
@@ -25,40 +25,40 @@ public class RespuestaPntuacionController {
 	//Listar
 	@RequestMapping("/list")
 	public String listRespuestasPuntuaciones(Model model){
-		model.addAttribute("respuestas_puntuaciones", respuestaPuntuacionDao.getRespuestasPuntuaciones());
-		return "respuesta_puntuacion/list";
+		model.addAttribute("respuestaPuntuaciones", respuestaPuntuacionDao.getRespuestasPuntuaciones());
+		return "respuestaPuntuacion/list";
 	}
 	
 	//Añadir	
 	@RequestMapping(value="/add") 
 	public String addRespuestaPuntuacion(Model model) {
-		model.addAttribute("respuesta_puntuacion", new RespuestaPuntuacion());
-		return "respuesta_puntuacion/add";
+		model.addAttribute("respuestaPuntuacion", new RespuestaPuntuacion());
+		return "respuestaPuntuacion/add";
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("respuesta_puntuacion") RespuestaPuntuacion respuesta_puntuacion,
+	public String processAddSubmit(@ModelAttribute("respuestaPuntuacion") RespuestaPuntuacion respuesta_puntuacion,
 			BindingResult bindingResult) { 
 		RespuestaPuntuacionValidator respuestaPuntuacionValidator = new RespuestaPuntuacionValidator();
 		respuestaPuntuacionValidator.validate(respuesta_puntuacion, bindingResult); 
 		if (bindingResult.hasErrors())
-			return "respuesta_puntuacion/add";
+			return "respuestaPuntuacion/add";
 		respuestaPuntuacionDao.addRespuestaPuntuacion(respuesta_puntuacion);
 		return "redirect:list.html";
 	}
 	//Actualizar	
 	@RequestMapping(value="/update/{id_respuesta}", method = RequestMethod.GET)
 	public String editRespuestaPuntuacion(Model model, @PathVariable int id_respuesta) {
-		model.addAttribute("respuesta_puntuacion", respuestaPuntuacionDao.getRespuestaPuntuacion(id_respuesta));
+		model.addAttribute("respuestaPuntuacion", respuestaPuntuacionDao.getRespuestaPuntuacion(id_respuesta));
 		return "respuesta_puntuacion/update"; 
 	}
 
 	@RequestMapping(value="/update/{id_respuesta}", method = RequestMethod.POST) 
 	public String processUpdateSubmit(@PathVariable int id_respuesta, 
-			@ModelAttribute("respuesta_puntuacion") RespuestaPuntuacion respuesta_puntuacion, 
+			@ModelAttribute("respuestaPuntuacion") RespuestaPuntuacion respuesta_puntuacion, 
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
-			return "credencial/update";
+			return "respuesta_puntuacion/update";
 		respuestaPuntuacionDao.updateRespuestaPuntuacion(respuesta_puntuacion);
 		return "redirect:../list.html"; 
 	}

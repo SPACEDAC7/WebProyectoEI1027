@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/natacio.css">
 <title>Gestionar Credenciales</title>
 </head>
 <body>
@@ -28,5 +28,6 @@
 		</c:forEach>
 	</table>
 	<a href="add.html">Afegeix credencial</a>
+	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>

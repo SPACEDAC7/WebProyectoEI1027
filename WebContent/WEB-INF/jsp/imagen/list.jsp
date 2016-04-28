@@ -28,5 +28,6 @@
 		</c:forEach>
 	</table>
 	<a href="add.html">Afegeix imagen</a>
+	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>
