@@ -25,7 +25,7 @@ public class RespuestaPuntuacionController {
 	//Listar
 	@RequestMapping("/list")
 	public String listRespuestasPuntuaciones(Model model){
-		model.addAttribute("respuestaPuntuaciones", respuestaPuntuacionDao.getRespuestasPuntuaciones());
+		model.addAttribute("respuestasPuntuaciones", respuestaPuntuacionDao.getRespuestasPuntuaciones());
 		return "respuestaPuntuacion/list";
 	}
 	
