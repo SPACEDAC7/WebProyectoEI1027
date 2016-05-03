@@ -21,31 +21,39 @@ public class Periodo {
 		this.fin = fin;
 	}
 
-	public int getIdPeriodo() {
+
+	public int getId_periodo() {
 		return id_periodo;
 	}
-	public void setIdPeriodo(int id_periodo) {
+
+	public void setId_periodo(int id_periodo) {
 		this.id_periodo = id_periodo;
 	}
-	public int getIdPropiedad() {
+
+	public int getId_propiedad() {
 		return id_propiedad;
 	}
-	public void setIdPropiedad(int id_propiedad) {
+
+	public void setId_propiedad(int id_propiedad) {
 		this.id_propiedad = id_propiedad;
 	}
+
 	public Date getInicio() {
 		return inicio;
 	}
+
 	public void setInicio(Date inicio) {
 		this.inicio = inicio;
 	}
+
 	public Date getFin() {
 		return fin;
 	}
+
 	public void setFin(Date fin) {
 		this.fin = fin;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Periodo [idPeriodo=" + id_periodo + ", idPropiedad=" + id_propiedad + ", inicio="

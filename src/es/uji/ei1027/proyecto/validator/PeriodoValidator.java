@@ -17,11 +17,11 @@ public class PeriodoValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors){
 		Periodo periodo = (Periodo)obj;
-		if( periodo.getIdPeriodo()<0)
+		if( periodo.getId_periodo()<0)
 			errors.rejectValue("id_periodo", "obligatori", "Hay que introducir un valor");
 		//Aqui todas las cosas que queramos validar
 		
-		if( periodo.getIdPropiedad()<0)
+		if( periodo.getId_propiedad()<0)
 			errors.rejectValue("id_propiedad", "obligatori", "Hay que introducir un valor");
 	}
 }

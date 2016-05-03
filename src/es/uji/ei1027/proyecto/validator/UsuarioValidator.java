@@ -16,10 +16,10 @@ public class UsuarioValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors){
 		Usuario usuario = (Usuario)obj;
-		if( usuario.getIdCredencial()<0)
+		if( usuario.getId_credencial()<0)
 			errors.rejectValue("id_credencial", "obligatori", "Hay que introducir un valor");
 		//Aqui todas las cosas que queramos validar
-		if( usuario.getIdUsuario()<0)
+		if( usuario.getId_usuario()<0)
 			errors.rejectValue("id_usuario", "obligatori", "Hay que introducir un valor");
 	}
 }

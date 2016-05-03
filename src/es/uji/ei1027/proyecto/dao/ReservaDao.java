@@ -32,7 +32,7 @@ public class ReservaDao {
 			reserva.setId_propiedad(rs.getInt("id_propiedad"));
 			reserva.setFecha_reserva(rs.getDate("fecha_reserva"));
 			reserva.setFecha_checkin(rs.getDate("fecha_checkin"));
-			reserva.setFecha_checkout(rs.getDate("fecha_chechout"));
+			reserva.setFecha_checkout(rs.getDate("fecha_checkout"));
 			reserva.setPrecio_reserva(rs.getFloat("precio_reserva"));
 			reserva.setEstado(rs.getString("estado"));
 			return reserva;
@@ -40,37 +40,19 @@ public class ReservaDao {
 	}
 	
 	public List<Reserva> getReservas() {
-			return this.jdbcTemplate.query("select id_reserva, id_usuario, id_propiedad"
-					+ ", fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva"
-					+ ", estado from reserva", new ReservaMapper());			
+			return this.jdbcTemplate.query("select id_reserva, id_usuario, id_propiedad, fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva, estado from reserva", new ReservaMapper());			
 	}
 	
 	public Reserva getReserva(int id_reserva) {
-		return this.jdbcTemplate.queryForObject("select id_reserva, id_usuario, id_propiedad"
-					+ ", fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva"
-					+ ", estado from reserva where id_reserva=?", new Object[] {id_reserva}, new ReservaMapper());
+		return this.jdbcTemplate.queryForObject("select id_reserva, id_usuario, id_propiedad ,fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva, estado from reserva where id_reserva=?", new Object[] {id_reserva}, new ReservaMapper());
 	}
 	
 	public void addReserva(Reserva reserva) {
-		this.jdbcTemplate.update("insert into reserva(id_reserva, id_usuario, id_propiedad"
-					+ ", fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva"
-					+ ", estado) values(?, ?, ?, ?, ?, ?, ?, ?)",
-					reserva.getId_reserva(), reserva.getId_usuario(),
-					reserva.getId_propiedad(),reserva.getFecha_reserva(),
-					reserva.getFecha_checkin(),reserva.getFecha_checkout(),
-					reserva.getPrecio_reserva(),reserva.getEstado());
+		this.jdbcTemplate.update("insert into reserva(id_reserva, id_usuario, id_propiedad, fecha_reserva, fecha_checkin, fecha_checkout, precio_reserva, estado) values(?, ?, ?, ?, ?, ?, ?, ?)",reserva.getId_reserva(), reserva.getId_usuario(),reserva.getId_propiedad(),reserva.getFecha_reserva(),reserva.getFecha_checkin(),reserva.getFecha_checkout(),reserva.getPrecio_reserva(),reserva.getEstado());
 	}
 	
 	public void updateReserva(Reserva reserva) {
-		this.jdbcTemplate.update("update reserva set id_usuario = ?,"
-					+ "id_propiedad = ?, fecha_reserva = ?,"
-					+ "fecha_checkin = ?,fecha_checkout = ?,"
-					+ "precio_reserva = ?,estado = ? "
-					+ "where id_reserva = ?",reserva.getId_usuario(),
-					reserva.getId_propiedad(),reserva.getFecha_reserva(),
-					reserva.getFecha_checkin(),reserva.getFecha_checkout(),
-					reserva.getPrecio_reserva(),reserva.getEstado(),
-					reserva.getId_reserva());
+		this.jdbcTemplate.update("update reserva set id_usuario = ?,id_propiedad = ?, fecha_reserva = ?,fecha_checkin = ?,fecha_checkout = ?,precio_reserva = ?,estado = ? where id_reserva = ?",reserva.getId_usuario(),reserva.getId_propiedad(),reserva.getFecha_reserva(),reserva.getFecha_checkin(),reserva.getFecha_checkout(),reserva.getPrecio_reserva(),reserva.getEstado(),reserva.getId_reserva());
 	}
 	
 	public void deleteReserva(Reserva reserva) {

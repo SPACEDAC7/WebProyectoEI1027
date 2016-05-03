@@ -11,97 +11,118 @@ public class Usuario {
 	private String nif;
 	private String email;
 	private int id_direccion;
-	private Date fechaRegistro;
+	private Date fecha_registro;
 	private int telefono;
-	private boolean estadoUsuario;
+	private boolean estado_usuario;
 	
 	public Usuario() {
 		super();
 	}
 	
-	public Usuario(int idUsuario, int idCredencial, String nombre,
-			String apellido, String nif, String email, int idDireccion,
-			Date fechaRegistro, int telefono, boolean estadoUsuario) {
+	public Usuario(int id_usuario, int id_credencial, String nombre,
+			String apellido, String nif, String email, int id_direccion,
+			Date fecha_registro, int telefono, boolean estado_usuario) {
 		super();
-		this.id_usuario = idUsuario;
-		this.id_credencial = idCredencial;
+		this.id_usuario = id_usuario;
+		this.id_credencial = id_credencial;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nif = nif;
 		this.email = email;
-		this.id_direccion = idDireccion;
-		this.fechaRegistro = fechaRegistro;
+		this.id_direccion = id_direccion;
+		this.fecha_registro = fecha_registro;
 		this.telefono = telefono;
-		this.estadoUsuario = estadoUsuario;
+		this.estado_usuario = estado_usuario;
 	}	
 	
-	public int getIdUsuario() {
+	
+	
+	public int getId_usuario() {
 		return id_usuario;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.id_usuario = idUsuario;
+
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
-	public int getIdCredencial() {
+
+	public int getId_credencial() {
 		return id_credencial;
 	}
-	public void setIdCredencial(int idCredencial) {
-		this.id_credencial = idCredencial;
+
+	public void setId_credencial(int id_credencial) {
+		this.id_credencial = id_credencial;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public String getNif() {
 		return nif;
 	}
+
 	public void setNif(String nif) {
 		this.nif = nif;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getIdDireccion() {
+
+	public int getId_direccion() {
 		return id_direccion;
 	}
-	public void setIdDireccion(int idDireccion) {
-		this.id_direccion = idDireccion;
+
+	public void setId_direccion(int id_direccion) {
+		this.id_direccion = id_direccion;
 	}
-	public Date getFechaRegistro() {
-		return fechaRegistro;
+
+	public Date getFecha_registro() {
+		return fecha_registro;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+
+	public void setFecha_registro(Date fechaRegistro) {
+		this.fecha_registro = fechaRegistro;
 	}
+
 	public int getTelefono() {
 		return telefono;
 	}
+
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	public boolean getEstadoUsuario() {
-		return estadoUsuario;
+
+	public boolean getEstado_usuario() {
+		return estado_usuario;
 	}
-	public void setEstadoUsuario(boolean estadoUsuario) {
-		this.estadoUsuario = estadoUsuario;
+
+	public void setEstado_usuario(boolean estado_usuario) {
+		this.estado_usuario = estado_usuario;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + id_usuario + ", idCredencial=" + id_credencial + ", nombre="
 				+ nombre + ", apellido=" + apellido + ", nif=" + nif + ", email=" + email 
-				+ ", idDireccion=" + id_direccion + ", fechaRegistro=" + fechaRegistro.toString() 
-				+ ", telefono=" + telefono + ", estadoUsuario" + estadoUsuario + "]";
+				+ ", idDireccion=" + id_direccion + ", fechaRegistro=" + fecha_registro.toString() 
+				+ ", telefono=" + telefono + ", estadoUsuario" + estado_usuario + "]";
 	}
 	
 	

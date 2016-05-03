@@ -27,10 +27,10 @@ public class FacturaDao {
 	private static final class FacturaMapper implements RowMapper<Factura>{
 		public Factura mapRow(ResultSet rs, int rowNum) throws SQLException{
 			Factura factura = new Factura();
-			factura.setIdFactura(rs.getInt("id_factura"));
-			factura.setIdReserva(rs.getInt("id_reserva"));
-			factura.setFechaFactura(rs.getDate("fecha_factura"));
-			factura.setPrecioFactura(rs.getFloat("precio_factura"));
+			factura.setId_factura(rs.getInt("id_factura"));
+			factura.setId_reserva(rs.getInt("id_reserva"));
+			factura.setFecha_factura(rs.getDate("fecha_factura"));
+			factura.setPrecio_factura(rs.getFloat("precio_factura"));
 			factura.setIva(rs.getInt("iva"));
 			return factura;
 		}
@@ -45,7 +45,7 @@ public class FacturaDao {
 	}
 	
 	public void addFactura(Factura factura) {
-		this.jdbcTemplate.update("insert into factura(id_factura, id_reserva, fecha_factura, precio_factura, iva) values(?, ?, ?, ?, ?)",factura.getIdFactura(),factura.getIdReserva(),factura.getFechaFactura(),factura.getPrecioFactura(),factura.getIva());
+		this.jdbcTemplate.update("insert into factura(id_factura, id_reserva, fecha_factura, precio_factura, iva) values(?, ?, ?, ?, ?)",factura.getId_factura(),factura.getId_reserva(),factura.getFecha_factura(),factura.getPrecio_factura(),factura.getIva());
 	}
 	
 	public void updateFactura(Factura factura) {
@@ -54,15 +54,15 @@ public class FacturaDao {
 					+ "fecha_factura = ?,"
 					+ "precio_factura = ?,"
 					+ "iva = ? "
-					+ "where id_factura = ?",factura.getIdReserva(),
-					factura.getFechaFactura(),
-					factura.getPrecioFactura(),
+					+ "where id_factura = ?",factura.getId_reserva(),
+					factura.getFecha_factura(),
+					factura.getPrecio_factura(),
 					factura.getIva(),
-					factura.getIdFactura());
+					factura.getId_factura());
 	}
 	
 	public void deleteFactura(Factura factura) {
-		this.jdbcTemplate.update("DELETE FROM factura WHERE id_factura=?",factura.getIdFactura() );
+		this.jdbcTemplate.update("DELETE FROM factura WHERE id_factura=?",factura.getId_factura() );
 	}
 	
 	public void deleteFactura(int id_factura) {

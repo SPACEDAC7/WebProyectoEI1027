@@ -24,8 +24,8 @@
 				<td class="linea">${factura.fecha_factura}</td>
 				<td class="linea">${factura.precio_factura}</td>
 				<td class="linea">${factura.iva}</td>
-				<td><a href="update/${factura.id_direccion}.html">Edita</a>
-				<td><a href="delete/${factura.id_direccion}.html">Esborra</a>
+				<td><a href="update/${factura.id_factura}.html">Edita</a>
+				<td><a href="delete/${factura.id_factura}.html">Esborra</a>
 			</tr>
 		</c:forEach>
 	</table>

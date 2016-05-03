@@ -27,8 +27,8 @@ public class PeriodoDao {
 	private static final class PeridoMapper implements RowMapper<Periodo>{
 		public Periodo mapRow(ResultSet rs, int rowNum) throws SQLException{
 			Periodo periodo = new Periodo();
-			periodo.setIdPeriodo(rs.getInt("id_periodo"));
-			periodo.setIdPropiedad(rs.getInt("id_propiedad"));
+			periodo.setId_periodo(rs.getInt("id_periodo"));
+			periodo.setId_propiedad(rs.getInt("id_propiedad"));
 			periodo.setInicio(rs.getDate("inicio"));
 			periodo.setFin(rs.getDate("fin"));
 			return periodo;
@@ -45,15 +45,15 @@ public class PeriodoDao {
 	}
 	
 	public void addPeriodo(Periodo periodo) {
-		this.jdbcTemplate.update("insert into periodo(id_periodo, id_propiedad, inicio, fin) values(?, ?, ?, ?)", periodo.getIdPeriodo(),periodo.getIdPropiedad(),periodo.getInicio(),periodo.getFin());
+		this.jdbcTemplate.update("insert into periodo(id_periodo, id_propiedad, inicio, fin) values(?, ?, ?, ?)", periodo.getId_periodo(),periodo.getId_propiedad(),periodo.getInicio(),periodo.getFin());
 	}
 	
 	public void updatePeriodo(Periodo periodo) {
-		this.jdbcTemplate.update("update periodo set id_propiedad=?,inicio=?,fin=? where id_periodo=?", periodo.getIdPropiedad(),periodo.getInicio(),periodo.getFin(),periodo.getIdPeriodo());
+		this.jdbcTemplate.update("update periodo set id_propiedad=?,inicio=?,fin=? where id_periodo=?", periodo.getId_propiedad(),periodo.getInicio(),periodo.getFin(),periodo.getId_periodo());
 	}
 	
 	public void deletePeriodo(Periodo periodo) {
-		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", periodo.getIdPeriodo());
+		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", periodo.getId_periodo());
 	}
 	
 	public void deletePeriodo(int id_periodo) {

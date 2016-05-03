@@ -27,16 +27,16 @@ public class UsuarioDao {
 	private static final class UsuarioMapper implements RowMapper<Usuario>{
 		public Usuario mapRow(ResultSet rs, int rowNum)throws SQLException{
 			Usuario usuario = new Usuario();
-			usuario.setIdUsuario(rs.getInt("id_usuario"));
-			usuario.setIdCredencial(rs.getInt("id_credencial"));
+			usuario.setId_usuario(rs.getInt("id_usuario"));
+			usuario.setId_credencial(rs.getInt("id_credencial"));
 			usuario.setNombre(rs.getString("nombre"));
 			usuario.setApellido(rs.getString("apellido"));
 			usuario.setNif(rs.getString("nif"));
 			usuario.setEmail(rs.getString("email"));
-			usuario.setIdDireccion(rs.getInt("id_direccion"));
-			usuario.setFechaRegistro(rs.getDate("fecha_registro"));
+			usuario.setId_direccion(rs.getInt("id_direccion"));
+			usuario.setFecha_registro(rs.getDate("fecha_registro"));
 			usuario.setTelefono(rs.getInt("telefono"));
-			usuario.setEstadoUsuario(rs.getBoolean("estado_usuario"));
+			usuario.setEstado_usuario(rs.getBoolean("estado_usuario"));
 			return usuario;
 		}
 	}
@@ -58,11 +58,11 @@ public class UsuarioDao {
 					"insert into usuario(id_usuario, id_credencial, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
 					+ ", estado_usuario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-					usuario.getIdUsuario(),usuario.getIdCredencial(),
+					usuario.getId_usuario(),usuario.getId_credencial(),
 					usuario.getNombre(),usuario.getApellido(),
 					usuario.getNif(),usuario.getEmail(),
-					usuario.getIdDireccion(),usuario.getFechaRegistro(),
-					usuario.getTelefono(),usuario.getEstadoUsuario());
+					usuario.getId_direccion(),usuario.getFecha_registro(),
+					usuario.getTelefono(),usuario.getEstado_usuario());
 	}
 	
 	
@@ -73,15 +73,15 @@ public class UsuarioDao {
 					+ "email = ?,id_direccion = ?,"
 					+ "fecha_registro = ?,telefono = ?,"
 					+ "estado_usuario = ? where id_usuario = ?",
-					usuario.getIdCredencial(),usuario.getNombre(),usuario.getApellido(),
+					usuario.getId_credencial(),usuario.getNombre(),usuario.getApellido(),
 					usuario.getNif(),usuario.getEmail(),
-					usuario.getIdDireccion(),usuario.getFechaRegistro(),
-					usuario.getTelefono(),usuario.getEstadoUsuario(),
-					usuario.getIdUsuario());
+					usuario.getId_direccion(),usuario.getFecha_registro(),
+					usuario.getTelefono(),usuario.getEstado_usuario(),
+					usuario.getId_usuario());
 	}
 	
 	public void deleteUsuario(Usuario usuario) {
-		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", usuario.getIdUsuario());
+		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", usuario.getId_usuario());
 	}
 	
 	public void deleteUsuario(int idUsuario) {
