@@ -50,7 +50,7 @@ public class RespuestaPuntuacionController {
 	@RequestMapping(value="/update/{id_respuesta}", method = RequestMethod.GET)
 	public String editRespuestaPuntuacion(Model model, @PathVariable int id_respuesta) {
 		model.addAttribute("respuestaPuntuacion", respuestaPuntuacionDao.getRespuestaPuntuacion(id_respuesta));
-		return "respuesta_puntuacion/update"; 
+		return "respuestaPuntuacion/update"; 
 	}
 
 	@RequestMapping(value="/update/{id_respuesta}", method = RequestMethod.POST) 
@@ -58,7 +58,7 @@ public class RespuestaPuntuacionController {
 			@ModelAttribute("respuestaPuntuacion") RespuestaPuntuacion respuesta_puntuacion, 
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
-			return "respuesta_puntuacion/update";
+			return "respuestaPuntuacion/update";
 		respuestaPuntuacionDao.updateRespuestaPuntuacion(respuesta_puntuacion);
 		return "redirect:../list.html"; 
 	}

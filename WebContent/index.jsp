@@ -14,4 +14,4 @@
 	<li><a href="usuario/list.html">Gestion de usuarios</a></li>
 	</ul>
 </jsp:body>
-</t:paginabasica><
+</t:paginabasica>

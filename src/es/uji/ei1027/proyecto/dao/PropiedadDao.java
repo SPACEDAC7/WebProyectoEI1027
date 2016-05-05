@@ -36,7 +36,8 @@ public class PropiedadDao {
 			propiedad.setNum_camas(rs.getInt("num_camas"));
 			propiedad.setArea(rs.getInt("area"));
 			propiedad.setServicios(rs.getString("servicios"));
-			propiedad.setId_propiedad(rs.getInt("id_propiedad"));
+			propiedad.setPrecio_propiedad(rs.getFloat("precio_propiedad"));
+			propiedad.setId_direccion(rs.getInt("id_direccion"));
 			propiedad.setUrl_mapa(rs.getString("url_mapa"));
 			return propiedad;
 		}

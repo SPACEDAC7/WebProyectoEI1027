@@ -9,20 +9,20 @@
 </head>
 <body>
 	<h2>Nova respuesta</h2>
-	<form:form method="post" modelAttribute="respuesta_puntuacion">
+	<form:form method="post" modelAttribute="respuestaPuntuacion">
 		<table>
 			<tr>
-				<td><form:label path="id_respuesta">ID. Reserva </form:label></td>
+				<td><form:label path="id_respuesta">ID. Respuesta </form:label></td>
 				<td><form:input path="id_respuesta" /></td>
 				<td><form:errors path="id_respuesta" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="id_puntuacion">ID. Usuario</form:label></td>
+				<td><form:label path="id_puntuacion">ID. Puntuacion</form:label></td>
 				<td><form:input path="id_puntuacion" /></td>
 				<td><form:errors path="id_puntuacion" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="respuesta">ID. Propiedad</form:label></td>
+				<td><form:label path="respuesta">Respuesta</form:label></td>
 				<td><form:input path="respuesta" /></td>
 			</tr>
 			<tr>

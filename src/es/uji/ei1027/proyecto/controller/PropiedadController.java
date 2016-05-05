@@ -49,7 +49,7 @@ private PropiedadDao propiedadDao;
 	//Actualizar	
 	@RequestMapping(value="/update/{id_propiedad}", method = RequestMethod.GET)
 	public String editPropiedad(Model model, @PathVariable int id_propiedad) {
-		model.addAttribute("prepiedad", propiedadDao.getPropiedad(id_propiedad));
+		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		return "propiedad/update"; 
 	}
 
@@ -64,7 +64,7 @@ private PropiedadDao propiedadDao;
 	}
 
 	//Borrar	
-	@RequestMapping(value="/delete/{id_credencial}")
+	@RequestMapping(value="/delete/{id_propiedad}")
 	public String processDelete(@PathVariable int id_propiedad) {
 		propiedadDao.deletePropiedad(id_propiedad);
 		return "redirect:../list.html"; 
