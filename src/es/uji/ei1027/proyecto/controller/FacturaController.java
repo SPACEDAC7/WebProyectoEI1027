@@ -29,7 +29,7 @@ public class FacturaController {
 		return "factura/list";
 	}
 
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addFactura(Model model) {
 		model.addAttribute("factura", new Factura());
@@ -43,6 +43,7 @@ public class FacturaController {
 		facturaValidator.validate(factura, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "factura/add";
+		factura.crearFecha(factura.getDia(), factura.getMes()-1, factura.getAno());
 		facturaDao.addFactura(factura);
 		return "redirect:list.html";
 	}
@@ -59,6 +60,7 @@ public class FacturaController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "factura/update";
+		factura.crearFecha(factura.getDia(), factura.getMes()-1, factura.getAno());
 		facturaDao.updateFactura(factura);
 		return "redirect:../list.html"; 
 	}

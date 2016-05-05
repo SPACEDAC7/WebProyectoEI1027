@@ -21,16 +21,20 @@
 				<td><form:input path="id_reserva" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fecha_factura">Fecha Factura</form:label></td>
-				<td><form:input path="fecha_factura" /></td>
-			</tr>
-			<tr>
 				<td><form:label path="precio_factura">Precio Factura</form:label></td>
 				<td><form:input path="precio_factura" /></td>
 			</tr>
 				<tr>
 				<td><form:label path="iva">IVA</form:label></td>
 				<td><form:input path="iva" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="dia">Día</form:label></td>
+				<td><form:input path="dia" /></td>
+				<td><form:label path="mes">Mes</form:label></td>
+				<td><form:input path="mes" /></td>
+				<td><form:label path="ano">Año</form:label></td>
+				<td><form:input path="ano" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Afegeix factura" />
