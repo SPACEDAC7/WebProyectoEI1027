@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8" />
-	<title>EI1027</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="EI1027">
+<jsp:body>
 	<ul>
 	<li><a href="credencial/list.html">Gestion de credenciales</a></li>
 	<li><a href="direccion/list.html">Gestion de direcciones</a></li>
@@ -17,4 +13,5 @@
 	<li><a href="reserva/list.html">Gestion de reservas</a></li>
 	<li><a href="usuario/list.html">Gestion de usuarios</a></li>
 	</ul>
-</body>
+</jsp:body>
+</t:paginabasica>

@@ -15,16 +15,11 @@
 <link
 	href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css"
 	rel="stylesheet">
-<!-- Estils propis -->
-<link
-	href="${pageContext.request.contextPath}/css/natacio.css"
-	rel="stylesheet">
 </head>
 <body>
 	<header class="container page-header">
-		<h1>Campionat de Natació</h1>
+		<h1>EASY RENT</h1>
 	</header>
-	<t:navegacio />
 	<div class="loggeduser"><t:logininfo /></div>
 	<div class="container">
 		<jsp:doBody />
