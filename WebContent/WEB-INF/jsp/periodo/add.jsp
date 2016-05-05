@@ -21,22 +21,12 @@
 				<td><form:input path="id_propiedad" /></td>
 			</tr>
 			<tr>
-				<td>Fecha Inicio</td>
-				<td><form:label path="diaInicio">Día inicio </form:label></td>
-				<td><form:input path="diaInicio" /></td>
-				<td><form:label path="mesInicio">Mes inicio </form:label></td>
-				<td><form:input path="mesInicio" /></td>
-				<td><form:label path="anoInicio">Año inicio </form:label></td>
-				<td><form:input path="anoInicio" /></td>
+				<td><form:label path="fechaInicio">Dia inicio </form:label></td>
+				<td><form:input path="fechaInicio" /></td>
 			</tr>
 			<tr>
-				<td>Fecha Final</td>
-				<td><form:label path="diaFinal">Día final </form:label></td>
-				<td><form:input path="diaFinal" /></td>
-				<td><form:label path="mesFinal">Mes final </form:label></td>
-				<td><form:input path="mesFinal" /></td>
-				<td><form:label path="anoFinal">Año final </form:label></td>
-				<td><form:input path="anoFinal" /></td>
+				<td><form:label path="fechaFinal">Día final </form:label></td>
+				<td><form:input path="fechaFinal" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Afegeix periodo" />

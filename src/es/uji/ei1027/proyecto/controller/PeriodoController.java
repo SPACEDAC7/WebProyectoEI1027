@@ -42,9 +42,10 @@ public class PeriodoController {
 	public String processAddSubmit(@ModelAttribute("periodo") Periodo periodo,
 			BindingResult bindingResult) { 
 		PeriodoValidator periodoValidator = new PeriodoValidator();
-		periodoValidator.validate(periodo, bindingResult); 
+		periodoValidator.validate(periodo, bindingResult);
 		if (bindingResult.hasErrors())
 			return "periodo/add";
+		periodo.crearFechas();
 		periodoDao.addPeriodo(periodo);
 		return "redirect:list.html";
 	}
