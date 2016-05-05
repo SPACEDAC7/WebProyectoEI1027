@@ -13,7 +13,7 @@ public class Usuario {
 	private String email;
 	private int id_direccion;
 	private Date fecha_registro;
-	private int telefono;
+	private String telefono;
 	private boolean estado_usuario;
 	
 	public Usuario() {
@@ -22,7 +22,7 @@ public class Usuario {
 	
 	public Usuario(int id_usuario, int id_credencial,String url_imagen_perfil, String nombre,
 			String apellido, String nif, String email, int id_direccion,
-			Date fecha_registro, int telefono, boolean estado_usuario) {
+			Date fecha_registro, String telefono, boolean estado_usuario) {
 		super();
 		this.id_usuario = id_usuario;
 		this.id_credencial = id_credencial;
@@ -103,11 +103,11 @@ public class Usuario {
 		this.fecha_registro = fechaRegistro;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 

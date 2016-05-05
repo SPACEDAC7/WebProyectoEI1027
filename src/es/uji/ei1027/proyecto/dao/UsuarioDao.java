@@ -36,7 +36,7 @@ public class UsuarioDao {
 			usuario.setEmail(rs.getString("email"));
 			usuario.setId_direccion(rs.getInt("id_direccion"));
 			usuario.setFecha_registro(rs.getDate("fecha_registro"));
-			usuario.setTelefono(rs.getInt("telefono"));
+			usuario.setTelefono(rs.getString("telefono"));
 			usuario.setEstado_usuario(rs.getBoolean("estado_usuario"));
 			return usuario;
 		}
