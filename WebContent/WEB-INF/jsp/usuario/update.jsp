@@ -20,6 +20,10 @@
 				<td><form:input path="id_credencial" /></td>
 			</tr>
 			<tr>
+				<td><form:label path="url_imagen_perfil">Url Imagen Perfil </form:label></td>
+				<td><form:input path="url_imagen_perfil" /></td>
+			</tr>
+			<tr>
 				<td><form:label path="nombre">Nombre </form:label></td>
 				<td><form:input path="nombre" /></td>
 			</tr>
