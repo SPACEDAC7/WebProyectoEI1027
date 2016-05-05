@@ -6,6 +6,7 @@ public class Usuario {
 
 	private int id_usuario;
 	private int id_credencial;
+	private String url_imagen_perfil;
 	private String nombre;
 	private String apellido;
 	private String nif;
@@ -19,12 +20,13 @@ public class Usuario {
 		super();
 	}
 	
-	public Usuario(int id_usuario, int id_credencial, String nombre,
+	public Usuario(int id_usuario, int id_credencial,String url_imagen_perfil, String nombre,
 			String apellido, String nif, String email, int id_direccion,
 			Date fecha_registro, int telefono, boolean estado_usuario) {
 		super();
 		this.id_usuario = id_usuario;
 		this.id_credencial = id_credencial;
+		this.url_imagen_perfil = url_imagen_perfil;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nif = nif;
@@ -119,10 +121,18 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + id_usuario + ", idCredencial=" + id_credencial + ", nombre="
+		return "Usuario [idUsuario=" + id_usuario + ", idCredencial=" + id_credencial + " , url Imagen PErfil : " + url_imagen_perfil +", nombre="
 				+ nombre + ", apellido=" + apellido + ", nif=" + nif + ", email=" + email 
 				+ ", idDireccion=" + id_direccion + ", fechaRegistro=" + fecha_registro.toString() 
 				+ ", telefono=" + telefono + ", estadoUsuario" + estado_usuario + "]";
+	}
+
+	public String getUrl_imagen_perfil() {
+		return url_imagen_perfil;
+	}
+
+	public void setUrl_imagen_perfil(String url_imagen_perfil) {
+		this.url_imagen_perfil = url_imagen_perfil;
 	}
 	
 	
