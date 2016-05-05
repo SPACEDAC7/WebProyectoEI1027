@@ -20,12 +20,12 @@
 				<td><form:input path="id_propiedad" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="inicio">Inicio </form:label></td>
-				<td><form:input path="inicio" /></td>
+				<td><form:label path="fechaInicio">Inicio </form:label></td>
+				<td><form:input path="fechaInicio" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fin">Fin</form:label></td>
-				<td><form:input path="fin" /></td>
+				<td><form:label path="fechaFinal">Fin</form:label></td>
+				<td><form:input path="fechaFinal" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Modificar periodo" />

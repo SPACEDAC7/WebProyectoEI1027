@@ -16,6 +16,8 @@ public class Usuario {
 	private String telefono;
 	private boolean estado_usuario;
 	
+	private String fechaRegistro;
+	
 	public Usuario() {
 		super();
 	}
@@ -37,6 +39,17 @@ public class Usuario {
 		this.estado_usuario = estado_usuario;
 	}	
 	
+	public void crearFechas() {
+		//Convierte una fecha tipo String con el formato dd/mm/aaaa a una tipo Date
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		fecha_registro = c.convertirFecha(fechaRegistro);
+	}
+	
+	public void convertirDateADiaMesAno() {
+		//Convierte una fecha tipo Date a una fecha tipo String con el formato dd/mm/aaaa
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		fechaRegistro = c.convertirFecha(fecha_registro);
+	}
 	
 	
 	public int getId_usuario() {
@@ -134,6 +147,15 @@ public class Usuario {
 	public void setUrl_imagen_perfil(String url_imagen_perfil) {
 		this.url_imagen_perfil = url_imagen_perfil;
 	}
+
+	public String getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(String fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+	
 	
 	
 }

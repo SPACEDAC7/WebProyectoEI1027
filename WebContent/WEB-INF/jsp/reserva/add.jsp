@@ -27,16 +27,16 @@
 				<td><form:errors path="id_propiedad" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="fecha_reserva">Fecha Reserva</form:label></td>
-				<td><form:input path="fecha_reserva" /></td>
+				<td><form:label path="fechaReserva">Fecha Reserva</form:label></td>
+				<td><form:input path="fechaReserva" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fecha_checkin">Fecha Check In</form:label></td>
-				<td><form:input path="fecha_checkin" /></td>
+				<td><form:label path="fechaCheckIn">Fecha Check In</form:label></td>
+				<td><form:input path="fechaCheckIn" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fecha_checkout">Fecha Check Out</form:label></td>
-				<td><form:input path="fecha_checkout" /></td>
+				<td><form:label path="fechaCheckOut">Fecha Check Out</form:label></td>
+				<td><form:input path="fechaCheckOut" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="precio_reserva">Precio Reserva</form:label></td>

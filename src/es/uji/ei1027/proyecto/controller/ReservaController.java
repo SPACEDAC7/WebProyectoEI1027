@@ -29,7 +29,7 @@ private ReservaDao reservaDao;
 		return "reserva/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addReserva(Model model) {
 		model.addAttribute("reserva", new Reserva());
@@ -43,13 +43,17 @@ private ReservaDao reservaDao;
 		reservaValidator.validate(reserva, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "reserva/add";
+		reserva.crearFechas();
 		reservaDao.addReserva(reserva);
 		return "redirect:list.html";
 	}
 	//Actualizar	
 	@RequestMapping(value="/update/{id_reserva}", method = RequestMethod.GET)
 	public String editReserva(Model model, @PathVariable int id_reserva) {
-		model.addAttribute("reserva", reservaDao.getReserva(id_reserva));
+		Reserva reserva = reservaDao.getReserva(id_reserva);
+		//Convierto fechas de tipo Date a tipo dd/mm/aaaa para que se muestren en la pÃ¡gina de update
+		reserva.convertirDateADiaMesAno();
+		model.addAttribute("reserva", reserva);
 		return "reserva/update"; 
 	}
 
@@ -59,6 +63,7 @@ private ReservaDao reservaDao;
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "reserva/update";
+		reserva.crearFechas();
 		reservaDao.updateReserva(reserva);
 		return "redirect:../list.html"; 
 	}

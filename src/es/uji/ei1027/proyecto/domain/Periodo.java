@@ -1,13 +1,19 @@
 package es.uji.ei1027.proyecto.domain;
 
 import java.sql.Date;
-import java.util.Calendar;
 
 public class Periodo {
 
 	private int id_periodo;
 	private int id_propiedad;
 	private Date inicio;
+	private Date fin;
+	
+	//Estos dos atributos no tienen nada que ver con la base de datos
+	//Únicamente se utilizan para poder mostrar y solicitar dechas en formato dd/mm/aaaa
+	private String fechaInicio;
+	private String fechaFinal;
+	
 	public String getFechaInicio() {
 		return fechaInicio;
 	}
@@ -24,9 +30,7 @@ public class Periodo {
 		this.fechaFinal = fechaFinal;
 	}
 
-	private Date fin;
-	private String fechaInicio;
-	private String fechaFinal;
+	
 	
 	public Periodo() {
 		super();
@@ -41,15 +45,17 @@ public class Periodo {
 	}
 	
 	public void crearFechas() {
-		String[] diaMesAno = fechaInicio.split("/");
-		Calendar cal = Calendar.getInstance();
-		cal.set(Integer.parseInt(diaMesAno[2]), Integer.parseInt(diaMesAno[1]), Integer.parseInt(diaMesAno[0]));
-		this.inicio = new Date(cal.getTimeInMillis());
-		
-		diaMesAno = fechaFinal.split("/");
-		cal.set(Integer.parseInt(diaMesAno[2]), Integer.parseInt(diaMesAno[1]), Integer.parseInt(diaMesAno[0]));
-		this.fin = new Date(cal.getTimeInMillis());
-		
+		//Convierte una fecha tipo String con el formato dd/mm/aaaa a una tipo Date
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		inicio = c.convertirFecha(fechaInicio);
+		fin = c.convertirFecha(fechaFinal);
+	}
+	
+	public void convertirDateADiaMesAno() {
+		//Convierte una fecha tipo Date a una fecha tipo String con el formato dd/mm/aaaa
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		this.fechaInicio = c.convertirFecha(inicio);
+		this.fechaFinal = c.convertirFecha(fin);
 	}
 
 
@@ -90,6 +96,7 @@ public class Periodo {
 		return "Periodo [idPeriodo=" + id_periodo + ", idPropiedad=" + id_propiedad + ", inicio="
 				+ inicio.toString() + ", fin=" + fin.toString() + "]";
 	}
+
 	
 	
 }

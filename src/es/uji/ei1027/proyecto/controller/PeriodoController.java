@@ -52,7 +52,10 @@ public class PeriodoController {
 	//Actualizar	
 	@RequestMapping(value="/update/{id_periodo}", method = RequestMethod.GET)
 	public String editPeriodo(Model model, @PathVariable int id_periodo) {
-		model.addAttribute("periodo", periodoDao.getPeriodo(id_periodo));
+		Periodo periodo = periodoDao.getPeriodo(id_periodo);
+		//Convierto fechas de tipo Date a tipo dd/mm/aaaa para que se muestren en la página de update
+		periodo.convertirDateADiaMesAno();
+		model.addAttribute("periodo", periodo);
 		return "periodo/update"; 
 	}
 
@@ -62,6 +65,7 @@ public class PeriodoController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "periodo/update";
+		periodo.crearFechas();
 		periodoDao.updatePeriodo(periodo);
 		return "redirect:../list.html"; 
 	}

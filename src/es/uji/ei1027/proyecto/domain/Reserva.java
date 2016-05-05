@@ -13,6 +13,10 @@ public class Reserva {
 	private float precio_reserva;
 	private String estado;
 	
+	private String fechaReserva;
+	private String fechaCheckIn;
+	private String fechaCheckOut;
+	
 	public Reserva(int idReserva, int idUsuario, int idPropiedad,
 			Date fechaReserva, Date fechaCheckin, Date fechaCheckout,
 			float precioReserva, String estado) {
@@ -29,6 +33,22 @@ public class Reserva {
 	
 	public Reserva() {
 		super();
+	}
+	
+	public void crearFechas() {
+		//Convierte una fecha tipo String con el formato dd/mm/aaaa a una tipo Date
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		fecha_reserva = c.convertirFecha(fechaReserva);
+		fecha_checkin = c.convertirFecha(fechaCheckIn);
+		fecha_checkout = c.convertirFecha(fechaCheckOut);
+	}
+	
+	public void convertirDateADiaMesAno() {
+		//Convierte una fecha tipo Date a una fecha tipo String con el formato dd/mm/aaaa
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		fechaReserva = c.convertirFecha(fecha_reserva);
+		fechaCheckIn = c.convertirFecha(fecha_checkin);
+		fechaCheckOut = c.convertirFecha(fecha_checkout);
 	}
 	
 	public int getId_reserva() {
@@ -80,6 +100,30 @@ public class Reserva {
 		this.estado = estado;
 	}
 	
+	public String getFechaReserva() {
+		return fechaReserva;
+	}
+
+	public void setFechaReserva(String fechaReserva) {
+		this.fechaReserva = fechaReserva;
+	}
+
+	public String getFechaCheckIn() {
+		return fechaCheckIn;
+	}
+
+	public void setFechaCheckIn(String fechaCheckIn) {
+		this.fechaCheckIn = fechaCheckIn;
+	}
+
+	public String getFechaCheckOut() {
+		return fechaCheckOut;
+	}
+
+	public void setFechaCheckOut(String fechaCheckOut) {
+		this.fechaCheckOut = fechaCheckOut;
+	}
+
 	@Override
 	public String toString() {
 		return "Reserva [idReserva=" + id_reserva + ", idUsuario=" + id_usuario + ", idPropiedad="
