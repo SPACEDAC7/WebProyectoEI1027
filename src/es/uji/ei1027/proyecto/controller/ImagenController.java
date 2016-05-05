@@ -67,4 +67,11 @@ public class ImagenController {
 		return "redirect:../list.html"; 
 	}
 	
+	//Borrar	
+	@RequestMapping(value="/delete/{id_imagen}")
+	public String processDelete(@PathVariable int id_imagen) {
+		imagenDao.deleteImagen(id_imagen);
+		return "redirect:../list.html"; 
+	}
+	
 }

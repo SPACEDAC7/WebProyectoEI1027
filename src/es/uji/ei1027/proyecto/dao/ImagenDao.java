@@ -50,14 +50,18 @@ public class ImagenDao {
 
 
 	public void addImagen(Imagen imagen) {
-		this.jdbcTemplate.update("insert into direccion(id_imagen, id_propiedad, pie_foto , referencia) values(?, ?, ?, ?)", imagen.getId_imagen(), imagen.getId_propiedad(),imagen.getPie_foto(),imagen.getReferencia());
+		this.jdbcTemplate.update("insert into imagen(id_imagen, id_propiedad, pie_foto , referencia) values(?, ?, ?, ?)", imagen.getId_imagen(), imagen.getId_propiedad(),imagen.getPie_foto(),imagen.getReferencia());
 	}
 
 	public void updateImagen(Imagen imagen) {
-		this.jdbcTemplate.update("update credencial set id_propiedad = ?,pie_foto = ? referencia = ? where id_imagen = ?", imagen.getId_propiedad(),imagen.getPie_foto(),imagen.getReferencia(),imagen.getId_imagen());
+		this.jdbcTemplate.update("update imagen set id_propiedad = ?,pie_foto = ?, referencia = ? where id_imagen = ?", imagen.getId_propiedad(),imagen.getPie_foto(),imagen.getReferencia(),imagen.getId_imagen());
 	}
 
 	public void deleteImagen(Imagen imagen) {
 		this.jdbcTemplate.update("DELETE FROM imagen WHERE id_imagen = ?", imagen.getId_imagen());
+	}
+	
+	public void deleteImagen(int imagen) {
+		this.jdbcTemplate.update("DELETE FROM imagen WHERE id_imagen = ?", imagen);
 	}
 }

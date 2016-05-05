@@ -8,12 +8,11 @@
 </head>
 <body>
 	<h2>Modificar imagen</h2>
-	<form:form method="post" modelAttribute="credencial">
+	<form:form method="post" modelAttribute="imagen">
 		<table>
 			<tr>
 				<td><form:label path="id_imagen">ID. Imagen</form:label></td>
 				<td><form:input path="id_imagen" /></td>
-				<!-- Primera vez que pongo el validator en el update -->
 				<td><form:errors path="id_imagen" cssClass="error"/></td>
 			</tr>
 			<tr>
@@ -30,7 +29,7 @@
 				<td><form:input path="referencia" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Afegeix credencial" />
+				<td colspan="2"><input type="submit" value="Actualizar imagen" />
 				</td>
 			</tr>
 		</table>

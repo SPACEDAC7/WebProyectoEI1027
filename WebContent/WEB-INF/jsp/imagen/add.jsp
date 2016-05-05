@@ -30,7 +30,7 @@
 				<td><form:input path="referencia" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Afegeix credencial" />
+				<td colspan="2"><input type="submit" value="Afegeix imagen" />
 				</td>
 			</tr>
 		</table>

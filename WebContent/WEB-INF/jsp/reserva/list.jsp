@@ -35,7 +35,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="add.html">Afegeix Puntuacion</a>
+	<a href="add.html">Afegeix Reserva</a>
 	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
 </body>
 </html>

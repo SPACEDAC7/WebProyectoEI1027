@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>Modificar factura</h2>
-	<form:form method="post" modelAttribute="direccion">
+	<form:form method="post" modelAttribute="factura">
 		<table>
 			<tr>
 				<td><form:label path="id_factura">ID. Factura</form:label></td>

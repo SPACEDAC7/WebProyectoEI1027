@@ -39,10 +39,6 @@
 				<td><form:input path="fecha_checkout" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fecha_checkin">Fecha Check In</form:label></td>
-				<td><form:input path="fecha_checkin" /></td>
-			</tr>
-			<tr>
 				<td><form:label path="precio_reserva">Precio Reserva</form:label></td>
 				<td><form:input path="precio_reserva" /></td>
 			</tr>

@@ -37,7 +37,7 @@ public class FacturaController {
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("credencial") Factura factura,
+	public String processAddSubmit(@ModelAttribute("factura") Factura factura,
 			BindingResult bindingResult) { 
 		FacturaValidator facturaValidator = new FacturaValidator();
 		facturaValidator.validate(factura, bindingResult); 
@@ -58,7 +58,7 @@ public class FacturaController {
 			@ModelAttribute("factura") Factura factura, 
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
-			return "credencial/update";
+			return "factura/update";
 		facturaDao.updateFactura(factura);
 		return "redirect:../list.html"; 
 	}

@@ -59,7 +59,7 @@ public class PeriodoController {
 			@ModelAttribute("periodo") Periodo periodo, 
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
-			return "credencial/update";
+			return "periodo/update";
 		periodoDao.updatePeriodo(periodo);
 		return "redirect:../list.html"; 
 	}
