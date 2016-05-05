@@ -1,12 +1,29 @@
 package es.uji.ei1027.proyecto.domain;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 public class Periodo {
 
 	private int id_periodo;
 	private int id_propiedad;
 	private Date inicio;
+	public String getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public String getFechaFinal() {
+		return fechaFinal;
+	}
+
+	public void setFechaFinal(String fechaFinal) {
+		this.fechaFinal = fechaFinal;
+	}
+
 	private Date fin;
 	private String fechaInicio;
 	private String fechaFinal;
@@ -21,6 +38,18 @@ public class Periodo {
 		this.id_propiedad = id_propiedad;
 		this.inicio = inicio;
 		this.fin = fin;
+	}
+	
+	public void crearFechas() {
+		String[] diaMesAno = fechaInicio.split("/");
+		Calendar cal = Calendar.getInstance();
+		cal.set(Integer.parseInt(diaMesAno[2]), Integer.parseInt(diaMesAno[1]), Integer.parseInt(diaMesAno[0]));
+		this.inicio = new Date(cal.getTimeInMillis());
+		
+		diaMesAno = fechaFinal.split("/");
+		cal.set(Integer.parseInt(diaMesAno[2]), Integer.parseInt(diaMesAno[1]), Integer.parseInt(diaMesAno[0]));
+		this.fin = new Date(cal.getTimeInMillis());
+		
 	}
 
 
