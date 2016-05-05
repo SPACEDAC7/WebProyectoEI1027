@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=iso-8859-1"%>
+<%@page contentType="text/html; charset=utf-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@
 				<td><form:input path="fechaInicio" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fechaFinal">Día final </form:label></td>
+				<td><form:label path="fechaFinal">DÃ­a final </form:label></td>
 				<td><form:input path="fechaFinal" /></td>
 			</tr>
 			<tr>
