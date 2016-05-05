@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>Modificar puntuacion</h2>
-	<form:form method="post" modelAttribute="propiedad">
+	<form:form method="post" modelAttribute="puntuacion">
 		<table>
 			<tr>
 				<td><form:label path="id_puntuacion">ID. Puntuacion </form:label></td>

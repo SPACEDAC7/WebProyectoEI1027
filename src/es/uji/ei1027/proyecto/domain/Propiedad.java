@@ -11,14 +11,13 @@ public class Propiedad {
 	private int num_habitaciones;
 	private int num_camas;
 	private int area;
-	private String servicios;
 	private float precio_propiedad;
 	private int id_direccion;
 	private String url_mapa;
 	
 	public Propiedad(int id_propiedad, int id_usuario, String titulo,
 			String descripcion, String tipo, int capacidad,
-			int num_habitaciones, int num_camas, int area, String servicios,
+			int num_habitaciones, int num_camas, int area, 
 			float precio_propiedad, int id_direccion, String url_mapa) {
 		super();
 		this.id_propiedad = id_propiedad;
@@ -30,7 +29,6 @@ public class Propiedad {
 		this.num_habitaciones = num_habitaciones;
 		this.num_camas = num_camas;
 		this.area = area;
-		this.servicios = servicios;
 		this.precio_propiedad = precio_propiedad;
 		this.id_direccion = id_direccion;
 		this.url_mapa = url_mapa;
@@ -94,12 +92,6 @@ public class Propiedad {
 	public void setArea(int area) {
 		this.area = area;
 	}
-	public String getServicios() {
-		return servicios;
-	}
-	public void setServicios(String servicios) {
-		this.servicios = servicios;
-	}
 	public float getPrecio_propiedad() {
 		return precio_propiedad;
 	}
@@ -125,7 +117,7 @@ public class Propiedad {
 		return "Propiedad [id_propiedad=" + id_propiedad + ", id_usuario=" + id_usuario + ", titulo="
 				+ titulo + ", descripcion=" + descripcion + ", tipo=" + tipo + ", capacidad=" + capacidad 
 				+ ", num_habitaciones=" + num_habitaciones + ", num_camas=" + num_camas 
-				+ ", area=" + area + ", servicios" + servicios + ", precio_pripiedad=" + precio_propiedad 
+				+ ", area=" + area + ", precio_pripiedad=" + precio_propiedad 
 				+ "id_direccion=" + id_direccion + ", url_mapa" + url_mapa + "]";
 	} 
 

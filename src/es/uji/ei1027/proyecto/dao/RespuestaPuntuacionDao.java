@@ -51,12 +51,12 @@ public class RespuestaPuntuacionDao {
 	
 	public void updateRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {
 		this.jdbcTemplate.update(
-					"update respuesta_puntuacion set id_respuesta = ?,"
-					+ "id_puntuacion = ?,respuesta = ?,"
+					"update respuesta_puntuacion set "
+					+ "id_puntuacion = ?,respuesta = ? "
 					+ "where id_respuesta = ?",
-					respuestaPuntuacion.getId_respuesta(),
 					respuestaPuntuacion.getId_puntuacion(),
-					respuestaPuntuacion.getRespuesta());
+					respuestaPuntuacion.getRespuesta(),
+					respuestaPuntuacion.getId_respuesta());
 	}
 	
 	public void deleteRespuestaPuntuacion(RespuestaPuntuacion respuestaPuntuacion) {

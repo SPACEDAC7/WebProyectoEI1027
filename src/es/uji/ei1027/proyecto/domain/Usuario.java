@@ -6,25 +6,27 @@ public class Usuario {
 
 	private int id_usuario;
 	private int id_credencial;
+	private String url_imagen_perfil;
 	private String nombre;
 	private String apellido;
 	private String nif;
 	private String email;
 	private int id_direccion;
 	private Date fecha_registro;
-	private int telefono;
+	private String telefono;
 	private boolean estado_usuario;
 	
 	public Usuario() {
 		super();
 	}
 	
-	public Usuario(int id_usuario, int id_credencial, String nombre,
+	public Usuario(int id_usuario, int id_credencial,String url_imagen_perfil, String nombre,
 			String apellido, String nif, String email, int id_direccion,
-			Date fecha_registro, int telefono, boolean estado_usuario) {
+			Date fecha_registro, String telefono, boolean estado_usuario) {
 		super();
 		this.id_usuario = id_usuario;
 		this.id_credencial = id_credencial;
+		this.url_imagen_perfil = url_imagen_perfil;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.nif = nif;
@@ -101,11 +103,11 @@ public class Usuario {
 		this.fecha_registro = fechaRegistro;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -119,10 +121,18 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + id_usuario + ", idCredencial=" + id_credencial + ", nombre="
+		return "Usuario [idUsuario=" + id_usuario + ", idCredencial=" + id_credencial + " , url Imagen PErfil : " + url_imagen_perfil +", nombre="
 				+ nombre + ", apellido=" + apellido + ", nif=" + nif + ", email=" + email 
 				+ ", idDireccion=" + id_direccion + ", fechaRegistro=" + fecha_registro.toString() 
 				+ ", telefono=" + telefono + ", estadoUsuario" + estado_usuario + "]";
+	}
+
+	public String getUrl_imagen_perfil() {
+		return url_imagen_perfil;
+	}
+
+	public void setUrl_imagen_perfil(String url_imagen_perfil) {
+		this.url_imagen_perfil = url_imagen_perfil;
 	}
 	
 	

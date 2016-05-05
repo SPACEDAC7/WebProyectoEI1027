@@ -50,10 +50,6 @@
 				<td><form:input path="area" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="servicios">Servicios</form:label></td>
-				<td><form:input path="servicios" /></td>
-			</tr>
-			<tr>
 				<td><form:label path="precio_propiedad">Precio</form:label></td>
 				<td><form:input path="precio_propiedad" /></td>
 			</tr>

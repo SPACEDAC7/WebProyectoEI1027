@@ -20,7 +20,6 @@
 			<th>Num. Habitaciones</th>
 			<th>Num. Camas</th>
 			<th>Area</th>
-			<th>Servicios</th>
 			<th>Precio</th>
 			<th>Id. Direccion</th>
 			<th>URL Mapa</th>
@@ -36,7 +35,6 @@
 				<td class="linea">${propiedad.num_habitaciones}</td>
 				<td class="linea">${propiedad.num_camas}</td>
 				<td class="linea">${propiedad.area}</td>
-				<td class="linea">${propiedad.servicios}</td>
 				<td class="linea">${propiedad.precio_propiedad}</td>
 				<td class="linea">${propiedad.id_direccion}</td>
 				<td class="linea">${propiedad.url_mapa}</td>

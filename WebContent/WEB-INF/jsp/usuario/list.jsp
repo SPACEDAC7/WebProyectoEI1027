@@ -13,6 +13,7 @@
 		<tr>
 			<th>Id Usuario</th>
 			<th>Id Credencial</th>
+			<th>Url Imagen Perfil</th>
 			<th>Nombre</th>
 			<th>Apellido</th>
 			<th>NIF</th>
@@ -26,6 +27,7 @@
 			<tr>
 				<td class="linea">${usuario.id_usuario}</td>
 				<td class="linea">${usuario.id_credencial}</td>
+				<td class="linea">${usuario.url_imagen_perfil}</td>
 				<td class="linea">${usuario.nombre}</td>
 				<td class="linea">${usuario.apellido}</td>
 				<td class="linea">${usuario.nif}</td>

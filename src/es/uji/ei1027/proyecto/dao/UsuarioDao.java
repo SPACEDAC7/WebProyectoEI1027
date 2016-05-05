@@ -29,25 +29,26 @@ public class UsuarioDao {
 			Usuario usuario = new Usuario();
 			usuario.setId_usuario(rs.getInt("id_usuario"));
 			usuario.setId_credencial(rs.getInt("id_credencial"));
+			usuario.setUrl_imagen_perfil(rs.getString("url_imagen_perfil"));
 			usuario.setNombre(rs.getString("nombre"));
 			usuario.setApellido(rs.getString("apellido"));
 			usuario.setNif(rs.getString("nif"));
 			usuario.setEmail(rs.getString("email"));
 			usuario.setId_direccion(rs.getInt("id_direccion"));
 			usuario.setFecha_registro(rs.getDate("fecha_registro"));
-			usuario.setTelefono(rs.getInt("telefono"));
+			usuario.setTelefono(rs.getString("telefono"));
 			usuario.setEstado_usuario(rs.getBoolean("estado_usuario"));
 			return usuario;
 		}
 	}
 	public List<Usuario> getUsuarios() {
-		return this.jdbcTemplate.query("select id_usuario, id_credencial, nombre"
+		return this.jdbcTemplate.query("select id_usuario, id_credencial,url_imagen_perfil, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
 					+ ", estado_usuario from usuario", new UsuarioMapper());
 	}
 	
 	public Usuario getUsuario(int id_usuario) {
-		return this.jdbcTemplate.queryForObject("select id_usuario, id_credencial, nombre"
+		return this.jdbcTemplate.queryForObject("select id_usuario, id_credencial,url_imagen_perfil, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
 					+ ", estado_usuario from usuario where id_usuario=?;", new Object[] {id_usuario}, new UsuarioMapper());
 	}
@@ -55,11 +56,11 @@ public class UsuarioDao {
 	
 	public void addUsuario(Usuario usuario) {
 		this.jdbcTemplate.update(
-					"insert into usuario(id_usuario, id_credencial, nombre"
+					"insert into usuario(id_usuario, id_credencial,url_imagen_perfil, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
-					+ ", estado_usuario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+					+ ", estado_usuario) values(?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)",
 					usuario.getId_usuario(),usuario.getId_credencial(),
-					usuario.getNombre(),usuario.getApellido(),
+					usuario.getUrl_imagen_perfil(),usuario.getNombre(),usuario.getApellido(),
 					usuario.getNif(),usuario.getEmail(),
 					usuario.getId_direccion(),usuario.getFecha_registro(),
 					usuario.getTelefono(),usuario.getEstado_usuario());
@@ -68,12 +69,12 @@ public class UsuarioDao {
 	
 	public void updateUsuario(Usuario usuario) {
 		this.jdbcTemplate.update("update usuario "
-					+ "set id_credencial = ?,nombre = ?,"
+					+ "set id_credencial = ?,nombre = ?,url_imagen_perfil = ?"
 					+ "apellido = ?,nif = ?,"
 					+ "email = ?,id_direccion = ?,"
 					+ "fecha_registro = ?,telefono = ?,"
 					+ "estado_usuario = ? where id_usuario = ?",
-					usuario.getId_credencial(),usuario.getNombre(),usuario.getApellido(),
+					usuario.getId_credencial(), usuario.getUrl_imagen_perfil(),usuario.getNombre(),usuario.getApellido(),
 					usuario.getNif(),usuario.getEmail(),
 					usuario.getId_direccion(),usuario.getFecha_registro(),
 					usuario.getTelefono(),usuario.getEstado_usuario(),
