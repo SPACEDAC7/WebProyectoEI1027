@@ -30,10 +30,11 @@ public class PeriodoController {
 		return "periodo/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addPeriodo(Model model) {
 		model.addAttribute("periodo", new Periodo());
+		model.addAttribute("fechas");
 		return "periodo/add";
 	}
 

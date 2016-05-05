@@ -8,6 +8,8 @@ public class Periodo {
 	private int id_propiedad;
 	private Date inicio;
 	private Date fin;
+	private String fechaInicio;
+	private String fechaFinal;
 	
 	public Periodo() {
 		super();
