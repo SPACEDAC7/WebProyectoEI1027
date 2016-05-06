@@ -16,7 +16,7 @@ public class Usuario {
 	private String telefono;
 	private boolean estado_usuario;
 	//Tengo que poner en la base de datos que sea un varchar(20)
-	//OK
+	//Esto es una prueba a ver que pasa
 	
 	private String fechaRegistro;
 	
