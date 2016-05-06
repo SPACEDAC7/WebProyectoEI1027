@@ -44,8 +44,8 @@
 				<td><form:input path="id_direccion" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="fecha_registro">Fecha Registro</form:label></td>
-				<td><form:input path="fecha_registro" /></td>
+				<td><form:label path="fechaRegistro">Fecha Registro</form:label></td>
+				<td><form:input path="fechaRegistro" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="telefono">Telefono</form:label></td>

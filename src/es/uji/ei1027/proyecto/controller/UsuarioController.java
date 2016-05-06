@@ -29,7 +29,7 @@ public class UsuarioController {
 		return "usuario/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addUsuario(Model model) {
 		model.addAttribute("usuario", new Usuario());
@@ -43,13 +43,16 @@ public class UsuarioController {
 		usuarioValidator.validate(usuario, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "usuario/add";
+		usuario.crearFechas();
 		usuarioDao.addUsuario(usuario);
 		return "redirect:list.html";
 	}
 	//Actualizar	
 	@RequestMapping(value="/update/{id_usuario}", method = RequestMethod.GET)
 	public String editCredencial(Model model, @PathVariable int id_usuario) {
-		model.addAttribute("usuario", usuarioDao.getUsuario(id_usuario));
+		Usuario usuario = usuarioDao.getUsuario(id_usuario);
+		usuario.convertirDateADiaMesAno();
+		model.addAttribute("usuario", usuario);
 		return "usuario/update"; 
 	}
 
@@ -59,6 +62,7 @@ public class UsuarioController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "usuario/update";
+		usuario.crearFechas();
 		usuarioDao.updateUsuario(usuario);
 		return "redirect:../list.html"; 
 	}

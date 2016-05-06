@@ -69,7 +69,7 @@ public class UsuarioDao {
 	
 	public void updateUsuario(Usuario usuario) {
 		this.jdbcTemplate.update("update usuario "
-					+ "set id_credencial = ?,nombre = ?,url_imagen_perfil = ?"
+					+ "set id_credencial = ?,nombre = ?,url_imagen_perfil = ?,"
 					+ "apellido = ?,nif = ?,"
 					+ "email = ?,id_direccion = ?,"
 					+ "fecha_registro = ?,telefono = ?,"
