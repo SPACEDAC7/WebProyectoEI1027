@@ -12,6 +12,7 @@
 	<li><a href="respuestaPuntuacion/list.html">Gestion de respuestas de puntuacion</a></li>
 	<li><a href="reserva/list.html">Gestion de reservas</a></li>
 	<li><a href="usuario/list.html">Gestion de usuarios</a></li>
+	<li><a href="servicio/list.html">Gestion de servicios</a></li>
 	</ul>
 </jsp:body>
 </t:paginabasica>
