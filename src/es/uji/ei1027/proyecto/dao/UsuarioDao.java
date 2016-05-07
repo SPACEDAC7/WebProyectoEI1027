@@ -53,12 +53,18 @@ public class UsuarioDao {
 					+ ", estado_usuario from usuario where id_usuario=?;", new Object[] {id_usuario}, new UsuarioMapper());
 	}
 	
+	public Usuario getUsuarioPorIdCredencial(int idCredencial) {
+		return this.jdbcTemplate.queryForObject("select id_usuario, id_credencial, url_imagen_perfil, nombre"
+					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
+					+ ", estado_usuario from usuario where id_credencial=?", new Object[] {idCredencial}, new UsuarioMapper());
+	}
+	
 	
 	public void addUsuario(Usuario usuario) {
 		this.jdbcTemplate.update(
 					"insert into usuario(id_usuario, id_credencial,url_imagen_perfil, nombre"
 					+ ", apellido, nif, email, id_direccion, fecha_registro, telefono"
-					+ ", estado_usuario) values(?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)",
+					+ ", estado_usuario) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 					usuario.getId_usuario(),usuario.getId_credencial(),
 					usuario.getUrl_imagen_perfil(),usuario.getNombre(),usuario.getApellido(),
 					usuario.getNif(),usuario.getEmail(),

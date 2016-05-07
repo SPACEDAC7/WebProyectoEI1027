@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -46,7 +47,20 @@ public class CredencialDao {
 	
 	
 	public void addCredencial(Credencial credencial) {
+		//BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+		//credencial.setPassword(passwordEncryptor.encryptPassword(credencial.getPassword()));
 		this.jdbcTemplate.update("insert into credencial(id_credencial, nick_usuario, password , rol) values(?, ?, ?, ?)", credencial.getId_credencial(), credencial.getNick_usuario(),credencial.getPassword(),credencial.getRol());
+	}
+	
+	public String getPassword(String nombreUsuario) {
+		String sql = "SELECT password FROM credencial WHERE nick_usuario = ?";
+		String retorno;
+		try {
+			retorno = this.jdbcTemplate.queryForObject(sql,  new Object[] {nombreUsuario}, String.class);
+		} catch (Exception ex) {
+			retorno = null;
+		}
+		return retorno;
 	}
 	
 	public void updateCredencial(Credencial credencial) {
@@ -58,6 +72,17 @@ public class CredencialDao {
 	
 	public void deleteCredencial(int id_credencial) {
 		this.jdbcTemplate.update("DELETE FROM Credencial WHERE id_credencial = ?", id_credencial);
+	}
+	
+	public int getIdCredencialAPartirDeNombre(String nombreUsuario) {
+		String sql = "SELECT id_credencial FROM credencial WHERE nick_usuario = ?";
+		int id_credencial;
+		try {
+			id_credencial = this.jdbcTemplate.queryForObject(sql,  new Object[] {nombreUsuario}, Integer.class);
+		} catch (Exception ex) {
+			id_credencial = -1;
+		}
+		return id_credencial;
 	}
 	
 	public int nuevoIdCredencial() {

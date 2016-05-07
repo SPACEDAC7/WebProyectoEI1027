@@ -27,7 +27,7 @@
 	<footer>
 	<hr>
 	<p class="text-muted">
-	EI1027 - Disseny i Implementació de Sistemes d'Informació
+	EI1027 - Disseny i Implementació de Sistemes d'Informació
 	</p>
 	</footer>
 </body>

@@ -20,5 +20,9 @@ public class CredencialValidator implements Validator{
 		if( credencial.getId_credencial()<0)
 			errors.rejectValue("id_credencial", "obligatori", "Hay que introducir un valor");
 		//Aqui todas las cosas que queramos validar
+		if ( credencial.getNick_usuario().equals("") )
+			errors.rejectValue("nick_usuario", "obligatori", "Hay que introducir un valor");
+		if (credencial.getPassword().equals(""))
+			errors.rejectValue("password", "obligatori", "Hay que introducir un valor");
 	}
 }

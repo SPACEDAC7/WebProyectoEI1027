@@ -1,5 +1,6 @@
 package es.uji.ei1027.proyecto.controller;
 
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,8 @@ public class CredencialController {
 		credencialValidator.validate(credencial, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "credencial/add";
+		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
+		credencial.setPassword(passwordEncrypter.encryptPassword(credencial.getPassword()));
 		credencialDao.addCredencial(credencial);
 		return "redirect:list.html";
 	}
