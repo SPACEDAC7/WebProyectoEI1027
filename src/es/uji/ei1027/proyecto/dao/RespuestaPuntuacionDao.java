@@ -66,4 +66,18 @@ public class RespuestaPuntuacionDao {
 	public void deleteRespuestaPuntuacion(int idRespuesta) {
 		this.jdbcTemplate.update("DELETE FROM respuesta_puntuacion WHERE id_respuesta=?", idRespuesta);
 	}
+	
+	public int nuevoIdRespuestaPuntuacion() {
+		//Consulta cual es el último id_propiedad y devuelve ese número +1 para una nueva propiedad
+		String sql = "SELECT MAX(id_respuesta) from respuesta_puntuacion";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
+	
 }

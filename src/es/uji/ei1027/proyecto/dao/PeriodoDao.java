@@ -59,4 +59,17 @@ public class PeriodoDao {
 	public void deletePeriodo(int id_periodo) {
 		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", id_periodo);
 	}
+	
+	public int nuevoIdPeriodo() {
+		//Consulta cual es el último id_periodo y devuelve ese número +1 para un nuevo periodo
+		String sql = "SELECT MAX(id_periodo) from periodo";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 }

@@ -29,10 +29,12 @@ public class RespuestaPuntuacionController {
 		return "respuestaPuntuacion/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addRespuestaPuntuacion(Model model) {
-		model.addAttribute("respuestaPuntuacion", new RespuestaPuntuacion());
+		RespuestaPuntuacion respuesta = new RespuestaPuntuacion();
+		respuesta.setId_respuesta(respuestaPuntuacionDao.nuevoIdRespuestaPuntuacion());
+		model.addAttribute("respuestaPuntuacion", respuesta);
 		return "respuestaPuntuacion/add";
 	}
 

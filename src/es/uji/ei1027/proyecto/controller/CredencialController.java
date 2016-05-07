@@ -29,10 +29,12 @@ public class CredencialController {
 		return "credencial/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addCredencial(Model model) {
-		model.addAttribute("credencial", new Credencial());
+		Credencial credencial = new Credencial();
+		credencial.setId_credencial(credencialDao.nuevoIdCredencial());
+		model.addAttribute("credencial", credencial);
 		return "credencial/add";
 	}
 

@@ -30,10 +30,12 @@ public class DireccionController {
 		return "direccion/list";
 	}
 		
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addNadador(Model model) {
-		model.addAttribute("direccion", new Direccion());
+		Direccion dir = new Direccion();
+		dir.setId_direccion(direccionDao.nuevoIdDireccion());
+		model.addAttribute("direccion", dir);
 		return "direccion/add";
 	}
 

@@ -30,10 +30,12 @@ public class ImagenController {
 		return "imagen/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addImagen(Model model) {
-		model.addAttribute("imagen", new Imagen());
+		Imagen img = new Imagen();
+		img.setId_imagen(imagenDao.nuevoIdImagen());
+		model.addAttribute("imagen", img);
 		return "imagen/add";
 	}
 

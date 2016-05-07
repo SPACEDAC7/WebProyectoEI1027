@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<td><form:label path="id_reserva">ID. Reserva </form:label></td>
-				<td><form:input path="id_reserva" /></td>
+				<td><form:input path="id_reserva" readonly="true" /></td>
 				<td><form:errors path="id_reserva" cssClass="error"/></td>
 			</tr>
 			<tr>

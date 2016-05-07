@@ -93,5 +93,18 @@ public class PropiedadDao {
 	public void deletePropiedad(int id_propiedad) {
 		this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", id_propiedad);
 	}
+	
+	public int nuevoIdPropiedad() {
+		//Consulta cual es el último id_propiedad y devuelve ese número +1 para una nueva propiedad
+		String sql = "SELECT MAX(id_propiedad) from propiedad";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 
 }

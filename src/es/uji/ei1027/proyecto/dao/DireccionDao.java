@@ -60,4 +60,17 @@ public class DireccionDao {
 	public void deleteDireccion(int id_direccion) {		
 		this.jdbcTemplate.update("delete from direccion where id_direccion=?", id_direccion);	
 	}
+	
+	public int nuevoIdDireccion() {
+		//Consulta cual es el último id_direccion y devuelve ese número +1 para una nueva direccion
+		String sql = "SELECT MAX(id_direccion) from direccion";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 }

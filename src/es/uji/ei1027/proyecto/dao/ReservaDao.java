@@ -62,5 +62,18 @@ public class ReservaDao {
 	public void deleteReserva(int idReserva) {
 		this.jdbcTemplate.update("DELETE FROM reserva WHERE id_reserva=?", idReserva);
 	}
+	
+	public int nuevoIdReserva() {
+		//Consulta cual es el último id_reserva y devuelve ese número +1 para una nueva reserva
+		String sql = "SELECT MAX(id_reserva) from reserva";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 
 }

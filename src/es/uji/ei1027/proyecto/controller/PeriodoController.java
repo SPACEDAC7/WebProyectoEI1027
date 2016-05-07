@@ -33,7 +33,9 @@ public class PeriodoController {
 	//A�adir	
 	@RequestMapping(value="/add") 
 	public String addPeriodo(Model model) {
-		model.addAttribute("periodo", new Periodo());
+		Periodo periodo = new Periodo();
+		periodo.setId_periodo(periodoDao.nuevoIdPeriodo());
+		model.addAttribute("periodo", periodo);
 		model.addAttribute("fechas");
 		return "periodo/add";
 	}

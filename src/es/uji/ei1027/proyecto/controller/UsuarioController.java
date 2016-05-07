@@ -32,7 +32,9 @@ public class UsuarioController {
 	//A�adir	
 	@RequestMapping(value="/add") 
 	public String addUsuario(Model model) {
-		model.addAttribute("usuario", new Usuario());
+		Usuario usuario = new Usuario();
+		usuario.setId_usuario(usuarioDao.nuevoIdUsuario());
+		model.addAttribute("usuario", usuario);
 		return "usuario/add";
 	}
 

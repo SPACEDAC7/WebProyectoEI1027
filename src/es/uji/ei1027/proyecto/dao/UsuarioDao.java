@@ -89,4 +89,16 @@ public class UsuarioDao {
 		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", idUsuario);
 	}
 	
+	public int nuevoIdUsuario() {
+		//Consulta cual es el último id_usuario y devuelve ese número +1 para un nuevo usuario
+		String sql = "SELECT MAX(id_usuario) from usuario";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 }

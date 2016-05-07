@@ -32,7 +32,9 @@ public class FacturaController {
 	//A�adir	
 	@RequestMapping(value="/add") 
 	public String addFactura(Model model) {
-		model.addAttribute("factura", new Factura());
+		Factura factura = new Factura();
+		factura.setId_factura(facturaDao.nuevoIdFactura());
+		model.addAttribute("factura", factura);
 		return "factura/add";
 	}
 

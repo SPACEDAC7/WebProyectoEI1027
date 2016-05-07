@@ -32,7 +32,9 @@ private ReservaDao reservaDao;
 	//A�adir	
 	@RequestMapping(value="/add") 
 	public String addReserva(Model model) {
-		model.addAttribute("reserva", new Reserva());
+		Reserva reserva = new Reserva();
+		reserva.setId_reserva(reservaDao.nuevoIdReserva());
+		model.addAttribute("reserva", reserva);
 		return "reserva/add";
 	}
 

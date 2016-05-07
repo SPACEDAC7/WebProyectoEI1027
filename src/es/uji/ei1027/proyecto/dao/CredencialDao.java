@@ -35,7 +35,7 @@ public class CredencialDao {
 		}
 	
 	}
-	//No se si esto es util o no y no se hasta que punto debemos enseñar la contraseña SEGURIDAD
+	//No se si esto es util o no y no se hasta que punto debemos enseï¿½ar la contraseï¿½a SEGURIDAD
 	public List<Credencial> getCredenciales(){
 		return this.jdbcTemplate.query("select id_credencial,nick_usuario, password,rol from credencial", new CredencialMapper());
 	}
@@ -58,6 +58,18 @@ public class CredencialDao {
 	
 	public void deleteCredencial(int id_credencial) {
 		this.jdbcTemplate.update("DELETE FROM Credencial WHERE id_credencial = ?", id_credencial);
+	}
+	
+	public int nuevoIdCredencial() {
+		//Consulta cual es el Ãºltimo id_credencial y devuelve ese nÃºmero +1 para una nueva credencial
+		String sql = "SELECT MAX(id_credencial) from credencial";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
 	}
 	
 }

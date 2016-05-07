@@ -29,10 +29,12 @@ private PropiedadDao propiedadDao;
 		return "propiedad/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addPropiedad(Model model) {
-		model.addAttribute("propiedad", new Propiedad());
+		Propiedad propiedad = new Propiedad();
+		propiedad.setId_propiedad(propiedadDao.nuevoIdPropiedad());
+		model.addAttribute("propiedad", propiedad);
 		return "propiedad/add";
 	}
 

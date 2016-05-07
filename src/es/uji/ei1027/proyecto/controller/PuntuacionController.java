@@ -29,10 +29,12 @@ private PuntuacionDao puntuacionDao;
 		return "puntuacion/list";
 	}
 	
-	//Añadir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addPuntuacion(Model model) {
-		model.addAttribute("puntuacion", new Puntuacion());
+		Puntuacion puntuacion = new Puntuacion();
+		puntuacion.setId_puntuacion(puntuacionDao.nuevoIdPuntuacion());
+		model.addAttribute("puntuacion", puntuacion);
 		return "puntuacion/add";
 	}
 	

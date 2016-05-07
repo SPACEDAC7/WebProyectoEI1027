@@ -64,4 +64,17 @@ public class ImagenDao {
 	public void deleteImagen(int imagen) {
 		this.jdbcTemplate.update("DELETE FROM imagen WHERE id_imagen = ?", imagen);
 	}
+	
+	public int nuevoIdImagen() {
+		//Consulta cual es el último id_direccion y devuelve ese número +1 para una nueva direccion
+		String sql = "SELECT MAX(id_imagen) from imagen";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 }

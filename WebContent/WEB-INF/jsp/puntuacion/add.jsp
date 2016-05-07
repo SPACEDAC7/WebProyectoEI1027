@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<td><form:label path="id_puntuacion">ID. Puntuacion </form:label></td>
-				<td><form:input path="id_puntuacion" /></td>
+				<td><form:input path="id_puntuacion" readonly="true" /></td>
 				<td><form:errors path="id_puntuacion" cssClass="error"/></td>
 			</tr>
 			<tr>

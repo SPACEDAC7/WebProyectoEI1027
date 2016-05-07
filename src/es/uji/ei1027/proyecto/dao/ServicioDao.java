@@ -64,9 +64,16 @@ public class ServicioDao {
 	}
 	
 	public int nuevoIdServicio() {
+		//Consulta cual es el último id_servicio y devuelve ese número +1 para un nuevo servicio
 		String sql = "SELECT MAX(id_servicio) from servicio";
-		int count = this.jdbcTemplate.queryForObject(sql, Integer.class);
-		return count+1;
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		
+		return max+1;
 	}
 	
 }

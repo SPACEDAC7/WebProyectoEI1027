@@ -70,4 +70,17 @@ public class FacturaDao {
 	public void deleteFactura(int id_factura) {
 		this.jdbcTemplate.update("DELETE FROM factura WHERE id_factura=?",id_factura );
 	}
+	
+	public int nuevoIdFactura() {
+		//Consulta cual es el último id_factura y devuelve ese número +1 para una nueva factura
+		String sql = "SELECT MAX(id_factura) from factura";
+		int max;
+		try {
+			max = this.jdbcTemplate.queryForObject(sql, Integer.class);
+		} catch (NullPointerException ex) {
+			max = -1;
+		}
+		return max+1;
+	}
+	
 }
