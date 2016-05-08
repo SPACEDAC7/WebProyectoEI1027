@@ -13,6 +13,7 @@
 	<li><a href="reserva/list.html">Gestion de reservas</a></li>
 	<li><a href="usuario/list.html">Gestion de usuarios</a></li>
 	<li><a href="servicio/list.html">Gestion de servicios</a></li>
+	<li><a href="propiedadServicio/list.html">Gestion de propiedad servicios</a></li>
 	</ul>
 </jsp:body>
 </t:paginabasica>
