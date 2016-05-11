@@ -15,11 +15,17 @@
 <link
 	href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/css/easyrent.css"
+	rel="stylesheet">
 </head>
 <body>
-	<header class="container page-header">
-		<h1>EASY RENT</h1>
-	</header>
+	<div id="logo">
+	<a href="#"><img src="${pageContext.request.contextPath}/img/logo.png"></a>
+	</div>
+	<div id="navegacion">
+		<t:navegacio/>
+	</div>
 	<div class="loggeduser"><t:logininfo /></div>
 	<div class="container">
 		<jsp:doBody />
