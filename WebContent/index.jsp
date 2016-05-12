@@ -1,5 +1,5 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
-<t:paginabasica title="EI1027">
+<t:paginabasica title="EASY RENT">
 <jsp:body>
 	<ul>
 	<li><a href="credencial/list.html">Gestion de credenciales</a></li>

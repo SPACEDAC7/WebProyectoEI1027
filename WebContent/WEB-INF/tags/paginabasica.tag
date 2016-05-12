@@ -23,14 +23,14 @@
 	rel="stylesheet">
 </head>
 <body>
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> <span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 				</button>
 				<!-- Las letras se ven al lado del icono porque he comentado las lineas 4189-4193 de bootstrap.css y las 4160-4162 de bootstrap.min.css-->
 				<a class="navbar-brand icono"
@@ -41,20 +41,15 @@
 			<div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
-					<li class="active"><a
-						href="${pageContext.request.contextPath}/">Página Principal</a></li>
+					<li class="active">
+						<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 				<t:logininfo></t:logininfo>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
-	</div>
-
-
-	<div class="loggeduser">
-		
-	</div>
+	</nav>
 	<div class="container">
 		<jsp:doBody />
 	</div>
