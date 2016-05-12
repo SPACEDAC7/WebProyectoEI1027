@@ -1,10 +1,27 @@
-#logo{
-	margin-left:1%;
-	margin-top:1%;
-	position:absolute;
+.logo{
+	margin: 1% 1% 1% 1%;
+	width:167px;
+	display:inline;
 }
 
-#navegacion{
-	position:relative;
-	margin-left:15%;
+.navegacion{
+	display:-webkit-inline-box;
+	align-content:centre;
+}
+
+.icono{
+	padding: 5px 5px;
+	display:inline;    
+}
+
+.boton-main{
+	margin: 1% 5% 1% 5%;
+}
+
+.boton-login{
+	border:none;
+}
+
+.salir{
+	display:inline;
 }

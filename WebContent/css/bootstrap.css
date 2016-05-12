@@ -5,6 +5,7 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*Comentada la linea 3889*/
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -243,7 +244,8 @@ th {
     background: #fff !important;
   }
   .navbar {
-    display: none;
+  	/*display: none;*/
+    display: inline-block;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
@@ -4185,9 +4187,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand:focus {
   text-decoration: none;
 }
+/*
 .navbar-brand > img {
   display: block;
 }
+*/
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
