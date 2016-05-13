@@ -25,3 +25,12 @@
 .salir{
 	display:inline;
 }
+
+.info{
+	vrtical-align:middle;
+}
+
+.menu-principal{
+	margin-top:3%;
+	margin-bottom:3%;
+}

@@ -21,6 +21,8 @@
 <link
 	href="${pageContext.request.contextPath}/css/easyrent.css"
 	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/simple-sidebar.css" 
+	rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -50,7 +52,7 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container menu-principal">
 		<jsp:doBody />
 	</div>
 	<footer>
