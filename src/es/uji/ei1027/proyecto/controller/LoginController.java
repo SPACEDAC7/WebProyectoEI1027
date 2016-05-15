@@ -34,8 +34,8 @@ public class LoginController {
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String checkLogin(@ModelAttribute("credencial") Credencial credencial,          
                 BindingResult bindingResult, HttpSession session) {
-    	CredencialValidator credencialValidator = new CredencialValidator();
-    	credencialValidator.validate(credencial, bindingResult);; 
+    	//CredencialValidator credencialValidator = new CredencialValidator();
+    	//credencialValidator.validate(credencial, bindingResult); 
         if (bindingResult.hasErrors()) {
             return "login";
         }
@@ -43,12 +43,11 @@ public class LoginController {
         // intentant carregar les dades de l'usuari
         String nombre = credencial.getNick_usuario();
         String password = credencial.getPassword();
-        String retorno = "login";
+        String retorno = "redirect:index.jsp";
         String passwordDeLaBaseDeDatos = credencialDao.getPassword(nombre);
         if (passwordDeLaBaseDeDatos == null) {
         	//Mala autenticación
-        	bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
-        	System.out.println("El usuario no existe");
+        	bindingResult.rejectValue("password", "badpw", "El usuario o la contraseña no coinciden");
         	//Vuelve a la página de login porque el usuario y password no són válidos
         } else {
         	BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
@@ -58,13 +57,18 @@ public class LoginController {
             	Usuario usuario = usuarioDao.getUsuarioPorIdCredencial(idCredencial);
             	//Guardamos el usuario que ha hecho login en la sesión
             	session.setAttribute("usuario", usuario);
+            	session.setAttribute("rol", credencialDao.getRolPorIdCredencial(idCredencial));
             	//Vuelve a la página principal
-            	retorno = "redirect:index.jsp";
+            	if (session.getAttribute("nextURL") != null) {
+            		retorno = (String) session.getAttribute("nextURL");
+            	}
             	
             } else {
+            	bindingResult.rejectValue("password", "badpw", "El usuario o la contraseña no coinciden");
             	System.out.println("Password introducido NO coincide con el encriptado");
             }
         }
+        
         return retorno;
     }
 

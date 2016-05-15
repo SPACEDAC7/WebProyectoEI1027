@@ -1,5 +1,7 @@
 package es.uji.ei1027.proyecto.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.ServicioDao;
-import es.uji.ei1027.proyecto.dao.UsuarioDao;
+import es.uji.ei1027.proyecto.domain.Credencial;
+import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Servicio;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.ServicioValidator;
-import es.uji.ei1027.proyecto.validator.UsuarioValidator;
 
 @Controller
 @RequestMapping("/servicio")
@@ -28,18 +30,48 @@ public class ServicioController {
 	
 	//Listar
 	@RequestMapping("/list")
-	public String listServicios(Model model){
-		model.addAttribute("servicios", servicioDao.getServicios());
-		return "servicio/list";
+	public String listServicios(Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:servicio/list.html");
+			retorno =  "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("administrador") ) {
+				model.addAttribute("servicios", servicioDao.getServicios());
+				retorno = "servicio/list";
+			} else {
+				//Acceso no autorizado porque el rol del usuario no es administrador
+				retorno = "redirect:../index.jsp";
+			}
+		}
+		return retorno;
 	}
 	
 	//Anadir	
 	@RequestMapping(value="/add") 
-	public String addServicio(Model model) {
-		Servicio servicio = new Servicio();
-		servicio.setIdServicio(servicioDao.nuevoIdServicio());
-		model.addAttribute("servicio", servicio);
-		return "servicio/add";
+	public String addServicio(Model model, HttpSession session) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:servicio/add.html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("administrador") ) {
+				Servicio servicio = new Servicio();
+				servicio.setIdServicio(servicioDao.nuevoIdServicio());
+				model.addAttribute("servicio", servicio);
+				retorno = "servicio/add";
+			} else {
+				//Acceso no autorizado porque el rol del usuario no es administrador
+				retorno = "redirect:../index.jsp";
+			}
+		}
+		return retorno;
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
@@ -54,10 +86,25 @@ public class ServicioController {
 	}
 	//Actualizar	
 	@RequestMapping(value="/update/{id_servicio}", method = RequestMethod.GET)
-	public String editServicio(Model model, @PathVariable int id_servicio) {
-		Servicio servicio = servicioDao.getServicio(id_servicio);
-		model.addAttribute("servicio", servicio);
-		return "servicio/update"; 
+	public String editServicio(Model model, @PathVariable int id_servicio, HttpSession session) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:servicio/update/" + id_servicio + ".html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("administrador") ) {
+				Servicio servicio = servicioDao.getServicio(id_servicio);
+				model.addAttribute("servicio", servicio);
+				retorno = "servicio/update";
+			} else {
+				//Acceso no autorizado porque el rol del usuario no es administrador
+				retorno = "redirect:../index.jsp";
+			}
+		}
+		return retorno;
 	}
 
 	@RequestMapping(value="/update/{id_servicio}", method = RequestMethod.POST) 
@@ -72,9 +119,24 @@ public class ServicioController {
 
 	//Borrar	
 	@RequestMapping(value="/delete/{id_servicio}")
-	public String deleteServicio(@PathVariable int id_servicio) {
-		servicioDao.deleteServicio(id_servicio);
-		return "redirect:../list.html"; 
+	public String deleteServicio(@PathVariable int id_servicio, HttpSession session, Model model) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:servicio/delete/" + id_servicio + ".html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("administrador") ) {
+				servicioDao.deleteServicio(id_servicio);
+			    retorno = "redirect:../list.html";
+			} else {
+				//Acceso no autorizado porque el rol del usuario no es administrador
+				retorno = "redirect:../index.jsp";
+			}
+		}
+		return retorno;
 	}
 
 }

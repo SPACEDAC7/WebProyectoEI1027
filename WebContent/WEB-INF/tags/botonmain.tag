@@ -5,15 +5,19 @@
 
 <ul class="nav navbar-nav navbar-right">
 	<li>
-	<form action="${pageContext.request.contextPath}/login.html" method="get">
-	<button type="submit" class="btn btn-link boton-main boton-login">
-			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-			Login
-		</button></form></li>
+		<form action="${pageContext.request.contextPath}/login.html" method="get">
+			<button type="submit" class="btn btn-link boton-main boton-login">
+				<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+				Login
+			</button>
+		</form>
+	</li>
 	<li>
-		<button type="button" class="btn btn-primary boton-main">
-			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-			Sign Up
-		</button>
+		<form action="signup/addUser.html" method="get">
+			<button type="submit" class="btn btn-primary boton-main">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				Sign Up
+			</button>
+		</form>
 	</li>
 </ul>

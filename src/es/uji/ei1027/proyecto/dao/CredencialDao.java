@@ -97,4 +97,15 @@ public class CredencialDao {
 		return max+1;
 	}
 	
+	public String getRolPorIdCredencial(int idCredencial) {
+		String sql = "SELECT rol FROM credencial WHERE id_credencial = ?";
+		String rol;
+		try {
+			rol = this.jdbcTemplate.queryForObject(sql,  new Object[] {idCredencial}, String.class);
+		} catch (Exception ex) {
+			rol = null;
+		}
+		return rol;
+	}
+	
 }

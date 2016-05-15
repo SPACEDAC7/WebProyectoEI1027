@@ -1,14 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<html>
-<head>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/natacio.css">
-<title>Login</title>
-</head>
-
-<t:paginabasica>
+<t:paginabasica title="login">
 	<jsp:body>
     <h2>Acceso</h2>
     <form:form method="post" modelAttribute="credencial"
@@ -27,6 +20,3 @@
     </form:form>
     </jsp:body>
 </t:paginabasica>
-
-
-</html>
