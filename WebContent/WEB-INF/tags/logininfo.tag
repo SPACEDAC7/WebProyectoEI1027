@@ -8,7 +8,7 @@
 <t:botonmain></t:botonmain> </c:when>
 <c:otherwise>
 <ul class="nav navbar-nav navbar-right info">
-<li>Autenticat com ${usuario.nombre}</li>
+<li>Autenticat com ${usuario.nombre}</li>  <!-- <p class="navbar-text pull-right" > -->
 <li>
 	<form action="${pageContext.request.contextPath}/logout.html" method="get">
 	<button type="submit" class="btn btn-danger boton-main boton-login">

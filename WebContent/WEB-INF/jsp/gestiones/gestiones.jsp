@@ -1,17 +1,10 @@
+<%@page contentType="text/html; charset=iso-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
-<t:paginabasica title="EASY RENT">
+<t:paginabasica title="Gestiones">
 <jsp:body>
-<!--  <aside> -->
-	<div id="sidebar">
-		<ul class="list-unstyled">
-		<li class="sidbar-header">
-			<form action="${pageContext.request.contextPath}/logout.html" method="get">
-				<button type="submit" class="btn btn-primary ">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					BUSCAR
-				</button>
-			</form>
-		</li>
+	<div>
+		<ul>
 		<li><a href="credencial/list.html">Gestion de credenciales</a></li>
 		<li><a href="direccion/list.html">Gestion de direcciones</a></li>
 		<li><a href="factura/list.html">Gestion de facturas</a></li>
@@ -26,6 +19,5 @@
 		<li><a href="propiedadServicio/list.html">Gestion de propiedad servicios</a></li>
 		</ul>
 	</div>
-	<!--  </aside> -->
 </jsp:body>
 </t:paginabasica>

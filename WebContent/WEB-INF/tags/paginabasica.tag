@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ attribute name="title" required="false"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +44,16 @@
 			<div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
+				<c:choose>
+				<c:when test='${title == "EASY RENT"}'>
 					<li class="active">
+				</c:when>
+				<c:otherwise>
+					<li>
+				</c:otherwise>
+				</c:choose>
 						<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li><a href="${pageContext.request.contextPath}/gestiones/addGestiones.html">Gestiones</a></li>
 				</ul>
 				<t:logininfo></t:logininfo>
 			</div>
