@@ -53,36 +53,38 @@ public class NuevoUsuarioController {
 	@RequestMapping(value="/addUser", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("nuevoUsuario") Usuario usuario,
 			@ModelAttribute("nuevaDireccion") Direccion direccion, BindingResult bindingResult) {
-		CredencialValidator credencialValidator = new CredencialValidator();
-		DireccionValidator direccionValidator = new DireccionValidator();
-		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		
 		//Conseguimos los nuevos ids para añadir los datos a las tablas
 		int idDireccion = direccionDao.nuevoIdDireccion();
 		int idCredencial = credencialDao.nuevoIdCredencial();
 		int idUsuario = usuarioDao.nuevoIdUsuario();
 		
-		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
 		
 		//Crear y anadir la credencial
+		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
 		String nickUsuario = usuario.getNickUsuario();
 		String rol = usuario.getRol();
 		String passwordEncriptado = passwordEncrypter.encryptPassword(usuario.getPasswordUsuario());
 		Credencial credencial = new Credencial(idCredencial, nickUsuario, passwordEncriptado, rol);
 		
-		credencialValidator.validate(credencial, bindingResult);
-		if (bindingResult.hasErrors()) {
-            return "addUser";
-        }
+		CredencialValidator credencialValidator = new CredencialValidator();
+		DireccionValidator direccionValidator = new DireccionValidator();
+		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		
+		usuario.setId_usuario(idUsuario);
+		
+		direccionValidator.validate(direccion, bindingResult);
+		if (bindingResult.hasErrors()) {
+            return "signup/signup";
+        }
 		
 				
 		//Crear y anadir la direccion
 		direccion.setId_direccion(idDireccion);
-		direccionValidator.validate(direccion, bindingResult);
+		/*direccionValidator.validate(direccion, bindingResult);
 		if (bindingResult.hasErrors()) {
             return "addUser";
-        }
+        }*/
 		
 		
 		
@@ -94,10 +96,10 @@ public class NuevoUsuarioController {
 		
 		usuario.setFecha_registro(this.fechaDeHoy());
 		usuario.setEstado_usuario(true);
-		usuarioValidator.validate(usuario, bindingResult);
+		/*usuarioValidator.validate(usuario, bindingResult);
 		if (bindingResult.hasErrors()) {
 			return "addUser";
-		}
+		}*/
 		
 		
 		credencialDao.addCredencial(credencial);
@@ -113,9 +115,4 @@ public class NuevoUsuarioController {
 		return fechaSQL;
 		
 	}
-		
-		
-		
-	
-
 }
