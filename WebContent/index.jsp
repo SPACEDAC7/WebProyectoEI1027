@@ -1,31 +1,52 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="EASY RENT">
 <jsp:body>
-<!--  <aside> -->
-	<div id="sidebar">
+	<div class="barra-lat">
 		<ul class="list-unstyled">
 		<li class="sidbar-header">
-			<form action="${pageContext.request.contextPath}/logout.html" method="get">
+			<form action="${pageContext.request.contextPath}/logout.html" method="get"  role="form">
 				<button type="submit" class="btn btn-primary ">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					BUSCAR
 				</button>
+				<div>
+					<label for="precio_form" class="centrado control-label">Precio</label>
+				</div>
+				<div class="form-group">
+	      			<input type="text" class="precio-menu form-control" id="precio_form" placeholder="Minimo">
+		            <input type="text" class="precio-menu seguido form-control" id="precio_form" placeholder="Maximo">
+			  	</div>
+			  	<div class="form-group">
+			  		<label for="tipo_form" class="centrado control-label">Tipo</label>
+			  		<input type="text" class="form-control" id="tipo_form" placeholder="Tipo">
+			  	</div>
+				<div class="form-group">
+			  		<label for="capacidad_form" class="centrado control-label">Capacidad</label>
+			  		<input type="text" class="form-control" id="capacidad_form" placeholder="Capacidad">
+			  	</div>
+			  	<div class="form-group">
+			  		<label for="habitaciones_form" class="centrado control-label">Habitaciones</label>
+			  		<input type="text" class="form-control" id="habitaciones_form" placeholder="Nº Habitaciones">
+			  	</div>
+			  	<div class="form-group">
+			  		<label for="camas_form" class="centrado control-label">Camas</label>
+			  		<input type="text" class="form-control" id="camas_form" placeholder="Nº Cama">
+			  	</div>
+			  	<div class="form-group">
+			  		<label for="area_form" class="centrado control-label">Area</label>
+			  		<input type="text" class="form-control" id="area_form" placeholder="Area">
+			  	</div>
+			  	<div class="form-group">
+			  		<label for="lugar_form" class="centrado control-label">Lugar</label>
+			  		<input type="text" class="form-control" id="lugar_form" placeholder="Lugar">
+			  	</div>
+			  	<div class="form-group">
+			  		<label for="servicio_form" class="centrado control-label">Servicios</label>
+			  		<input type="text" class="form-control" id="servicio-form" placeholder="Servicio">
+			  	</div>
 			</form>
 		</li>
-		<li><a href="credencial/list.html">Gestion de credenciales</a></li>
-		<li><a href="direccion/list.html">Gestion de direcciones</a></li>
-		<li><a href="factura/list.html">Gestion de facturas</a></li>
-		<li><a href="imagen/list.html">Gestion de imagenes</a></li>
-		<li><a href="periodo/list.html">Gestion de periodos</a></li>
-		<li><a href="propiedad/list.html">Gestion de propiedades</a></li>
-		<li><a href="puntuacion/list.html">Gestion de puntuaciones</a></li>
-		<li><a href="respuestaPuntuacion/list.html">Gestion de respuestas de puntuacion</a></li>
-		<li><a href="reserva/list.html">Gestion de reservas</a></li>
-		<li><a href="usuario/list.html">Gestion de usuarios</a></li>
-		<li><a href="servicio/list.html">Gestion de servicios</a></li>
-		<li><a href="propiedadServicio/list.html">Gestion de propiedad servicios</a></li>
 		</ul>
 	</div>
-	<!--  </aside> -->
 </jsp:body>
 </t:paginabasica>

@@ -34,3 +34,25 @@
 	margin-top:3%;
 	margin-bottom:3%;
 }
+.precio-menu{
+	width:45%;
+	margin:2px 2px 2px 2px;
+	display:inline;
+}
+
+.centrado{
+    margin-top:5px;
+    border: 1px solid #73AD21;
+    padding: 5px;
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
+.barra-lat{
+	width:15%;
+}
+
+.seguido{
+	display:inline;
+}

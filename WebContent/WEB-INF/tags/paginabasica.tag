@@ -52,8 +52,16 @@
 					<li>
 				</c:otherwise>
 				</c:choose>
-						<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
-					<li><a href="${pageContext.request.contextPath}/gestiones/listGestiones.jsp">Gestiones</a></li>
+					<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
+				<c:choose>
+				<c:when test='${title == "Gestiones"}'>
+					<li class="active">
+				</c:when>
+				<c:otherwise>
+					<li>
+				</c:otherwise>
+				</c:choose>
+					<a href="${pageContext.request.contextPath}/gestiones/listGestiones.html">Gestiones</a></li>
 				</ul>
 				<t:logininfo></t:logininfo>
 			</div>
