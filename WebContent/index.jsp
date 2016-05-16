@@ -5,7 +5,7 @@
 		<ul class="list-unstyled">
 		<li class="sidbar-header">
 			<form action="${pageContext.request.contextPath}/logout.html" method="get"  role="form">
-				<button type="submit" class="btn btn-primary ">
+				<button type="submit" class="btn btn-primary btn-lg btn-block">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					BUSCAR
 				</button>
