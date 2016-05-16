@@ -1,16 +1,11 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
-<title>Easy Rent - Crear nova reserva</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Nueva reserva">
+	<jsp:body>
 	<h2>Nova reserva</h2>
 	<form:form method="post" modelAttribute="reserva">
-		<table>
+		<table class="table table-condensed">
 			<tr>
 				<td><form:label path="id_reserva">ID. Reserva </form:label></td>
 				<td><form:input path="id_reserva" readonly="true" /></td>
@@ -52,5 +47,5 @@
 			</tr>
 		</table>
 	</form:form>
-</body>
-</html>
+	</jsp:body>
+</t:paginabasica>

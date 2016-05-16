@@ -1,15 +1,11 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Easy Rent - Modificar un periodo</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Actualizar periodo">
+	<jsp:body>
 	<h2>Modificar periodo</h2>
 	<form:form method="post" modelAttribute="periodo">
-		<table>
+		<table class="table table-condensed">
 			<tr>
 				<td><form:label path="id_periodo">ID. Periodo</form:label></td>
 				<td><form:input path="id_periodo" /></td>
@@ -33,5 +29,5 @@
 			</tr>
 		</table>
 	</form:form>
-</body>
-</html>
+	</jsp:body>
+</t:paginabasica>

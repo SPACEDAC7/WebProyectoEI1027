@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
-<title>Gestionar Periodo</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Listado de periodos">
+	<jsp:body>
 	<h1>Llista de Periodos</h1>
-	<table>
+	<table class="table table-condensed">
 		<tr>
 			<th>Id Periodo</th>
 			<th>Id Propiedad</th>
@@ -27,7 +23,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="add.html">Afegeix Periodo</a>
-	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
-</body>
-</html>
+	<a class="btn btn-primary" href="add.html">Afegeix Periodo</a>
+	<a class="btn btn-danger" href="${pageContext.request.contextPath}"> Volver al inicio</a>
+	</jsp:body>
+</t:paginabasica>

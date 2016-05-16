@@ -1,15 +1,11 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Easy Rent - Modificar una propiedad</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Actualizar credencial">
+	<jsp:body>
 	<h2>Modificar propiedad</h2>
 	<form:form method="post" modelAttribute="propiedad">
-		<table>
+		<table class="table table-condensed">
 			<tr>
 				<td><form:label path="id_propiedad">ID. Propiedad</form:label></td>
 				<td><form:input path="id_propiedad" /></td>
@@ -67,5 +63,5 @@
 			</tr>
 		</table>
 	</form:form>
-</body>
-</html>
+	</jsp:body>
+</t:paginabasica>

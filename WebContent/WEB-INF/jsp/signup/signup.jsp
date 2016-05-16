@@ -61,6 +61,3 @@
     </form:form>
     </jsp:body>
 </t:paginabasica>
-
-
-</html>

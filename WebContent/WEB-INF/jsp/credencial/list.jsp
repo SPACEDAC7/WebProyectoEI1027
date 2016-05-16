@@ -24,5 +24,6 @@
 			</c:forEach>
 		</table>
 		<a style="color: #5090C0;" href="add.html" class="btn btn-default" role="button">Añadir credencial</a>
+		<a class="btn btn-danger" href="${pageContext.request.contextPath}"> Volver al inicio</a>
 	</jsp:body>
 </t:paginabasica>

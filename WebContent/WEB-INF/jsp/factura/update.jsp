@@ -1,12 +1,8 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Easy Rent - Modificar una factura</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Modificar factura">
+	<jsp:body>
 	<h2>Modificar factura</h2>
 	<form:form method="post" modelAttribute="factura">
 		<table>
@@ -41,5 +37,5 @@
 			</tr>
 		</table>
 	</form:form>
-</body>
-</html>
+	</jsp:body>
+</t:paginabasica>

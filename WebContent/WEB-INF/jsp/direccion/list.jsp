@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/natacio.css">
-<title>Gestionar Direcciones</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Listado de direcciones">
+<jsp:body>
 	<h1>Llista de Direcciones</h1>
-	<table>
+	<table class="table table-condensed">
 		<tr>
 			<th>Id Direccion</th>
 			<th>Calle</th>
@@ -31,7 +27,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="add.html">Afegeix Direccion</a>
-	<a href="${pageContext.request.contextPath}"> Volver al inicio</a>
-</body>
-</html>
+	<a class="btn btn-primary" href="add.html">Afegeix Direccion</a>
+	<a class="btn btn-danger" href="${pageContext.request.contextPath}"> Volver al inicio</a>
+	</jsp:body>
+</t:paginabasica>

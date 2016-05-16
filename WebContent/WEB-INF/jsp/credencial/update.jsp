@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
-<t:paginabasica title="Listado credenciales">
+<t:paginabasica title="Actualizar credencial">
 	<jsp:body>
 		<h2>Modificar credencial</h2>
 		<form:form method="post" modelAttribute="credencial">

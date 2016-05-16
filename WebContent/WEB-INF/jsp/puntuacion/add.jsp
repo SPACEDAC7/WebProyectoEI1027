@@ -1,16 +1,11 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/listaCredenciales.css">
-<title>Easy Rent - Crear nova puntuacion</title>
-</head>
-<body>
-	<h2>Nova puntuacion</h2>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<t:paginabasica title="Nueva puntuación">
+	<jsp:body>
+	<h2>Nova puntuación</h2>
 	<form:form method="post" modelAttribute="puntuacion">
-		<table>
+		<table class="table table-condensed">
 			<tr>
 				<td><form:label path="id_puntuacion">ID. Puntuacion </form:label></td>
 				<td><form:input path="id_puntuacion" readonly="true" /></td>
@@ -40,5 +35,5 @@
 			</tr>
 		</table>
 	</form:form>
-</body>
-</html>
+	</jsp:body>
+</t:paginabasica>
