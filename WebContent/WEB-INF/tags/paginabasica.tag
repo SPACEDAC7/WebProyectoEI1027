@@ -53,7 +53,7 @@
 				</c:otherwise>
 				</c:choose>
 						<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
-					<li><a href="/gestiones/listGestiones.html">Gestiones</a></li>
+					<li><a href="${pageContext.request.contextPath}/gestiones/listGestiones.jsp">Gestiones</a></li>
 				</ul>
 				<t:logininfo></t:logininfo>
 			</div>

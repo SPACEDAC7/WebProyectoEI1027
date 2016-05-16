@@ -31,6 +31,33 @@
             	<td><form:input class="form-control" path="nif" /></td>
             	<td><form:errors path="nif" cssClass="error" /></td>
         	</tr>
+        	<form:form method="post" modelAttribute="nuevaDireccion">
+        		<tr>
+			 			<td><form:label path="calle">Calle:</form:label></td>
+	            		<td><form:input class="form-control" path="calle" /></td>
+	            		<td><form:errors path="calle" cssClass="error" /></td>
+	        	</tr>
+	        	<tr>
+			 			<td><form:label path="calle">Número:</form:label></td>
+	            		<td><form:input class="form-control" path="numero" value="" /></td>
+	            		<td><form:errors path="numero" cssClass="error" /></td>
+	        	</tr>
+	        	<tr>
+			 			<td><form:label path="calle">Código postal:</form:label></td>
+	            		<td><form:input class="form-control" path="codigo_postal" /></td>
+	            		<td><form:errors path="codigo_postal" cssClass="error" /></td>
+	        	</tr>
+	        	<tr>
+			 			<td><form:label path="calle">Localidad:</form:label></td>
+	            		<td><form:input class="form-control" path="localidad" /></td>
+	            		<td><form:errors path="localidad" cssClass="error" /></td>
+	        	</tr>
+	        	<tr>
+			 			<td><form:label path="calle">provincia:</form:label></td>
+	            		<td><form:input class="form-control" path="provincia" /></td>
+	            		<td><form:errors path="provincia" cssClass="error" /></td>
+	        	</tr>
+	        </form:form>
             <tr>
         		<td><form:label path="email">E-mail:</form:label></td>
             	<td><form:input class="form-control" path="email" /></td>
