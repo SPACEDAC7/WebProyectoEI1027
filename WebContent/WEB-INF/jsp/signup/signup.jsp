@@ -4,7 +4,7 @@
 <t:paginabasica title="Sign-Up">
 	<jsp:body>
     <h2>Sign-Up</h2>
-    <form:form method="post" modelAttribute="usuario">
+    <form:form method="post" modelAttribute="nuevoUsuario">
 		 <table class="table table-condensed">
 		 	<tr>
 		 		<td><form:label path="nickUsuario">Nombre de usuario:</form:label></td>
