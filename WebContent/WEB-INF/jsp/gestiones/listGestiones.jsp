@@ -5,18 +5,18 @@
 <jsp:body>
 	<div>
 		<ul>
-		<li><a href="credencial/list.html">Gestion de credenciales</a></li>
-		<li><a href="direccion/list.html">Gestion de direcciones</a></li>
-		<li><a href="factura/list.html">Gestion de facturas</a></li>
-		<li><a href="imagen/list.html">Gestion de imagenes</a></li>
-		<li><a href="periodo/list.html">Gestion de periodos</a></li>
-		<li><a href="propiedad/list.html">Gestion de propiedades</a></li>
-		<li><a href="puntuacion/list.html">Gestion de puntuaciones</a></li>
-		<li><a href="respuestaPuntuacion/list.html">Gestion de respuestas de puntuacion</a></li>
-		<li><a href="reserva/list.html">Gestion de reservas</a></li>
-		<li><a href="usuario/list.html">Gestion de usuarios</a></li>
-		<li><a href="servicio/list.html">Gestion de servicios</a></li>
-		<li><a href="propiedadServicio/list.html">Gestion de propiedad servicios</a></li>
+		<li><a href="${pageContext.request.contextPath}/credencial/list.html">Gestion de credenciales</a></li>
+		<li><a href="${pageContext.request.contextPath}/direccion/list.html">Gestion de direcciones</a></li>
+		<li><a href="${pageContext.request.contextPath}/factura/list.html">Gestion de facturas</a></li>
+		<li><a href="${pageContext.request.contextPath}/imagen/list.html">Gestion de imagenes</a></li>
+		<li><a href="${pageContext.request.contextPath}/periodo/list.html">Gestion de periodos</a></li>
+		<li><a href="${pageContext.request.contextPath}/propiedad/list.html">Gestion de propiedades</a></li>
+		<li><a href="${pageContext.request.contextPath}/puntuacion/list.html">Gestion de puntuaciones</a></li>
+		<li><a href="${pageContext.request.contextPath}/respuestaPuntuacion/list.html">Gestion de respuestas de puntuacion</a></li>
+		<li><a href="${pageContext.request.contextPath}/reserva/list.html">Gestion de reservas</a></li>
+		<li><a href="${pageContext.request.contextPath}/usuario/list.html">Gestion de usuarios</a></li>
+		<li><a href="${pageContext.request.contextPath}/servicio/list.html">Gestion de servicios</a></li>
+		<li><a href="${pageContext.request.contextPath}/propiedadServicio/list.html">Gestion de propiedad servicios</a></li>
 		</ul>
 	</div>
 </jsp:body>

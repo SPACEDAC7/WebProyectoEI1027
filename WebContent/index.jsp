@@ -1,10 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="EASY RENT">
 <jsp:body>
 	<div class="barra-lat">
 		<ul class="list-unstyled">
 		<li class="sidbar-header">
-			<form action="${pageContext.request.contextPath}/logout.html" method="get"  role="form">
+			<form action="${pageContext.request.contextPath}/propiedad/list.html" method="get"  role="form">
 				<button type="submit" class="btn btn-primary btn-lg btn-block">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					BUSCAR
@@ -26,11 +29,11 @@
 			  	</div>
 			  	<div class="form-group">
 			  		<label for="habitaciones_form" class="centrado control-label">Habitaciones</label>
-			  		<input type="text" class="form-control" id="habitaciones_form" placeholder="Nº Habitaciones">
+			  		<input type="text" class="form-control" id="habitaciones_form" placeholder="NÂº Habitaciones">
 			  	</div>
 			  	<div class="form-group">
 			  		<label for="camas_form" class="centrado control-label">Camas</label>
-			  		<input type="text" class="form-control" id="camas_form" placeholder="Nº Cama">
+			  		<input type="text" class="form-control" id="camas_form" placeholder="NÂº Cama">
 			  	</div>
 			  	<div class="form-group">
 			  		<label for="area_form" class="centrado control-label">Area</label>
@@ -47,6 +50,9 @@
 			</form>
 		</li>
 		</ul>
+	</div>
+	<div>
+	
 	</div>
 </jsp:body>
 </t:paginabasica>

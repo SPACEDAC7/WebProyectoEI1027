@@ -71,7 +71,7 @@
 	<div class="container menu-principal">
 		<jsp:doBody />
 	</div>
-	<footer>
+	<footer style="text-align:center">
 		<hr>
 		<p class="text-muted">EI1027 - Disseny i Implementació de Sistemes d'Informació</p>
 		<p class="text-muted">Powered By: ALMOLO</p>

@@ -47,6 +47,8 @@
 
 .barra-lat{
 	width:15%;
+	float:left;
+	margin-right:10px;
 }
 
 .seguido{
