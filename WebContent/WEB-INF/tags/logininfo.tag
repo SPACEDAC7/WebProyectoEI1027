@@ -13,10 +13,8 @@
 
 				<li><a href=""><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
-						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
-						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
-						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
-						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
+						<li><a class="letras-grises" href="">Mensajes</a></li>
+						<li><a class="letras-grises" href="">Mis Reservas</a></li>
 						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 						Salir
@@ -32,10 +30,8 @@
 
 				<li><a href=""><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
-						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
-						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
-						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
-						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
+						<li><a class="letras-grises" href="">Mensajes</a></li>
+						<li><a class="letras-grises" href="">Mis Propiedades</a></li>
 						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 						Salir
