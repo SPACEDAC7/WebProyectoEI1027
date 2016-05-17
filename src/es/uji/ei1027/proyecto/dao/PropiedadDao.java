@@ -30,6 +30,7 @@ public class PropiedadDao {
 			propiedad.setId_propiedad(rs.getInt("id_propiedad"));
 			propiedad.setId_usuario(rs.getInt("id_usuario"));
 			propiedad.setTitulo(rs.getString("titulo"));
+			propiedad.setDescripcion(rs.getString("descripcion"));
 			propiedad.setTipo(rs.getString("tipo"));
 			propiedad.setCapacidad(rs.getInt("capacidad"));
 			propiedad.setNum_habitaciones(rs.getInt("num_habitaciones"));

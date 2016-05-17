@@ -48,9 +48,10 @@
 					src="${pageContext.request.contextPath}/img/logo.png"
 					alt="logo_de_easy_rent"> EASY RENT</a>
 			</div>
-			<div class="navbar-collapse collapse">
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
 
 				<ul class="nav navbar-nav">
+				
 				<c:choose>
 				<c:when test='${title == "EASY RENT"}'>
 					<li class="active">

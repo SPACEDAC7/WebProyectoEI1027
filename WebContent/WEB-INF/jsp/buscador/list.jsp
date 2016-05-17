@@ -51,31 +51,19 @@
 		</li>
 		</ul>
 	</div>
-	<div id="resultadoBuscador">
-		<table class="table-condensed">
-			<tr>
-				<th>Titulo</th>
-				<th>Descripcion</th>
-				<th>Tipo</th>
-				<th>Capacidad</th>
-				<th>Num. Habitaciones</th>
-				<th>Num. Camas</th>
-				<th>Area</th>
-				<th>Precio</th>
-			</tr>
+	<div style="width:82%; float:right;" id="resultadoBuscador">
 			<c:forEach items="${propiedades}" var="propiedad">
-				<tr>
-					<td class="linea">${propiedad.titulo}</td>
-					<td class="linea">${propiedad.descripcion}</td>
-					<td class="linea">${propiedad.tipo}</td>
-					<td class="linea">${propiedad.capacidad}</td>
-					<td class="linea">${propiedad.num_habitaciones}</td>
-					<td class="linea">${propiedad.num_camas}</td>
-					<td class="linea">${propiedad.area}</td>
-					<td class="linea">${propiedad.precio_propiedad}</td>
-				</tr>
+					<div class="panel panel-info">
+						<div class="panel-heading">${propiedad.titulo}</div>
+						<div class="panel-body">${propiedad.descripcion}</div>
+						<div class="panel-body">${propiedad.tipo}</div>
+						<div class="panel-body">${propiedad.capacidad}</div>
+						<div class="panel-body">${propiedad.num_habitaciones}</div>
+						<div class="panel-body">${propiedad.num_camas}</div>
+						<div class="panel-body">${propiedad.area}</div>
+						<div class="panel-body">${propiedad.precio_propiedad}</div>
+					</div>
 			</c:forEach>
-		</table>
 	</div>
 </jsp:body>
 </t:paginabasica>
