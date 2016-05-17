@@ -7,6 +7,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<c:choose>
+	<c:when test='${title == "INDEX"}'>
+		<meta http-equiv="refresh" content="0;URL=${pageContext.request.contextPath}/buscador/list.html">
+	</c:when>
+</c:choose>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
 
@@ -24,6 +30,7 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/simple-sidebar.css" 
 	rel="stylesheet">
+
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
