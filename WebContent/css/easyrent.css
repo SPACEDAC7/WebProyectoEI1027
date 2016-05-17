@@ -41,8 +41,7 @@
 }
 
 .centrado{
-    margin-top:5px;
-    padding: 5px;    
+    margin-top:7px;   
 }
 
 .barra-lat{
@@ -53,4 +52,53 @@
 
 .seguido{
 	display:inline;
+}
+
+.elemento-rojo{
+	color:white;
+	background-color: #F44336
+}
+
+.bordeado {
+	background-color: white;
+	border-style:solid;
+	border-color:#909090;
+	border-width: 1px;
+}
+
+.desplegable > li {
+	list-style-type: none;
+	
+}
+
+.desplegable li a {
+	text-decoration: none;
+	padding: 10px 10px;
+	display: block;
+}
+
+.desplegable li a:hover {
+	background-image: -webkit-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+}
+
+.desplegable li ul {
+	display: none;
+	position:absolute;
+	min-width: 140px;
+}
+
+.desplegable li:hover>ul {
+	display: block;
+}
+
+.letras-grises{
+	color: #666;
+	padding: 10px 10px;
+}
+
+.destacado{
+	text-transform: capitalize;
+	font-size: 120%;
+	margin:5px 5px 0px 5px;
+	font-weight: bold;
 }

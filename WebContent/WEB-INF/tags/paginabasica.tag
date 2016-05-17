@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="utf-8">
 <c:choose>
 	<c:when test='${title == "INDEX"}'>
@@ -17,20 +18,12 @@
 <title>${title}</title>
 
 <!-- Bootstrap -->
-<link href="${pageContext.request.contextPath}/css/bootstrap.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/css/easyrent.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/simple-sidebar.css" 
-	rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/easyrent.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -44,6 +37,7 @@
 				</button>
 				<!-- Las letras se ven al lado del icono porque he comentado las lineas 4189-4193 de bootstrap.css y las 4160-4162 de bootstrap.min.css-->
 				<t:logotipo></t:logotipo>
+				<!-- El logotipo se crea para diferenciar si es un administrador o no y poner el diseño diferente -->
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 		
@@ -75,7 +69,6 @@
 				</ul>
 				<t:logininfo></t:logininfo>
 			</div>
-			<!--/.nav-collapse -->
 		</div>
 	</nav>
 	<div class="container menu-principal">
