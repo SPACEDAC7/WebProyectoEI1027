@@ -43,33 +43,35 @@
 					<span class="icon-bar"></span>
 				</button>
 				<!-- Las letras se ven al lado del icono porque he comentado las lineas 4189-4193 de bootstrap.css y las 4160-4162 de bootstrap.min.css-->
-				<a class="navbar-brand icono"
-					href="${pageContext.request.contextPath}/"><img
-					src="${pageContext.request.contextPath}/img/logo.png"
-					alt="logo_de_easy_rent"> EASY RENT</a>
+				<t:logotipo></t:logotipo>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-
+		
 				<ul class="nav navbar-nav">
 				
 				<c:choose>
-				<c:when test='${title == "EASY RENT"}'>
-					<li class="active">
-				</c:when>
-				<c:otherwise>
-					<li>
-				</c:otherwise>
+					<c:when test='${title == "EASY RENT"}'>
+						<li class="active">
+					</c:when>
+					<c:otherwise>
+						<li>
+					</c:otherwise>
 				</c:choose>
 					<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
+				<c:set var="rol" scope="request" value='${session.getAttribute("rol")}'/>
 				<c:choose>
-				<c:when test='${title == "Gestiones"}'>
-					<li class="active">
-				</c:when>
-				<c:otherwise>
-					<li>
-				</c:otherwise>
-				</c:choose>
+					<c:when test='${rol == "administrador"}'>
+						<c:choose>
+							<c:when test='${title == "Gestiones"}'>
+								<li class="active">
+							</c:when>
+							<c:otherwise>
+								<li>
+							</c:otherwise>
+						</c:choose>
 					<a href="${pageContext.request.contextPath}/gestiones/listGestiones.html">Gestiones</a></li>
+					</c:when>
+				</c:choose>
 				</ul>
 				<t:logininfo></t:logininfo>
 			</div>

@@ -50,7 +50,6 @@ public class LoginController {
         } else {
         	BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
             if (passwordEncryptor.checkPassword(credencial.getPassword(), passwordDeLaBaseDeDatos)) {
-            	System.out.println("Password introducido coincide con el encriptado");
             	int idCredencial = credencialDao.getIdCredencialAPartirDeNombre(nombre);
             	Usuario usuario = usuarioDao.getUsuarioPorIdCredencial(idCredencial);
             	if (usuario.getEstado_usuario()) {
@@ -58,8 +57,12 @@ public class LoginController {
                 	session.setAttribute("usuario", usuario);
                 	session.setAttribute("rol", credencialDao.getRolPorIdCredencial(idCredencial));
                 	//Vuelve a la página principal
-                	if (session.getAttribute("nextURL") != null) {
-                		retorno = (String) session.getAttribute("nextURL");
+                	if(session.getAttribute("rol").equals("administrador")){
+                		retorno = "/gestiones/listGestiones";
+                	}else{
+	                	if (session.getAttribute("nextURL") != null) {
+	                		retorno = (String) session.getAttribute("nextURL");
+	                	}
                 	}
             	} else {
             		bindingResult.rejectValue("password", "badpw", "El usuario está dado de baja");
