@@ -1,33 +1,62 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <!-- La sessió està disponible automàticament en l’objecte "session" -->
-<c:set var="user" scope="request"
-	value='${session.getAttribute("user")}' />
+<c:set var="user" scope="request" value='${session.getAttribute("user")}' />
+<c:set var="rol" scope="request" value='${session.getAttribute("rol")}' />
 <p style="margin: 0px 0px 0px 0px;" class="loggeduser">
 	<c:choose>
 		<c:when test='${usuario == null}'>
 			<t:botonmain></t:botonmain>
 		</c:when>
-		<c:otherwise>
+		<c:when test='${rol == "inquilino"}'>
 			<ul class="nav navbar-nav navbar-right desplegable">
 
 				<li><a href=""><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
-						<li><a class="letras-grises" href="">Submenu1</a></li>
-						<li><a class="letras-grises" href="">Submenu2</a></li>
-						<li><a class="letras-grises" href="">Submenu3</a></li>
-						<li><a class="letras-grises" href="">Submenu4</a></li>
+						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
+						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
+						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
+						<li><a class="letras-grises" href="">SubmenuINQUI</a></li>
 						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-						Eixir
+						Salir
 						</a>
 					</button>
 				</form></li>
 					</ul>
 				</li>
-
-				
 			</ul>
-		</c:otherwise>
+		</c:when>
+				<c:when test='${rol == "propietario"}'>
+			<ul class="nav navbar-nav navbar-right desplegable">
+
+				<li><a href=""><p class="destacado" >${usuario.nombre}</p></a>
+					<ul class="desplegable bordeado list-unstyled">
+						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
+						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
+						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
+						<li><a class="letras-grises" href="">SubmenuPROP</a></li>
+						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
+						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+						Salir
+						</a>
+					</button>
+				</form></li>
+					</ul>
+				</li>
+			</ul>
+		</c:when>
+				<c:when test='${rol == "administrador"}'>
+			<ul class="nav navbar-nav navbar-right">
+	<li>
+		<form action="${pageContext.request.contextPath}/logout.html" method="get">
+			<button type="submit" class="btn btn-danger boton-main boton-login centrado">
+				<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+				Salir
+			</button>
+		</form>
+	</li>
+</ul>
+		</c:when>
 	</c:choose>
 </p>
