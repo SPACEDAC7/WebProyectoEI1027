@@ -3,6 +3,7 @@ encoding//WebContent/WEB-INF/tags/logotipo.tag=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/CredencialValidator.java=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/FacturaValidator.java=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/ImagenValidator.java=UTF-8
+encoding//src/es/uji/ei1027/proyecto/validator/MensajeValidator.java=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/PeriodoValidator.java=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/PropiedadServicioValidator.java=UTF-8
 encoding//src/es/uji/ei1027/proyecto/validator/PropiedadValidator.java=UTF-8

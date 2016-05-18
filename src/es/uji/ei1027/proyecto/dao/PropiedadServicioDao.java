@@ -45,7 +45,8 @@ public class PropiedadServicioDao {
 	}
 	
 	public void updatePropiedadServicio(PropiedadServicio propiedadServicio){
-		this.jdbcTemplate.update("update propiedad set id_servicio=? where id_propiedad=?", propiedadServicio.getId_servicio(),propiedadServicio.getId_propiedad());
+		this.jdbcTemplate.update("DELETE FROM propiedad_servicio WHERE id_propiedad=? and id_servicio=?", propiedadServicio.getId_propiedad(), propiedadServicio.getId_servicio());
+		this.jdbcTemplate.update("insert into propiedad_servicio(id_propiedad, id_servicio) values(?,?)", propiedadServicio.getId_propiedad(),propiedadServicio.getId_servicio());
 	}
 	
 	public void deletePropiedadServicio(PropiedadServicio propiedad) {

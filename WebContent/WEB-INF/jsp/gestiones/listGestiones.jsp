@@ -17,6 +17,7 @@
 		<li><a href="${pageContext.request.contextPath}/usuario/list.html">Gestion de usuarios</a></li>
 		<li><a href="${pageContext.request.contextPath}/servicio/list.html">Gestion de servicios</a></li>
 		<li><a href="${pageContext.request.contextPath}/propiedadServicio/list.html">Gestion de propiedad servicios</a></li>
+		<li><a href="${pageContext.request.contextPath}/mensaje/list.html">Gestion de mensajes</a></li>
 		</ul>
 	</div>
 </jsp:body>

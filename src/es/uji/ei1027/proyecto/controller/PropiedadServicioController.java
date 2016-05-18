@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.PropiedadServicioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
-import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.PropiedadServicio;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.PropiedadServicioValidator;

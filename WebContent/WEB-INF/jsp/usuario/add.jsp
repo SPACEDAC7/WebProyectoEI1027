@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="fechaRegistro">Fecha Registro</form:label></td>
-				<td><form:input path="fechaRegistro" /></td>
+				<td><form:input type="date" path="fechaRegistro" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="telefono">Telefono</form:label></td>

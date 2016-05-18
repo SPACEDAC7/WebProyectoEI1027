@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<td><form:label path="fechaInicio">Inicio </form:label></td>
-				<td><form:input path="fechaInicio" /></td>
+				<td><form:input type="date" path="fechaInicio" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="fechaFinal">Fin</form:label></td>
-				<td><form:input path="fechaFinal" /></td>
+				<td><form:input type="date" path="fechaFinal" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Modificar periodo" />
