@@ -15,9 +15,6 @@ public class Usuario {
 	private Date fecha_registro;
 	private String telefono;
 	private boolean estado_usuario;
-	private String passwordUsuario;
-	private String nickUsuario;
-	private String rol;
 	//Tengo que poner en la base de datos que sea un varchar(20)
 	//Esto es una prueba a ver que pasaa
 	
@@ -161,29 +158,6 @@ public class Usuario {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	public String getPasswordUsuario() {
-		return passwordUsuario;
-	}
-
-	public void setPasswordUsuario(String passwordUsuario) {
-		this.passwordUsuario = passwordUsuario;
-	}
-
-	public String getNickUsuario() {
-		return nickUsuario;
-	}
-
-	public void setNickUsuario(String nickUsuario) {
-		this.nickUsuario = nickUsuario;
-	}
-
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
 	
 	
 	

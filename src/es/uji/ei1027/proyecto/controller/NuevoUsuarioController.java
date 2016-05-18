@@ -1,7 +1,6 @@
 package es.uji.ei1027.proyecto.controller;
 
 import java.sql.Date;
-import java.util.Calendar;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +21,6 @@ import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.CredencialValidator;
 import es.uji.ei1027.proyecto.validator.DireccionValidator;
-import es.uji.ei1027.proyecto.validator.LoginValidator;
 import es.uji.ei1027.proyecto.validator.UsuarioValidator;
 
 
@@ -47,12 +45,14 @@ public class NuevoUsuarioController {
 	public String addNuevoUsuarioYCredencial(HttpSession session, Model model){
 		model.addAttribute("nuevoUsuario", new Usuario());
 		model.addAttribute("nuevaDireccion", new Direccion());
+		model.addAttribute("nuevaCredencial", new Credencial());
 		return "signup/signup";
 	}
 	
 	@RequestMapping(value="/addUser", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("nuevoUsuario") Usuario usuario,
-			@ModelAttribute("nuevaDireccion") Direccion direccion, BindingResult bindingResult) {
+			@ModelAttribute("nuevaDireccion") Direccion direccion, @ModelAttribute("nuevaCredencial") Credencial credencial, 
+			BindingResult bindingResult) {
 		
 		//Conseguimos los nuevos ids para añadir los datos a las tablas
 		int idDireccion = direccionDao.nuevoIdDireccion();
@@ -62,12 +62,16 @@ public class NuevoUsuarioController {
 		
 		//Crear y anadir la credencial
 		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
-		String nickUsuario = usuario.getNickUsuario();
-		String rol = usuario.getRol();
-		String passwordEncriptado = passwordEncrypter.encryptPassword(usuario.getPasswordUsuario());
-		Credencial credencial = new Credencial(idCredencial, nickUsuario, passwordEncriptado, rol);
-		
+		credencial.setId_credencial(idCredencial);		
 		CredencialValidator credencialValidator = new CredencialValidator();
+		credencialValidator.setCredencialDao(credencialDao);
+		credencialValidator.validate(credencial, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Algo ha fallado al crear la credencial");
+            return "signup/signup";
+        }
+		credencial.setPassword(passwordEncrypter.encryptPassword(credencial.getPassword()));
+		
 		DireccionValidator direccionValidator = new DireccionValidator();
 		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		
@@ -75,6 +79,7 @@ public class NuevoUsuarioController {
 		
 		direccionValidator.validate(direccion, bindingResult);
 		if (bindingResult.hasErrors()) {
+			
             return "signup/signup";
         }
 		
@@ -102,9 +107,9 @@ public class NuevoUsuarioController {
 		}*/
 		
 		
-		credencialDao.addCredencial(credencial);
-		direccionDao.addDireccion(direccion);
-		usuarioDao.addUsuario(usuario);
+		//credencialDao.addCredencial(credencial);
+		//direccionDao.addDireccion(direccion);
+		//usuarioDao.addUsuario(usuario);
 		
 		return "redirect:../index.jsp";
 	}

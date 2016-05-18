@@ -9,9 +9,11 @@ import javax.sql.DataSource;
 
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.util.NestedServletException;
 
 import es.uji.ei1027.proyecto.domain.Credencial;
 
@@ -75,13 +77,15 @@ public class CredencialDao {
 	}
 	
 	public int getIdCredencialAPartirDeNombre(String nombreUsuario) {
-		String sql = "SELECT id_credencial FROM credencial WHERE nick_usuario = ?";
 		int id_credencial;
+		String sql = "SELECT id_credencial FROM credencial WHERE nick_usuario = ?";
 		try {
-			id_credencial = this.jdbcTemplate.queryForObject(sql,  new Object[] {nombreUsuario}, Integer.class);
-		} catch (Exception ex) {
+			id_credencial = this.jdbcTemplate.queryForObject(sql , Integer.class, nombreUsuario);
+		} catch (EmptyResultDataAccessException ex) {
+			//Salta esta excepción cuando el usuario no está en la base de datos
 			id_credencial = -1;
 		}
+		
 		return id_credencial;
 	}
 	
@@ -106,6 +110,21 @@ public class CredencialDao {
 			rol = null;
 		}
 		return rol;
+	}
+	
+	public boolean existeCredencialConEsteNombre(String nombre) {
+		int id_credencial;
+		String sql = "SELECT id_credencial FROM credencial WHERE nick_usuario = ?";
+		try {
+			id_credencial = this.jdbcTemplate.queryForObject(sql , Integer.class, nombre);
+		} catch (EmptyResultDataAccessException ex) {
+			//Salta esta excepción cuando el usuario no está en la base de datos
+			id_credencial = -1;
+		}
+		if ( id_credencial == -1 )
+			return false;
+		else
+			return true;
 	}
 	
 }

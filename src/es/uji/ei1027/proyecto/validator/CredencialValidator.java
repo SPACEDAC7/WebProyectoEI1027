@@ -3,9 +3,17 @@ package es.uji.ei1027.proyecto.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 
 public class CredencialValidator implements Validator{
+	
+	private CredencialDao credencialDao;
+	
+	public void setCredencialDao( CredencialDao credencialDao){
+		this.credencialDao = credencialDao;
+	}
+	
 	@Override
 	public boolean supports(Class<?> cls){
 		return Credencial.class.equals(cls);
@@ -20,8 +28,13 @@ public class CredencialValidator implements Validator{
 		if( credencial.getId_credencial()<0)
 			errors.rejectValue("id_credencial", "obligatori", "Hay que introducir un valor");
 		//Aqui todas las cosas que queramos validar
-		if ( credencial.getNick_usuario().equals("") )
+		if ( credencial.getNick_usuario().equals("") ) {
 			errors.rejectValue("nick_usuario", "obligatori", "Hay que introducir un valor");
+		} else {
+			System.out.println("Nombre del usuario " + credencial.getNick_usuario());
+			if ( credencialDao.existeCredencialConEsteNombre(credencial.getNick_usuario()) )
+				errors.rejectValue("nick_usuario", "Ya existe", "Ya existe un usuario con ese nick");
+		}
 		if (credencial.getPassword().equals(""))
 			errors.rejectValue("password", "obligatori", "Hay que introducir un valor");
 		if (credencial.getRol().equals("---"))
