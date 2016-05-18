@@ -34,7 +34,7 @@
 	          		<td><form:errors style="color:#F44336" path="rol" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Modificar credencial" />
+					<td colspan="2"><input class="btn btn-primary" type="submit" value="Modificar credencial" />
 					</td>
 				</tr>
 			</table>

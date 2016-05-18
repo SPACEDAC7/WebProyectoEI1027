@@ -32,7 +32,7 @@
 				<td><form:input path="provincia" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Afegeix direccion" />
+				<td colspan="2"><input class="btn btn-primary" type="submit" value="Afegeix direccion" />
 				</td>
 			</tr>
 		</table>

@@ -33,9 +33,6 @@ public class UsuarioValidator implements Validator {
 		if ( usuario.getNif().equals("") ) {
 			errors.rejectValue("nif", "obligatori", "El nif del usuario no puede estar vacío");
 		}
-		if ( usuario.getRol().equals("") ) {
-			errors.rejectValue("rol", "obligatori", "El rol del usuario no puede estar vacío");
-		}
 		if ( usuario.getTelefono().equals("") ) {
 			errors.rejectValue("telefono", "obligatori", "El telefono del usuario no puede estar vacío");
 		}

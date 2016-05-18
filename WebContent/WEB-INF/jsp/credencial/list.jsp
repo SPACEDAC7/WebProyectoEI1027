@@ -18,12 +18,15 @@
 					<td class="linea">${credencial.nick_usuario}</td>
 					<td class="linea">${credencial.password}</td>
 					<td class="linea">${credencial.rol}</td>
-					<td><a href="update/${credencial.id_credencial}.html">Edita</a>
-					<td><a href="delete/${credencial.id_credencial}.html">Esborra</a>
+					<td><a class="btn btn-primary btn-block" href="update/${credencial.id_credencial}.html">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										Editar</a>
+					<td><a class="btn btn-danger" href="delete/${credencial.id_credencial}.html"><span style="margin-right:5px" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+										Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a style="color: #5090C0;" href="add.html" class="btn btn-default" role="button">Añadir credencial</a>
-		<a class="btn btn-danger" href="${pageContext.request.contextPath}"> Volver al inicio</a>
+		<a href="add.html" class="btn btn-primary" role="button">Añadir credencial</a>
+		<a class="btn btn-default" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
 	</jsp:body>
 </t:paginabasica>

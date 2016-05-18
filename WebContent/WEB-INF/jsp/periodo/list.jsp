@@ -24,6 +24,6 @@
 		</c:forEach>
 	</table>
 	<a class="btn btn-primary" href="add.html">Afegeix Periodo</a>
-	<a class="btn btn-danger" href="${pageContext.request.contextPath}"> Volver al inicio</a>
+	<a class="btn btn-danger" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
 	</jsp:body>
 </t:paginabasica>

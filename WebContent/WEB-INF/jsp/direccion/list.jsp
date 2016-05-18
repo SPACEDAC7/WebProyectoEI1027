@@ -22,12 +22,15 @@
 				<td class="linea">${direccion.codigo_postal}</td>
 				<td class="linea">${direccion.localidad}</td>
 				<td class="linea">${direccion.provincia}</td>
-				<td><a href="update/${direccion.id_direccion}.html">Edita</a>
-				<td><a href="delete/${direccion.id_direccion}.html">Esborra</a>
+				<td><a class="btn btn-primary btn-block" href="update/${direccion.id_direccion}.html">
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										Editar</a>
+				<td><a class="btn btn-danger" href="delete/${direccion.id_direccion}.html"><span style="margin-right:5px" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+										Borrar</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<a class="btn btn-primary" href="add.html">Afegeix Direccion</a>
-	<a class="btn btn-danger" href="${pageContext.request.contextPath}"> Volver al inicio</a>
+	<a class="btn btn-default" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
 	</jsp:body>
 </t:paginabasica>

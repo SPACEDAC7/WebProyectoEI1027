@@ -7,19 +7,17 @@
 		<form:form method="post" modelAttribute="credencial">
 			<table class="table table-condensed">
 				<tr>
-					<td>
-						<form:label path="id_credencial">ID. Credencial</form:label>
-						<form:input path="id_credencial" readonly="true" />
-						<form:errors style="color:#F44336" path="id_credencial" cssClass="error"/>
-					</td>
+					<td><form:label path="id_credencial">ID. Credencial</form:label></td>
+					<td><form:input path="id_credencial" readonly="true" /></td>
+					<td><form:errors style="color:#F44336" path="id_credencial" cssClass="error"/></td>
 				</tr>
 				<tr>
-					<td><form:label path="nick_usuario">Nick </form:label></td>
+					<td><form:label path="nick_usuario">Nick</form:label></td>
 					<td><form:input path="nick_usuario" /></td>
 					<td><form:errors style="color:#F44336" path="nick_usuario" /></td>
 				</tr>
 				<tr>
-					<td><form:label path="password">Password </form:label></td>
+					<td><form:label path="password">Password</form:label></td>
 					<td><form:input path="password" /></td>
 					<td><form:errors style="color:#F44336" path="password" /></td>
 				</tr>
@@ -36,7 +34,7 @@
 	          		<td><form:errors style="color:#F44336" path="rol" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="submit" class="btn btn-default">Añadir credencial</button></td>
+					<td colspan="2"><button type="submit" class="btn btn-primary">Añadir credencial</button></td>
 				</tr>
 			</table>
 		</form:form>
