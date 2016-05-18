@@ -1,6 +1,7 @@
 package es.uji.ei1027.proyecto.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Mensaje {
 	private int id_mensaje;
@@ -94,16 +95,16 @@ public class Mensaje {
 		return fecha_mensaje;
 	}
 
-	public void setFecha_mensaje(Date fecha_mensaje) {
-		this.fecha_mensaje = fecha_mensaje;
+	public void setFecha_mensaje(String fecha_mensaje) {
+		this.fecha_mensaje = Date.valueOf(fecha_mensaje);
 	}
 
 	public String getFechaMensaje() {
 		return fechaMensaje;
 	}
 
-	public void setFechaMensaje(String fechaMensaje) {
-		this.fechaMensaje = fechaMensaje;
+	public void setFechaMensaje(Date fechaMensaje) {
+		this.fecha_mensaje = fechaMensaje;
 	}
 
 	@Override

@@ -60,9 +60,11 @@ public class MensajeController {
 			session.setAttribute("nextURL", "redirect:mensaje/add.html");
 			retorno = "login";
 		} else {
+			System.out.println("Entramos en el add");
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
 				Mensaje mensaje = new Mensaje();
+				System.out.println("SOMOS ADMINS");
 				mensaje.setId_mensaje(mensajeDao.nuevoIdMensaje());
 				model.addAttribute("mensaje", mensaje);
 				retorno = "mensaje/add";
@@ -79,9 +81,9 @@ public class MensajeController {
 			BindingResult bindingResult) { 
 		MensajeValidator mensajeValidator = new MensajeValidator();
 		mensajeValidator.validate(mensaje, bindingResult); 
-		if (bindingResult.hasErrors())
+		if (bindingResult.hasErrors()){
 			return "mensaje/add";
-		mensaje.crearFechas();
+		}
 		mensajeDao.addMensaje(mensaje);
 		return "redirect:list.html";
 	}
@@ -100,7 +102,6 @@ public class MensajeController {
 				if ( rol.equals("administrador") ) {
 					Mensaje mensaje = mensajeDao.getMensaje(id_mensaje);
 					//Convierto fechas de tipo Date a tipo dd/mm/aaaa para que se muestren en la página de update
-					mensaje.convertirDateADiaMesAno();
 					model.addAttribute("mensaje", mensaje);
 					retorno = "mensaje/update";
 				} else {
@@ -115,9 +116,10 @@ public class MensajeController {
 		public String processUpdateSubmit(@PathVariable int id_mensaje, 
 				@ModelAttribute("mensaje") Mensaje mensaje, 
 				BindingResult bindingResult) {
+			System.out.println("Comprobamos los errores");
 			if (bindingResult.hasErrors()) 
 				return "mensaje/update";
-			mensaje.crearFechas();
+			System.out.println("No hay errores");
 			mensajeDao.updateMensaje(mensaje);
 			return "redirect:../list.html"; 
 		}

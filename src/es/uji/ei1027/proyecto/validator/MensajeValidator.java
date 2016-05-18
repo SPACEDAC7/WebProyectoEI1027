@@ -20,8 +20,20 @@ public class MensajeValidator implements Validator{
 			errors.rejectValue("id_mensaje", "obligatori", "Hay que introducir un valor");
 		//Aqui todas las cosas que queramos validar
 		}
+		System.out.println("El id_mensaje est bien");
+		if( mensaje.getId_emisor()<0){
+			errors.rejectValue("id_emisor", "obligatori", "Hay que introducir un valor");
+		//Aqui todas las cosas que queramos validar
+		}
+		System.out.println("El id_emisor est bien");
+		if( mensaje.getId_receptor()<0){
+			errors.rejectValue("id_receptor", "obligatori", "Hay que introducir un valor");
+		//Aqui todas las cosas que queramos validar
+		}
+		System.out.println("El id_receptor est bien");
 		if(mensaje.getEstado_vision() > 3 || mensaje.getEstado_vision() < 0){
 			errors.rejectValue("estado_vision", "obligatori", "Hay que introducir un valor entre 0 y 3");
 		}
+		System.out.println("El estao_vision est bien");
 	}
 }

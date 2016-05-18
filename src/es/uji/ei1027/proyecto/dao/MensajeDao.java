@@ -31,7 +31,7 @@ public class MensajeDao {
 			mensaje.setId_emisor(rs.getInt("id_emisor"));
 			mensaje.setAsunto(rs.getString("asunto"));
 			mensaje.setContenido(rs.getString("contenido"));
-			mensaje.setFecha_mensaje(rs.getDate("fecha_mensaje"));
+			mensaje.setFechaMensaje(rs.getDate("fecha_mensaje"));
 			mensaje.setEstado_vision(rs.getInt("estado_vision"));
 			return mensaje;
 		}
@@ -50,10 +50,9 @@ public class MensajeDao {
 	public void addMensaje(Mensaje mensaje) {
 		this.jdbcTemplate.update(
 					"insert into mensaje(id_mensaje, id_receptor,id_emisor, asunto"
-					+ ", contenido, estado_vision, fecha_mensaje) values(?, ?, ?, ?, ?, ?, ?)",
+					+ ", contenido, estado_vision, fecha_mensaje) values(?, ?, ?, ?, ?, ?, current_timestamp)",
 					mensaje.getId_mensaje(),mensaje.getId_receptor(),mensaje.getId_emisor(),
-					mensaje.getAsunto(),mensaje.getContenido(),mensaje.getEstado_vision(),
-					mensaje.getFecha_mensaje());
+					mensaje.getAsunto(),mensaje.getContenido(),mensaje.getEstado_vision());
 	}
 	
 	
