@@ -9,12 +9,12 @@
 			<tr>
 				<td><form:label path="id_propiedad">ID. Propiedad</form:label></td>
 				<td><form:input path="id_propiedad"/></td>
-				<td><form:errors path="id_propiedad" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_propiedad" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_servicio">ID. Servicio</form:label></td>
 				<td><form:input path="id_servicio" /></td>
-				<td><form:errors path="id_servicio" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_servicio" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Afegeix propiedad servicio" />

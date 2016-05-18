@@ -9,7 +9,7 @@
 			<tr>
 				<td><form:label path="id_factura">ID. Factura</form:label></td>
 				<td><form:input path="id_factura" readonly="true"/></td>
-				<td><form:errors path="id_factura" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336"  path="id_factura" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_reserva">ID. Reserva</form:label></td>

@@ -9,7 +9,7 @@
 			<tr>
 				<td><form:label path="id_periodo">ID. Periodo</form:label></td>
 				<td><form:input path="id_periodo" readonly="true"/></td>
-				<td><form:errors path="id_periodo" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_periodo" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_propiedad">ID. Propiedad </form:label></td>

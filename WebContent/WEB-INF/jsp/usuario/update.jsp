@@ -9,7 +9,7 @@
 			<tr>
 				<td><form:label path="id_usuario">ID. Usuario</form:label></td>
 				<td><form:input path="id_usuario" /></td>
-				<td><form:errors path="id_usuario" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_usuario" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_credencial">Id. Credencial </form:label></td>
@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="fechaRegistro">Fecha Registro</form:label></td>
-				<td><form:input type="date" path="fechaRegistro" /></td>
+				<td><form:input path="fechaRegistro" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="telefono">Telefono</form:label></td>

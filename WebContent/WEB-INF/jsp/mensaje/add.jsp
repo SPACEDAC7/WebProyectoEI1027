@@ -9,17 +9,17 @@
 			<tr>
 				<td><form:label path="id_mensaje">ID. Mensaje</form:label></td>
 				<td><form:input path="id_mensaje" readonly="true" /></td>
-				<td><form:errors path="id_mensaje" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336"  path="id_mensaje" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_emisor">Id. Emisor </form:label></td>
 				<td><form:input path="id_emisor" /></td>
-				<td><form:errors path="id_emisor" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_emisor" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_receptor">Id. Receptor </form:label></td>
 				<td><form:input path="id_receptor" /></td>
-				<td><form:errors path="id_receptor" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_receptor" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="asunto">Asunto</form:label></td>
@@ -32,7 +32,7 @@
 			<tr>
 				<td><form:label path="estado_vision">Estado Vision</form:label></td>
 				<td><form:input path="estado_vision" /></td>
-				<td><form:errors path="estado_vision" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="estado_vision" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Afegeix mensaje" />

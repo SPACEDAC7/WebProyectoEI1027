@@ -9,17 +9,17 @@
 			<tr>
 				<td><form:label path="id_puntuacion">ID. Puntuacion </form:label></td>
 				<td><form:input path="id_puntuacion" readonly="true" /></td>
-				<td><form:errors path="id_puntuacion" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_puntuacion" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_propiedad">ID. Propiedad</form:label></td>
 				<td><form:input path="id_propiedad" /></td>
-				<td><form:errors path="id_propiedad" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_propiedad" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_usuario">ID. Usuario</form:label></td>
 				<td><form:input path="id_usuario" /></td>
-				<td><form:errors path="id_usuario" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_usuario" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="valor_puntuacion">Valor Puntuacion</form:label></td>

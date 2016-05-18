@@ -9,7 +9,7 @@
 			<tr>
 				<td><form:label path="id_direccion">ID. Direccion</form:label></td>
 				<td><form:input path="id_direccion" /></td>
-				<td><form:errors path="id_direccion" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336"  path="id_direccion" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="calle">Calle</form:label></td>

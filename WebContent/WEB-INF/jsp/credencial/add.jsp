@@ -10,18 +10,18 @@
 					<td>
 						<form:label path="id_credencial">ID. Credencial</form:label>
 						<form:input path="id_credencial" readonly="true" />
-						<form:errors path="id_credencial" cssClass="error"/>
+						<form:errors style="color:#F44336" path="id_credencial" cssClass="error"/>
 					</td>
 				</tr>
 				<tr>
 					<td><form:label path="nick_usuario">Nick </form:label></td>
 					<td><form:input path="nick_usuario" /></td>
-					<td><form:errors path="nick_usuario" /></td>
+					<td><form:errors style="color:#F44336" path="nick_usuario" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="password">Password </form:label></td>
 					<td><form:input path="password" /></td>
-					<td><form:errors path="password" /></td>
+					<td><form:errors style="color:#F44336" path="password" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="rol">Rol</form:label></td>
@@ -33,7 +33,7 @@
           					<form:option value="propietario">Propietario</form:option>
           				</form:select>
 	          		</td>
-	          		<td><form:errors path="rol" /></td>
+	          		<td><form:errors style="color:#F44336" path="rol" /></td>
 				</tr>
 				<tr>
 					<td colspan="2"><button type="submit" class="btn btn-default">Añadir credencial</button></td>

@@ -9,12 +9,12 @@
 			<tr>
 				<td><form:label path="id_respuesta">ID. Reserva </form:label></td>
 				<td><form:input path="id_respuesta" /></td>
-				<td><form:errors path="id_respuesta" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_respuesta" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_puntuacion">ID. Usuario</form:label></td>
 				<td><form:input path="id_puntuacion" /></td>
-				<td><form:errors path="id_puntuacion" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_puntuacion" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="respuesta">ID. Propiedad</form:label></td>

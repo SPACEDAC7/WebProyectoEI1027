@@ -9,7 +9,7 @@
 			<tr>
 				<td><form:label path="id_periodo">ID. Periodo</form:label></td>
 				<td><form:input path="id_periodo" /></td>
-				<td><form:errors path="id_periodo" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_periodo" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_propiedad">ID. Propiedad </form:label></td>
@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<td><form:label path="fechaInicio">Inicio </form:label></td>
-				<td><form:input type="date" path="fechaInicio" /></td>
+				<td><form:input path="fechaInicio" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="fechaFinal">Fin</form:label></td>
-				<td><form:input type="date" path="fechaFinal" /></td>
+				<td><form:input path="fechaFinal" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Modificar periodo" />

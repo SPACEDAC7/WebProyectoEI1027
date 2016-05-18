@@ -9,12 +9,12 @@
 			<tr>
 				<td><form:label path="id_respuesta">ID. Respuesta </form:label></td>
 				<td><form:input path="id_respuesta" readonly="true"/></td>
-				<td><form:errors path="id_respuesta" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_respuesta" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="id_puntuacion">ID. Puntuacion</form:label></td>
 				<td><form:input path="id_puntuacion" /></td>
-				<td><form:errors path="id_puntuacion" cssClass="error"/></td>
+				<td><form:errors style="color:#F44336" path="id_puntuacion" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="respuesta">Respuesta</form:label></td>

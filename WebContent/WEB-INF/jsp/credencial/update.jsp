@@ -9,18 +9,29 @@
 				<tr>
 					<td><form:label path="id_credencial">ID. Credencial</form:label></td>
 					<td><form:input path="id_credencial" /></td>
+					<form:errors style="color:#F44336" path="id_credencial" cssClass="error"/>
 				</tr>
 				<tr>
 					<td><form:label path="nick_usuario">Nick </form:label></td>
 					<td><form:input path="nick_usuario" /></td>
+					<td><form:errors style="color:#F44336" path="nick_usuario" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="password">Password </form:label></td>
 					<td><form:input path="password" /></td>
+					<td><form:errors style="color:#F44336" path="password" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="rol">Rol</form:label></td>
-					<td><form:input path="rol" /></td>
+					<td>
+						<form:select path="rol">
+							<form:option value="---" selected="selected">Elige rol</form:option>
+							<form:option value="administrador">Administrador</form:option>
+          					<form:option value="inquilino">Inquilino</form:option>
+          					<form:option value="propietario">Propietario</form:option>
+          				</form:select>
+	          		</td>
+	          		<td><form:errors style="color:#F44336" path="rol" /></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Modificar credencial" />

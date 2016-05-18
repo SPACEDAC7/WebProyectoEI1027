@@ -23,15 +23,15 @@
 			</tr>
 			<tr>
 				<td><form:label path="fechaReserva">Fecha Reserva</form:label></td>
-				<td><form:input type="date" path="fechaReserva" /></td>
+				<td><form:input path="fechaReserva" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="fechaCheckIn">Fecha Check In</form:label></td>
-				<td><form:input type="date" path="fechaCheckIn" /></td>
+				<td><form:input path="fechaCheckIn" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="fechaCheckOut">Fecha Check Out</form:label></td>
-				<td><form:input type="date" path="fechaCheckOut" /></td>
+				<td><form:input path="fechaCheckOut" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="precio_reserva">Precio Reserva</form:label></td>
