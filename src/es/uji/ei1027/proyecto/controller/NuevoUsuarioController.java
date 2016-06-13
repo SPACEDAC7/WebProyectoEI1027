@@ -34,6 +34,9 @@ public class NuevoUsuarioController {
 	@Autowired
 	private DireccionDao direccionDao;
 	
+	private Direccion dir;
+	private Credencial cre;
+	
 	
 	@Autowired
 	public void setCredencialDao( CredencialDao credencialDao, UsuarioDao usuarioDao ){
@@ -41,27 +44,68 @@ public class NuevoUsuarioController {
 		this.usuarioDao = usuarioDao;
 	}
 	
+	@RequestMapping("/addDireccion")
+	public String addNuevaDireccion(HttpSession session, Model model){
+		model.addAttribute("nuevaDireccion", new Direccion());
+		return "signup/signupdireccion";
+	}
+	
+	@RequestMapping(value="/addDireccion", method=RequestMethod.POST)
+	public String processAddDirectionSubmit(@ModelAttribute("nuevaDireccion") Direccion direccion, 
+			BindingResult bindingResult, Model model) {
+		int idDireccion = direccionDao.nuevoIdDireccion();
+		direccion.setId_direccion(idDireccion);
+		DireccionValidator direccionValidator = new DireccionValidator();
+		direccionValidator.validate(direccion, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Algo ha fallado al crear la direccion");
+            return "signup/signupdireccion";
+        }
+		//direccionDao.addDireccion(direccion);
+		model.addAttribute("nuevoUsuario", new Usuario());
+		dir = direccion;
+		return "signup/signupusuario";
+	}
+	
+	@RequestMapping(value="/addUsuario", method=RequestMethod.POST)
+	public String processAddUsuarioSubmit(@ModelAttribute("nuevoUsuario") Usuario usuario, 
+			BindingResult bindingResult, Model model) {
+		int idUsuario = usuarioDao.nuevoIdUsuario();
+		usuario.setId_usuario(idUsuario);
+		usuario.setId_credencial(cre.getId_credencial());
+		usuario.setId_direccion(dir.getId_direccion());
+		UsuarioValidator usuarioValidator = new UsuarioValidator();
+		usuarioValidator.validate(usuario, bindingResult);
+		if (bindingResult.hasErrors()) {
+			System.out.println("Algo ha fallado al crear el usuario");
+            return "signup/signupusuario";
+        }
+		
+		direccionDao.addDireccion(dir);
+		credencialDao.addCredencial(cre);
+		usuario.setEstado_usuario(true);
+		usuarioDao.addUsuario(usuario);
+		return "signup/usuariocreado";
+	}
+	
+	
+	
 	@RequestMapping("/addUser")
 	public String addNuevoUsuarioYCredencial(HttpSession session, Model model){
-		model.addAttribute("nuevoUsuario", new Usuario());
-		model.addAttribute("nuevaDireccion", new Direccion());
 		model.addAttribute("nuevaCredencial", new Credencial());
 		return "signup/signup";
 	}
 	
 	@RequestMapping(value="/addUser", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("nuevoUsuario") Usuario usuario,
-			@ModelAttribute("nuevaDireccion") Direccion direccion, @ModelAttribute("nuevaCredencial") Credencial credencial, 
-			BindingResult bindingResult) {
+	public String processAddSubmit(@ModelAttribute("nuevoUsuario") Usuario usuario, @ModelAttribute("nuevaCredencial") Credencial credencial, BindingResult bindingResult, HttpSession session, Model model) {
 		
 		//Conseguimos los nuevos ids para añadir los datos a las tablas
-		int idDireccion = direccionDao.nuevoIdDireccion();
 		int idCredencial = credencialDao.nuevoIdCredencial();
-		int idUsuario = usuarioDao.nuevoIdUsuario();
 		
 		
 		//Crear y anadir la credencial
 		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
+		System.out.println(credencial.getNick_usuario());
 		credencial.setId_credencial(idCredencial);		
 		CredencialValidator credencialValidator = new CredencialValidator();
 		credencialValidator.setCredencialDao(credencialDao);
@@ -71,25 +115,28 @@ public class NuevoUsuarioController {
             return "signup/signup";
         }
 		credencial.setPassword(passwordEncrypter.encryptPassword(credencial.getPassword()));
+		model.addAttribute("nuevaDireccion", new Direccion());
+		cre = credencial;
+		return "/signup/signupdireccion";
 		
-		DireccionValidator direccionValidator = new DireccionValidator();
-		UsuarioValidator usuarioValidator = new UsuarioValidator();
+		/*UsuarioValidator usuarioValidator = new UsuarioValidator();
 		
 		usuario.setId_usuario(idUsuario);
 		
-		direccionValidator.validate(direccion, bindingResult);
+		
+		/*direccionValidator.validate(direccion, bindingResult);
 		if (bindingResult.hasErrors()) {
-			
+			System.out.println("Algo ha fallado al crear la direccion");
             return "signup/signup";
         }
 		
-				
+		
 		//Crear y anadir la direccion
 		direccion.setId_direccion(idDireccion);
-		/*direccionValidator.validate(direccion, bindingResult);
+		direccionValidator.validate(direccion, bindingResult);
 		if (bindingResult.hasErrors()) {
             return "addUser";
-        }*/
+        }
 		
 		
 		
@@ -101,17 +148,17 @@ public class NuevoUsuarioController {
 		
 		usuario.setFecha_registro(this.fechaDeHoy());
 		usuario.setEstado_usuario(true);
-		/*usuarioValidator.validate(usuario, bindingResult);
+		usuarioValidator.validate(usuario, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "addUser";
-		}*/
+			System.out.println("Algo ha fallado al crear el usuario");
+			return "signup/signup";
+		}
 		
 		
-		//credencialDao.addCredencial(credencial);
-		//direccionDao.addDireccion(direccion);
-		//usuarioDao.addUsuario(usuario);
+		credencialDao.addCredencial(credencial);
+		usuarioDao.addUsuario(usuario);
 		
-		return "redirect:../index.jsp";
+		return "redirect:../index.jsp";*/
 	}
 	
 	private Date fechaDeHoy() {

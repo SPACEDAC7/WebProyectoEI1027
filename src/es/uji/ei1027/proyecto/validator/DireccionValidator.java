@@ -15,10 +15,11 @@ public class DireccionValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors){
 		Direccion direccion = (Direccion) obj;
+		System.out.println("He entrado en direccionValidator");
 		if(direccion.getId_direccion()<0){
 			errors.rejectValue("id_direccion", "obligatori", "Has de introducir un valor superior a 0");
 		}
-		if ( direccion.getNumero() <= 0 ) {
+		if ( direccion.getNumero() < 0 ) {
 			errors.rejectValue("numero", "obligatori", "Número de dirección inválido");
 		}
 		if ( direccion.getCodigo_postal() <= 0 ) {

@@ -32,6 +32,20 @@
 				<td><form:input path="ano" /></td>
 			</tr>
 			<tr>
+			<div class="container">
+    			<div class="row">
+        			<div class='col-sm-6'>
+            			<input type='text' class="form-control" id='datetimepicker4' />
+        			</div>
+        			<script type="text/javascript">
+            			$(function () {
+                			$('#datetimepicker4').datetimepicker();
+            			});
+        			</script>
+    			</div>
+			</div>
+			</tr>
+			<tr>
 				<td colspan="2"><input type="submit" value="Afegeix factura" />
 				</td>
 			</tr>

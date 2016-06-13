@@ -36,7 +36,7 @@ public class CredencialValidator implements Validator{
 				errors.rejectValue("nick_usuario", "Ya existe", "Ya existe un usuario con ese nick");
 		}
 		if (credencial.getPassword().equals(""))
-			errors.rejectValue("password", "obligatori", "Hay que introducir un valor");
+			errors.rejectValue("password", "obligatori", "Hay que introducir una contraseña");
 		if (credencial.getRol().equals("---"))
 			errors.rejectValue("rol", "obligatori", "Hay que elegir un rol");
 	}
