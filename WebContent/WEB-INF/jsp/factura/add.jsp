@@ -1,6 +1,17 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+$('.datepicker').datepicker()
+<head>
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.min.css" />
+    <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
+        <script>
+        $( document ).ready(function() {
+            $('#fecha').datepicker();
+        });
+    </script>
+</head>
 <t:paginabasica title="Nueva factura">
 	<jsp:body>
 	<h2>Nueva Factura</h2>
@@ -32,18 +43,9 @@
 				<td><form:input path="ano" /></td>
 			</tr>
 			<tr>
-			<div class="container">
-    			<div class="row">
-        			<div class='col-sm-6'>
-            			<input type='text' class="form-control" id='datetimepicker4' />
-        			</div>
-        			<script type="text/javascript">
-            			$(function () {
-                			$('#datetimepicker4').datetimepicker();
-            			});
-        			</script>
-    			</div>
-			</div>
+				<td>
+			    <input type="text" id="fecha" name="fecha" />
+  				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Afegeix factura" />
