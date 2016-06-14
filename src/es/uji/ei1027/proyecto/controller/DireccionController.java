@@ -110,12 +110,19 @@ public class DireccionController {
 	@RequestMapping(value="/update/{id_direccion}", method = RequestMethod.POST) 
 	public String processUpdateSubmit(@PathVariable int id_direccion, 
                             @ModelAttribute("direccion") Direccion direccion, 
-                            BindingResult bindingResult) {
+                            BindingResult bindingResult, HttpSession session) {
 		 if (bindingResult.hasErrors()) 
 			 return "direccion/update";
-		 direccionDao.updateDireccion(direccion);
-		 return "redirect:../list.html"; 
+		 session.setAttribute("direccion_modif", direccion);
+		 return "direccion/confirModif"; 
 	  }
+	
+	@RequestMapping(value="/update/confirmado")
+	public String modificarDireccion(@ModelAttribute("direccion") Direccion direccion, HttpSession session){
+		direccion = (Direccion)session.getAttribute("direccion_modif");
+		direccionDao.updateDireccion(direccion);
+		return "direccion/satisfactorio";
+	}
 			
 	//Borrar	
 	@RequestMapping(value="/delete/{id_direccion}")
