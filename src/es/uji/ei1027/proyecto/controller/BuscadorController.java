@@ -29,12 +29,19 @@ private PropiedadDao propiedadDao;
 		this.propiedadDao = propiedadDao;
 	}
 	//Listar
-	@RequestMapping("/list")
-	public String listPropiedades(Model model){
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+	public String listPropiedades(Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		String retorno;
-	
-		model.addAttribute("propiedades", propiedadDao.getPropiedades());
-		retorno = "buscador/list";
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:propiedad/add.html");
+			retorno = "login";
+		} else {
+			Propiedad propiedad = new Propiedad();
+			model.addAttribute("propiedad", propiedad);
+			retorno = "busqueda/list";
+		}
 		return retorno;
 	}
 }

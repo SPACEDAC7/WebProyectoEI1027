@@ -49,6 +49,12 @@ public class PropiedadDao {
 					+ ", precio_propiedad, id_direccion, url_mapa from propiedad", new PropiedadMapper());
 	}
 	
+	public List<Propiedad> getPropiedadesBuscador(){
+		return this.jdbcTemplate.query("select id_propiedad, id_usuario, titulo, descripcion"
+				+ ", tipo, capacidad, num_habitaciones, num_camas, area"
+				+ ", precio_propiedad, id_direccion, url_mapa from propiedad", new PropiedadMapper());
+	}
+	
 	public Propiedad getPropiedad(int id_propiedad) {
 		return this.jdbcTemplate.queryForObject("select id_propiedad, id_usuario, titulo, descripcion"
 					+ ", tipo, capacidad, num_habitaciones, num_camas, area"
