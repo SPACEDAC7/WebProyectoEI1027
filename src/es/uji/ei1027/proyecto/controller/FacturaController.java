@@ -79,7 +79,9 @@ public class FacturaController {
 		facturaValidator.validate(factura, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "factura/add";
-		factura.crearFecha(factura.getDia(), factura.getMes()-1, factura.getAno());
+		System.out.println("Fecha que recoge del string " + factura.getFechaString());
+		factura.crearFecha();
+		//factura.crearFecha(factura.getDia(), factura.getMes()-1, factura.getAno());
 		facturaDao.addFactura(factura);
 		return "redirect:list.html";
 	}
@@ -111,7 +113,7 @@ public class FacturaController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "factura/update";
-		factura.crearFecha(factura.getDia(), factura.getMes()-1, factura.getAno());
+		factura.crearFecha();
 		facturaDao.updateFactura(factura);
 		return "redirect:../list.html"; 
 	}

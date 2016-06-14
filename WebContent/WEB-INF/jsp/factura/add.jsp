@@ -1,17 +1,7 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
-$('.datepicker').datepicker()
-<head>
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.min.css" />
-    <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
-        <script>
-        $( document ).ready(function() {
-            $('#fecha').datepicker();
-        });
-    </script>
-</head>
+<t:datepicker></t:datepicker>
 <t:paginabasica title="Nueva factura">
 	<jsp:body>
 	<h2>Nueva Factura</h2>
@@ -30,26 +20,22 @@ $('.datepicker').datepicker()
 				<td><form:label path="precio_factura">Precio Factura</form:label></td>
 				<td><form:input path="precio_factura" /></td>
 			</tr>
-				<tr>
+			<tr>
 				<td><form:label path="iva">IVA</form:label></td>
-				<td><form:input path="iva" /></td>
+				<td><form:select path="iva">
+						<form:option value="21" selected="selected">21%</form:option>
+						<form:option value="10">10%</form:option>
+          			</form:select>
+          		</td>
 			</tr>
 			<tr>
-				<td><form:label path="dia">Día</form:label></td>
-				<td><form:input path="dia" /></td>
-				<td><form:label path="mes">Mes</form:label></td>
-				<td><form:input path="mes" /></td>
-				<td><form:label path="ano">Año</form:label></td>
-				<td><form:input path="ano" /></td>
+			    <td><form:label path="fechaString">Fecha: </form:label></td>
+			    <td><form:input path="fechaString" id="datepicker"></form:input></td>
+			    <td><form:errors style="color:#F44336" path="fechaString" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td>
-			    <input type="text" id="fecha" name="fecha" />
-  				</td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Afegeix factura" />
-				</td>
+				<td><input class="btn btn-primary" type="submit" value="Crear Factura" />
+				<a href="${pageContext.request.contextPath}/factura/list.html"><input class="btn btn-danger" type="button" value="Cancelar"></a></td>
 			</tr>
 		</table>
 	</form:form>

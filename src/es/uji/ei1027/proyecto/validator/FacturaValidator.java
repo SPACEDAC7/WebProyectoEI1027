@@ -17,8 +17,10 @@ public class FacturaValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors){
 		Factura factura = (Factura)obj;
-		if( factura.getId_factura()<0)
+		if( factura.getId_factura() <= 0 )
 			errors.rejectValue("id_factura", "obligatori", "Hay que introducir un valor");
+		if ( factura.getFechaString() == "" )
+			errors.rejectValue("fechaString", "obligatori", "Es obligatorio introducir una fecha");
 		//Aqui todas las cosas que queramos validar
 	}
 	

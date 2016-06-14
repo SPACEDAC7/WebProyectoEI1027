@@ -42,7 +42,6 @@ public class FacturaDao {
 	
 	public Factura getFactura(int id_factura) {
 		Factura factura = this.jdbcTemplate.queryForObject("select id_factura, id_reserva, fecha_factura, precio_factura, iva from factura where id_factura=?", new Object[] {id_factura}, new FacturaMapper());
-		factura.rellenarDiaMesAno();
 		return factura;
 	}
 	

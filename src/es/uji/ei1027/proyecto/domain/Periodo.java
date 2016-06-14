@@ -1,6 +1,7 @@
 package es.uji.ei1027.proyecto.domain;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Periodo {
 
@@ -47,9 +48,20 @@ public class Periodo {
 	
 	public void crearFechas() {
 		//Convierte una fecha tipo String con el formato dd/mm/aaaa a una tipo Date
-		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		/*ConvertidorDeFechas c = new ConvertidorDeFechas();
 		inicio = c.convertirFecha(fechaInicio);
-		fin = c.convertirFecha(fechaFinal);
+		fin = c.convertirFecha(fechaFinal);*/
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			java.util.Date d = sdf.parse(this.fechaInicio);
+			this.inicio = new Date(d.getTime());
+			d = sdf.parse(this.fechaFinal);
+			this.fin = new Date(d.getTime());
+		} catch (Exception ex) {
+			System.out.println("Error de conversión " + ex.getMessage());
+		}
+		
 	}
 	
 	public void convertirDateADiaMesAno() {
