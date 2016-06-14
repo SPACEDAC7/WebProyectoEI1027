@@ -12,7 +12,7 @@ public class Periodo {
 	//Comentario de prueba
 	
 	//Estos dos atributos no tienen nada que ver con la base de datos
-	//Únicamente se utilizan para poder mostrar y solicitar dechas en formato dd/mm/aaaa
+	//Únicamente se utilizan para poder mostrar y solicitar fechas
 	private String fechaInicio;
 	private String fechaFinal;
 	

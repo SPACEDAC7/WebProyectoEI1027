@@ -101,6 +101,20 @@ public class PropiedadDao {
 		this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", id_propiedad);
 	}
 	
+	public boolean existePropiedad(int idPropiedad) {
+		String sql = "SELECT id_propiedad from propiedad where id_propiedad = ?";
+		int id;
+		try {
+			id = this.jdbcTemplate.queryForObject(sql, Integer.class, idPropiedad);
+		} catch (Exception ex) {
+			id = -1;
+		}
+		if ( id == -1 )
+			return false;
+		else
+			return true;
+	}
+	
 	public int nuevoIdPropiedad() {
 		//Consulta cual es el último id_propiedad y devuelve ese número +1 para una nueva propiedad
 		String sql = "SELECT MAX(id_propiedad) from propiedad";

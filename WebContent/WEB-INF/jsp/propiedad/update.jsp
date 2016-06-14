@@ -8,7 +8,7 @@
 		<table class="table table-condensed">
 			<tr>
 				<td><form:label path="id_propiedad">ID. Propiedad</form:label></td>
-				<td><form:input path="id_propiedad" /></td>
+				<td><form:input path="id_propiedad" readonly="true"/></td>
 				<td><form:errors style="color:#F44336" path="id_propiedad" cssClass="error"/></td>
 			</tr>
 			<tr>

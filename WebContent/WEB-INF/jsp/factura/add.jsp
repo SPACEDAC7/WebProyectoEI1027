@@ -15,10 +15,12 @@
 			<tr>
 				<td><form:label path="id_reserva">ID. Reserva</form:label></td>
 				<td><form:input path="id_reserva" /></td>
+				<td><form:errors style="color:#F44336"  path="id_reserva" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="precio_factura">Precio Factura</form:label></td>
 				<td><form:input path="precio_factura" /></td>
+				<td><form:errors style="color:#F44336"  path="precio_factura" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="iva">IVA</form:label></td>
@@ -30,7 +32,7 @@
 			</tr>
 			<tr>
 			    <td><form:label path="fechaString">Fecha: </form:label></td>
-			    <td><form:input path="fechaString" id="datepicker"></form:input></td>
+			    <td><form:input path="fechaString" class="datepicker"></form:input></td>
 			    <td><form:errors style="color:#F44336" path="fechaString" cssClass="error"/></td>
 			</tr>
 			<tr>

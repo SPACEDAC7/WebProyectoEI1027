@@ -74,6 +74,7 @@ public class NuevoUsuarioController {
 		usuario.setId_usuario(idUsuario);
 		usuario.setId_credencial(cre.getId_credencial());
 		usuario.setId_direccion(dir.getId_direccion());
+		usuario.setFecha_registro(this.fechaDeHoy());
 		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		usuarioValidator.validate(usuario, bindingResult);
 		if (bindingResult.hasErrors()) {

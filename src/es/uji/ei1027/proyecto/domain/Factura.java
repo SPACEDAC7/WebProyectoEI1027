@@ -40,7 +40,6 @@ public class Factura {
 		try {
 			java.util.Date d = sdf.parse(this.fechaString);
 			this.fecha_factura = new Date(d.getTime());
-			System.out.println(this.fecha_factura);
 		} catch (Exception ex) {
 			System.out.println("Error de conversión " + ex.getMessage());
 		}
@@ -90,6 +89,12 @@ public class Factura {
 	public String toString() {
 		return "Factura [idFactura=" + id_factura + ", idReserva=" + id_reserva + ", fechaFactura="
 				+ fecha_factura.toString() + ", precioFactura=" + precio_factura + ", iva=" + iva + "]";
+	}
+	
+	public void convertirDateADiaMesAno() {
+		//Convierte una fecha tipo Date a una fecha tipo String con el formato dd/mm/aaaa
+		ConvertidorDeFechas c = new ConvertidorDeFechas();
+		this.fechaString = c.convertirFecha(this.fecha_factura);
 	}
 
 	

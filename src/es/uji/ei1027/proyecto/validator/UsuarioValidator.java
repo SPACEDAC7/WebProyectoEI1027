@@ -27,11 +27,19 @@ public class UsuarioValidator implements Validator {
 		if ( usuario.getApellido().equals("") ) {
 			errors.rejectValue("apellido", "obligatori", "Los apellidos del usuario no pueden estar vacíos");
 		}
+		if ( usuario.getFechaRegistro().equals("") )
+			errors.rejectValue("fechaRegistro", "obligatori", "Hay que introducir una fecha");
 		if ( usuario.getEmail().equals("") ) {
 			errors.rejectValue("email", "obligatori", "El email del usuario no puede estar vacío");
 		}
 		if ( usuario.getNif().equals("") ) {
 			errors.rejectValue("nif", "obligatori", "El nif del usuario no puede estar vacío");
+		} else {
+			//Campo NIF no vacío
+			String nif = usuario.getNif();
+			if ( nif.length() > 9 || nif.length() < 9)
+				//El NIF no tiene 9 caracteres
+				errors.rejectValue("nif", "obligatori", "Formato de NIF incorrecto");
 		}
 		if ( usuario.getTelefono().equals("") ) {
 			errors.rejectValue("telefono", "obligatori", "El telefono del usuario no puede estar vacío");

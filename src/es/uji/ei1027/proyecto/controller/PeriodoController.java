@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.PeriodoDao;
+import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Periodo;
@@ -22,6 +24,9 @@ import es.uji.ei1027.proyecto.validator.PeriodoValidator;
 @RequestMapping("/periodo")
 public class PeriodoController {
 	private PeriodoDao periodoDao;
+	
+	@Autowired
+	private PropiedadDao propiedadDao;
 	
 	@Autowired
 	public void setPeriodoDao( PeriodoDao periodoDao){
@@ -79,6 +84,7 @@ public class PeriodoController {
 	public String processAddSubmit(@ModelAttribute("periodo") Periodo periodo,
 			BindingResult bindingResult) { 
 		PeriodoValidator periodoValidator = new PeriodoValidator();
+		periodoValidator.setPropiedadDao(propiedadDao);
 		periodoValidator.validate(periodo, bindingResult);
 		if (bindingResult.hasErrors())
 			return "periodo/add";
@@ -115,9 +121,13 @@ public class PeriodoController {
 	public String processUpdateSubmit(@PathVariable int id_periodo, 
 			@ModelAttribute("periodo") Periodo periodo, 
 			BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) 
+		PeriodoValidator periodoValidator = new PeriodoValidator();
+		periodoValidator.setPropiedadDao(propiedadDao);
+		periodoValidator.validate(periodo, bindingResult);
+		if (bindingResult.hasErrors())
 			return "periodo/update";
 		periodo.crearFechas();
+		
 		periodoDao.updatePeriodo(periodo);
 		return "redirect:../list.html"; 
 	}

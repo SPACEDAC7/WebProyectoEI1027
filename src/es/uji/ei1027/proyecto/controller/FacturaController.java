@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.FacturaDao;
+import es.uji.ei1027.proyecto.dao.ReservaDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Factura;
 import es.uji.ei1027.proyecto.domain.Usuario;
@@ -22,6 +23,9 @@ import es.uji.ei1027.proyecto.validator.FacturaValidator;
 public class FacturaController {
 	private FacturaDao facturaDao;
 
+	@Autowired
+	private ReservaDao reservaDao;
+	
 	@Autowired
 	public void setFacturaDao( FacturaDao facturaDao){
 		this.facturaDao = facturaDao;
@@ -76,12 +80,11 @@ public class FacturaController {
 	public String processAddSubmit(@ModelAttribute("factura") Factura factura,
 			BindingResult bindingResult) { 
 		FacturaValidator facturaValidator = new FacturaValidator();
+		facturaValidator.setReservaDao(reservaDao);
 		facturaValidator.validate(factura, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "factura/add";
-		System.out.println("Fecha que recoge del string " + factura.getFechaString());
 		factura.crearFecha();
-		//factura.crearFecha(factura.getDia(), factura.getMes()-1, factura.getAno());
 		facturaDao.addFactura(factura);
 		return "redirect:list.html";
 	}
@@ -97,7 +100,10 @@ public class FacturaController {
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
-				model.addAttribute("factura", facturaDao.getFactura(id_factura));
+				Factura factura = facturaDao.getFactura(id_factura);
+				factura.convertirDateADiaMesAno();
+				session.setAttribute("ivaFactura", factura.getIva());
+				model.addAttribute("factura", factura);
 				retorno = "factura/update";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
@@ -111,7 +117,10 @@ public class FacturaController {
 	public String processUpdateSubmit(@PathVariable int id_factura, 
 			@ModelAttribute("factura") Factura factura, 
 			BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) 
+		FacturaValidator facturaValidator = new FacturaValidator();
+		facturaValidator.setReservaDao(reservaDao);
+		facturaValidator.validate(factura, bindingResult); 
+		if (bindingResult.hasErrors())
 			return "factura/update";
 		factura.crearFecha();
 		facturaDao.updateFactura(factura);

@@ -1,5 +1,8 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +78,9 @@ public class UsuarioController {
 	public String processAddSubmit(@ModelAttribute("usuario") Usuario usuario,
 			BindingResult bindingResult) { 
 		UsuarioValidator usuarioValidator = new UsuarioValidator();
+		usuario.setFecha_registro(this.fechaDeHoy());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		usuario.setFechaRegistro(sdf.format(this.fechaDeHoy()));
 		usuarioValidator.validate(usuario, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "usuario/add";
@@ -110,7 +116,9 @@ public class UsuarioController {
 	public String processUpdateSubmit(@PathVariable int id_usuario, 
 			@ModelAttribute("usuario") Usuario usuario, 
 			BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) 
+		UsuarioValidator usuarioValidator = new UsuarioValidator();
+		usuarioValidator.validate(usuario, bindingResult); 
+		if (bindingResult.hasErrors())
 			return "usuario/update";
 		usuario.crearFechas();
 		usuarioDao.updateUsuario(usuario);
@@ -138,4 +146,12 @@ public class UsuarioController {
 		}
 		return retorno;
 	}
+	
+	private Date fechaDeHoy() {
+		java.util.Date fecha = new java.util.Date();
+		Date fechaSQL = new Date(fecha.getTime());
+		return fechaSQL;
+		
+	}
+	
 }

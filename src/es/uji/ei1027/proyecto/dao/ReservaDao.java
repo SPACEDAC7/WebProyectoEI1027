@@ -75,5 +75,19 @@ public class ReservaDao {
 		return max+1;
 	}
 	
+	public boolean existeReserva(int idReserva) {
+		String sql = "SELECT id_reserva from reserva where id_reserva = ?";
+		int id;
+		try {
+			id = this.jdbcTemplate.queryForObject(sql, Integer.class, idReserva);
+		} catch (Exception ex) {
+			id = -1;
+		}
+		if ( id == -1 ) 
+			return false;
+		else
+			return true;
+	}
+	
 
 }

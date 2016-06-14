@@ -158,7 +158,12 @@ public class Usuario {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	
+	private Date fechaDeHoy() {
+		java.util.Date fecha = new java.util.Date();
+		Date fechaSQL = new Date(fecha.getTime());
+		return fechaSQL;
+		
+	}
 	
 	
 }
