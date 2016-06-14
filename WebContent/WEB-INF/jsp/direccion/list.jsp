@@ -32,5 +32,6 @@
 	</table>
 	<a class="btn btn-primary" href="add.html">Afegeix Direccion</a>
 	<a class="btn btn-default" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
+	
 	</jsp:body>
 </t:paginabasica>

@@ -35,8 +35,13 @@ public class CredencialValidator implements Validator{
 			if ( credencialDao.existeCredencialConEsteNombre(credencial.getNick_usuario()) )
 				errors.rejectValue("nick_usuario", "Ya existe", "Ya existe un usuario con ese nick");
 		}
-		if (credencial.getPassword().equals(""))
+		if (credencial.getPassword().equals("")){
 			errors.rejectValue("password", "obligatori", "Hay que introducir una contraseña");
+		}else{
+			if (credencial.getPassword().length() < 8){
+				errors.rejectValue("password", "obligatori", "La contraseña ha de tener 8 caracteres mínimo");
+			}
+		}
 		if (credencial.getRol().equals("---"))
 			errors.rejectValue("rol", "obligatori", "Hay que elegir un rol");
 	}

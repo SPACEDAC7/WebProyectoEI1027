@@ -9,27 +9,27 @@
 	        		<tr>
         				<td><form:label path="nombre">Nombre:</form:label></td>
             			<td><form:input class="form-control" path="nombre" /></td>
-            			<td><form:errors path="nombre" cssClass="error" /></td>
+            			<td><form:errors style="color:#F44336" path="nombre" cssClass="error" /></td>
         			</tr>
             		<tr>
         				<td><form:label path="apellido">Apellidos:</form:label></td>
             			<td><form:input class="form-control" path="apellido" /></td>
-            			<td><form:errors path="apellido" cssClass="error" /></td>
+            			<td><form:errors style="color:#F44336" path="apellido" cssClass="error" /></td>
         			</tr>
             		<tr>
         				<td><form:label path="nif">NIF:</form:label></td>
             			<td><form:input class="form-control" path="nif" /></td>
-            			<td><form:errors path="nif" cssClass="error" /></td>
+            			<td><form:errors style="color:#F44336" path="nif" cssClass="error" /></td>
         			</tr>
         			<tr>
 		        		<td><form:label path="email">E-mail:</form:label></td>
 		            	<td><form:input class="form-control" path="email" /></td>
-		            	<td><form:errors path="email" cssClass="error" /></td>
+		            	<td><form:errors style="color:#F44336" path="email" cssClass="error" /></td>
 		        	</tr>
 		            <tr>
 		        		<td><form:label path="telefono">Teléfono:</form:label></td>
 		            	<td><form:input class="form-control" path="telefono" /></td>
-		            	<td><form:errors path="telefono" cssClass="error" /></td>
+		            	<td><form:errors style="color:#F44336" path="telefono" cssClass="error" /></td>
 		        	</tr>
 		</table>
         	<tr>

@@ -9,12 +9,12 @@
         <div class="form-group">
             <form:label path="nick_usuario">Nom d'usuari:</form:label>
             <form:input class="form-control" path="nick_usuario" />
-            <form:errors path="nick_usuario" cssClass="error" />
+            <form:errors style="color:#F44336" path="nick_usuario" cssClass="error" />
         </div>
         <div class="form-group">
             <form:label path="password">Contrasenya:</form:label>
             <form:password class="form-control" path="password" />
-            <form:errors path="password" cssClass="error" />
+            <form:errors style="color:#F44336" path="password" cssClass="error" />
         </div>        
         <input type="submit" class="btn btn-primary" value="Accedir" />
     </form:form>

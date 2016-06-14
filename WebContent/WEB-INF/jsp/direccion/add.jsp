@@ -14,22 +14,27 @@
 			<tr>
 				<td><form:label path="calle">Calle</form:label></td>
 				<td><form:input path="calle" /></td>
+				<td><form:errors style="color:#F44336"  path="calle" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="numero">Numero</form:label></td>
 				<td><form:input path="numero" /></td>
+				<td><form:errors style="color:#F44336"  path="numero" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="codigo_postal">Codigo Postal</form:label></td>
 				<td><form:input path="codigo_postal" /></td>
+				<td><form:errors style="color:#F44336"  path="codigo_postal" cssClass="error"/></td>
 			</tr>
 				<tr>
 				<td><form:label path="localidad">Localidad</form:label></td>
 				<td><form:input path="localidad" /></td>
+				<td><form:errors style="color:#F44336"  path="localidad" cssClass="error"/></td>
 			</tr>
 				<tr>
 				<td><form:label path="provincia">Provincia</form:label></td>
 				<td><form:input path="provincia" /></td>
+				<td><form:errors style="color:#F44336"  path="provincia" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input class="btn btn-primary" type="submit" value="Afegeix direccion" />

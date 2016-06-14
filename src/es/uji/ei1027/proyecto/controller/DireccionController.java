@@ -122,6 +122,7 @@ public class DireccionController {
 	 public String processDelete(@PathVariable int id_direccion, HttpSession session, Model model) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		String retorno;
+		session.setAttribute("id_eliminar", id_direccion);
 		if (usuario == null) {
 			model.addAttribute("credencial", new Credencial());
 			session.setAttribute("nextURL", "redirect:direccion/delete/" + id_direccion + ".html");
@@ -129,13 +130,28 @@ public class DireccionController {
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
-				direccionDao.deleteDireccion(id_direccion);
-			    retorno = "redirect:../list.html";
+			    retorno = "direccion/confirmacion";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
 				retorno = "redirect:../index.jsp";
 			}
 		}
 		return retorno;  
-	 }	 
+	 }
+	
+	@RequestMapping(value="/delete/confirmado")
+	public String deleteDireccion(HttpSession session, Model model){
+		System.out.println("Ha entrado en el metodo de borrar la dirección");
+		String retorno;
+		String rol = (String) session.getAttribute("rol");
+		int id_direccion = (Integer)session.getAttribute("id_eliminar");
+		if ( rol.equals("administrador") ) {
+			direccionDao.deleteDireccion(id_direccion);
+		    retorno = "direccion/satisfactorio";
+		} else {
+			//Acceso no autorizado porque el rol del usuario no es administrador
+			retorno = "redirect:../index.jsp";
+		}
+	return retorno;
+	}
 }

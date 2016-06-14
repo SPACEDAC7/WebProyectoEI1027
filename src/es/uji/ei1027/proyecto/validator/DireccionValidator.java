@@ -19,11 +19,11 @@ public class DireccionValidator implements Validator {
 		if(direccion.getId_direccion()<0){
 			errors.rejectValue("id_direccion", "obligatori", "Has de introducir un valor superior a 0");
 		}
-		if ( direccion.getNumero() < 0 ) {
-			errors.rejectValue("numero", "obligatori", "NÃºmero de direcciÃ³n invÃ¡lido");
+		if ( direccion.getNumero() <= 0 ) {
+			errors.rejectValue("numero", "obligatori", "Número de dirección inválido");
 		}
 		if ( direccion.getCodigo_postal() <= 0 ) {
-			errors.rejectValue("codigo_postal", "obligatori", "CÃ³digo postal invÃ¡lido");
+			errors.rejectValue("codigo_postal", "obligatori", "Código postal inválido");
 		}
 		if (direccion.getProvincia().equals("")) {
 			errors.rejectValue("provincia", "obligatori", "El campo provincia no puede estar en blanco");
