@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.PropiedadServicioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.PropiedadServicio;
@@ -22,6 +23,9 @@ import es.uji.ei1027.proyecto.validator.PropiedadServicioValidator;
 public class PropiedadServicioController {
 private PropiedadServicioDao propiedadServicioDao;
 	
+	@Autowired
+	PropiedadDao pripiedadDao;
+
 	@Autowired
 	public void setPropiedadServicioDao( PropiedadServicioDao propiedadPuntuacionDao){
 		this.propiedadServicioDao = propiedadPuntuacionDao;
@@ -61,6 +65,7 @@ private PropiedadServicioDao propiedadServicioDao;
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
 				model.addAttribute("propiedadServicio", new PropiedadServicio());
+				model.addAttribute("propiedades", pripiedadDao.getPropiedades());
 				retorno = "propiedadServicio/add";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
