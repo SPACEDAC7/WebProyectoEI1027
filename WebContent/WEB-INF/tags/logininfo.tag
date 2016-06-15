@@ -3,7 +3,7 @@
 <!-- La sessió està disponible automàticament en l’objecte "session" -->
 <c:set var="user" scope="request" value='${session.getAttribute("user")}' />
 <c:set var="rol" scope="request" value='${session.getAttribute("rol")}' />
-<p style="margin: 0px 0px 0px 0px;" class="loggeduser">
+<!-- <p style="margin: 0px 0px 0px 0px;" class="loggeduser">  -->
 	<c:choose>
 		<c:when test='${usuario == null}'>
 			<t:botonmain></t:botonmain>
@@ -46,7 +46,7 @@
 			<ul class="nav navbar-nav navbar-right">
 	<li>
 		<form action="${pageContext.request.contextPath}/logout.html" method="get">
-			<button type="submit" class="btn btn-danger boton-main boton-login centrado">
+			<button type="submit" class="btn btn-danger boton-main boton-login entrar centrado">
 				<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 				Salir
 			</button>
@@ -55,4 +55,4 @@
 </ul>
 		</c:when>
 	</c:choose>
-</p>
+<!-- </p>  -->

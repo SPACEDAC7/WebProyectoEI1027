@@ -19,8 +19,6 @@
 
 <!-- Bootstrap -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/botones-w8.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/easyrent.css" rel="stylesheet">
 <!-- ISRA INNOVACIONES -->
@@ -43,38 +41,39 @@
 				<t:logotipo></t:logotipo>
 				<!-- El logotipo se crea para diferenciar si es un administrador o no y poner el diseño diferente -->
 			</div>
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-		
-				<ul class="nav navbar-nav">
-				
-				<c:choose>
-					<c:when test='${title == "EASY RENT"}'>
-						<li class="active">
-					</c:when>
-					<c:otherwise>
-						<li>
-					</c:otherwise>
-				</c:choose>
-					<a href="${pageContext.request.contextPath}/">Página Principal</a></li>
-				<c:set var="rol" scope="request" value='${session.getAttribute("rol")}'/>
-				<c:choose>
-					<c:when test='${rol == "administrador"}'>
-						<c:choose>
-							<c:when test='${title == "Gestiones"}'>
-								<li class="active">
-							</c:when>
-							<c:otherwise>
-								<li>
-							</c:otherwise>
-						</c:choose>
-					<a href="${pageContext.request.contextPath}/gestiones/listGestiones.html">Gestiones</a></li>
-					</c:when>
-				</c:choose>
-				<li><a href="#modal-signin" class="signin" data-toggle="modal" data-target="#modal-signin">Entrar</a></li>
-				<li><a href="#" class="signup" data-toggle="modal" data-target="#modal-signup">Registrarte</a></li>
+			<div class="collapse navbar-collapse" id="navbar-top">
+				<t:logininfo></t:logininfo>
+				<ul class="nav navbar-nav navbar-right">
+					<c:choose>
+						<c:when test='${title == "EASY RENT"}'>
+							<li class="active">
+						</c:when>
+						<c:otherwise>
+							<li>
+						</c:otherwise>
+					</c:choose>
+					<a href="${pageContext.request.contextPath}/">Página Principal</a>
+					</li>
+					<c:set var="rol" scope="request"
+						value='${session.getAttribute("rol")}' />
+					<c:choose>
+						<c:when test='${rol == "administrador"}'>
+							<c:choose>
+								<c:when test='${title == "Gestiones"}'>
+									<li class="active">
+								</c:when>
+								<c:otherwise>
+									<li>
+								</c:otherwise>
+							</c:choose>
+							<a
+								href="${pageContext.request.contextPath}/gestiones/listGestiones.html">Gestiones</a>
+							</li>
+						</c:when>
+					</c:choose>
 				</ul>
 				<!-- En el tag boton main están los que funcionan -->
-				<t:logininfo></t:logininfo>
+				
 			</div>
 		</div>
 	</nav>

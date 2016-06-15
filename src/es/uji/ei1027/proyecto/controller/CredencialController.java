@@ -112,6 +112,8 @@ public class CredencialController {
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "credencial/update";
+		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
+		credencial.setPassword(passwordEncrypter.encryptPassword(credencial.getPassword()));
 		credencialDao.updateCredencial(credencial);
 		return "redirect:../list.html"; 
 	}

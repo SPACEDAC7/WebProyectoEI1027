@@ -10,7 +10,7 @@
 }
 
 .icono{
-	padding: 5px 5px;
+	padding-right:5px;
 	display:inline;    
 }
 
@@ -101,4 +101,10 @@
 	font-size: 120%;
 	margin:5px 5px 0px 5px;
 	font-weight: bold;
+}
+
+.entrar{
+	font-size:16px;
+	margin-top:18px;
+	padding:12px 18px 12px 18px;
 }

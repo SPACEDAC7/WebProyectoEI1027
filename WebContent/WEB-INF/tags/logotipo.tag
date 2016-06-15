@@ -8,6 +8,6 @@
 	<a class="navbar-brand" href="${pageContext.request.contextPath}/"> ZONA ADMINISTRADOR </a>
 </c:when>
 <c:otherwise>
-	<a class="navbar-brand" href="index.html"><span>Easy<strong>rent.</strong></span></a>
+	<a class="navbar-brand" href="${pageContext.request.contextPath}/"><span>Easy<strong>rent.</strong></span></a>
 </c:otherwise>
 </c:choose>

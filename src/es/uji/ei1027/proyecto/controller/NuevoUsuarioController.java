@@ -1,6 +1,7 @@
 package es.uji.ei1027.proyecto.controller;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpSession;
 
@@ -75,6 +76,8 @@ public class NuevoUsuarioController {
 		usuario.setId_credencial(cre.getId_credencial());
 		usuario.setId_direccion(dir.getId_direccion());
 		usuario.setFecha_registro(this.fechaDeHoy());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		usuario.setFechaRegistro(sdf.format(this.fechaDeHoy()));
 		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		usuarioValidator.validate(usuario, bindingResult);
 		if (bindingResult.hasErrors()) {
