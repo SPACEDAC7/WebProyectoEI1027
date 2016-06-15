@@ -10,6 +10,13 @@ public class CredencialValidator implements Validator{
 	
 	private CredencialDao credencialDao;
 	
+	//Sirve para saber si estoy actualizando o creando una nueva credencial
+	private boolean actualizacion;
+	
+	public void setActualizacion(boolean a) {
+		this.actualizacion = a;
+	}
+	
 	public void setCredencialDao( CredencialDao credencialDao){
 		this.credencialDao = credencialDao;
 	}
@@ -32,7 +39,7 @@ public class CredencialValidator implements Validator{
 			errors.rejectValue("nick_usuario", "obligatori", "Hay que introducir un valor");
 		} else {
 			System.out.println("Nombre del usuario " + credencial.getNick_usuario());
-			if ( credencialDao.existeCredencialConEsteNombre(credencial.getNick_usuario()) )
+			if ( credencialDao.existeCredencialConEsteNombre(credencial.getNick_usuario()) && actualizacion == false )
 				errors.rejectValue("nick_usuario", "Ya existe", "Ya existe un usuario con ese nick");
 		}
 		if (credencial.getPassword().equals("")){

@@ -59,7 +59,6 @@ public class NuevoUsuarioController {
 		DireccionValidator direccionValidator = new DireccionValidator();
 		direccionValidator.validate(direccion, bindingResult);
 		if (bindingResult.hasErrors()) {
-			System.out.println("Algo ha fallado al crear la direccion");
             return "signup/signupdireccion";
         }
 		//direccionDao.addDireccion(direccion);
@@ -109,7 +108,6 @@ public class NuevoUsuarioController {
 		
 		//Crear y anadir la credencial
 		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
-		System.out.println(credencial.getNick_usuario());
 		credencial.setId_credencial(idCredencial);		
 		CredencialValidator credencialValidator = new CredencialValidator();
 		credencialValidator.setCredencialDao(credencialDao);

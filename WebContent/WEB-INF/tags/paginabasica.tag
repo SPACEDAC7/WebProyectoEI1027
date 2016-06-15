@@ -162,7 +162,7 @@
       </div>
     </div>
 	
-	<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+ <!-- <script src="${pageContext.request.contextPath}/js/jquery.js"></script>-->
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
     <script src="${pageContext.request.contextPath}/js/gmap3.min.js"></script>

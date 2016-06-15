@@ -107,4 +107,17 @@ public class UsuarioDao {
 		return max+1;
 	}
 	
+	public int contarUsuariosConIdCredencial( int idCredencial ) {
+		String sql = "SELECT COUNT(id_credencial) from usuario WHERE id_credencial = ?";
+		int num;
+		try {
+			num = this.jdbcTemplate.queryForObject(sql, Integer.class, idCredencial);
+		} catch ( Exception ex ) {
+			num = -1;
+		}
+		
+		return num;
+		
+	}
+	
 }

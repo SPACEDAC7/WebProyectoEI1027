@@ -15,15 +15,14 @@ public class DireccionValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors){
 		Direccion direccion = (Direccion) obj;
-		System.out.println("He entrado en direccionValidator");
 		if(direccion.getId_direccion()<0){
 			errors.rejectValue("id_direccion", "obligatori", "Has de introducir un valor superior a 0");
 		}
 		if ( direccion.getNumero() <= 0 ) {
-			errors.rejectValue("numero", "obligatori", "Número de dirección inválido");
+			errors.rejectValue("numero", "obligatori", "Nï¿½mero de direcciï¿½n invï¿½lido");
 		}
 		if ( direccion.getCodigo_postal() <= 0 ) {
-			errors.rejectValue("codigo_postal", "obligatori", "Código postal inválido");
+			errors.rejectValue("codigo_postal", "obligatori", "Cï¿½digo postal invï¿½lido");
 		}
 		if (direccion.getProvincia().equals("")) {
 			errors.rejectValue("provincia", "obligatori", "El campo provincia no puede estar en blanco");

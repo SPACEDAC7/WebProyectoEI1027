@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Usuario;
@@ -23,6 +24,9 @@ import es.uji.ei1027.proyecto.validator.UsuarioValidator;
 @RequestMapping("/usuario")
 public class UsuarioController {
 	private UsuarioDao usuarioDao;
+	
+	@Autowired
+	CredencialDao credencialDao;
 	
 	@Autowired
 	public void setUsuarioDao( UsuarioDao usuarioDao){
@@ -129,6 +133,7 @@ public class UsuarioController {
 	@RequestMapping(value="/delete/{id_usuario}")
 	public String processDelete(@PathVariable int id_usuario, HttpSession session, Model model) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Usuario usuarioABorrar = usuarioDao.getUsuario(id_usuario);
 		String retorno;
 		if (usuario == null) {
 			model.addAttribute("credencial", new Credencial());
@@ -137,7 +142,16 @@ public class UsuarioController {
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
-				usuarioDao.deleteUsuario(id_usuario);
+				int idCredencialABorrar = usuarioABorrar.getId_credencial();
+				int cantidadUsuariosConIdCredencialABorrar = usuarioDao.contarUsuariosConIdCredencial(idCredencialABorrar);
+				if ( cantidadUsuariosConIdCredencialABorrar > 1 )
+					System.out.println("No se puede borrar");
+				else {
+					usuarioDao.deleteUsuario(usuarioABorrar.getId_usuario());
+					credencialDao.deleteCredencial(idCredencialABorrar);
+					usuarioABorrar = null;
+				    retorno = "redirect:../list.html";
+				}
 			    retorno = "redirect:../list.html";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador

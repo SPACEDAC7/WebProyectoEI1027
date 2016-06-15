@@ -7,7 +7,7 @@
 		<h1>Llista de Credenciales</h1>
 		<table class="table table-condensed">
 			<tr>
-				<th>Id Cedencial</th>
+				<th>Id Credencial</th>
 				<th>Nick usuario</th>
 				<th>Password</th>
 				<th>Rol</th>

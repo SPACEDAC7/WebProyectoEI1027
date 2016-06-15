@@ -45,7 +45,7 @@ public class LoginController {
         String passwordDeLaBaseDeDatos = credencialDao.getPassword(nombre);
         if (passwordDeLaBaseDeDatos == null) {
         	//Mala autenticaciÃ³n
-        	bindingResult.rejectValue("password", "badpw", "El usuario o la contraseña no coinciden");
+        	bindingResult.rejectValue("password", "badpw", "El usuario o el password no coinciden");
         	//Vuelve a la pÃ¡gina de login porque el usuario y password no sÃ³n vÃ¡lidos
         } else {
         	BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
@@ -65,14 +65,14 @@ public class LoginController {
 	                	}
                 	}
             	} else {
-            		bindingResult.rejectValue("password", "badpw", "El usuario está dado de baja");
+            		bindingResult.rejectValue("password", "badpw", "El usuario estï¿½ dado de baja");
             		loginValidator.validateStateUser(usuario.getEstado_usuario(), bindingResult);
             		if (bindingResult.hasErrors()) {
                         return "login";
                     }
             	}
             } else {
-            	bindingResult.rejectValue("password", "badpw", "El usuario o la contraseña no coinciden");
+            	bindingResult.rejectValue("password", "badpw", "El usuario o la contraseï¿½a no coinciden");
             	System.out.println("Password introducido NO coincide con el encriptado");
             }
         }

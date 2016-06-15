@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -76,6 +77,8 @@ public class CredencialController {
 	public String processAddSubmit(@ModelAttribute("credencial") Credencial credencial,
 			BindingResult bindingResult) { 
 		CredencialValidator credencialValidator = new CredencialValidator();
+		credencialValidator.setActualizacion(false);
+		credencialValidator.setCredencialDao(credencialDao);
 		credencialValidator.validate(credencial, bindingResult); 
 		if (bindingResult.hasErrors())
 			return "credencial/add";
@@ -110,8 +113,12 @@ public class CredencialController {
 	public String processUpdateSubmit(@PathVariable int id_credencial, 
 			@ModelAttribute("credencial") Credencial credencial, 
 			BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) 
-			return "credencial/update";
+		CredencialValidator credencialValidator = new CredencialValidator();
+		credencialValidator.setActualizacion(true);
+		credencialValidator.setCredencialDao(credencialDao);
+		credencialValidator.validate(credencial, bindingResult); 
+		if (bindingResult.hasErrors())
+			return "credencial/add";
 		BasicPasswordEncryptor passwordEncrypter = new BasicPasswordEncryptor();
 		credencial.setPassword(passwordEncrypter.encryptPassword(credencial.getPassword()));
 		credencialDao.updateCredencial(credencial);
@@ -130,7 +137,11 @@ public class CredencialController {
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
-				credencialDao.deleteCredencial(id_credencial);
+				try {
+					credencialDao.deleteCredencial(id_credencial);
+				} catch (DataIntegrityViolationException ex) {
+					System.out.println("Fallo, no se puede eliminar la credencial porque está asociada a un usuario");
+				}
 				retorno = "redirect:../list.html";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
