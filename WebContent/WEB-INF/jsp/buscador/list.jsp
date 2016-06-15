@@ -4,66 +4,149 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="EASY RENT">
 <jsp:body>
-	<div class="barra-lat">
-		<ul class="list-unstyled">
-		<li class="sidbar-header">
-			<form action="${pageContext.request.contextPath}/buscador/list.html" method="get"  role="form">
-				<button type="submit" class="btn btn-primary btn-lg btn-block">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					BUSCAR
-				</button>
-				<div>
-					<label for="precio_form" class="centrado control-label">Precio</label>
-				</div>
-				<div class="form-group">
-	      			<input type="text" class="precio-menu form-control" id="precio_form" placeholder="Minimo">
-		            <input type="text" class="precio-menu seguido form-control" id="precio_form" placeholder="Maximo">
-			  	</div>
-			  	<div class="form-group">
-			  		<label for="tipo_form" class="centrado control-label">Tipo</label>
-			  		<input type="text" class="form-control" id="tipo_form" placeholder="Tipo">
-			  	</div>
-				<div class="form-group">
-			  		<label for="capacidad_form" class="centrado control-label">Capacidad</label>
-			  		<input type="text" class="form-control" id="capacidad_form" placeholder="Capacidad">
-			  	</div>
-			  	<div class="form-group">
-			  		<label for="habitaciones_form" class="centrado control-label">Habitaciones</label>
-			  		<input type="text" class="form-control" id="habitaciones_form" placeholder="Nº Habitaciones">
-			  	</div>
-			  	<div class="form-group">
-			  		<label for="camas_form" class="centrado control-label">Camas</label>
-			  		<input type="text" class="form-control" id="camas_form" placeholder="Nº Cama">
-			  	</div>
-			  	<div class="form-group">
-			  		<label for="area_form" class="centrado control-label">Area</label>
-			  		<input type="text" class="form-control" id="area_form" placeholder="Area">
-			  	</div>
-			  	<div class="form-group">
-			  		<label for="lugar_form" class="centrado control-label">Lugar</label>
-			  		<input type="text" class="form-control" id="lugar_form" placeholder="Lugar">
-			  	</div>
-			  	<div class="form-group">
-			  		<label for="servicio_form" class="centrado control-label">Servicios</label>
-			  		<input type="text" class="form-control" id="servicio-form" placeholder="Servicio">
-			  	</div>
-			</form>
-		</li>
-		</ul>
-	</div>
-	<div style="width:82%; float:right;" id="resultadoBuscador">
-			<c:forEach items="${propiedades}" var="propiedad">
-					<div class="panel panel-info">
-						<div class="panel-heading">${propiedad.titulo}</div>
-						<div class="panel-body">${propiedad.descripcion}</div>
-						<div class="panel-body">${propiedad.tipo}</div>
-						<div class="panel-body">${propiedad.capacidad}</div>
-						<div class="panel-body">${propiedad.num_habitaciones}</div>
-						<div class="panel-body">${propiedad.num_camas}</div>
-						<div class="panel-body">${propiedad.area}</div>
-						<div class="panel-body">${propiedad.precio_propiedad}</div>
+  <body id="top">
+	<div id="content">
+      <div class="container">
+        <div class="row">
+          <!-- begin:article -->
+          <div class="col-md-9 col-md-push-3">
+            <!-- begin:product -->
+            <div class="row container-realestate">
+				<c:forEach items="${propiedades}" var="propiedad">
+				  <div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="property-container">
+					  <div class="property-content-list">
+						<div class="property-image-list">
+						  <img src="../img/img12.jpg" alt="mikha real estate theme">
+						  <div class="property-price">
+							<h4>${propiedad.tipo}</h4>
+							<span>${propiedad.precio_propiedad}<small>/semana</small></span>
+						  </div>
+						  <div class="property-status">
+							<span>Alquiler</span>
+						  </div>
+						  <div class="property-features">
+							<span><i class="fa fa-home"></i> ${propiedad.area} m2</span>
+							<span><i class="fa fa-hdd-o"></i> ${propiedad.num_camas} Camas</span>
+							<span><i class="fa fa-male"></i> ${propiedad.capacidad} Personas</span>
+							<span><i class="fa fa-building-o"></i> ${propiedad.num_habitaciones} Habitaciones</span>
+							<span><i class="fa fa-car"></i> 2 Garages</span>
+						  </div>
+						</div>
+						<div class="property-text">
+						  <h3><a href="#">${propiedad.titulo}</a> <small>${propiedad.area}</small></h3>
+						  <p>${propiedad.descripcion}</p>
+						  <p><a href="#" class="btn btn-primary">More Detail &raquo;</a></p>
+						</div>
+					  </div>
 					</div>
-			</c:forEach>
-	</div>
+				  </div>
+				</c:forEach>
+              <!-- break -->
+            </div>
+            <!-- end:product -->
+
+            <!-- begin:pagination -->
+            <div class="row">
+              <div class="col-md-12">
+                <ul class="pagination">
+                  <li class="disabled"><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- end:pagination -->
+          </div>
+          <!-- end:article -->
+
+          <!-- begin:sidebar -->
+          <div class="col-md-3 col-md-pull-9 sidebar">
+            <div class="widget widget-white">
+              <div class="widget-header">
+                <h3>BUSCAR</h3>
+              </div>    
+              <form "${pageContext.request.contextPath}/buscador/list.html" method="get" role="form" class="advance-search">
+                <div class="form-group">
+                  <label for="location">País</label>
+                  <select class="form-control">
+                    <option>Miami</option>
+                    <option>Doral</option>
+                    <option>Little Havana</option>
+                    <option>Perrine</option>
+                  </select>
+                </div>
+				<div class="form-group">
+                  <label for="location">Area</label>
+                  <select class="form-control">
+                    <option>Miami</option>
+                    <option>Doral</option>
+                    <option>Little Havana</option>
+                    <option>Perrine</option>
+                  </select>
+                </div>
+				<div class="form-group">
+                  <label for="beds">Habitaciones</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+				<div class="form-group">
+                  <label for="baths">Camas</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+				<div class="form-group">
+                  <label for="baths">Capacidad</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="type">Tipo</label>
+                  <select class="form-control">
+                    <option>Office</option>
+                    <option>Shop</option>
+                    <option>Villa</option>
+                    <option>Apartment</option>
+                    <option>Single Family Home</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="min-price">Precio mínimo</label>
+                  <input type="text" class="form-control" placeholder="Max Area">
+                </div>
+                <div class="form-group">
+                  <label for="min-price">Precio máximo</label>
+                  <input type="text" class="form-control" placeholder="Max Area">
+                </div>
+                <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block">
+              </form>
+            </div>
+            <!-- break -->
+          </div>
+          <!-- end:sidebar -->
+          
+        </div>
+      </div>
+    </div>
+	</body>
 </jsp:body>
 </t:paginabasica>

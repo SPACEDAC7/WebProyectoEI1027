@@ -8,9 +8,6 @@
 	<a class="navbar-brand" href="${pageContext.request.contextPath}/"> ZONA ADMINISTRADOR </a>
 </c:when>
 <c:otherwise>
-	<a class="navbar-brand icono"
-						href="${pageContext.request.contextPath}/"><img
-						src="${pageContext.request.contextPath}/img/logo.png"
-						alt="logo_de_easy_rent"> EASY RENT</a>
+	<a class="navbar-brand" href="index.html"><span>Easy<strong>rent.</strong></span></a>
 </c:otherwise>
 </c:choose>
