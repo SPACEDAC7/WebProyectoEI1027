@@ -4,10 +4,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
 <ul class="nav navbar-nav navbar-right">
-	<li class="active"><a href="index.html">Inicio</a></li>
-	<li><a href="category_list.html">Propiedades</a></li>
-	<li><a href="contact.html">Contacto</a></li>
-	<li><a href="about.html">Sobre nosotros</a></li>
 	<li class="dropdown"><a data-toggle="dropdown" href="#">Login
 			<span class="caret"></span>
 	</a>
