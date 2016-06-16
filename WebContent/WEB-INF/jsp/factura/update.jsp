@@ -3,7 +3,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ivaFactura" scope="request" value='${session.getAttribute("ivaFactura")}'/>
-<t:datepicker></t:datepicker>
 <t:paginabasica title="Modificar factura">
 	<jsp:body>
 	<h2>Modificar factura</h2>
@@ -52,3 +51,4 @@
 	</form:form>
 	</jsp:body>
 </t:paginabasica>
+<t:datepicker></t:datepicker>

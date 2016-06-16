@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:datepicker></t:datepicker> 
 <t:paginabasica title="Nuevo periodo">
 	<jsp:body>
 	<h2>Nuevo periodo</h2>
@@ -35,3 +34,4 @@
 	</form:form>
 	</jsp:body>
 </t:paginabasica>
+<t:datepicker></t:datepicker> 
