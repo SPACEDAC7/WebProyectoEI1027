@@ -52,7 +52,37 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="${pageContext.request.contextPath}/">Página Principal</a>
+					<a href="${pageContext.request.contextPath}/">Inicio</a>
+					</li>
+					<c:choose>
+						<c:when test='${title == "Propiedades"}'>
+							<li class="active">
+						</c:when>
+						<c:otherwise>
+							<li>
+						</c:otherwise>
+					</c:choose>
+					<a href="${pageContext.request.contextPath}/">Propiedades</a>
+					</li>
+					<c:choose>
+						<c:when test='${title == "Contacta"}'>
+							<li class="active">
+						</c:when>
+						<c:otherwise>
+							<li>
+						</c:otherwise>
+					</c:choose>
+					<a href="${pageContext.request.contextPath}/">Contactanos</a>
+					</li>
+					<c:choose>
+						<c:when test='${title == "Nosotros"}'>
+							<li class="active">
+						</c:when>
+						<c:otherwise>
+							<li>
+						</c:otherwise>
+					</c:choose>
+					<a href="${pageContext.request.contextPath}/">Sobre Nosotros</a>
 					</li>
 					<c:set var="rol" scope="request"
 						value='${session.getAttribute("rol")}' />
