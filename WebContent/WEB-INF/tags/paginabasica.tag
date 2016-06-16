@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <c:choose>
 	<c:when test='${title == "INDEX"}'>
-		<meta http-equiv="refresh" content="0;URL=${pageContext.request.contextPath}/buscador/list.html">
+		<meta http-equiv="refresh" content="0;URL=${pageContext.request.contextPath}/cabecera/inicio.html">
 	</c:when>
 </c:choose>
 
@@ -28,7 +28,7 @@
 <link href="${pageContext.request.contextPath}/css/responsive.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet">
 </head>
-<body>
+<body id="top">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -63,7 +63,7 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="${pageContext.request.contextPath}/">Propiedades</a>
+					<a href="${pageContext.request.contextPath}/buscador/list.html">Propiedades</a>
 					</li>
 					<c:choose>
 						<c:when test='${title == "Contacta"}'>
@@ -73,7 +73,7 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="${pageContext.request.contextPath}/">Contactanos</a>
+					<a href="${pageContext.request.contextPath}/cabecera/contacta.html">Contactanos</a>
 					</li>
 					<c:choose>
 						<c:when test='${title == "Nosotros"}'>
@@ -83,7 +83,7 @@
 							<li>
 						</c:otherwise>
 					</c:choose>
-					<a href="${pageContext.request.contextPath}/">Sobre Nosotros</a>
+					<a href="${pageContext.request.contextPath}/cabecera/nosotros.html">Sobre Nosotros</a>
 					</li>
 					<c:set var="rol" scope="request"
 						value='${session.getAttribute("rol")}' />
@@ -108,92 +108,84 @@
 			</div>
 		</div>
 	</nav>
-	<div id="content">
-		<div id="container">
 			<jsp:doBody />
-		</div>
-	</div>
-	<div class="row">
+	    <!-- inicio:footer -->
+    <div id="footer">
+      <div class="container">
+		<!-- inicio:footer -->
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="widget">
+              <h3>Lista enlaces 1</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- break -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="widget">
+              <h3>Lista enlaces 2</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- break -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="widget">
+              <h3>Usuario</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Mi perfil</a></li>
+                <li><a href="#">Mis reservas</a></li>
+                <li><a href="#">Salir</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- break -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="widget">
+              <h2>EasyRent.</h2>
+              <address>
+                <strong>La mejor opción.</strong><br>
+                Av. de Vicent Sos Baynat s/n 12071<br>
+                <br>
+                Telp. : +62-345678910<br>
+                Email : aluji@uji.es
+              </address>
+            </div>
+          </div>
+          <!-- break -->
+        </div>
+        <!-- break -->
+
+        <!-- inicio:copyright -->
+        <div class="row">
           <div class="col-md-12 copyright">
-            <p>Copyright &copy; 2016 ALMOLO, EI1027</p>
-            <p>Powered By: <strong>ALMOLO.</strong></p>
+            <p>Copyright &copy; 2016 EasyRent S.L. - Todos los derechos reservados</p>
+            <p>Powered by <strong>ALMOLO.</strong></p>
             <a href="#top" class="btn btn-primary scroltop"><i class="fa fa-angle-up"></i></a>
             <ul class="list-inline social-links">
-              <li><a href="#" class="icon-twitter" rel="tooltip" title="" data-placement="bottom" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" class="icon-facebook" rel="tooltip" title="" data-placement="bottom" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" class="icon-gplus" rel="tooltip" title="" data-placement="bottom" data-original-title="Gplus"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" class="icon-twitter" rel="tooltip" title=""><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" class="icon-facebook" rel="tooltip" title=""><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="icon-gplus" rel="tooltip" title=""><i class="fa fa-google-plus"></i></a></li>
             </ul>
           </div>
-	</div>
-	<!-- begin:modal-signin -->
-    <div class="modal fade" id="modal-signin" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign in</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="forget"> Keep me logged in
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Don't have account ? <a href="#modal-signup"  data-toggle="modal" data-target="#modal-signup">Sign up here.</a></p>
-            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign in">
-          </div>
         </div>
-      </div>
-    </div>
-    <!-- end:modal-signin -->
+        <!-- fin:copyright -->
 
-    <!-- begin:modal-signup -->
-    <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Sign up</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form">
-              <div class="form-group">
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-lg" placeholder="Confirm Password">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <p>Already have account ? <a href="#modal-signin" data-toggle="modal" data-target="#modal-signin">Sign in here.</a></p>
-            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign up">
-          </div>
-        </div>
       </div>
     </div>
-	
-	<!-- <script src="${pageContext.request.contextPath}/js/jquery.js"></script> -->
+    <!-- fin:footer -->
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
     <script src="${pageContext.request.contextPath}/js/gmap3.min.js"></script>
@@ -204,6 +196,5 @@
     <script src="${pageContext.request.contextPath}/js/jquery.backstretch.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
-    <!-- end:modal-signup -->
 </body>
 </html>
