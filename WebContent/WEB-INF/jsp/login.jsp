@@ -17,8 +17,15 @@
             <form:password class="form-control" path="password" />
             <form:errors style="color:#F44336" path="password" cssClass="error" />
         </div>        
-        <input type="submit" class="btn btn-primary" value="Accedir" />
+		<div class="help-block text-right">
+		<a href="">¿Has olvidado la contraseña?</a>
+		</div>        
+        <input style="font-size:18px" type="submit" class="btn btn-primary" value="Accedir" />
+		   
     </form:form>
+    <div style="font-size:18px" class="bottom text-center">
+						Eres nuevo? <a href="${pageContext.request.contextPath}/signup/addUser.html"><b>Registrare</b></a>
+					</div>
     </div>
     </jsp:body>
 </t:paginabasica>
