@@ -4,6 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Listado credenciales">
 	<jsp:body>
+		<div style="margin-bottom:20px" class="container">
 		<h1>Llista de Credenciales</h1>
 		<table class="table table-condensed">
 			<tr>
@@ -28,5 +29,6 @@
 		</table>
 		<a href="add.html" class="btn btn-primary" role="button">Añadir credencial</a>
 		<a class="btn btn-default" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
+		</div>
 	</jsp:body>
 </t:paginabasica>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:paginabasica title="Sign-Up">
 	<jsp:body>
+    <div style="margin-bottom:20px" class="container">
     <h2>Introduzca su dirección</h2>
 	<form:form action="${pageContext.request.contextPath}/signup/addDireccion.html" method="post" modelAttribute="nuevaDireccion">
 		<table class="table table-condensed">
@@ -41,5 +42,6 @@
         		</td>
         	</tr>
     </form:form>
+    </div>
     </jsp:body>
 </t:paginabasica>

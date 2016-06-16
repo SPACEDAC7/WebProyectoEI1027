@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Modificar imagen">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Modificar imagen</h2>
 	<form:form method="post" modelAttribute="imagen">
 		<table class="table table-condensed">
@@ -30,5 +31,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>

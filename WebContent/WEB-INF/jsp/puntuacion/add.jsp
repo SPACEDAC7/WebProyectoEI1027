@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Nueva puntuación">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Nova puntuación</h2>
 	<form:form method="post" modelAttribute="puntuacion">
 		<table class="table table-condensed">
@@ -35,5 +36,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>

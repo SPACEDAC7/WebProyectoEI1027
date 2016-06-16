@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Gestiones">
 <jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<div>
 		<ul class="list-unstyled buttons">
 		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/credencial/list.html">
@@ -57,6 +58,7 @@
 				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
 						alt="logo_de_credenciales">Mensajes</a></li>
 		</ul>
+	</div>
 	</div>
 </jsp:body>
 </t:paginabasica>

@@ -3,10 +3,12 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:paginabasica title="Confirmación modificación">
 	<jsp:body>
+    <div style="margin-bottom:20px" class="container">
     <h2>¿Seguro que quieres modificar la direccion?</h2>
 	<div>
   	<a href="${pageContext.request.contextPath}/direccion/update/confirmado.html" class="btn btn-primary">Aceptar</a>
   	<a href="${pageContext.request.contextPath}/direccion/list.html" class="btn btn-danger">Cancelar</a>
 	</div>
+    </div>
     </jsp:body>
 </t:paginabasica>

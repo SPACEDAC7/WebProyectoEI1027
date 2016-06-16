@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Nuevo usuario">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Nou usuario</h2>
 	<form:form method="post" modelAttribute="usuario">
 		<table class="table table-condensed">
@@ -66,5 +67,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:paginabasica title="Nuevo periodo">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Nuevo periodo</h2>
 	<form:form method="post" modelAttribute="periodo">
 		<table class="table table-condensed">
@@ -32,6 +33,7 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>
 <t:datepicker></t:datepicker> 

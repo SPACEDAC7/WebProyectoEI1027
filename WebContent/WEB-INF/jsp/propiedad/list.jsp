@@ -4,6 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Lista de propiedades">
 <jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h1>Lista de Propiedades</h1>
 		<table class="table table-condensed">
 			<tr>
@@ -41,5 +42,6 @@
 		</table>
 		<a class="btn btn-primary" href="add.html">Afegeix Propiedad</a>
 		<a class="btn btn-danger" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
+		</div>
 	</jsp:body>
 </t:paginabasica>

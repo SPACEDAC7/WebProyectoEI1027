@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Nueva factura">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Nueva Factura</h2>
 	<form:form method="post" modelAttribute="factura">
 		<table class="table table-condensed">
@@ -40,6 +41,7 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>
 <t:datepicker></t:datepicker>

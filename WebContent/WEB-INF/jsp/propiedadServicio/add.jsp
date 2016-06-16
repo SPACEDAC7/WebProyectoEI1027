@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Nuevo servicio de una propiedad">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Nova propiedad servicio</h2>
 	<form:form method="post" modelAttribute="propiedadServicio">
 		<table class="table table-condensed">
@@ -22,5 +23,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>

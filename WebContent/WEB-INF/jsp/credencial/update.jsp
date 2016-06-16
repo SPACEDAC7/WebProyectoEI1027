@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Actualizar credencial">
 	<jsp:body>
+		<div style="margin-bottom:20px" class="container">
 		<h2>Modificar credencial</h2>
 		<form:form method="post" modelAttribute="credencial">
 			<table class="table table-condensed">
@@ -39,5 +40,6 @@
 				</tr>
 			</table>
 		</form:form>
+		</div>
 	</jsp:body>
 </t:paginabasica>

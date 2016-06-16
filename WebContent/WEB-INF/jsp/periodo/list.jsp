@@ -4,6 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Listado de periodos">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h1>Llista de Periodos</h1>
 	<table class="table table-condensed">
 		<tr>
@@ -25,5 +26,6 @@
 	</table>
 	<a class="btn btn-primary" href="add.html">Afegeix Periodo</a>
 	<a class="btn btn-danger" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
+	</div>
 	</jsp:body>
 </t:paginabasica>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:paginabasica title="Sign-Up">
 	<jsp:body>
+    <div style="margin-bottom:20px" class="container">
     <h2>Bienvenid@ a EasyRent, va a crear un nuevo usuario</h2>
 	<form:form method="post" modelAttribute="nuevaCredencial">
 		<table class="table table-condensed">
@@ -37,5 +38,6 @@
         		</td>
         	</tr>
     </form:form>
+    </div>
     </jsp:body>
 </t:paginabasica>

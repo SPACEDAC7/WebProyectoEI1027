@@ -5,6 +5,7 @@
 <c:set var="ivaFactura" scope="request" value='${session.getAttribute("ivaFactura")}'/>
 <t:paginabasica title="Modificar factura">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Modificar factura</h2>
 	<form:form method="post" modelAttribute="factura">
 		<table class="table table-condensed">
@@ -49,6 +50,7 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>
 <t:datepicker></t:datepicker>

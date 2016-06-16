@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <t:paginabasica title="login">
 	<jsp:body>
+    <div style="margin-bottom:20px" class="container">
     <h2>Acceso</h2>
     <form:form method="post" modelAttribute="credencial"
 			action="${pageContext.request.contextPath}/login.html">
@@ -18,5 +19,6 @@
         </div>        
         <input type="submit" class="btn btn-primary" value="Accedir" />
     </form:form>
+    </div>
     </jsp:body>
 </t:paginabasica>

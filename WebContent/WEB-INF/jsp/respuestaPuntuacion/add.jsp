@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Nueva respuesta">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Nova respuesta</h2>
 	<form:form method="post" modelAttribute="respuestaPuntuacion">
 		<table class="table table-condensed">
@@ -26,5 +27,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>

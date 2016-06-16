@@ -4,6 +4,7 @@
 <t:datepicker></t:datepicker>
 <t:paginabasica title="Modificar usuario">
 	<jsp:body>
+	<div style="margin-bottom:20px" class="container">
 	<h2>Modificar usuario</h2>
 	<form:form method="post" modelAttribute="usuario">
 		<table class="table table-condensed">
@@ -71,5 +72,6 @@
 			</tr>
 		</table>
 	</form:form>
+	</div>
 	</jsp:body>
 </t:paginabasica>
