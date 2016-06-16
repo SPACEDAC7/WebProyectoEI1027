@@ -31,17 +31,10 @@ private PropiedadDao propiedadDao;
 	//Listar
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public String listPropiedades(Model model, HttpSession session){
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		String retorno;
-		if (usuario == null) {
-			model.addAttribute("credencial", new Credencial());
-			session.setAttribute("nextURL", "redirect:propiedad/add.html");
-			retorno = "login";
-		} else {
-			Propiedad propiedad = new Propiedad();
-			model.addAttribute("propiedad", propiedad);
-			retorno = "busqueda/list";
-		}
+		String retorno;	
+		Propiedad propiedad = new Propiedad();
+		model.addAttribute("propiedades", propiedadDao.getPropiedades());
+		retorno = "buscador/list";
 		return retorno;
 	}
 }
