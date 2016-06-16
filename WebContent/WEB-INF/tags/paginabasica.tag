@@ -26,6 +26,7 @@
 <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/responsive.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -192,7 +193,7 @@
       </div>
     </div>
 	
- <!-- <script src="${pageContext.request.contextPath}/js/jquery.js"></script>-->
+	<!-- <script src="${pageContext.request.contextPath}/js/jquery.js"></script> -->
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
     <script src="${pageContext.request.contextPath}/js/gmap3.min.js"></script>
