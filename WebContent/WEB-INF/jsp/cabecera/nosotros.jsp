@@ -12,7 +12,7 @@
               <h2>Sobre nosotros</p>
             </div>
             <ol class="breadcrumb">
-              <li><a href="#">Inicio</a></li>
+              <li><a href="${pageContext.request.contextPath}/cabecera/inicio.html">Inicio</a></li>
               <li class="active">Sobre nosotros</li>
             </ol>
           </div>

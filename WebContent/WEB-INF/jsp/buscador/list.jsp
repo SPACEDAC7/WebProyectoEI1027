@@ -4,6 +4,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Propiedades">
 <jsp:body>
+  <body id="top">
   <div id="header" class="heading" style="background-image: url(../img/img01.jpg);">
       <div class="container">
         <div class="row">
@@ -12,15 +13,15 @@
               <h2>Propiedades</h2>
             </div>
             <ol class="breadcrumb">
-              <li><a href="#">Inicio</a></li>
-              <li><a href="#">Propiedades</a></li>
+              <li><a href="${pageContext.request.contextPath}/cabecera/inicio.html">Inicio</a></li>
+              <li class="active">Propiedades</li>
             </ol>
           </div>
         </div>
       </div>
     </div>
-  <body id="top">
-	<div id="content">
+   <!-- inicio:content -->
+  	<div id="content">
       <div class="container">
         <div class="row">
           <!-- begin:article -->
@@ -35,21 +36,20 @@
 						  <img src="../img/img12.jpg" alt="mikha real estate theme">
 						  <div class="property-price">
 							<h4>${propiedad.tipo}</h4>
-							<span>${propiedad.precio_propiedad}<small>/semana</small></span>
+							<span>${propiedad.precio_propiedad}<small>/mes</small></span>
 						  </div>
 						  <div class="property-status">
 							<span>Alquiler</span>
 						  </div>
 						  <div class="property-features">
-							<span><i class="fa fa-home"></i> ${propiedad.area} m2</span>
+							<span><i class="fa fa-home"></i> ${propiedad.area} m<sup>2</span>
 							<span><i class="fa fa-hdd-o"></i> ${propiedad.num_camas} Camas</span>
 							<span><i class="fa fa-male"></i> ${propiedad.capacidad} Personas</span>
 							<span><i class="fa fa-building-o"></i> ${propiedad.num_habitaciones} Habitaciones</span>
-							<span><i class="fa fa-car"></i> 2 Garages</span>
 						  </div>
 						</div>
 						<div class="property-text">
-						  <h3><a href="#">${propiedad.titulo}</a> <small>${propiedad.area}</small></h3>
+						  <h3><a href="#">${propiedad.titulo}</a> <small>${propiedad.id_direccion}</small></h3>
 						  <p>${propiedad.descripcion}</p>
 						  <p><a href="#" class="btn btn-primary">More Detail &raquo;</a></p>
 						</div>
@@ -79,89 +79,91 @@
           </div>
           <!-- end:article -->
 
-          <!-- begin:sidebar -->
+          <!-- inicio:sidebar -->
           <div class="col-md-3 col-md-pull-9 sidebar">
             <div class="widget widget-white">
               <div class="widget-header">
-                <h3>BUSCAR</h3>
+                <h3>Búsqueda</h3>
               </div>    
-              <form "${pageContext.request.contextPath}/buscador/list.html" method="get" role="form" class="advance-search">
-                <div class="form-group">
-                  <label for="location">País</label>
-                  <select class="form-control">
-                    <option>Miami</option>
-                    <option>Doral</option>
-                    <option>Little Havana</option>
-                    <option>Perrine</option>
-                  </select>
-                </div>
+              <form role="form" class="advance-search">
 				<div class="form-group">
-                  <label for="location">Area</label>
-                  <select class="form-control">
-                    <option>Miami</option>
-                    <option>Doral</option>
-                    <option>Little Havana</option>
-                    <option>Perrine</option>
-                  </select>
-                </div>
-				<div class="form-group">
-                  <label for="beds">Habitaciones</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-				<div class="form-group">
-                  <label for="baths">Camas</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-				<div class="form-group">
-                  <label for="baths">Capacidad</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="type">Tipo</label>
-                  <select class="form-control">
-                    <option>Office</option>
-                    <option>Shop</option>
-                    <option>Villa</option>
-                    <option>Apartment</option>
-                    <option>Single Family Home</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="min-price">Precio mínimo</label>
-                  <input type="text" class="form-control" placeholder="Max Area">
-                </div>
-                <div class="form-group">
-                  <label for="min-price">Precio máximo</label>
-                  <input type="text" class="form-control" placeholder="Max Area">
-                </div>
+				  <label for="ciudad">Ciudad</label>
+				  <select class="form-control">
+					<option>Castellon</option>
+					<option>Valencia</option>
+				  </select>
+				</div>
+                    <div class="form-group">
+                      <label for="tipo">Tipo</label>
+                      <select class="form-control">
+                        <option>Apartamento</option>
+                        <option>Casa</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="habitaciones">Habitaciones</label>
+                      <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="camas">Camas</label>
+                      <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+					<div class="form-group">
+                      <label for="capacidad">Capacidad</label>
+                      <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="minprice">Precio mínimo</label>
+                      <select class="form-control">
+                        <option>$4,200</option>
+                        <option>$6,700</option>
+                        <option>$8,150</option>
+                        <option>$11,110</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="maxprice">Precio máximo</label>
+                      <select class="form-control">
+                        <option>$8,200</option>
+                        <option>$11,700</option>
+                        <option>$14,150</option>
+                        <option>$21,110</option>
+                      </select>
+                    </div>
+					<div class="form-group">
+                      <label style="display: block;" for="servicios">Servicios</label>
+                      <label class="checkbox-inline"><input type="checkbox" id="opcion1" value="opcion_1"> WiFi</label>
+					  <label class="checkbox-inline"><input type="checkbox" id="checkboxEnLinea1" value="opcion2"> Secador</label>
+					  <label class="checkbox-inline"><input type="checkbox" id="opcion1" value="opcion_1"> Cable</label>
+					  <label class="checkbox-inline"><input type="checkbox" id="opcion1" value="opcion_1"> Jacuzzi</label>
+                    </div>
                 <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block">
               </form>
             </div>
             <!-- break -->
           </div>
-          <!-- end:sidebar -->
+          <!-- fin:sidebar -->
           
         </div>
       </div>
     </div>
+    <!-- fin:content -->
 	</body>
 </jsp:body>
 </t:paginabasica>

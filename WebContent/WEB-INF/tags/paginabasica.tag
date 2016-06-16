@@ -21,6 +21,8 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/botones-w8.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/easyrent.css" rel="stylesheet">
+<!-- Datapicker -->
+<link href="${pageContext.request.contextPath}/css/datepicker.css" rel="stylesheet">
 <!-- ISRA INNOVACIONES -->
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,800' rel='stylesheet' type='text/css'>
 <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet">
@@ -187,7 +189,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
-     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
     <script src="${pageContext.request.contextPath}/js/gmap3.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.easing.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.jcarousel.min.js"></script>

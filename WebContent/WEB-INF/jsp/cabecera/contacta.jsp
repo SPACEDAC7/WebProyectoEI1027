@@ -13,7 +13,7 @@
               <h2>Contacto</p>
             </div>
             <ol class="breadcrumb">
-              <li><a href="#">Inicio</a></li>
+              <li><a href="${pageContext.request.contextPath}/cabecera/inicio.html">Inicio</a></li>
               <li class="active">Contacto</li>
             </ol>
           </div>
