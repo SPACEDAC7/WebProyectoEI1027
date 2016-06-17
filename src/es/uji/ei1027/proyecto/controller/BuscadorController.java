@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
+import es.uji.ei1027.proyecto.domain.Buscador;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Propiedad;
@@ -33,7 +35,19 @@ private PropiedadDao propiedadDao;
 	public String listPropiedades(Model model, HttpSession session){
 		String retorno;	
 		Propiedad propiedad = new Propiedad();
+		Buscador buscador = new Buscador();
+		model.addAttribute("buscador", buscador);
 		model.addAttribute("propiedades", propiedadDao.getPropiedades());
+		retorno = "buscador/list";
+		return retorno;
+	}
+	
+	@RequestMapping(value="/list", method=RequestMethod.POST)
+	public String listPropiedadesFiltradas(@ModelAttribute("buscador") Buscador buscador, Model model, HttpSession session) {
+		String retorno;	
+		Propiedad propiedad = new Propiedad();
+		model.addAttribute("buscador", buscador);
+		model.addAttribute("propiedades", propiedadDao.obtenerPropiedadesPorFiltro(buscador));
 		retorno = "buscador/list";
 		return retorno;
 	}

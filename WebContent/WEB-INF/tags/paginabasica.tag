@@ -3,10 +3,11 @@
 <%@ attribute name="title" required="false"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="user" scope="request" value='${session.getAttribute("user")}' />
+<c:set var="rol" scope="request" value='${session.getAttribute("rol")}' />
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="utf-8">
 <c:choose>
 	<c:when test='${title == "INDEX"}'>
@@ -183,7 +184,6 @@
       </div>
     </div>
     <!-- fin:footer -->
-   
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

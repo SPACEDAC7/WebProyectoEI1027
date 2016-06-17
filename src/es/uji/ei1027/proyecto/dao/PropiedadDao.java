@@ -12,12 +12,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import es.uji.ei1027.proyecto.domain.Buscador;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 
 @Repository
 public class PropiedadDao {
 	
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private DireccionDao direccionDao;
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource){
@@ -40,6 +44,12 @@ public class PropiedadDao {
 			propiedad.setId_direccion(rs.getInt("id_direccion"));
 			propiedad.setUrl_mapa(rs.getString("url_mapa"));
 			return propiedad;
+		}
+	}
+	
+	private static final class StringMapper implements RowMapper<String> {
+		public String mapRow(ResultSet rs, int rowNum) throws SQLException{
+			return rs.getString(1);
 		}
 	}
 	
@@ -125,6 +135,20 @@ public class PropiedadDao {
 			max = -1;
 		}
 		return max+1;
+	}
+	
+	public List<Propiedad> obtenerPropiedadesPorFiltro(Buscador buscador) {
+		buscador.arreglarBuscador();
+		String localidad = buscador.getLocalidad();
+		String numCamas = buscador.getNumcamasString();
+		String numHabitaciones = buscador.getNumHabitacionesString();
+		int area = buscador.getArea();
+		float precioMinimo = buscador.getPrecioMinimoString();
+		float precioMaximo = buscador.getPrecioMaximoString();
+		System.out.println(localidad);
+		String sql = "SELECT * FROM propiedad where id_direccion in (SELECT id_direccion from direccion where localidad LIKE ?) and CAST(num_camas AS varchar) LIKE ? and CAST(num_habitaciones AS varchar) LIKE ? "
+				+ "and precio_propiedad >= ? and precio_propiedad <= ? and area >= ? ";
+		return this.jdbcTemplate.query(sql, new PropiedadMapper(), localidad, numCamas, numHabitaciones, precioMinimo, precioMaximo, area);
 	}
 	
 

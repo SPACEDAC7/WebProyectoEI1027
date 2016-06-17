@@ -10,127 +10,99 @@
 				<div class="col-md-5">
 					<div class="quick-search">
 						<div class="row">
-							<form role="form">
+							 <form:form method="post" modelAttribute="buscador" role="form" class="advance-search">
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="form-group">
-										<label for="ciudad">Ciudad</label><select class="form-control">
-											<option>
-												Castellon
-											</option>
-											<option>
-												Valencia
-											</option>
-										</select>
+										<form:label path="localidad">Ciudad</form:label>
+									  <form:select class="form-control" path="localidad">
+									  	<form:option value="" selected="selected">Seleccione localidad</form:option>
+										<form:option value="castellon">Castellon</form:option>
+										<form:option value="valencia">Valencia</form:option>
+										<form:option value="Vila-real">Vila-real</form:option>
+									  </form:select>
 									</div>
 									<div class="form-group">
-										<label for="habitaciones">Habitaciones</label><select class="form-control">
-											<option>
-												1
-											</option>
-											<option>
-												2
-											</option>
-											<option>
-												3
-											</option>
-											<option>
-												4
-											</option>
-											<option>
-												5
-											</option>
-										</select>
+										<form:label path="num_habitaciones">Habitaciones</form:label>
+				                      <form:select class="form-control" path="num_habitaciones">
+				                        <form:option value ="-1" selected="selected">Nº habitaciones</form:option>
+				                        <form:option value="1">1</form:option>
+				                        <form:option value="2">2</form:option>
+				                        <form:option value="3">3</form:option>
+				                        <form:option value="4">4</form:option>
+				                        <form:option value="5">5</form:option>
+				                        <form:option value="18">18</form:option>
+				                      </form:select>
 									</div>
 								</div><!-- break -->
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="form-group">
-										<label for="tipo">Tipo</label><select class="form-control">
-											<option>
-												Apartamento
-											</option>
-											<option>
-												Casa
-											</option>
-										</select>
+										 <form:label path="tipo">Tipo</form:label>
+					                      <form:select class="form-control" path="tipo">
+					                      	<form:option value="" selected="selected">Tipo de propiedad</form:option>
+					                        <form:option value="apartamento">Apartamento</form:option>
+					                        <form:option value="casa">Casa</form:option>
+					                      </form:select>
 									</div>
 									<div class="form-group">
-										<label for="camas">Camas</label><select class="form-control">
-											<option>
-												1
-											</option>
-											<option>
-												2
-											</option>
-											<option>
-												3
-											</option>
-											<option>
-												4
-											</option>
-										</select>
+										<form:label path="num_camas">Camas</form:label>
+					                      <form:select class="form-control" path="num_camas">
+					                      	<form:option value ="-1" selected="selected">Nº camas</form:option>
+					                        <form:option value="1">1</form:option>
+					                        <form:option value="2">2</form:option>
+					                        <form:option value="3">3</form:option>
+					                        <form:option value="4">4</form:option>
+					                      </form:select>
 									</div>
 								</div><!-- break -->
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="form-group">
-										<label for="maxprice">Precio máximo</label><select class="form-control">
-											<option>
-												$8,200
-											</option>
-											<option>
-												$11,700
-											</option>
-											<option>
-												$14,150
-											</option>
-											<option>
-												$21,110
-											</option>
-										</select>
+										 <form:label path="precio_propiedad_maximo">Precio máximo</form:label>
+					                      <form:select class="form-control" path="precio_propiedad_maximo">
+					                      	<form:option value ="-1" selected="selected">Precio máximo</form:option>
+					                        <form:option value="2000">2.000 €</form:option>
+					                        <form:option value="1500">1.500 €</form:option>
+					                        <form:option value="1000">1.000 €</form:option>
+					                        <form:option value="500">500 €</form:option>
+					                      </form:select>
 									</div>
 									<div class="form-group">
-										<label for="capacidad">Capacidad</label><select class="form-control">
-											<option>
-												1
-											</option>
-											<option>
-												2
-											</option>
-											<option>
-												3
-											</option>
-											<option>
-												4
-											</option>
-										</select>
+										<form:label path="capacidad">Capacidad</form:label>
+				                      <form:select class="form-control" path="capacidad">
+				                      <form:option value ="-1" selected="selected">Nº ocupantes</form:option>
+				                        <form:option value="1">1</form:option>
+				                        <form:option value="2">2</form:option>
+				                        <form:option value="3">3</form:option>
+				                        <form:option value="4">4</form:option>
+				                      </form:select>
 									</div>
 								</div><!-- break -->
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="form-group">
-										<label for="minprice">Precio mínimo</label><select class="form-control">
-											<option>
-												$4,200
-											</option>
-											<option>
-												$6,700
-											</option>
-											<option>
-												$8,150
-											</option>
-											<option>
-												$11,110
-											</option>
-										</select>
+										 <form:label path="precio_propiedad_minimo">Precio mínimo</form:label>
+					                      <form:select class="form-control" path="precio_propiedad_minimo">
+					                      	<form:option value ="-1" selected="selected">Precio mínimo</form:option>
+					                        <form:option value="10">10 €</form:option>
+					                        <form:option value="100">100 €</form:option>
+					                        <form:option value="500">500 €</form:option>
+					                        <form:option value="1000">1000€</form:option>
+					                      </form:select>
 									</div>
 								</div>
-								<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="form-group">
-										<label for="servicios" style="display: block;">Servicios</label><label class="checkbox-inline"><input id="opcion1" type="checkbox" value="opcion_1">WiFi</label><label class="checkbox-inline"><input id="checkboxEnLinea1" type="checkbox" value="opcion2">Secador</label><label class="checkbox-inline"><input id="opcion1" type="checkbox" value="opcion_1">Cable</label><label class="checkbox-inline"><input id="opcion1" type="checkbox" value="opcion_1">Jacuzzi</label>
+										<form:label path="area">Area</form:label>
+					                      <form:select class="form-control" path="area">
+					                      <form:option value ="-1" selected="selected">Area en m<sup>2</sup></form:option>
+					                        <form:option value="50">50</form:option>
+					                        <form:option value="70">70</form:option>
+					                        <form:option value="100">100</form:option>
+					                      </form:select>
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12">
 									<input class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Search">
 								</div>
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>
