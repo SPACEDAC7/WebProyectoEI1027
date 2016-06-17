@@ -8,7 +8,7 @@
 		<div class="content">
 			<ul class="breadcrumb">
 				<li><p>ESTÁS AQUÍ</p></li>
-				<li><a href="#" class="active">GESTIÓN DE FACTURAS</a> </li>
+				<li><a href="${pageContext.request.contextPath}/factura/list.html" class="active">GESTIÓN DE FACTURAS</a> </li>
 			</ul>
 			<div class="page-title"><a href="${pageContext.request.contextPath}/gestiones/listGestiones.html" ><i class="icon-custom-left"></i></a>
 				<h3>Facturas - <span class="semi-bold">Listado de facturas</span></h3>
@@ -47,28 +47,27 @@
 	                    <td class="v-align-middle">
 							<button type="button" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button>
 						</td>	
-				</tr>
-				</c:forEach>
+				  </tr>
+				  </c:forEach>
+				  <div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Confirmación de borrado</h4>
+				      </div>
+				      <div class="modal-body">
+				        <h3>¿Desea eliminar la factura ${factura.id_factura}?</h3>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				        <button type="button" class="btn btn-primary" onClick="location.href='delete/${factura.id_factura}.html'">Borrar</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 					</tbody>
 	              </table>
-				  
-				  <div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Confirmación de borrado</h4>
-	      </div>
-	      <div class="modal-body">
-	        <h3>¿Desea eliminar la factura 0001?</h3>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	        <button type="button" class="btn btn-primary" onClick="location.href='delete/'.${factura.id_factura}.'.html'">Borrar</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 				  
 	            </div>
 	          </div>
