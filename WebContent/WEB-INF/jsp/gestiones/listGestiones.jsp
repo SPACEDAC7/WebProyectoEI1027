@@ -3,62 +3,176 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Gestiones">
 <jsp:body>
-	<div style="margin-bottom:20px" class="container">
-	<div>
-		<ul class="list-unstyled buttons">
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/credencial/list.html">
-				<img src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Credenciales</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/direccion/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Direcciones</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/factura/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Facturas</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/imagen/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Imagenes</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/periodo/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Periodos</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/propiedad/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Propiedades</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/puntuacion/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Puntuaciones</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/respuestaPuntuacion/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Respuestas de puntuacion</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/reserva/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Reservas</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/usuario/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Usuarios</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/servicio/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Servicios</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/propiedadServicio/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Propiedad servicios</a></li>
-						
-		<li><a class="w8-icon l-blue" href="${pageContext.request.contextPath}/mensaje/list.html">
-				<img style="display:block;margin:0 auto;" src="${pageContext.request.contextPath}/img/carpeta-azul.png"
-						alt="logo_de_credenciales">Mensajes</a></li>
-		</ul>
-	</div>
-	</div>
+	  <!-- INICIO PAGE CONTAINER-->
+	  <div class="page-content"> 
+		<div class="content">
+			<div class="row">
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/credencial/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/credenciales.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Credenciales</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/direccion/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/direcciones.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Direcciones</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/factura/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/facturas.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Facturas</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/imagen/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/imagenes.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Imágenes</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/periodo/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/periodos.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Periodos</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/propiedad/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/propiedades.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Propiedades</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/puntuacion/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/puntuaciones.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Puntuaciones</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/respuestaPuntuacion/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/respuestas-puntuacion.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Comentarios</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+			</div><br>
+			<div class="row">
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/reserva/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/reservas.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Reservas</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/usuario/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/usuarios.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Usuarios</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/servicio/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/servicios.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Servicios</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/propiedadServicio/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/propiedad-servicios.png" width="100"" height="100"" alt=""><br><span class="semi-bold">¿Mantenimiento?</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 single-colored-widget">
+					<a href="${pageContext.request.contextPath}/mensaje/list.html"><div class="content-wrapper green">
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/mensajes.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Mensajes</span></h4>
+						<div class="clearfix"></div>
+					</div>
+					<div class="heading">
+						<div class="pull-left">
+							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div></a>
+				</div>
+			</div>
+	    </div>
+	  </div>
+	 </div>
+	<!-- FIN CONTAINER --> 
 </jsp:body>
 </t:paginabasica>
