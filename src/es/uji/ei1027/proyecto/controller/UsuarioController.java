@@ -161,6 +161,18 @@ public class UsuarioController {
 		return retorno;
 	}
 	
+	@RequestMapping(value="/perfil/{id_usuario}")
+	public String processPerfil(@PathVariable int id_usuario, HttpSession session, Model model){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:usuario/perfil/" + id_usuario + ".html");
+			return "login";
+		}
+		model.addAttribute("usuario", usuarioDao.getUsuario(id_usuario));
+		return "usuario/perfil";
+	}
+	
 	private Date fechaDeHoy() {
 		java.util.Date fecha = new java.util.Date();
 		Date fechaSQL = new Date(fecha.getTime());

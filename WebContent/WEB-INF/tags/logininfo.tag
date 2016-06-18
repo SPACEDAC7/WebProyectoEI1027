@@ -11,7 +11,7 @@
 		<c:when test='${rol == "inquilino"}'>
 			<ul class="nav navbar-nav navbar-right desplegable">
 
-				<li><a href=""><p class="destacado" >${usuario.nombre}</p></a>
+				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
 						<li><a class="letras-grises" href="">Mensajes</a></li>
 						<li><a class="letras-grises" href="">Mis Reservas</a></li>
@@ -28,7 +28,7 @@
 				<c:when test='${rol == "propietario"}'>
 			<ul class="nav navbar-nav navbar-right desplegable">
 
-				<li><a href=""><p class="destacado" >${usuario.nombre}</p></a>
+				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
 						<li><a class="letras-grises" href="">Mensajes</a></li>
 						<li><a class="letras-grises" href="">Mis Propiedades</a></li>
