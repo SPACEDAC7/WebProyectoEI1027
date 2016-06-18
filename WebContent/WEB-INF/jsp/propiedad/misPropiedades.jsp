@@ -57,7 +57,6 @@
 					};
 					function borrarPropiedad() {
 						var idpropiedad = document.getElementById("idPropiedad").value
-						alert("delete/" + idpropiedad + ".html")
 						location.href='delete/' + idpropiedad + '.html'
 					};
 				  </script>

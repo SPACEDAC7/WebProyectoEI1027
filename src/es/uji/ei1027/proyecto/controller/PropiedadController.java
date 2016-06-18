@@ -73,12 +73,19 @@ private UsuarioDao usuarioDao;
 	@RequestMapping("/misPropiedades")
 	public String listarMisPropiedades(Model model, HttpSession session){
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		Map<Propiedad, Direccion> mapPropiedadesDirecciones = new HashMap<Propiedad, Direccion>();
-		for (Propiedad propiedad: propiedadDao.obtenerPropiedadesPorUsuario(usuario.getId_usuario())) {
-			mapPropiedadesDirecciones.put(propiedad, direccionDao.getDireccion(propiedad.getId_direccion()));
+		if (usuario != null) {
+			Map<Propiedad, Direccion> mapPropiedadesDirecciones = new HashMap<Propiedad, Direccion>();
+			for (Propiedad propiedad: propiedadDao.obtenerPropiedadesPorUsuario(usuario.getId_usuario())) {
+				mapPropiedadesDirecciones.put(propiedad, direccionDao.getDireccion(propiedad.getId_direccion()));
+			}
+			model.addAttribute("listaPropiedadesDirecciones", mapPropiedadesDirecciones);
+			return "propiedad/misPropiedades";
+		} else {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:propiedad/add.html");
+			return "login";
 		}
-		model.addAttribute("listaPropiedadesDirecciones", mapPropiedadesDirecciones);
-		return "propiedad/misPropiedades";
+		
 	}
 	
 	//A�adir	
@@ -168,6 +175,8 @@ private UsuarioDao usuarioDao;
 					int estadoBorradoPropiedad = propiedadDao.deletePropiedad(id_propiedad);
 					if (estadoBorradoPropiedad != 0) {
 						MensajeError mensajeError = new MensajeError("Error al eliminar la propiedad porqué está asociada a una o más reservas");
+						mensajeError.setMensaje(mensajeError.getMensaje().toUpperCase());
+						session.setAttribute("nextURL", "redirect:propiedad/misPropiedades.html");
 						session.setAttribute("mensajeError", mensajeError);
 						retorno = "redirect:../../error/mostrarError.html";
 					}
