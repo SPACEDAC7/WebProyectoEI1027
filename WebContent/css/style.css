@@ -2098,6 +2098,11 @@ input[type="color"]:focus,
 	[11. COPYRIGHT]
 	==================
 */
+.copyderecha{
+	position: relative;
+	text-align: center;
+}
+
 .copyright{
 	position: relative;
 	margin-top: 60px;

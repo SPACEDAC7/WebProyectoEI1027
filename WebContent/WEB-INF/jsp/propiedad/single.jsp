@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=iso-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
-<t:paginabasica title="Nueva Propiedad">
+<t:paginabasica title="Detalles Propiedad">
 	<jsp:body>
  <!-- inicio:header -->
     <div id="header" class="heading" style="background-image: url(../../img/img01.jpg);">

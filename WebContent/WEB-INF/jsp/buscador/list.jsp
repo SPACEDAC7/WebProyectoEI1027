@@ -52,7 +52,7 @@
 						<div class="property-text">
 						  <h3><a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">${propiedad.titulo}</a> <small>${propiedad.id_direccion}</small></h3>
 						  <p>${propiedad.descripcion}</p>
-						  <p><a href="#" class="btn btn-primary">More Detail &raquo;</a></p>
+						  <p><a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html" class="btn btn-primary">Más detalles &raquo;</a></p>
 						</div>
 					  </div>
 					</div>
