@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.CredencialDao;
+import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Usuario;
@@ -24,6 +25,7 @@ import es.uji.ei1027.proyecto.validator.UsuarioValidator;
 @RequestMapping("/usuario")
 public class UsuarioController {
 	private UsuarioDao usuarioDao;
+	private DireccionDao direccionDao;
 	
 	@Autowired
 	CredencialDao credencialDao;
@@ -32,6 +34,12 @@ public class UsuarioController {
 	public void setUsuarioDao( UsuarioDao usuarioDao){
 		this.usuarioDao = usuarioDao;
 	}
+	
+	@Autowired
+	public void setDireccionDao( DireccionDao direccionDao){
+		this.direccionDao = direccionDao;
+	}
+	
 	//Listar
 	@RequestMapping("/list")
 	public String listUsuarios(Model model, HttpSession session){
@@ -170,6 +178,7 @@ public class UsuarioController {
 			return "login";
 		}
 		model.addAttribute("usuario", usuarioDao.getUsuario(id_usuario));
+		model.addAttribute("direccion", direccionDao.getDireccion(usuarioDao.getUsuario(id_usuario).getId_direccion()));
 		return "usuario/perfil";
 	}
 	
