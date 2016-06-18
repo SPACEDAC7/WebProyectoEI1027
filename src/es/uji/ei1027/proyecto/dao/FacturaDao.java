@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.proyecto.domain.Factura;
+import es.uji.ei1027.proyecto.domain.Reserva;
 
 @Repository
 public class FacturaDao {
@@ -80,6 +81,11 @@ public class FacturaDao {
 			max = -1;
 		}
 		return max+1;
+	}
+	
+	public List<Factura> obtenerFacturaPorUsuario(int idUsuario){
+		String sql = "SELECT * FROM factura WHERE id_reserva IN( SELECT id_reserva FROM reserva WHERE id_usuario = ?)";
+		return this.jdbcTemplate.query(sql, new FacturaMapper(), idUsuario);
 	}
 	
 }

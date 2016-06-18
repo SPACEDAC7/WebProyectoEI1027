@@ -62,10 +62,10 @@
                 <div  align="center">
                 	<c:choose>
                 		<c:when test='${rol == "inquilino"}'>
-                			<a href=""><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Consultar tus reservas</button></a><hr style="margin:0px 0px 0px 0px">
+                			<a href="${pageContext.request.contextPath}/reserva/misReservas.html"><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Consultar tus reservas</button></a><hr style="margin:0px 0px 0px 0px">
 		                 	<a href=""><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Bandeja de entrada</button></a><hr style="margin:0px 0px 0px 0px">
 		                 	<a href="${pageContext.request.contextPath}/buscador/list.html"><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Buscar una propiedad</button></a><hr style="margin:0px 0px 0px 0px">
-		                 	<a href=""><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Consultar tus facturas</button></a>
+		                 	<a href="${pageContext.request.contextPath}/factura/misFacturas.html"><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Consultar tus facturas</button></a>
                 		</c:when>
                 		<c:when test='${rol == "propietario"}'>
                 			<a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html"><button style="border-style:none" type="button" class="btn btn-default btn-lg btn-block">Consultar tus propiedades</button></a><hr style="margin:0px 0px 0px 0px">

@@ -96,5 +96,9 @@ public class ReservaDao {
 		return cantidadReservasAsociadasAPropiedad;
 	}
 	
+	public List<Reserva> obtenerReservaPorUsuario(int idUsuario){
+		String sql = "SELECT * FROM reserva WHERE id_usuario = ?";
+		return this.jdbcTemplate.query(sql, new ReservaMapper(), idUsuario);
+	}
 
 }

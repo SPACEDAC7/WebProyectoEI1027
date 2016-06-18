@@ -1,5 +1,8 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.ReservaDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
+import es.uji.ei1027.proyecto.domain.Direccion;
+import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.Reserva;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.ReservaValidator;
@@ -21,10 +27,16 @@ import es.uji.ei1027.proyecto.validator.ReservaValidator;
 @RequestMapping("/reserva")
 public class ReservaController {
 private ReservaDao reservaDao;
+private PropiedadDao propiedadDao;
 	
 	@Autowired
 	public void setReservaDao( ReservaDao reservaDao){
 		this.reservaDao = reservaDao;
+	}
+	
+	@Autowired
+	public void setPropiedadDao(PropiedadDao propiedadDao){
+		this.propiedadDao = propiedadDao;
 	}
 	//Listar
 	@RequestMapping("/list")
@@ -140,4 +152,22 @@ private ReservaDao reservaDao;
 		}
 		return retorno;  
 	}
+	
+	@RequestMapping("/misReservas")
+	public String listarMisReservas(Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		if (usuario != null) {
+			Map<Reserva, Propiedad> mapReservasPropiedad = new HashMap<Reserva, Propiedad>();
+			for (Reserva reserva: reservaDao.obtenerReservaPorUsuario(usuario.getId_usuario())) {
+				mapReservasPropiedad.put(reserva, propiedadDao.getPropiedad(reserva.getId_propiedad()));
+			}
+			model.addAttribute("listaReservaPropiedades", mapReservasPropiedad);
+			return "reserva/misReservas";
+		} else {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:propiedad/add.html");
+			return "login";
+		}
+	}
+	
 }
