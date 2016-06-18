@@ -50,7 +50,7 @@ public class DireccionController {
 		return retorno;
 	}
 		
-	//A�adir	
+	//Aï¿½adir	
 	@RequestMapping(value="/add") 
 	public String addDireccion(Model model, HttpSession session) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
@@ -148,7 +148,7 @@ public class DireccionController {
 	
 	@RequestMapping(value="/delete/confirmado")
 	public String deleteDireccion(HttpSession session, Model model){
-		System.out.println("Ha entrado en el metodo de borrar la direcci�n");
+		System.out.println("Ha entrado en el metodo de borrar la dirección");
 		String retorno;
 		String rol = (String) session.getAttribute("rol");
 		int id_direccion = (Integer)session.getAttribute("id_eliminar");
