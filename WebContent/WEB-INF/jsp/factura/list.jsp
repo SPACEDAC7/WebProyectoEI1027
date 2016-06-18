@@ -45,10 +45,11 @@
 							<button type="button" class="btn btn-primary btn-sm btn-small" onClick="location.href='update/${factura.id_factura}.html'"><i class="fa fa-pencil"></i>  Editar</button>
 						</td>
 	                    <td class="v-align-middle">
-							<button type="button" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button>
+							<button type="button" value="${factura.id_factura}" onclick="pasarIdFacturaAModal(${factura.id_factura})" data-whatever="si" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button>
 						</td>	
 				  </tr>
 				  </c:forEach>
+				  
 				  <div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
@@ -57,17 +58,32 @@
 				        <h4 class="modal-title" id="myModalLabel">Confirmación de borrado</h4>
 				      </div>
 				      <div class="modal-body">
-				        <h3>¿Desea eliminar la factura ${factura.id_factura}?</h3>
+				        <h3>¿Desea eliminar la factura?<input type="hidden" id="idFac"></h3>
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				        <button type="button" class="btn btn-primary" onClick="location.href='delete/${factura.id_factura}.html'">Borrar</button>
+				        <button type="button" class="btn btn-primary" onClick="borrarFactura()" >Borrar</button>
+				        <!-- onClick="location.href='delete/${factura.id_factura}.html'" -->
 				      </div>
 				    </div>
 				  </div>
 				</div>
 					</tbody>
+					
 	              </table>
+	              <script>
+				  function pasarIdFacturaAModal(idFactura) {
+					  $('#borrar').on('show.bs.modal', function (event) {
+						  var modal = $(this)
+						  modal.find('.modal-title').text('New message to ' + idFactura)
+						  modal.find('.modal-body input').val(idFactura)
+					  });
+					};
+					function borrarFactura() {
+						var idfac = document.getElementById("idFac").value
+						location.href='delete/' + idfac + '.html'
+					};
+				  </script>
 				  
 	            </div>
 	          </div>
