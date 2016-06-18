@@ -20,16 +20,16 @@
 								class="fa fa-twitter"></i> Twitter</a>
 						</div>
 						o 
-						<form accept-charset="UTF-8" action="${pageContext.request.contextPath}/login.html" class="form"
+						<form accept-charset="UTF-8" action="${pageContext.request.contextPath}/login.html" class="form" method="post"
 							id="login-nav" method="post" name="login-nav" role="form">
 							<div class="form-group">
-								<label class="sr-only" for="exampleInputEmail">Nombre de usuario</label>
-								<input class="form-control" id="exampleInputEmail"
+								<label class="sr-only" for="nick_usuario">Nombre de usuario</label>
+								<input class="form-control" id="nick_usuario"
 									placeholder="Nombre de usuario" required="">
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="exampleInputPassword">Contraseña</label><input
-									class="form-control" id="exampleInputPassword"
+								<label class="sr-only" for="password">Contraseña</label><input
+									class="form-control" id="password"
 									placeholder="Contraseña" required="" type="password">
 								
 								<div class="help-block text-right">

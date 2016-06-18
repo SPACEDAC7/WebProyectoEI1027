@@ -373,39 +373,49 @@
 	      <div class="container">
 			<!-- inicio:footer -->
 	        <div class="row">
-	          <div class="col-md-3 col-sm-6 col-xs-12">
-	            <div class="widget">
-	              <h3>Lista enlaces 1</h3>
-	              <ul class="list-unstyled">
-	                <li><a href="#">Link</a></li>
-	                <li><a href="#">Link</a></li>
-	                <li><a href="#">Link</a></li>
-	              </ul>
-	            </div>
-	          </div>
 	          <!-- break -->
 	          <div class="col-md-3 col-sm-6 col-xs-12">
 	            <div class="widget">
-	              <h3>Lista enlaces 2</h3>
-	              <ul class="list-unstyled">
-	                <li><a href="#">Link</a></li>
-	                <li><a href="#">Link</a></li>
-	                <li><a href="#">Link</a></li>
-	              </ul>
+	              <h2>EasyRent.</h2>
+	              <address>
+	                <strong>La mejor opción.</strong><br>
+	                Av. de Vicent Sos Baynat s/n 12071<br>
+	                <br>
+	                Telp. : +62-345678910<br>
+	                Email : aluji@uji.es
+	              </address>
 	            </div>
 	          </div>
 	          <!-- break -->
+	           <!-- break -->
 	          <div class="col-md-3 col-sm-6 col-xs-12">
 	            <div class="widget">
-	              <h3>Usuario</h3>
-	              <ul class="list-unstyled">
-	                <li><a href="#">Mi perfil</a></li>
-	                <li><a href="#">Mis reservas</a></li>
-	                <li><a href="#">Salir</a></li>
-	              </ul>
+	              <h2>EasyRent.</h2>
+	              <address>
+	                <strong>La mejor opción.</strong><br>
+	                Tenemos todo tipo de alojamiento<br>
+	                <br>
+	                Telp. : +62-345678910<br>
+	                Email : aluji@uji.es
+	              </address>
 	            </div>
 	          </div>
 	          <!-- break -->
+	           <!-- break -->
+	          <div class="col-md-3 col-sm-6 col-xs-12">
+	            <div class="widget">
+	              <h2>EasyRent.</h2>
+	              <address>
+	                <strong>La mejor opción.</strong><br>
+	                Av. de Vicent Sos Baynat s/n 12071<br>
+	                <br>
+	                Telp. : +62-345678910<br>
+	                Email : aluji@uji.es
+	              </address>
+	            </div>
+	          </div>
+	          <!-- break -->
+	           <!-- break -->
 	          <div class="col-md-3 col-sm-6 col-xs-12">
 	            <div class="widget">
 	              <h2>EasyRent.</h2>
