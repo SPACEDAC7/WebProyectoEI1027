@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.proyecto.domain.Buscador;
+import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 
 @Repository
@@ -151,5 +152,4 @@ public class PropiedadDao {
 		return this.jdbcTemplate.query(sql, new PropiedadMapper(), localidad, numCamas, numHabitaciones, precioMinimo, precioMaximo, area);
 	}
 	
-
 }

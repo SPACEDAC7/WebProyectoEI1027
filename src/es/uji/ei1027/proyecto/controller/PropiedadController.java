@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
+import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Propiedad;
@@ -22,10 +24,22 @@ import es.uji.ei1027.proyecto.validator.PropiedadValidator;
 @RequestMapping("/propiedad")
 public class PropiedadController {
 private PropiedadDao propiedadDao;
+private DireccionDao direccionDao;
+private UsuarioDao usuarioDao;
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
 		this.propiedadDao = propiedadDao;
+	}
+	
+	@Autowired
+	public void setDireccionDao(DireccionDao direccionDao){
+		this.direccionDao = direccionDao;
+	}
+	
+	@Autowired
+	public void setUsuarioDao(UsuarioDao usuarioDao){
+		this.usuarioDao = usuarioDao;
 	}
 	//Listar
 	@RequestMapping("/list")
@@ -135,5 +149,13 @@ private PropiedadDao propiedadDao;
 			}
 		}
 		return retorno; 
+	}
+	
+	@RequestMapping(value="/single/{id_propiedad}")
+	public String processDetails(@PathVariable int id_propiedad , HttpSession session, Model model){
+		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
+		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
+		model.addAttribute("usuario", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
+		return "propiedad/single";
 	}
 }

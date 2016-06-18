@@ -50,7 +50,7 @@
 						  </div>
 						</div>
 						<div class="property-text">
-						  <h3><a href="#">${propiedad.titulo}</a> <small>${propiedad.id_direccion}</small></h3>
+						  <h3><a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">${propiedad.titulo}</a> <small>${propiedad.id_direccion}</small></h3>
 						  <p>${propiedad.descripcion}</p>
 						  <p><a href="#" class="btn btn-primary">More Detail &raquo;</a></p>
 						</div>
