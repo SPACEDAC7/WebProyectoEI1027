@@ -62,7 +62,7 @@
 			<div class="chat-toggler">	
 				<div class="user-details"> 
 					<div class="username">
-						<span class="bold">John Smith &nbsp;</span>									
+						<span class="bold">${usuario.nombre} &nbsp;</span>									
 					</div>
 				</div> 
 				<div class="profile-pic"> 
@@ -107,7 +107,7 @@
 		</div>
 	    <div class="user-info">
 	      <div class="greeting">Bienvenido</div>
-	      <div class="username"><span class="semi-bold">John Smith</span></div>
+	      <div class="username"><span class="semi-bold">${usuario.nombre}</span></div>
 	    </div>
 	   </div>
 	  <!-- FIN MINI-PROFILE -->

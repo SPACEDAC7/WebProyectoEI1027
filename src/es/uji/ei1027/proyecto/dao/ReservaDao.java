@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.Reserva;
 
 @Repository
@@ -87,6 +88,12 @@ public class ReservaDao {
 			return false;
 		else
 			return true;
+	}
+	
+	public int reservasAsociadaAPropiedad(Propiedad propiedad) {
+		String sql = "SELECT COUNT(id_reserva) FROM reserva where id_propiedad = ?";
+		int cantidadReservasAsociadasAPropiedad = this.jdbcTemplate.queryForObject(sql, Integer.class, propiedad.getId_propiedad());
+		return cantidadReservasAsociadasAPropiedad;
 	}
 	
 

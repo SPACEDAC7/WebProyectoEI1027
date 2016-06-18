@@ -161,9 +161,9 @@
                             <img src="../../img/team01.jpg" alt="the team - mikha realestate theme">
                           </div>
                           <div class="team-description">
-                            <h3>${usuario.nombre} ${usuario.apellido }</h3>
-                            <i class="fa fa-mobile"></i> Numero de telefono : ${usuario.telefono }<br>
-                            <i class="fa fa-print"></i> Email : ${usuario.email}</p>
+                            <h3>${usuarioPropiedad.nombre} ${usuarioPropiedad.apellido }</h3>
+                            <i class="fa fa-mobile"></i> Numero de telefono : ${usuarioPropiedad.telefono }<br>
+                            <i class="fa fa-print"></i> Email : ${usuarioPropiedad.email}</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua.</p>
                             <div class="team-social">

@@ -1,5 +1,11 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +22,7 @@ import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
+import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.PropiedadValidator;
@@ -61,6 +68,17 @@ private UsuarioDao usuarioDao;
 			}
 		}
 		return retorno;
+	}
+	
+	@RequestMapping("/misPropiedades")
+	public String listarMisPropiedades(Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Map<Propiedad, Direccion> mapPropiedadesDirecciones = new HashMap<Propiedad, Direccion>();
+		for (Propiedad propiedad: propiedadDao.obtenerPropiedadesPorUsuario(usuario.getId_usuario())) {
+			mapPropiedadesDirecciones.put(propiedad, direccionDao.getDireccion(propiedad.getId_direccion()));
+		}
+		model.addAttribute("listaPropiedadesDirecciones", mapPropiedadesDirecciones);
+		return "propiedad/misPropiedades";
 	}
 	
 	//A�adir	
@@ -143,9 +161,24 @@ private UsuarioDao usuarioDao;
 			if ( rol.equals("administrador") ) {
 				propiedadDao.deletePropiedad(id_propiedad);
 			    retorno = "redirect:../list.html";
+			} else if (rol.equals("propietario")){
+				int idUsuarioAutenticado = usuario.getId_usuario();
+				Propiedad supuestaPropiedadUsuario = propiedadDao.getPropiedad(id_propiedad);
+				if (supuestaPropiedadUsuario.getId_usuario() == idUsuarioAutenticado) {
+					int estadoBorradoPropiedad = propiedadDao.deletePropiedad(id_propiedad);
+					if (estadoBorradoPropiedad != 0) {
+						MensajeError mensajeError = new MensajeError("Error al eliminar la propiedad porqué está asociada a una o más reservas");
+						session.setAttribute("mensajeError", mensajeError);
+						retorno = "redirect:../../error/mostrarError.html";
+					}
+					else
+						retorno = "redirect:../misPropiedades.html";
+				} else {
+					retorno = "redirect:../cabecera/inicio.jsp";
+				}
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
-				retorno = "redirect:../index.jsp";
+				retorno = "redirect:../cabecera/inicio.jsp";
 			}
 		}
 		return retorno; 
@@ -155,7 +188,11 @@ private UsuarioDao usuarioDao;
 	public String processDetails(@PathVariable int id_propiedad , HttpSession session, Model model){
 		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
-		model.addAttribute("usuario", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
+		model.addAttribute("usuarioPropiedad", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
 		return "propiedad/single";
 	}
+	
+	
+	
+	
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -108,8 +109,16 @@ public class PropiedadDao {
 		this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", propiedad.getId_propiedad());
 	}
 	
-	public void deletePropiedad(int id_propiedad) {
-		this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", id_propiedad);
+	public int deletePropiedad(int id_propiedad) {
+		int estado = 0;
+		try {
+			this.jdbcTemplate.update("DELETE FROM propiedad WHERE id_propiedad=?", id_propiedad);
+		} catch (Exception ex) {
+			estado = -1;
+		}
+		
+		return estado;
+		
 	}
 	
 	public boolean existePropiedad(int idPropiedad) {
@@ -150,6 +159,11 @@ public class PropiedadDao {
 		String sql = "SELECT * FROM propiedad where id_direccion in (SELECT id_direccion from direccion where localidad LIKE ?) and CAST(num_camas AS varchar) LIKE ? and CAST(num_habitaciones AS varchar) LIKE ? "
 				+ "and precio_propiedad >= ? and precio_propiedad <= ? and area >= ? ";
 		return this.jdbcTemplate.query(sql, new PropiedadMapper(), localidad, numCamas, numHabitaciones, precioMinimo, precioMaximo, area);
+	}
+	
+	public List<Propiedad> obtenerPropiedadesPorUsuario(int idUsuario) {
+		String sql = "SELECT * FROM propiedad WHERE id_usuario = ?";
+		return this.jdbcTemplate.query(sql, new PropiedadMapper(), idUsuario);
 	}
 	
 }
