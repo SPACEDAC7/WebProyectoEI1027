@@ -136,13 +136,70 @@ private UsuarioDao usuarioDao;
 			if ( rol.equals("administrador") ) {
 				model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 				retorno = "propiedad/update";
+			} else if (rol.equals("propietario")){
+				int idUsuarioAutenticado = usuario.getId_usuario();
+				Propiedad supuestaPropiedadUsuario = propiedadDao.getPropiedad(id_propiedad);
+				if (supuestaPropiedadUsuario.getId_usuario() == idUsuarioAutenticado) {
+					model.addAttribute("propiedadAModificar", supuestaPropiedadUsuario);
+					Direccion direccion = direccionDao.getDireccion(supuestaPropiedadUsuario.getId_direccion());
+					model.addAttribute("direccionAModificar", direccion);
+					retorno = "propiedad/formModificarPropiedadUsuario";
+				} else {
+					retorno = "propiedad/misPropiedades";
+				}
 			} else {
-				//Acceso no autorizado porque el rol del usuario no es administrador
-				retorno = "redirect:../index.jsp";
+				retorno = "redirect:../../cabecera/inicio.html";
 			}
 		}
 		return retorno; 
 	}
+	
+	@RequestMapping(value="/updatePropietario/{id_propiedad}", method = RequestMethod.GET)
+	public String editPropiedadPropietario(Model model, @PathVariable int id_propiedad, HttpSession session) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:propiedad/update/" + id_propiedad + ".html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("propietario") ) {
+				model.addAttribute("propiedadAModificar", propiedadDao.getPropiedad(id_propiedad));
+				retorno = "propiedad/formModificarPropiedadUsuario";
+			} else {
+				retorno = "redirect:../../cabecera/inicio.html";
+			}
+		}
+		return retorno;
+	}
+	
+	@RequestMapping(value="/updatePropietario/{id_propiedad}", method = RequestMethod.POST)
+	public String processUpdateSubmitPropitario(Model model, @PathVariable int id_propiedad, HttpSession session,
+			@ModelAttribute("propiedadAModificar") Propiedad propiedad, BindingResult bindingResult) {
+		propiedad.setId_propiedad(id_propiedad);
+		
+		PropiedadValidator propiedadValidator = new PropiedadValidator();
+		propiedadValidator.validate(propiedad, bindingResult); 
+		if (bindingResult.hasErrors())
+			return "propiedad/formModificarPropiedadUsuario";
+		
+		Propiedad propiedadModificada = propiedadDao.getPropiedad(id_propiedad);
+		propiedadModificada.setArea(propiedad.getArea());
+		propiedadModificada.setCapacidad(propiedad.getCapacidad());
+		propiedadModificada.setDescripcion(propiedad.getDescripcion());
+		propiedadModificada.setNum_camas(propiedad.getNum_camas());
+		propiedadModificada.setNum_habitaciones(propiedad.getNum_habitaciones());
+		propiedadModificada.setPrecio_propiedad(propiedad.getPrecio_propiedad());
+		propiedadModificada.setTipo(propiedad.getTipo());
+		propiedadModificada.setTitulo(propiedad.getTitulo());
+		propiedadModificada.setUrl_mapa(propiedad.getUrl_mapa());
+		
+		propiedadDao.updatePropiedad(propiedadModificada);
+		return "redirect:../misPropiedades.html";
+	}
+	
+	
 
 	@RequestMapping(value="/update/{id_propiedad}", method = RequestMethod.POST) 
 	public String processUpdateSubmit(@PathVariable int id_propiedad, 
@@ -153,6 +210,8 @@ private UsuarioDao usuarioDao;
 		propiedadDao.updatePropiedad(propiedad);
 		return "redirect:../list.html"; 
 	}
+	
+	
 
 	//Borrar	
 	@RequestMapping(value="/delete/{id_propiedad}")
@@ -176,7 +235,8 @@ private UsuarioDao usuarioDao;
 					if (estadoBorradoPropiedad != 0) {
 						MensajeError mensajeError = new MensajeError("Error al eliminar la propiedad porqué está asociada a una o más reservas");
 						mensajeError.setMensaje(mensajeError.getMensaje().toUpperCase());
-						session.setAttribute("nextURL", "redirect:propiedad/misPropiedades.html");
+						MensajeError m = new MensajeError("../propiedad/misPropiedades.html");
+						session.setAttribute("nextURL", m);
 						session.setAttribute("mensajeError", mensajeError);
 						retorno = "redirect:../../error/mostrarError.html";
 					}

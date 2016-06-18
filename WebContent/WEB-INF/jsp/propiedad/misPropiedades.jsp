@@ -19,9 +19,8 @@
 					<td class="linea">${mapaPropiedadDireccion.key.precio_propiedad}</td>
 					<td class="linea">${mapaPropiedadDireccion.value.calle}</td>
 					<td class="linea">${mapaPropiedadDireccion.value.localidad}</td>
-					<td><a href="update/${propiedad.id_propiedad}.html">Edita</a>
-					<td><a href="delete/${propiedad.id_propiedad}.html">Esborra</a>
-					<button type="button" onclick="pasarIdPropiedadAModal(${mapaPropiedadDireccion.key.id_propiedad})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button>
+					<td><button type="button" class="btn btn-primary btn-sm btn-small" onClick="location.href='updatePropietario/${mapaPropiedadDireccion.key.id_propiedad}.html'"><i class="fa fa-pencil"></i>  Editar</button>
+					<td><button type="button" onclick="pasarIdPropiedadAModal(${mapaPropiedadDireccion.key.id_propiedad})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -9,8 +9,7 @@
 	<h3 align="center"><font color=red>${mensajeError.mensaje}</font></h3>
 		<table>
 			<tr>
-				<td><input class="btn btn-primary btn-cons" type="submit" value="Volver atrás" /></td>
-		 		<td><a href="${url}"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
+		 		<td><a href="${nextURL.mensaje}"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
 		 		</td>
 			</tr>
 		</table>
