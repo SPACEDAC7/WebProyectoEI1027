@@ -4,42 +4,100 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Lista de usuarios">
 	<jsp:body>
-	<div style="margin-bottom:20px" class="container">
-	<h1>Llista de Usuarios</h1>
-	<table class="table table-condensed">
+	<div class="page-content"> 
+		<div class="content">
+			<ul class="breadcrumb">
+				<li><p>ESTÁS AQUÍ</p></li>
+				<li><a href="${pageContext.request.contextPath}/usuario/list.html" class="active">GESTIÓN DE CREDENCIALES</a> </li>
+			</ul>
+			<div class="page-title"><a href="${pageContext.request.contextPath}/gestiones/listGestiones.html" ><i class="icon-custom-left"></i></a>
+				<h3>Usuarios - <span class="semi-bold">Listado de usuarios</span></h3>
+			</div>
+			<div class="row-fluid">
+	        <div class="span12">
+	          <div class="grid simple ">
+	            <div class="grid-title">
+	              <h4><span class="semi-bold">Usuarios</span></h4>
+				  <span class="semi-bold pull-right"><button type="button" class="btn btn-info btn-sm btn-small" onClick="location.href='add.html'"><i class="fa fa-plus"></i>  Añadir usuario</button></span>
+	            </div>
+	            <div class="grid-body ">
+	              <table class="table table-hover table-condensed">
+	                <thead>
 		<tr>
-			<th>Id Usuario</th>
-			<th>Id Credencial</th>
-			<th>Url Imagen Perfil</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>NIF</th>
-			<th>Email</th>
-			<th>Direccion</th>
-			<th>Fecha Registro</th>
-			<th>Telefono</th>
-			<th>Estado usuario</th>
-		</tr>
+			<th style="width:15%">Id Usuario</th>
+			<th style="width:15%">Id Credencial</th>
+			<th style="width:15%">Url Imagen Perfil</th>
+			<th style="width:15%">Nombre</th>
+			<th style="width:15%">Apellido</th>
+			<th style="width:15%">NIF</th>
+			<th style="width:15%">Email</th>
+			<th style="width:15%">Direccion</th>
+			<th style="width:15%">Fecha Registro</th>
+			<th style="width:15%">Telefono</th>
+			<th style="width:15%">Estado usuario</th>
+			<th style="width:13%">Editar</th>
+	        <th style="width:13%">Borrar</th>
+	    </tr>
+        </thead>
+        <tbody>
 		<c:forEach items="${usuarios}" var="usuario">
 			<tr>
-				<td class="linea">${usuario.id_usuario}</td>
-				<td class="linea">${usuario.id_credencial}</td>
-				<td class="linea">${usuario.url_imagen_perfil}</td>
-				<td class="linea">${usuario.nombre}</td>
-				<td class="linea">${usuario.apellido}</td>
-				<td class="linea">${usuario.nif}</td>
-				<td class="linea">${usuario.email}</td>
-				<td class="linea">${usuario.id_direccion}</td>
-				<td class="linea">${usuario.fecha_registro}</td>
-				<td class="linea">${usuario.telefono}</td>
-				<td class="linea">${usuario.estado_usuario}</td>
-				<td><a href="update/${usuario.id_usuario}.html">Edita</a>
-				<td><a href="delete/${usuario.id_usuario}.html">Esborra</a>
+				<td class="v-align-middle">${usuario.id_usuario}</td>
+				<td class="v-align-middle">${usuario.id_credencial}</td>
+				<td class="v-align-middle">${usuario.url_imagen_perfil}</td>
+				<td class="v-align-middle">${usuario.nombre}</td>
+				<td class="v-align-middle">${usuario.apellido}</td>
+				<td class="v-align-middle">${usuario.nif}</td>
+				<td class="v-align-middle">${usuario.email}</td>
+				<td class="v-align-middle">${usuario.id_direccion}</td>
+				<td class="v-align-middle">${usuario.fecha_registro}</td>
+				<td class="v-align-middle">${usuario.telefono}</td>
+				<td class="v-align-middle">${usuario.estado_usuario}</td>
+				<td class="v-align-middle">
+							<button type="button" class="btn btn-primary btn-sm btn-small" onClick="location.href='update/${usuario.id_usuario}.html'"><i class="fa fa-pencil"></i>  Editar</button>
+						</td>
+					 <td class="v-align-middle"><button type="button" onclick="pasarIdAModal(${usuario.id_usuario})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button>
+						</td>
 			</tr>
 		</c:forEach>
-	</table>
-	<a class="btn btn-primary" href="add.html">Afegeix usuario</a>
-	<a class="btn btn-danger" href="${pageContext.request.contextPath}/gestiones/listGestiones.html"> Volver al inicio</a>
+	<div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Confirmación de borrado</h4>
+				      </div>
+				      <div class="modal-body">
+				        <h3>¿Desea eliminar el usuario?<input type="hidden" id="idCosa"></h3>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				        <button type="button" class="btn btn-primary" onClick="borrarObjeto()" >Borrar</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+					</tbody>
+					
+	              </table>
+	              <script>
+				  function pasarIdAModal(entrada) {
+					  $('#borrar').on('show.bs.modal', function (event) {
+						  var modal = $(this)
+						  modal.find('.modal-body input').val(entrada)
+					  });
+					};
+					function borrarObjeto() {
+						var idbor = document.getElementById("idCosa").value
+						location.href='delete/' + idbor + '.html'
+					};
+				  </script>
+				  
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+		</div>
 	</div>
 	</jsp:body>
 </t:paginabasica>
