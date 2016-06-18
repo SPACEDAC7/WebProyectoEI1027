@@ -111,18 +111,13 @@ public class DireccionController {
 	public String processUpdateSubmit(@PathVariable int id_direccion, 
                             @ModelAttribute("direccion") Direccion direccion, 
                             BindingResult bindingResult, HttpSession session) {
-		 if (bindingResult.hasErrors()) 
+		DireccionValidator direccionValidator = new DireccionValidator();
+		direccionValidator.validate(direccion, bindingResult);
+		if (bindingResult.hasErrors()) 
 			 return "direccion/update";
-		 session.setAttribute("direccion_modif", direccion);
-		 return "direccion/confirModif"; 
+		 direccionDao.updateDireccion(direccion);
+		 return "redirect:../list.html"; 
 	  }
-	
-	@RequestMapping(value="/update/confirmado")
-	public String modificarDireccion(@ModelAttribute("direccion") Direccion direccion, HttpSession session){
-		direccion = (Direccion)session.getAttribute("direccion_modif");
-		direccionDao.updateDireccion(direccion);
-		return "direccion/satisfactorio";
-	}
 			
 	//Borrar	
 	@RequestMapping(value="/delete/{id_direccion}")
@@ -137,7 +132,8 @@ public class DireccionController {
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
-			    retorno = "direccion/confirmacion";
+			   	direccionDao.deleteDireccion(id_direccion);
+			   	retorno = "redirect:../list.html";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
 				retorno = "redirect:../index.jsp";
@@ -146,19 +142,4 @@ public class DireccionController {
 		return retorno;  
 	 }
 	
-	@RequestMapping(value="/delete/confirmado")
-	public String deleteDireccion(HttpSession session, Model model){
-		System.out.println("Ha entrado en el metodo de borrar la dirección");
-		String retorno;
-		String rol = (String) session.getAttribute("rol");
-		int id_direccion = (Integer)session.getAttribute("id_eliminar");
-		if ( rol.equals("administrador") ) {
-			direccionDao.deleteDireccion(id_direccion);
-		    retorno = "direccion/satisfactorio";
-		} else {
-			//Acceso no autorizado porque el rol del usuario no es administrador
-			retorno = "redirect:../index.jsp";
-		}
-	return retorno;
-	}
 }

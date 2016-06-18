@@ -75,7 +75,6 @@
 				  function pasarIdFacturaAModal(idFactura) {
 					  $('#borrar').on('show.bs.modal', function (event) {
 						  var modal = $(this)
-						  modal.find('.modal-title').text('New message to ' + idFactura)
 						  modal.find('.modal-body input').val(idFactura)
 					  });
 					};
