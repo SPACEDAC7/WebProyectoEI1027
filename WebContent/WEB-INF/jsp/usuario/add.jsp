@@ -1,15 +1,16 @@
-<%@page contentType="text/html; charset=iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Nuevo usuario">
 	<jsp:body>
 	<div style="margin-bottom:20px;background:white;margin-left:250px" class="container">
 		<ul class="breadcrumb">
-			<li><p>EST¡S AQUÕ</p></li>
-			<li><a href="${pageContext.request.contextPath}/usuario/list.html" class="active">GESTI”N DE USUARIOS</a> </li>
+			<li><p>EST√ÅS AQU√ç</p></li>
+			<li><a href="${pageContext.request.contextPath}/usuario/list.html" class="active">GESTI√ìN DE USUARIOS</a> </li>
 		</ul>
 		<div class="page-title"><a href="${pageContext.request.contextPath}/usuario/list.html"><i class="icon-custom-left"></i></a>
-			<h3>Usuarios - <span class="semi-bold">AÒadir usuario</span></h3>
+			<h3>Usuarios - <span class="semi-bold">A√±adir usuario</span></h3>
 		</div>
 		 <div class="row">
 		<div class="grid simple">
@@ -74,7 +75,7 @@
           		</td>
 			</tr>
 			<tr>
-				<td><input class="btn btn-primary btn-cons" type="submit" value="AÒadir Usuario" /></td>
+				<td><input class="btn btn-primary btn-cons" type="submit" value="A√±adir Usuario" /></td>
  				<td><a href="${pageContext.request.contextPath}/usuario/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
  				</td>
  			</tr>

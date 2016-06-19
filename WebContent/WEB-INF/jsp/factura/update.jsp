@@ -1,4 +1,5 @@
-<%@page contentType="text/html; charset=iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -7,8 +8,8 @@
 	<jsp:body>
 <div style="margin-bottom:20px;background:white;margin-left:250px" class="container">
 		<ul class="breadcrumb">
-			<li><p>EST¡S AQUÕ</p></li>
-			<li><a href="${pageContext.request.contextPath}/factura/list.html" class="active">GESTI”N DE FACTURAS</a> </li>
+			<li><p>EST√ÅS AQU√ç</p></li>
+			<li><a href="${pageContext.request.contextPath}/factura/list.html" class="active">GESTI√ìN DE FACTURAS</a> </li>
 		</ul>
 		<div class="page-title"><a href="${pageContext.request.contextPath}/factura/list.html"><i class="icon-custom-left"></i></a>
 			<h3>Facturas - <span class="semi-bold">Modificar factura</span></h3>

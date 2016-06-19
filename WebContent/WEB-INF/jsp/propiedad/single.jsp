@@ -1,4 +1,5 @@
-<%@page contentType="text/html; charset=iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Detalles Propiedad">
@@ -27,7 +28,7 @@
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
                   <li class="active"><a href="#detail" data-toggle="tab"><i class="fa fa-university"></i> Detalles de la propiedad</a></li>
-                  <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Localización de la propiedad</a></li>
+                  <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> LocalizaciÃ³n de la propiedad</a></li>
                 </ul>
 
                 <div id="myTabContent" class="tab-content">
@@ -64,7 +65,7 @@
                             <span class="glyphicon glyphicon-chevron-right"></span>
                           </a>
                         </div>
-                         <h3>Descripción de la porpiedad</h3>
+                         <h3>DescripciÃ³n de la porpiedad</h3>
                         <p>${propiedad.descripcion}</p>
                         
                         <h3>Detalles de la propiedad</h3>

@@ -1,4 +1,5 @@
-<%@page contentType="text/html; charset=iso-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <t:paginabasica title="Gestiones">
@@ -14,7 +15,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aqui podrás encontrar toda la información sobre las los nicks y los roles con las que entran los usuarios</p>
+							<p>Aqui podrÃ¡s encontrar toda la informaciÃ³n sobre las los nicks y los roles con las que entran los usuarios</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -26,7 +27,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí podrás ver toda la información con respecto a las direcciones que hay en el sistema</p>
+							<p>AquÃ­ podrÃ¡s ver toda la informaciÃ³n con respecto a las direcciones que hay en el sistema</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -38,19 +39,19 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí podrás ver toda la información con respecto a las facturas que existen en el sistema</p>
+							<p>AquÃ­ podrÃ¡s ver toda la informaciÃ³n con respecto a las facturas que existen en el sistema</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
 				</div>
 				<div class="col-md-3 single-colored-widget">
 					<a href="${pageContext.request.contextPath}/imagen/list.html"><div class="content-wrapper green">
-						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/imagenes.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Imágenes</span></h4>
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/imagenes.png" width="100"" height="100"" alt=""><br><span class="semi-bold">ImÃ¡genes</span></h4>
 						<div class="clearfix"></div>
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí se ven toda la información de las imagenes que se utilizan en las propiedades</p>
+							<p>AquÃ­ se ven toda la informaciÃ³n de las imagenes que se utilizan en las propiedades</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -64,7 +65,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí se ven los periodos de reservas de todas las propiedades</p>
+							<p>AquÃ­ se ven los periodos de reservas de todas las propiedades</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -76,7 +77,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí se ve toda la información referente a las propiedades del sistema</p>
+							<p>AquÃ­ se ve toda la informaciÃ³n referente a las propiedades del sistema</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -88,7 +89,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí se ven todas las puntuaciones que tienen las porpiedades y podemos gestionarlas</p>
+							<p>AquÃ­ se ven todas las puntuaciones que tienen las porpiedades y podemos gestionarlas</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -100,7 +101,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí se ven todos los comentarios que se han hecho a las puntuaciones y gestionarlos</p>
+							<p>AquÃ­ se ven todos los comentarios que se han hecho a las puntuaciones y gestionarlos</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -114,7 +115,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí podemos ver todas las reservas de las porpiedades y gestionarlas</p>
+							<p>AquÃ­ podemos ver todas las reservas de las porpiedades y gestionarlas</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -126,7 +127,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí podemos gestionar los usuarios que tenemos en el sistemas</p>
+							<p>AquÃ­ podemos gestionar los usuarios que tenemos en el sistemas</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -138,19 +139,19 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí podemos ver los servicios que ofrecemos y que los apartamentos pueden tener</p>
+							<p>AquÃ­ podemos ver los servicios que ofrecemos y que los apartamentos pueden tener</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
 				</div>
 				<div class="col-md-3 single-colored-widget">
 					<a href="${pageContext.request.contextPath}/propiedadServicio/list.html"><div class="content-wrapper green">
-						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/propiedad-servicios.png" width="100"" height="100"" alt=""><br><span class="semi-bold">¿Mantenimiento?</span></h4>
+						<h4 class="text-white center-text"><img class="mini-logo" src="${pageContext.request.contextPath}/img/icon/propiedad-servicios.png" width="100"" height="100"" alt=""><br><span class="semi-bold">Â¿Mantenimiento?</span></h4>
 						<div class="clearfix"></div>
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí vemos que servicios tiene cada propiedad</p>
+							<p>AquÃ­ vemos que servicios tiene cada propiedad</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -164,7 +165,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Aquí vemos la lista de mensajes que tiene el sistema y podemos gestionarlos</p>
+							<p>AquÃ­ vemos la lista de mensajes que tiene el sistema y podemos gestionarlos</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>

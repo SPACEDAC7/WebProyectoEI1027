@@ -3,7 +3,6 @@ package es.uji.ei1027.proyecto.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Usuario;
 
@@ -58,8 +57,13 @@ public class UsuarioValidator implements Validator {
 	
 	public void comprobarSiHayAlgunUsurioAsignadoACredencial(Usuario usuario, Errors errors) {
 		int cantidadUsuariosConIdCredencial = usuarioDao.contarUsuariosConIdCredencial(usuario.getId_credencial());
-		if (cantidadUsuariosConIdCredencial > 0)
+		if (cantidadUsuariosConIdCredencial > 1)
 			errors.rejectValue("id_credencial", "obligatori", "La id de credencial ya etá asignada a otro usuario");
+		else if (cantidadUsuariosConIdCredencial == 1) {
+			Usuario usuarioEnBBDDConMismoIdCredencial = usuarioDao.getUsuarioPorIdCredencial(usuario.getId_credencial());
+			if (usuarioEnBBDDConMismoIdCredencial.getId_usuario() != usuario.getId_usuario())
+				errors.rejectValue("id_credencial", "obligatori", "La id de credencial ya etá asignada a otro usuario");
+		}
 	}
 	
 }
