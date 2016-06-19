@@ -15,7 +15,7 @@
 
 				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
-						<li><a class="letras-grises" href="">Mensajes</a></li>
+						<li><a class="letras-grises" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html">Mensajes</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/reserva/misReservas.html">Mis Reservas</a></li>
 						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>

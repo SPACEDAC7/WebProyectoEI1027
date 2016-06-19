@@ -1,5 +1,8 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.MensajeDao;
+import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Mensaje;
 import es.uji.ei1027.proyecto.domain.Reserva;
@@ -23,9 +27,16 @@ import es.uji.ei1027.proyecto.validator.MensajeValidator;
 public class MensajeController {
 	private MensajeDao mensajeDao;
 	
+	private UsuarioDao usuarioDao;
+	
 	@Autowired
 	public void setMensajeDao( MensajeDao mensajeDao){
 		this.mensajeDao = mensajeDao;
+	}
+	
+	@Autowired
+	public void setUsuarioDao(UsuarioDao usuarioDao){
+		this.usuarioDao = usuarioDao;
 	}
 	
 	//Listar
@@ -145,4 +156,49 @@ public class MensajeController {
 			}
 			return retorno;
 		}
-}
+		
+		@RequestMapping("/bandejaEntrada")
+		public String processMensajesEntrada(Model model, HttpSession session){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			if (usuario != null) {
+				Map<Mensaje,Usuario> mapMensajeEmisor = new HashMap<Mensaje, Usuario>();
+				for(Mensaje mensaje: mensajeDao.obtenerMensajesReceptor(usuario.getId_usuario())){
+					if(mensaje.getEstado_vision() == 1 || mensaje.getEstado_vision()==3){
+						mapMensajeEmisor.put(mensaje, usuarioDao.getUsuario(mensaje.getId_emisor()));
+					}
+				}
+				model.addAttribute("listaMensajeEmisor", mapMensajeEmisor);
+				return "mensaje/bandejaEntrada";
+			} else {
+				model.addAttribute("credencial", new Credencial());
+				session.setAttribute("nextURL", "redirect:mensaje/bandejaEntrada.html");
+				return "login";
+			}
+		}
+		
+		@RequestMapping("/bandejaSalida")
+		public String processMensajesSalida(Model model, HttpSession session){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			if (usuario != null) {
+				Map<Mensaje,Usuario> mapMensajeReceptor = new HashMap<Mensaje, Usuario>();
+				for(Mensaje mensaje: mensajeDao.obtenerMensajesEmisor(usuario.getId_usuario())){
+					if(mensaje.getEstado_vision() == 1 || mensaje.getEstado_vision()==2){
+						mapMensajeReceptor.put(mensaje, usuarioDao.getUsuario(mensaje.getId_emisor()));
+					}
+				}
+				model.addAttribute("listaMensajeReceptor", mapMensajeReceptor);
+				return "mensaje/bandejaSalida";
+			} else {
+				model.addAttribute("credencial", new Credencial());
+				session.setAttribute("nextURL", "redirect:mensaje/bandejaSalida.html");
+				return "login";
+			}
+		}
+		
+		@RequestMapping(value="/single/{id_mensaje}&{id_usuario}")
+		public String processMensaje(@PathVariable int id_mensaje,@PathVariable int id_usuario,HttpSession session, Model model){
+			model.addAttribute("mensaje", mensajeDao.getMensaje(id_mensaje));
+			model.addAttribute("usuarioMen", usuarioDao.getUsuario(id_usuario));
+			return "mensaje/single";
+		}
+		}

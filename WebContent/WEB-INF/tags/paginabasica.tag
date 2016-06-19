@@ -47,7 +47,7 @@
 			 <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>		 
 			</ul>
 	      <!-- INICIO LOGO -->	
-	      <a href="index.html"><img src="${pageContext.request.contextPath}/img/icon/logoEasy.png" class="logo" alt="" width="110" height="25"/></a>
+	      <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/img/icon/logoEasy.png" class="logo" alt="" width="110" height="25"/></a>
 	      <!-- FIN LOGO --> 
 	      <ul class="nav pull-right notifcation-center">	
 	        <li class="dropdown" id="header_task_bar"> <a href="index.html" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
@@ -77,9 +77,9 @@
 					<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
 	                  <li><a href="user-profile.html">Mi perfil</a>
 	                  </li>
-	                  <li><a href="calender.html">Link 1</a>
+	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a>
 	                  </li>
-	                  <li><a href="email.html"> Mensajes&nbsp;&nbsp;<span class="badge badge-important animated bounceIn">2</span></a>
+	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Bandeja de Entrada</a>
 	                  </li>
 	                  <li class="divider"></li>                
 	                  <li><a href="login.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>

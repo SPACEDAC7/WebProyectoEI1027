@@ -84,4 +84,14 @@ public class MensajeDao {
 		}
 		return max+1;
 	}
+	
+	public List<Mensaje> obtenerMensajesReceptor(int idUsuario){
+		String sql = "SELECT * FROM mensaje WHERE id_receptor = ?";
+		return this.jdbcTemplate.query(sql, new MensajeMapper(), idUsuario);
+	}
+	
+	public List<Mensaje> obtenerMensajesEmisor(int idUsuario){
+		String sql = "SELECT * FROM mensaje WHERE id_emisor = ?";
+		return this.jdbcTemplate.query(sql, new MensajeMapper(), idUsuario);
+	}
 }
