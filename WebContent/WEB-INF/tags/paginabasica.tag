@@ -115,7 +115,7 @@
 	   <!-- INICIO SIDEBAR MENU -->	
 		<p class="menu-title">MENU PRINCIPAL</p>
 	    <ul>	
-	      <li class="start active "> <a href="${pageContext.request.contextPath}/"> <i class="icon-custom-home"></i> <span class="title">Inicio</span> <span class="arrow "></a> </li>
+	      <li class="start active "> <a href="${pageContext.request.contextPath}/"> <i class="icon-custom-home"></i> <span class="title">Inicio</span></a> </li>
 	      <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">Usuario</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
 			  <li > <a href="${pageContext.request.contextPath}/usuario/list.html"> LISTA DE USUARIOS </a> </li>
