@@ -16,15 +16,19 @@
 			</tr>
 			<c:forEach items="${listaFacturaReserva}" var="mapaFacturaReserva">
 				<c:forEach items="${listaReservaPropiedad}" var="mapaReservaPropiedad">
+					<c:set var="idFacturaReserva" value="${mapaFacturaReserva.value.id_reserva}"></c:set>
+					<c:set var="idReservaPropiedad" value="${mapaReservaPropiedad.key.id_reserva}"></c:set>
 					<c:choose>
-						 <c:when test='${mapaFacturaReserva.value.id_reserva} == ${mapaReservaPropiedad.key.id_reserva}'>
+						 <c:when test='${idFacturaReserva == idReservaPropiedad}'>
+							<tr>
 							<td class="linea">${mapaReservaPropiedad.value.titulo}</td>
 							<td class="linea">${mapaReservaPropiedad.key.fecha_reserva}</td>
 							<td class="linea">${mapaFacturaReserva.key.fecha_factura}</td>
 							<td class="linea">${mapaFacturaReserva.key.precio_factura}</td>
 							<td class="linea">${mapaFacturaReserva.key.iva}</td>
-						<!--</c:when>
-					</c:choose>	 -->			
+							</tr>
+						</c:when>
+					</c:choose>		
 				</c:forEach>
 			</c:forEach>
 			</table>

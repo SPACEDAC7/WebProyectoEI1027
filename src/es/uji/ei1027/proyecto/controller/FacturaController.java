@@ -163,26 +163,29 @@ public class FacturaController {
 	public String listarMisFacturas(Model model, HttpSession session){
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		if (usuario != null) {
+			System.out.println("He entrado en mis facturas");
+			
 			Map<Factura, Reserva> mapFacturaReserva = new HashMap<Factura, Reserva>();
 			Map<Reserva,Propiedad> mapReservaPropiedad = new HashMap<Reserva,Propiedad>();
 			
 			for(Factura factura: facturaDao.obtenerFacturaPorUsuario(usuario.getId_usuario())){
 				mapFacturaReserva.put(factura, reservaDao.getReserva(factura.getId_reserva()));
+				System.out.println("Factura: " + factura.toString());
 			}
 			
 			for (Reserva reserva: reservaDao.obtenerReservaPorUsuario(usuario.getId_usuario())) {
-				if(mapFacturaReserva.containsValue(reserva)){
 					mapReservaPropiedad.put(reserva, propiedadDao.getPropiedad(reserva.getId_propiedad()));
-				}
+					System.out.println("Reserva: " + reserva.toString());
 			}
-			
-			
+						
 			model.addAttribute("listaFacturaReserva", mapFacturaReserva);
 			model.addAttribute("listaReservaPropiedad", mapReservaPropiedad);
+			System.out.println("salgo de mis facturas");
 			return "factura/misFacturas";
+			
 		} else {
 			model.addAttribute("credencial", new Credencial());
-			session.setAttribute("nextURL", "redirect:propiedad/add.html");
+			session.setAttribute("nextURL", "redirect:factura/misFacturas.html");
 			return "login";
 		}
 	}
