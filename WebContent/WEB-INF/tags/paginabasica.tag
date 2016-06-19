@@ -50,8 +50,8 @@
 	      <a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/img/icon/logoEasy.png" class="logo" alt="" width="110" height="25"/></a>
 	      <!-- FIN LOGO --> 
 	      <ul class="nav pull-right notifcation-center">	
-	        <li class="dropdown" id="header_task_bar"> <a href="index.html" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
-	        <li class="dropdown" id="header_inbox_bar" > <a href="email.html" class="dropdown-toggle" > <div class="iconset top-messages"></div>  <span class="badge" id="msgs-badge">2</span> </a></li>
+	        <li class="dropdown" id="header_task_bar"> <a href="${pageContext.request.contextPath}/" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
+	        <li class="dropdown" id="header_inbox_bar" > <a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html" class="dropdown-toggle" > <div class="iconset top-messages"></div></a></li>
 			<li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle"> <div class="iconset top-chat-white "></div> </a> </li>        
 	      </ul>
 	      </div>
@@ -75,7 +75,7 @@
 						<div class="iconset top-settings-dark "></div> 	
 					</a>
 					<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-	                  <li><a href="user-profile.html">Mi perfil</a>
+	                  <li><a href="${pageContext.request.contextPath}/usuario/perfil.html">Mi perfil</a>
 	                  </li>
 	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a>
 	                  </li>
@@ -107,7 +107,7 @@
 		</div>
 	    <div class="user-info">
 	      <div class="greeting">Bienvenido</div>
-	      <div class="username"><span class="semi-bold">${usuario.nombre}</span></div>
+	      <div class="username"><span style="text-transform: capitalize;" class="semi-bold">${usuario.nombre}</span></div>
 	    </div>
 	   </div>
 	  <!-- FIN MINI-PROFILE -->
@@ -115,120 +115,39 @@
 	   <!-- INICIO SIDEBAR MENU -->	
 		<p class="menu-title">MENU PRINCIPAL</p>
 	    <ul>	
-	      <li class="start active "> <a href="index.html"> <i class="icon-custom-home"></i> <span class="title">Inicio</span> <span class="selected"></span> <span class="badge badge-important pull-right">5</span></a> </li>
-	      <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">UI Elements</span> <span class="arrow "></span> </a>
+	      <li class="start active "> <a href="${pageContext.request.contextPath}/"> <i class="icon-custom-home"></i> <span class="title">Inicio</span> <span class="arrow "></a> </li>
+	      <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">Usuario</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
-			  <li > <a href="typography.html"> Typography </a> </li>
-			  <li > <a href="messages_notifications.html"> Messages & Notifications </a> </li>
-			   <li > <a href="icons.html">Icons</a> </li>
-			   <li > <a href="buttons.html">Buttons</a> </li>		 
-	          <li > <a href="tabs_accordian.html"> Tabs & Accordions </a> </li>
-	          <li > <a href="sliders.html">Sliders</a> </li>
-	          <li > <a href="group_list.html">Group list </a> </li>
+			  <li > <a href="${pageContext.request.contextPath}/usuario/list.html"> LISTA DE USUARIOS </a> </li>
+			  <li > <a href="${pageContext.request.contextPath}/credencial/list.html"> LISTA DE CREDENCIALES </a> </li>
+			  <li > <a href="${pageContext.request.contextPath}/direccion/list.html"> LISTA DE DIRECCIONES </a> </li>
 	        </ul>
 	      </li>
-		  <li class=""> <a href="javascript:;"> <i class="icon-custom-form"></i> <span class="title">Forms</span> <span class="arrow "></span> </a>
+		  <li class=""> <a href="javascript:;"> <i class="icon-custom-form"></i> <span class="title">Propiedades</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
-	          <li > <a href="form_elements.html">Form Elements </a> </li>
-	          <li > <a href="form_validations.html">Form Validations</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/propiedades/list.html">LISTA DE PROPIEDADES </a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/puntuacion/list.html">LISTA DE PUNTUACIONES</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/respuestaPuntuacion/list.html">LISTA DE RESPUESTAS DE PUNTUACIONES</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/servicio/list.html">LISTA DE SERVICIOS</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/porpiedadServicio/list.html">LISTA DE PROPIEDAD SERVICIO</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/imagen/list.html">LISTA DE IMAGENES</a> </li>
 	        </ul>
 	      </li>
-	      <li class=""> <a href="javascript:;"> <i class="icon-custom-portlets"></i> <span class="title">Grids</span> <span class="arrow "></span> </a>
+	      <li class=""> <a href="javascript:;"> <i class="icon-custom-portlets"></i> <span class="title">Reservas</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
-	          <li > <a href="grids_simple.html">Simple Grids</a> </li>
-	          <li > <a href="grids_draggable.html">Draggable Grids </a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/reserva/list.html">LISTA DE RESERVAS</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/periodo/list.html">LISTA DE PERIODOS</a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/factura/list.html">LISTA DE FACTURAS</a> </li>
 	        </ul>
 	      </li>
-	      <li class=""> <a href="javascript:;"> <i class="icon-custom-thumb"></i> <span class="title">Tables</span> <span class="arrow "></span> </a>
+	      <li class=""> <a href="javascript:;"> <i class="icon-custom-thumb"></i> <span class="title">Comunicaciones</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
-	          <li > <a href="tables.html"> Basic Tables </a> </li>
-	          <li > <a href="datatables.html"> Data Tables </a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/direccion/list.html"> LISTA DE MENSAJES </a> </li>
 	        </ul>
 	      </li>
-	      <li class=""> <a href="javascript:;"> <i class="icon-custom-map"></i> <span class="title">Maps</span> <span class="arrow "></span> </a>
-	        <ul class="sub-menu">
-	          <li > <a href="google_map.html"> Google Maps </a> </li>
-	          <li > <a href="vector_map.html"> Vector Maps </a> </li>
-	        </ul>
-	      </li>
-	      <li class=""> <a href="charts.html"> <i class="icon-custom-chart"></i> <span class="title">Charts</span> </a> </li>    
-	      <li class=""> <a href="javascript:;"> <i class="icon-custom-extra"></i> <span class="title">Extra</span> <span class="arrow "></span> </a>
-	        <ul class="sub-menu">
-	          <li > <a href="user-profile.html"> User Profile </a> </li>
-	          <li > <a href="time_line.html"> Time line </a> </li>
-	          <li > <a href="support_ticket.html"> Support Ticket </a> </li>
-	          <li > <a href="gallery.html"> Gallery</a> </li>
-			  <li class=""><a href="calender.html"> Calendar</a> </li>
-	          <li > <a href="search_results.html"> Search Results </a> </li>
-	          <li > <a href="invoice.html"> Invoice </a> </li>
-	          <li > <a href="404.html"> 404 Page </a> </li>
-	          <li > <a href="500.html"> 500 Page </a> </li>
-	          <li > <a href="blank_template.html"> Blank Page </a> </li>
-	          <li > <a href="login.html"> Login </a> </li>
-	          <li > <a href="login_v2.html">Login v2</a> </li>
-	          <li > <a href="lockscreen.html"> Lockscreen </a> </li>
-	        </ul>
-	      </li>
-		  <li class=""> <a href="javascript:;"> <i class="fa fa-folder-open"></i> <span class="title">Menu Levels</span> <span class="arrow "></span> </a>
-	        <ul class="sub-menu">
-	          <li > <a href="javascript:;"> Level 1 </a> </li>
-	          <li > <a href="javascript:;">  <span class="title">Level 2</span> <span class="arrow "></span> </a>
-				<ul class="sub-menu">
-					 <li > <a href="javascript:;"> Sub Menu </a> </li>
-					 <li > <a href="ujavascript:;"> Sub Menu </a> </li>
-				</ul>
-			  </li>
-	        </ul>
-	      </li>
-		  <li class="hidden-lg hidden-md hidden-xs" id="more-widgets" > <a href="javascript:;"> <i class="fa fa-plus"></i></a> 
-			  <ul class="sub-menu">
-			  	<li class="side-bar-widgets">
-				<p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a></span></p>
-				<ul class="folders" >
-					  <li><a href="#"><div class="status-icon green"></div> My quick tasks </a> </li>
-					  <li><a href="#"><div class="status-icon red"></div> To do list </a> </li>
-					  <li><a href="#"><div class="status-icon blue"></div> Projects </a> </li>
-					  <li class="folder-input" style="display:none"><input type="text" placeholder="Name of folder" class="no-boarder folder-name" name="" id="folder-name"></li>
-				</ul>
-				<p class="menu-title">PROJECTS </p>
-					<div class="status-widget">
-						<div class="status-widget-wrapper">
-							<div class="title">Freelancer<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-							<p>Redesign home page</p>
-						</div>
-					</div>
-					<div class="status-widget">
-						<div class="status-widget-wrapper">
-							<div class="title">envato<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-							<p>Statistical report</p>
-						</div>
-					</div>
-				</li>
-			</ul>
-		  </li>    
+	      
 	    </ul>
-		<div class="side-bar-widgets">
-		<p class="menu-title">FOLDER <span class="pull-right"><a href="#" class="create-folder"> <i class="fa fa-plus"></i></a></span></p>
-		<ul class="folders" >
-			  <li><a href="#"><div class="status-icon green"></div> My quick tasks </a> </li>
-			  <li><a href="#"><div class="status-icon red"></div> To do list </a> </li>
-			  <li><a href="#"><div class="status-icon blue"></div> Projects </a> </li>
-			  <li class="folder-input" style="display:none"><input type="text" placeholder="Name of folder" class="no-boarder folder-name" name="" ></li>
-		</ul>
-		<p class="menu-title">PROJECTS </p>
-			<div class="status-widget">
-				<div class="status-widget-wrapper">
-					<div class="title">Freelancer<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-					<p>Redesign home page</p>
-				</div>
-			</div>
-			<div class="status-widget">
-				<div class="status-widget-wrapper">
-					<div class="title">envato<a href="#" class="remove-widget"><i class="icon-custom-cross"></i></a></div>
-					<p>Statistical report</p>
-				</div>
-			</div>
-		</div>	
+		
 		<div class="clearfix"></div>
 	    <!-- FIN SIDEBAR MENU --> 
 	  </div>
@@ -344,23 +263,9 @@
 						</c:choose>
 						<a href="${pageContext.request.contextPath}/cabecera/nosotros.html">Sobre Nosotros</a>
 						</li>
-						<c:set var="rol" scope="request"
-							value='${session.getAttribute("rol")}' />
-						<c:choose>
-							<c:when test='${rol == "administrador"}'>
-								<c:choose>
-									<c:when test='${title == "Gestiones"}'>
-										<li class="active">
-									</c:when>
-									<c:otherwise>
-										<li>
-									</c:otherwise>
-								</c:choose>
-								<a
-									href="${pageContext.request.contextPath}/gestiones/listGestiones.html">Gestiones</a>
-								</li>
-							</c:when>
-						</c:choose>
+						
+						<!-- <c:set var="rol" scope="request"
+							value='${session.getAttribute("rol")}' /> y con un c:choos podemos poner que se puede ver y que no en la barra de navegacion-->
 					</ul>
 					<!-- En el tag boton main están los que funcionan -->
 					

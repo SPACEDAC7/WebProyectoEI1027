@@ -14,7 +14,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aqui podrás encontrar toda la información sobre las los nicks y los roles con las que entran los usuarios</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -26,7 +26,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí podrás ver toda la información con respecto a las direcciones que hay en el sistema</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -38,7 +38,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí podrás ver toda la información con respecto a las facturas que existen en el sistema</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -50,7 +50,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí se ven toda la información de las imagenes que se utilizan en las propiedades</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -64,7 +64,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí se ven los periodos de reservas de todas las propiedades</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -76,7 +76,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí se ve toda la información referente a las propiedades del sistema</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -88,7 +88,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí se ven todas las puntuaciones que tienen las porpiedades y podemos gestionarlas</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -100,7 +100,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí se ven todos los comentarios que se han hecho a las puntuaciones y gestionarlos</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -114,7 +114,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí podemos ver todas las reservas de las porpiedades y gestionarlas</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -126,7 +126,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí podemos gestionar los usuarios que tenemos en el sistemas</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -138,7 +138,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí podemos ver los servicios que ofrecemos y que los apartamentos pueden tener</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -150,7 +150,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí vemos que servicios tiene cada propiedad</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
@@ -164,7 +164,7 @@
 					</div>
 					<div class="heading">
 						<div class="pull-left">
-							<p>Esto es una corta descripción de lo que se puede hacer aquí</p>
+							<p>Aquí vemos la lista de mensajes que tiene el sistema y podemos gestionarlos</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div></a>
