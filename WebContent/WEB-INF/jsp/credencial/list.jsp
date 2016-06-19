@@ -7,7 +7,7 @@
 		<div class="page-content"> 
 		<div class="content">
 			<ul class="breadcrumb">
-				<li><p>ESTÁS AQUÍ</p></li>
+				<li><p><a href="${pageContext.request.contextPath}/gestiones/listGestiones.html" class="active">GESTIONES</a></p></li>
 				<li><a href="${pageContext.request.contextPath}/credencial/list.html" class="active">GESTIÓN DE CREDENCIALES</a> </li>
 			</ul>
 			<div class="page-title"><a href="${pageContext.request.contextPath}/gestiones/listGestiones.html" ><i class="icon-custom-left"></i></a>

@@ -80,7 +80,6 @@ public class NuevoUsuarioController {
 		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		usuarioValidator.validate(usuario, bindingResult);
 		if (bindingResult.hasErrors()) {
-			System.out.println("Algo ha fallado al crear el usuario");
             return "signup/signupusuario";
         }
 		

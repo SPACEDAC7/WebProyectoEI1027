@@ -45,29 +45,26 @@
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="capacidad">Capacidad</form:label></td>
 				<td>
 						<form:select class="form-control selectpicker" path="capacidad">
-						<c:forEach var="i" begin="1" end="5">
-							<form:option value="<c:out value="${i}"/>"><c:out value="${i}"/> persona</form:option>
-						</c:forEach>
-						<!-- 	<form:option value="1" selected="selected">1 persona</form:option>
-							<form:option value="2" selected="selected">2 personas</form:option>
-							<form:option value="3" selected="selected">3 personas</form:option>
+						 	<form:option value="1">1 persona</form:option>
+							<form:option value="2">2 personas</form:option>
+							<form:option value="3">3 personas</form:option>
 							<form:option value="4" selected="selected">4 personas</form:option>
-							<form:option value="5" selected="selected">5 personas</form:option>
-							<form:option value="6" selected="selected">6 personas</form:option>
-							<form:option value="7" selected="selected">7 personas</form:option>
-							<form:option value="8" selected="selected">8 personas</form:option>
-							<form:option value="9" selected="selected">9 personas</form:option>
-							<form:option value="10" selected="selected">10 personas</form:option>
-							<form:option value="11" selected="selected">11 personas</form:option>
-							<form:option value="12" selected="selected">12 personas</form:option>
-							<form:option value="13" selected="selected">13 personas</form:option>
-							<form:option value="14" selected="selected">14 personas</form:option>
-							<form:option value="15" selected="selected">15 personas</form:option>
-							<form:option value="16" selected="selected">16 personas</form:option>
-							<form:option value="17" selected="selected">2 personas</form:option>
-							<form:option value="18" selected="selected">2 personas</form:option>
-							<form:option value="19" selected="selected">2 personas</form:option>
-							<form:option value="20" selected="selected">2 personas</form:option>-->
+							<form:option value="5">5 personas</form:option>
+							<form:option value="6">6 personas</form:option>
+							<form:option value="7">7 personas</form:option>
+							<form:option value="8">8 personas</form:option>
+							<form:option value="9">9 personas</form:option>
+							<form:option value="10">10 personas</form:option>
+							<form:option value="11">11 personas</form:option>
+							<form:option value="12">12 personas</form:option>
+							<form:option value="13">13 personas</form:option>
+							<form:option value="14">14 personas</form:option>
+							<form:option value="15">15 personas</form:option>
+							<form:option value="16">16 personas</form:option>
+							<form:option value="17">17 personas</form:option>
+							<form:option value="18">18 personas</form:option>
+							<form:option value="19">19 personas</form:option>
+							<form:option value="20">20 personas</form:option>
           				</form:select>
 	          		</td>
 				<td><form:errors style="color:#F44336" path="capacidad" cssClass="error"/></td>
