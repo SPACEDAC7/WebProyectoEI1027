@@ -28,7 +28,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-primary" href="add.html">Afegeix Propiedad</a>
+		<a class="btn btn-primary" href="${pageContext.request.contextPath}/propiedad/anadirPropiedadPropietario.html">A&ntilde;adir Propiedad</a>
 		<a class="btn btn-danger" href="${pageContext.request.contextPath}/cabecera/inicio.html"> Volver al inicio</a>
 		</div>
 		
@@ -46,7 +46,6 @@
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				        <button type="button" class="btn btn-primary" onClick="borrarPropiedad()" >Borrar</button>
-				        <!-- onClick="location.href='delete/${factura.id_factura}.html'" -->
 				      </div>
 				    </div>
 				  </div>

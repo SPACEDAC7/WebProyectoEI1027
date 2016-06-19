@@ -25,7 +25,7 @@ public class FacturaValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors){
 		Factura factura = (Factura)obj;
-		if( factura.getId_factura() <= 0 )
+		if( factura.getId_factura() < 0 )
 			errors.rejectValue("id_factura", "obligatori", "Hay que introducir un valor");
 		if ( ! reservaDao.existeReserva(factura.getId_reserva()) )
 			errors.rejectValue("id_reserva", "obligatori", "La reserva que has introducido no existe");

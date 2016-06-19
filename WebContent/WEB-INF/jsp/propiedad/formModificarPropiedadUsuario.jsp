@@ -39,45 +39,50 @@
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="tipo">Tipo</form:label></td>
-				<td><form:input class="form-control input-md" path="tipo" /></td>
+				<td>
+					<form:select class="form-control selectpicker" path="tipo">
+						<form:option value="chalet" selected="selected">Chalet</form:option>
+						<form:option value="mansion">Mansión</form:option>
+						<form:option value="piso">Piso</form:option>
+						<form:option value="casa">Casa</form:option>
+          			</form:select>
+          		</td>
 				<td><form:errors style="color:#F44336" path="tipo" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="capacidad">Capacidad</form:label></td>
 				<td>
-						<form:select class="form-control selectpicker" path="capacidad">
-						 	<form:option value="1">1 persona</form:option>
-							<form:option value="2">2 personas</form:option>
-							<form:option value="3">3 personas</form:option>
-							<form:option value="4" selected="selected">4 personas</form:option>
-							<form:option value="5">5 personas</form:option>
-							<form:option value="6">6 personas</form:option>
-							<form:option value="7">7 personas</form:option>
-							<form:option value="8">8 personas</form:option>
-							<form:option value="9">9 personas</form:option>
-							<form:option value="10">10 personas</form:option>
-							<form:option value="11">11 personas</form:option>
-							<form:option value="12">12 personas</form:option>
-							<form:option value="13">13 personas</form:option>
-							<form:option value="14">14 personas</form:option>
-							<form:option value="15">15 personas</form:option>
-							<form:option value="16">16 personas</form:option>
-							<form:option value="17">17 personas</form:option>
-							<form:option value="18">18 personas</form:option>
-							<form:option value="19">19 personas</form:option>
-							<form:option value="20">20 personas</form:option>
-          				</form:select>
-	          		</td>
+					<form:select class="form-control selectpicker" path="capacidad">
+						<form:option value="1" selected="selected">1 persona</form:option>
+						<c:forEach var="i" begin="2" end="20">
+							<form:option value="${i}"><c:out value="${i}"/> personas</form:option>
+						</c:forEach>
+          			</form:select>
+	          	</td>
 				<td><form:errors style="color:#F44336" path="capacidad" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="num_habitaciones">Num. Habitaciones</form:label></td>
-				<td><form:input class="form-control input-md" path="num_habitaciones" /></td>
+				<td>
+					<form:select class="form-control selectpicker" path="num_habitaciones">
+						<form:option value="1" selected="selected">1 habitaci&oacute;n</form:option>
+						<c:forEach var="i" begin="2" end="10">
+							<form:option value="${i}"><c:out value="${i}"/> habitaciones</form:option>
+						</c:forEach>
+          			</form:select>
+	          	</td>
 				<td><form:errors style="color:#F44336" path="num_habitaciones" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="num_camas">Num. Camas</form:label></td>
-				<td><form:input class="form-control input-md" path="num_camas" /></td>
+				<td>
+					<form:select class="form-control selectpicker" path="num_camas">
+						<form:option value="1" selected="selected">1 cama</form:option>
+						<c:forEach var="i" begin="2" end="20">
+							<form:option value="${i}"><c:out value="${i}"/> camas</form:option>
+						</c:forEach>
+          			</form:select>
+	          	</td>
 				<td><form:errors style="color:#F44336" path="num_camas" cssClass="error"/></td>
 			</tr>
 			<tr>

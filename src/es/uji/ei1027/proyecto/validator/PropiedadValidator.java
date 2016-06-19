@@ -32,6 +32,8 @@ public class PropiedadValidator implements Validator {
 			errors.rejectValue("id_usuario", "obligatori", "Hay que introducir un valor");
 		if( propiedad.getTitulo().equals(""))
 			errors.rejectValue("titulo", "obligatori", "Hay que introducir un valor");
+		if( propiedad.getId_direccion()<0)
+			errors.rejectValue("id_direccion", "obligatori", "Hay que introducir un valor");
 	}
 	
 	public String comprobarSiSePuedeEliminarDireccion(Object obj, Errors errors) {

@@ -25,6 +25,7 @@ import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.Usuario;
+import es.uji.ei1027.proyecto.validator.DireccionValidator;
 import es.uji.ei1027.proyecto.validator.PropiedadValidator;
 
 @Controller
@@ -111,7 +112,7 @@ private UsuarioDao usuarioDao;
 		}
 		return retorno;
 	}
-
+	
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("propiedad") Propiedad propiedad,
 			BindingResult bindingResult) { 
@@ -122,6 +123,59 @@ private UsuarioDao usuarioDao;
 		propiedadDao.addPropiedad(propiedad);
 		return "redirect:list.html";
 	}
+	
+	@RequestMapping(value="/anadirPropiedadPropietario")
+	public String addPropiedadPropietario(Model model, HttpSession session) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:propiedad/anadirPropiedadPropietario.html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("propietario") ) {
+				Propiedad propiedad = new Propiedad();
+				propiedad.setId_propiedad(propiedadDao.nuevoIdPropiedad());
+				propiedad.setId_usuario(usuario.getId_usuario());
+				model.addAttribute("nuevaPropiedadPropietario", propiedad);
+				retorno = "propiedad/addPropietario";
+			} else {
+				//Acceso no autorizado porque el rol del usuario no es administrador
+				retorno = "redirect:../index.jsp";
+			}
+		}
+		return retorno;
+	}
+	
+	@RequestMapping(value="/anadirDireccionAPropiedad", method=RequestMethod.POST)
+	public String addDireccionAPropiedad(Model model, @ModelAttribute("nuevaPropiedadPropietario") Propiedad propiedad,
+			BindingResult bindingResult) {
+		PropiedadValidator propiedadValidator = new PropiedadValidator();
+		propiedadValidator.validate(propiedad, bindingResult); 
+		if (bindingResult.hasErrors())
+			return "propiedad/anadirPropiedadPropietario";
+		Direccion direccion = new Direccion();
+		int nuevoIdDireccion = direccionDao.nuevoIdDireccion();
+		direccion.setId_direccion(nuevoIdDireccion);
+		propiedad.setId_direccion(nuevoIdDireccion);
+		model.addAttribute("nuevaDireccionPropietario", direccion);
+		return "propiedad/addDireccionPropiedad";
+	}
+	
+	@RequestMapping(value="/finalizarAnadirPropiedad", method=RequestMethod.POST)
+	public String finalizarAnadirPropiedad(@ModelAttribute("nuevaPropiedadPropietario") Propiedad propiedad, 
+			@ModelAttribute("nuevaDireccionPropietario") Direccion direccion, BindingResult bindingResult) {
+		DireccionValidator direccionValidator = new DireccionValidator();
+		direccionValidator.validate(direccion, bindingResult);
+		if (bindingResult.hasErrors())
+			return "propiedad/addDireccionPropiedad";
+		direccionDao.addDireccion(direccion);
+		propiedadDao.addPropiedad(propiedad);
+		return "redirect:misPropiedades.html";
+	}
+
+
 	//Actualizar	
 	@RequestMapping(value="/update/{id_propiedad}", method = RequestMethod.GET)
 	public String editPropiedad(Model model, @PathVariable int id_propiedad, HttpSession session) {

@@ -19,18 +19,8 @@
 		<div class="row-fluid">
 		<div class="col-md-12">
 		<h3><span class="semi-bold">Datos de la propiedad</span></h3>
-	<form:form method="post" modelAttribute="propiedad">
+	<form:form action="${pageContext.request.contextPath}/propiedad/anadirDireccionAPropiedad.html" method="post" modelAttribute="nuevaPropiedadPropietario">
 		<table class="table table-condensed">
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_propiedad">ID. Propiedad</form:label></td>
-				<td><form:input class="form-control input-md" path="id_propiedad" readonly="true"/></td>
-				<td><form:errors style="color:#F44336" path="id_propiedad" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_usuario">ID. Usuario</form:label></td>
-				<td><form:input class="form-control input-md" path="id_usuario" /></td>
-				<td><form:errors style="color:#F44336" path="id_usuario" cssClass="error"/></td>
-			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="titulo">Titulo </form:label></td>
 				<td><form:input class="form-control input-md" path="titulo" /></td>
@@ -110,8 +100,9 @@
 				<td><form:errors style="color:#F44336" path="url_mapa" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td><input class="btn btn-primary btn-cons" type="submit" value="Añadir Propiedad" /></td>
- 				<td><a href="${pageContext.request.contextPath}/propiedad/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
+				<td>
+					<td><input class="btn btn-primary btn-cons" type="submit" value="Siguiente" /></td>
+ 					<a href="${pageContext.request.contextPath}/propiedad/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
  				</td>
 			</tr>
 		</table>
