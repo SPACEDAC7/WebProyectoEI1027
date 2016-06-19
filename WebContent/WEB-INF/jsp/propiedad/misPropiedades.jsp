@@ -12,6 +12,9 @@
 				<th>Precio</th>
 				<th>Calle</th>
 				<th>Localidad</th>
+				<th>Ver propiedad</th>
+				<th>Editar</th>
+				<th>Borrar</th>
 			</tr>
 			<c:forEach items="${listaPropiedadesDirecciones}" var="mapaPropiedadDireccion">
 				<tr>
@@ -19,6 +22,7 @@
 					<td class="linea">${mapaPropiedadDireccion.key.precio_propiedad}</td>
 					<td class="linea">${mapaPropiedadDireccion.value.calle}</td>
 					<td class="linea">${mapaPropiedadDireccion.value.localidad}</td>
+					<td class="linea"><a href="${pageContext.request.contextPath}/propiedad/single/${mapaPropiedadDireccion.key.id_propiedad}.html">VER PROPIEDAD</a></td>
 					<td><button type="button" class="btn btn-primary btn-sm btn-small" onClick="location.href='updatePropietario/${mapaPropiedadDireccion.key.id_propiedad}.html'"><i class="fa fa-pencil"></i>  Editar</button>
 					<td><button type="button" onclick="pasarIdPropiedadAModal(${mapaPropiedadDireccion.key.id_propiedad})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button></td>
 				</tr>

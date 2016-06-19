@@ -13,6 +13,7 @@
 				<th>Fecha Factura</th>
 				<th>Precio Factura</th>
 				<th>IVA</th>
+				<th>Detalles</th>
 			</tr>
 			<c:forEach items="${listaFacturaReserva}" var="mapaFacturaReserva">
 				<c:forEach items="${listaReservaPropiedad}" var="mapaReservaPropiedad">
@@ -26,6 +27,7 @@
 							<td class="linea">${mapaFacturaReserva.key.fecha_factura}</td>
 							<td class="linea">${mapaFacturaReserva.key.precio_factura}</td>
 							<td class="linea">${mapaFacturaReserva.key.iva}</td>
+							<td class="linea"><a href="${pageContext.request.contextPath}/factura/single/${mapaFacturaReserva.key.id_factura}.html">VER FACTURA</a></td>
 							</tr>
 						</c:when>
 					</c:choose>		

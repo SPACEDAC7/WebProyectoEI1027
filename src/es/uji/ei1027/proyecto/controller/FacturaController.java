@@ -189,4 +189,15 @@ public class FacturaController {
 			return "login";
 		}
 	}
+	
+	@RequestMapping(value="/single/{id_factura}")
+	public String processDetails(@PathVariable int id_factura, HttpSession session, Model model){
+		Factura factura = facturaDao.getFactura(id_factura);
+		Reserva reserva = reservaDao.getReserva(factura.getId_reserva());
+		Propiedad propiedad = propiedadDao.getPropiedad(reserva.getId_propiedad());
+		model.addAttribute("factura", factura);
+		model.addAttribute("reserva", reserva);
+		model.addAttribute("propiedad", propiedad);
+		return "factura/single";
+	}
 }
