@@ -156,7 +156,7 @@
 						<div class="clearfix"> </div>
 					</div></a>
 				</div>
-			</div>
+			</div><br>
 			<div class="row">
 				<div class="col-md-3 single-colored-widget">
 					<a href="${pageContext.request.contextPath}/mensaje/list.html"><div class="content-wrapper green">
@@ -173,7 +173,6 @@
 			</div>
 	    </div>
 	  </div>
-	 </div>
 	<!-- FIN CONTAINER --> 
 </jsp:body>
 </t:paginabasica>
