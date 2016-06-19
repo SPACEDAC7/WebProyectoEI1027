@@ -127,4 +127,9 @@ public class CredencialDao {
 			return true;
 	}
 	
+	public int idUsuarioAPartirDeIdCredencial(int idCredencial) {
+		String sql = "SELECT id_usuario from credencial WHERE id_credencial = ?";
+		return this.jdbcTemplate.queryForObject(sql, Integer.class, idCredencial);
+	}
+	
 }

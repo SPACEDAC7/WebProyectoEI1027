@@ -24,6 +24,7 @@
 						<form:option value="---" selected="selected">Elige rol</form:option>
      					<form:option value="inquilino">Inquilino</form:option>
           				<form:option value="propietario">Propietario</form:option>
+          				<form:option value="administrador">Administrador</form:option>
           			</form:select>
 	          	</td>
 	          	<td><form:errors style="color:#F44336"  path="rol" /></td>

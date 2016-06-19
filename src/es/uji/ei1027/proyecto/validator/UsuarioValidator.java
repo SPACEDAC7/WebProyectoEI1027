@@ -2,9 +2,19 @@ package es.uji.ei1027.proyecto.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import es.uji.ei1027.proyecto.dao.CredencialDao;
+import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Usuario;
 
 public class UsuarioValidator implements Validator {
+	
+	private UsuarioDao usuarioDao;
+	
+	public void setUsuarioDao(UsuarioDao u) {
+		this.usuarioDao = u;
+	}
+	
 	@Override
 	public boolean supports(Class<?> cls){
 		return Usuario.class.equals(cls);
@@ -45,4 +55,11 @@ public class UsuarioValidator implements Validator {
 			errors.rejectValue("telefono", "obligatori", "El telefono del usuario no puede estar vacío");
 		}
 	}
+	
+	public void comprobarSiHayAlgunUsurioAsignadoACredencial(Usuario usuario, Errors errors) {
+		int cantidadUsuariosConIdCredencial = usuarioDao.contarUsuariosConIdCredencial(usuario.getId_credencial());
+		if (cantidadUsuariosConIdCredencial > 0)
+			errors.rejectValue("id_credencial", "obligatori", "La id de credencial ya etá asignada a otro usuario");
+	}
+	
 }

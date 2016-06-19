@@ -62,7 +62,7 @@ public class UsuarioController {
 		return retorno;
 	}
 	
-	//A�adir	
+	//Add
 	@RequestMapping(value="/add") 
 	public String addUsuario(Model model, HttpSession session) {
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
@@ -130,6 +130,8 @@ public class UsuarioController {
 			BindingResult bindingResult) {
 		UsuarioValidator usuarioValidator = new UsuarioValidator();
 		usuarioValidator.validate(usuario, bindingResult); 
+		usuarioValidator.setUsuarioDao(usuarioDao);
+		usuarioValidator.comprobarSiHayAlgunUsurioAsignadoACredencial(usuario, bindingResult);
 		if (bindingResult.hasErrors())
 			return "usuario/update";
 		usuario.crearFechas();
@@ -151,15 +153,9 @@ public class UsuarioController {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
 				int idCredencialABorrar = usuarioABorrar.getId_credencial();
-				int cantidadUsuariosConIdCredencialABorrar = usuarioDao.contarUsuariosConIdCredencial(idCredencialABorrar);
-				if ( cantidadUsuariosConIdCredencialABorrar > 1 )
-					System.out.println("No se puede borrar");
-				else {
-					usuarioDao.deleteUsuario(usuarioABorrar.getId_usuario());
-					credencialDao.deleteCredencial(idCredencialABorrar);
-					usuarioABorrar = null;
-				    retorno = "redirect:../list.html";
-				}
+				usuarioDao.deleteUsuario(usuarioABorrar.getId_usuario());
+				credencialDao.deleteCredencial(idCredencialABorrar);
+				usuarioABorrar = null;
 			    retorno = "redirect:../list.html";
 			} else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
