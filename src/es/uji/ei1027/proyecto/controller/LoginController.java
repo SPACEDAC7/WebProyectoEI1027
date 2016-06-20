@@ -65,15 +65,14 @@ public class LoginController {
 	                	}
                 	}
             	} else {
-            		bindingResult.rejectValue("password", "badpw", "El usuario est� dado de baja");
+            		bindingResult.rejectValue("password", "badpw", "El usuario está dado de baja");
             		loginValidator.validateStateUser(usuario.getEstado_usuario(), bindingResult);
             		if (bindingResult.hasErrors()) {
                         return "login";
                     }
             	}
             } else {
-            	bindingResult.rejectValue("password", "badpw", "El usuario o la contrase�a no coinciden");
-            	System.out.println("Password introducido NO coincide con el encriptado");
+            	bindingResult.rejectValue("password", "badpw", "El usuario o la contraseña no coinciden");
             }
         }
         return retorno;

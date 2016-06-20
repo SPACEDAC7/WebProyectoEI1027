@@ -28,12 +28,6 @@
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="fechaCheckIn">Fecha Check In</form:label></td>
 				<td><form:input class="form-control input-md datepicker" path="fechaCheckIn"/></td>
 				<td><form:errors style="color:#F44336" path="fechaCheckIn" cssClass="error"/></td>
-				
-				<td><form:input type="hidden" class="form-control input-md" path="id_reserva" readonly="true" /></td>
-				<td><form:errors style="color:#F44336" path="id_reserva" cssClass="error"/></td>
-			
-				<td><form:input type="hidden" class="form-control input-md datepicker" path="fechaReserva" readonly="true"/></td>
-				<td><form:errors style="color:#F44336" path="fechaReserva" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="fechaCheckOut">Fecha Check Out</form:label></td>
@@ -44,9 +38,6 @@
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="precio_reserva">Precio Diario Reserva</form:label></td>
 				<td><form:input class="form-control input-md" path="precio_reserva" /></td>
 				<td><form:errors style="color:#F44336" path="precio_reserva" cssClass="error"/></td>
-			
-				<td><form:input type="hidden" value="pendiente" class="form-control input-md" path="estado" /></td>
-				<td><form:errors style="color:#F44336" path="estado" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><input class="btn btn-primary btn-cons" type="submit" value="Reservar" /></td>
@@ -64,7 +55,7 @@
     
     	</jsp:body>
 </t:paginabasica>
-<<t:datepicker></t:datepicker>
+<t:datepicker></t:datepicker>
   <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>

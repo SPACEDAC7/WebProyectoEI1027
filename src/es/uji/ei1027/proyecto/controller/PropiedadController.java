@@ -1,10 +1,7 @@
 package es.uji.ei1027.proyecto.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -136,8 +133,6 @@ private UsuarioDao usuarioDao;
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("propietario") ) {
 				Propiedad propiedad = new Propiedad();
-				propiedad.setId_propiedad(propiedadDao.nuevoIdPropiedad());
-				propiedad.setId_usuario(usuario.getId_usuario());
 				model.addAttribute("nuevaPropiedadPropietario", propiedad);
 				retorno = "propiedad/addPropietario";
 			} else {
@@ -150,26 +145,30 @@ private UsuarioDao usuarioDao;
 	
 	@RequestMapping(value="/anadirDireccionAPropiedad", method=RequestMethod.POST)
 	public String addDireccionAPropiedad(Model model, @ModelAttribute("nuevaPropiedadPropietario") Propiedad propiedad,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, HttpSession session) {
 		PropiedadValidator propiedadValidator = new PropiedadValidator();
 		propiedadValidator.validate(propiedad, bindingResult); 
 		if (bindingResult.hasErrors())
-			return "propiedad/anadirPropiedadPropietario";
+			return "propiedad/addPropietario";
+		session.setAttribute("nuevaPropiedadPropietario", propiedad);
 		Direccion direccion = new Direccion();
-		int nuevoIdDireccion = direccionDao.nuevoIdDireccion();
-		direccion.setId_direccion(nuevoIdDireccion);
-		propiedad.setId_direccion(nuevoIdDireccion);
 		model.addAttribute("nuevaDireccionPropietario", direccion);
 		return "propiedad/addDireccionPropiedad";
 	}
 	
 	@RequestMapping(value="/finalizarAnadirPropiedad", method=RequestMethod.POST)
-	public String finalizarAnadirPropiedad(@ModelAttribute("nuevaPropiedadPropietario") Propiedad propiedad, 
-			@ModelAttribute("nuevaDireccionPropietario") Direccion direccion, BindingResult bindingResult) {
+	public String finalizarAnadirPropiedad(@ModelAttribute("nuevaDireccionPropietario") Direccion direccion, BindingResult bindingResult, HttpSession session) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		DireccionValidator direccionValidator = new DireccionValidator();
 		direccionValidator.validate(direccion, bindingResult);
 		if (bindingResult.hasErrors())
 			return "propiedad/addDireccionPropiedad";
+		Propiedad propiedad = (Propiedad) session.getAttribute("nuevaPropiedadPropietario");
+		propiedad.setId_propiedad(propiedadDao.nuevoIdPropiedad());
+		propiedad.setId_usuario(usuario.getId_usuario());
+		int nuevoIdDireccion = direccionDao.nuevoIdDireccion();
+		direccion.setId_direccion(nuevoIdDireccion);
+		propiedad.setId_direccion(nuevoIdDireccion);
 		direccionDao.addDireccion(direccion);
 		propiedadDao.addPropiedad(propiedad);
 		return "redirect:misPropiedades.html";
@@ -214,12 +213,20 @@ private UsuarioDao usuarioDao;
 		String retorno;
 		if (usuario == null) {
 			model.addAttribute("credencial", new Credencial());
-			session.setAttribute("nextURL", "redirect:propiedad/update/" + id_propiedad + ".html");
+			session.setAttribute("nextURL", "redirect:propiedad/updatePropietario/" + id_propiedad + ".html");
 			retorno = "login";
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("propietario") ) {
-				model.addAttribute("propiedadAModificar", propiedadDao.getPropiedad(id_propiedad));
+				
+				Propiedad propiedadAModificar = (Propiedad) session.getAttribute("propiedadAModificar");
+				if (propiedadAModificar == null) {
+					propiedadAModificar = propiedadDao.getPropiedad(id_propiedad);
+				} 
+				model.addAttribute("propiedadAModificar", propiedadAModificar);
+				Direccion direccionAModificar = direccionDao.getDireccion(propiedadAModificar.getId_direccion());
+				session.setAttribute("propiedadAModificar", propiedadAModificar);
+				session.setAttribute("direccionAModificar", direccionAModificar);
 				retorno = "propiedad/formModificarPropiedadUsuario";
 			} else {
 				retorno = "redirect:../../cabecera/inicio.html";
@@ -227,6 +234,65 @@ private UsuarioDao usuarioDao;
 		}
 		return retorno;
 	}
+	
+	
+	@RequestMapping(value="/updateDireccionPropietario", method = RequestMethod.POST)
+	public String editDireccionPropiedadPropietario(Model model, HttpSession session,
+			@ModelAttribute("propiedadAModificar") Propiedad propiedadModificada,
+			BindingResult bindingResult) {
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:propiedad/misPropiedades.html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("propietario") ) {
+				
+				Propiedad propiedadSinModificar = (Propiedad) session.getAttribute("propiedadAModificar");
+				propiedadModificada.setId_propiedad(propiedadSinModificar.getId_propiedad());
+				propiedadModificada.setId_direccion(propiedadSinModificar.getId_direccion());
+				propiedadModificada.setId_usuario(propiedadSinModificar.getId_usuario());
+				
+				PropiedadValidator propiedadValidator = new PropiedadValidator();
+				propiedadValidator.validate(propiedadModificada, bindingResult); 
+				if (bindingResult.hasErrors())
+					return "propiedad/formModificarPropiedadUsuario";
+				
+				session.setAttribute("propiedadAModificar", propiedadModificada);
+				
+				//Cojo la direccion de la sesión y la mando a la vista
+				Direccion direccionAModificar = (Direccion) session.getAttribute("direccionAModificar");
+				model.addAttribute("direccionAModificar", direccionAModificar);
+				retorno = "propiedad/formModificarDireccionPropiedad";
+			} else {
+				retorno = "redirect:../../cabecera/inicio.html";
+			}
+		}
+		return retorno;
+	}
+	
+	@RequestMapping(value="/finalizarModificarPropiedad", method=RequestMethod.POST)
+	public String finalizarModificarPropiedad(@ModelAttribute("direccionAModificar") Direccion direccionModificada, 
+			BindingResult bindingResult, HttpSession session) {
+		Direccion direccionSinModificar = (Direccion) session.getAttribute("direccionAModificar");
+		direccionModificada.setId_direccion(direccionSinModificar.getId_direccion());
+		DireccionValidator direccionValidator = new DireccionValidator();
+		direccionValidator.validate(direccionModificada, bindingResult);
+		if (bindingResult.hasErrors())
+			return "propiedad/formModificarDireccionPropiedad";
+		
+		
+		
+		Propiedad propiedadModificada = (Propiedad) session.getAttribute("propiedadAModificar");
+		direccionDao.updateDireccion(direccionModificada);
+		propiedadDao.updatePropiedad(propiedadModificada);
+		session.removeAttribute("propiedadAModificar");
+		session.removeAttribute("direccionAModificar");
+		return "redirect:misPropiedades.html";
+	}
+	
 	
 	@RequestMapping(value="/updatePropietario/{id_propiedad}", method = RequestMethod.POST)
 	public String processUpdateSubmitPropitario(Model model, @PathVariable int id_propiedad, HttpSession session,

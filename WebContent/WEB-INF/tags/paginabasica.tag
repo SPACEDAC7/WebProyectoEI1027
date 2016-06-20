@@ -75,12 +75,9 @@
 						<div class="iconset top-settings-dark "></div> 	
 					</a>
 					<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-	                  <li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Mi perfil</a>
-	                  </li>
-	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a>
-	                  </li>
-	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Bandeja de Entrada</a>
-	                  </li>
+	                  <li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Mi perfil</a></li>
+	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Bandeja de Entrada</a></li>
+	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a></li>
 	                  <li class="divider"></li>                
 	                  <li><a href="${pageContext.request.contextPath}/logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Cerrar Sesión</a></li>
 	               </ul>
@@ -151,7 +148,7 @@
 	      </li>
 	      <li class=""> <a href="javascript:;"> <i class="icon-custom-thumb"></i> <span class="title">Comunicaciones</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
-	          <li > <a href="${pageContext.request.contextPath}/direccion/list.html"> LISTA DE MENSAJES </a> </li>
+	          <li > <a href="${pageContext.request.contextPath}/mensajes/list.html"> LISTA DE MENSAJES </a> </li>
 	        </ul>
 	      </li>
 	      

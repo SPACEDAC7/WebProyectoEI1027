@@ -3,13 +3,13 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<t:paginabasica title="Actualizar credencial">
+<t:paginabasica title="Actualizar propiedad">
 	<jsp:body>
 	<div style="margin-bottom:20px;background:white;margin-left:250px" class="container">
 		<ul class="breadcrumb">
 			<li><hr></li>
 			<li><p>ESTÁS AQUÍ</p></li>
-			<li><a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html" class="active">GESTIÓN DE PROPIEDADES</a> </li>
+			<li><a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html" class="active">MIS PROPIEDADES</a> </li>
 		</ul>
 		<div class="page-title"><a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html"><i class="icon-custom-left"></i></a>
 			<h3><span class="semi-bold">Modificar propiedad</span></h3>
@@ -21,11 +21,7 @@
 		<div class="col-md-12">
 		<h3><span class="semi-bold">Datos de la propiedad</span></h3>
 		
-		
-		<a href="${pageContext.request.contextPath}/propiedad/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
-		<a href="${pageContext.request.contextPath}/imagen/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
-		
-	<form:form method="post" modelAttribute="propiedadAModificar">
+	<form:form action="${pageContext.request.contextPath}/propiedad/updateDireccionPropietario.html" method="post" modelAttribute="propiedadAModificar">
 		<table class="table table-condensed">
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="titulo">Titulo </form:label></td>
@@ -101,7 +97,7 @@
 				<td><form:errors style="color:#F44336" path="url_mapa" cssClass="error"/></td>
 			</tr>
 			<tr>
- 				<td><button class="btn btn-primary" onClick="location.href='updatePropietario/${propiedadAModificar.id_propiedad}.html'" type="submit">Actualizar</button>
+ 				<td><input class="btn btn-primary btn-cons" type="submit" value="Siguiente" />
  				<a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html"><input class="btn btn-danger" type="button" value="Cancelar"></a>
  				</td>
  			</tr>

@@ -81,18 +81,13 @@
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="area">Area</form:label></td>
-				<td><form:input class="form-control input-md" path="area" /></td>
+				<td><form:input class="form-control input-md" path="area" /></td><td> m<sup>2</sup><td>
 				<td><form:errors style="color:#F44336" path="area" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="precio_propiedad">Precio</form:label></td>
-				<td><form:input class="form-control input-md" path="precio_propiedad" /></td>
+				<td><form:input class="form-control input-md" path="precio_propiedad" /></td><td> €<td>
 				<td><form:errors style="color:#F44336" path="precio_propiedad" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_direccion">ID. Direccion</form:label></td>
-				<td><form:input class="form-control input-md" path="id_direccion" /></td>
-				<td><form:errors style="color:#F44336" path="id_direccion" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="url_mapa">URL Mapa</form:label></td>
@@ -101,8 +96,8 @@
 			</tr>
 			<tr>
 				<td>
-					<td><input class="btn btn-primary btn-cons" type="submit" value="Siguiente" /></td>
- 					<a href="${pageContext.request.contextPath}/propiedad/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
+					<td><input class="btn btn-primary btn-cons" type="submit" value="Siguiente" />
+ 					<a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
  				</td>
 			</tr>
 		</table>
