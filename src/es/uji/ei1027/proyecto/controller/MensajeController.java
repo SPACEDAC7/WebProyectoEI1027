@@ -1,6 +1,7 @@
 package es.uji.ei1027.proyecto.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -231,6 +232,8 @@ public class MensajeController {
 				Mensaje mensaje = new Mensaje();
 				mensaje.setId_emisor(usuario.getId_usuario());
 				mensaje.setId_mensaje(mensajeDao.nuevoIdMensaje());
+				List<Usuario> usuarios = usuarioDao.getUsuarios();
+				model.addAttribute("usuarios", usuarios);
 				model.addAttribute("mensaje", mensaje);
 				return "/mensaje/redactar";
 			}

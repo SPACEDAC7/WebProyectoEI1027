@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <t:paginabasica title="Detalles Mensaje">
 <jsp:body>
  <div id="header" class="heading" style="background-image: url(../img/img01.jpg);">
@@ -25,30 +26,21 @@
           	<form:form method="post" modelAttribute="mensaje">
 		<table class="table table-condensed">
 			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_mensaje">ID. Mensaje</form:label></td>
-				<td><form:input class="form-control input-md" path="id_mensaje" readonly="true" /></td>
-				<td><form:errors style="color:#F44336"  path="id_mensaje" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_emisor"> Emisor </form:label></td>
-				<td><form:input class="form-control input-md" path="id_emisor" /></td>
-				<td><form:errors style="color:#F44336" path="id_emisor" cssClass="error"/></td>
-			</tr>
-			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_receptor">Receptor </form:label></td>
 				<td><form:select class="form-control" path="id_receptor" >
 					<form:option value="" selected="selected">Seleccione nick de receptor</form:option>
-					<form:option value="1">Administrador</form:option>
-					<form:option value="2">david</form:option>
-					<form:option value="3">israel</form:option>
-					<form:option value="4">pablo</form:option>
-					<form:option value="5">enrique</form:option>
-					<form:option value="6">oscar</form:option>
-					<form:option value="7">paco</form:option>
-					<form:option value="8">almudena</form:option>
-					<form:option value="9">mery</form:option>
+					<c:forEach items="${usuarios}" var="listausuarios">
+						<form:option value="${listausuarios.id_usuario}">${listausuarios.nombre}</form:option>
+					</c:forEach>
 					</form:select></td>
 				<td><form:errors style="color:#F44336" path="id_receptor" cssClass="error"/></td>
+				
+				<td><form:input type="hidden" class="form-control input-md" path="id_mensaje" readonly="true" /></td>
+				<td><form:errors style="color:#F44336"  path="id_mensaje" cssClass="error"/></td>
+			
+				<td><form:input type="hidden" class="form-control input-md" path="id_emisor" /></td>
+				<td><form:errors style="color:#F44336" path="id_emisor" cssClass="error"/></td>
+							
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="asunto">Asunto</form:label></td>
@@ -59,10 +51,8 @@
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="contenido">Contenido </form:label></td>
 				<td><form:input class="form-control input-md" path="contenido" /></td>
 				<td><form:errors style="color:#F44336" path="contenido" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="estado_vision">Estado Vision</form:label></td>
-				<td><form:input value="1" class="form-control input-md" path="estado_vision" /></td>
+			
+				<td><form:input type="hidden" value="1" class="form-control input-md" path="estado_vision" /></td>
 				<td><form:errors style="color:#F44336" path="estado_vision" cssClass="error"/></td>
 			</tr>
 			<tr>
