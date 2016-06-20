@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <t:paginabasica title="Detalles Propiedad">
 	<jsp:body>
  <!-- inicio:header -->
@@ -37,26 +38,36 @@
                       <div class="col-md-12">
                         <div id="slider-property" class="carousel slide" data-ride="carousel">
                           <ol class="carousel-indicators">
-                            <li data-target="#slider-property" data-slide-to="0" class="">
-                              <img src="../../img/img02.jpg" alt="">
+                            <c:set var="num" value="0"></c:set>
+                            <c:forEach items="${imagenes}" var="imagen">
+                             <c:choose>
+                            	<c:when test='${num == 0 }'>
+                            		<li data-target="#slider-property" data-slide-to="${num}" class="active">
+                             	</c:when>
+                            	<c:otherwise>
+                            		<li data-target="#slider-property" data-slide-to="${num}" class="">
+                             	</c:otherwise>
+                            </c:choose>
+                              <img src="${imagen.referencia}" alt="">
                             </li>
-                            <li data-target="#slider-property" data-slide-to="1" class="active">
-                              <img src="../../img/img03.jpg" alt="">
-                            </li>
-                            <li data-target="#slider-property" data-slide-to="2">
-                              <img src="../../img/img04.jpg" alt="">
-                            </li>
+                           	<c:set var="num" value="${num + 1}"></c:set>
+                            </c:forEach>
                           </ol>
                           <div class="carousel-inner">
-                            <div class="item">
-                              <img src="../../img/img02.jpg" alt="">
+                           <c:set var="num" value="0"></c:set>
+                           <c:forEach items="${imagenes}" var="im"> 
+                            <c:choose>
+                            	<c:when test='${num == 0 }'>
+                            		<div class="item active">
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="item">
+                            	</c:otherwise>
+                            </c:choose>
+                              <img src="${im.referencia}" alt="">
+                              <c:set var="num" value="${num + 1}"></c:set>
                             </div>
-                            <div class="item active">
-                              <img src="../../img/img03.jpg" alt="">
-                            </div>
-                            <div class="item">
-                              <img src="../../img/img04.jpg" alt="">
-                            </div>
+                            </c:forEach>
                           </div>
                           <a class="left carousel-control" href="#slider-property" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>

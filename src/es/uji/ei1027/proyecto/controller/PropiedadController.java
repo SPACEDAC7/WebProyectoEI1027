@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.DireccionDao;
+import es.uji.ei1027.proyecto.dao.ImagenDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
@@ -31,6 +32,7 @@ public class PropiedadController {
 private PropiedadDao propiedadDao;
 private DireccionDao direccionDao;
 private UsuarioDao usuarioDao;
+private ImagenDao imagenDao;
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
@@ -45,6 +47,11 @@ private UsuarioDao usuarioDao;
 	@Autowired
 	public void setUsuarioDao(UsuarioDao usuarioDao){
 		this.usuarioDao = usuarioDao;
+	}
+	
+	@Autowired
+	public void setImagenDao(ImagenDao imagenDao){
+		this.imagenDao = imagenDao;
 	}
 	//Listar
 	@RequestMapping("/list")
@@ -378,6 +385,7 @@ private UsuarioDao usuarioDao;
 		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
 		model.addAttribute("usuarioPropiedad", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
+		model.addAttribute("imagenes", imagenDao.getImagenesPropiedad(id_propiedad));
 		return "propiedad/single";
 	}
 	

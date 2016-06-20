@@ -39,9 +39,9 @@ public class ImagenDao {
 	public List<Imagen> getImagenes(){
 		return this.jdbcTemplate.query("select id_imagen, id_propiedad, pie_foto , referencia from imagen", new ImagenMapper());
 	}
-	//No se muy bien como sacar esta consulta
-	public List<Imagen> getImagenesPropiedad(int id_propiedad) {
-		return this.jdbcTemplate.query("select id_imagen, id_propiedad, pie_foto, referencia from imagen where id_propiedad = ?"/*, id_propiedad*/, new ImagenMapper());
+	
+	public List<Imagen> getImagenesPropiedad(int id_propiedad){
+		return this.jdbcTemplate.query("select id_imagen, id_propiedad, pie_foto , referencia from imagen where id_propiedad = ?", new ImagenMapper(), id_propiedad);
 	}
 	
 	public Imagen getImagen(int id_imagen) {
