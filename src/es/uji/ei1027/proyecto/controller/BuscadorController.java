@@ -54,14 +54,16 @@ private DireccionDao direccionDao;
 		String retorno;	
 		Propiedad propiedad = new Propiedad();
 		Buscador buscador = new Buscador();
+		List<Direccion> direccionesFinales = new LinkedList<Direccion>();
 		List<Imagen> imagenesFinales = new LinkedList<Imagen>();
 		for(Propiedad p : propiedadDao.getPropiedades()){
 			List<Imagen> aux = imagenDao.getImagenesPropiedad(p.getId_propiedad());
+			direccionesFinales.add(direccionDao.getDireccion(p.getId_direccion()));
 			imagenesFinales.add(aux.get(0));
 		}
 		model.addAttribute("buscador", buscador);
 		model.addAttribute("propiedades", propiedadDao.getPropiedades());
-		model.addAttribute("direccion", direccionDao.getDireccion(propiedad.getId_direccion()));
+		model.addAttribute("direccion", direccionesFinales);
 		model.addAttribute("imagenPropiedad", imagenesFinales);
 		retorno = "buscador/list";
 		return retorno;

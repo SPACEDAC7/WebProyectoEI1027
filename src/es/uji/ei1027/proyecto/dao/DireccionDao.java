@@ -39,7 +39,7 @@ public class DireccionDao {
 	public List<Direccion> getDirecciones(){
 		return this.jdbcTemplate.query("select id_direccion, calle, numero, codigo_postal, localidad, provincia from direccion", new DireccionMapper());
 	}
-	
+		
 	public Direccion getDireccion(int id_direccion) {
 		return this.jdbcTemplate.queryForObject("SELECT id_direccion, calle, numero, codigo_postal, localidad, provincia FROM direccion WHERE id_direccion = ?", new Object[] {id_direccion}, new DireccionMapper());
 			
