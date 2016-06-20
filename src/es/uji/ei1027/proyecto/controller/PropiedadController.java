@@ -232,7 +232,6 @@ private CredencialDao credencialDao;
 				Propiedad propiedadAModificar = (Propiedad) session.getAttribute("propiedadAModificar");
 				if (propiedadAModificar == null) {
 					propiedadAModificar = propiedadDao.getPropiedad(id_propiedad);
-					System.out.println(id_propiedad);
 				} 
 				model.addAttribute("propiedadAModificar", propiedadAModificar);
 				Direccion direccionAModificar = direccionDao.getDireccion(propiedadAModificar.getId_direccion());
@@ -262,7 +261,6 @@ private CredencialDao credencialDao;
 			if ( rol.equals("propietario") ) {
 				
 				Propiedad propiedadSinModificar = (Propiedad) session.getAttribute("propiedadAModificar");
-				System.out.println(propiedadSinModificar);
 				propiedadModificada.setId_propiedad(propiedadSinModificar.getId_propiedad());
 				propiedadModificada.setId_direccion(propiedadSinModificar.getId_direccion());
 				propiedadModificada.setId_usuario(propiedadSinModificar.getId_usuario());
