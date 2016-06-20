@@ -6,7 +6,7 @@
 <jsp:body>
 	<div style="margin-bottom:20px" class="container">
 	<h1>Bandeja de Salida</h1>
-		<table class="table table-condensed">
+		<table class="table table-condensed sortable">
 			<tr>
 				<th>Nick Emisor</th>
 				<th>Nombre Emisor</th>

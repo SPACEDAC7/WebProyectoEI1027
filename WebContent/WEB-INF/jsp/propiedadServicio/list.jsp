@@ -21,7 +21,7 @@
 				  <span class="semi-bold pull-right"><button type="button" class="btn btn-info btn-sm btn-small" onClick="location.href='add.html'"><i class="fa fa-plus"></i>  Añadir propiedadServicio</button></span>
 	            </div>
 	            <div class="grid-body ">
-	              <table class="table table-hover table-condensed">
+	              <table class="table table-hover table-condensed sortable">
 	                <thead>
 		<tr>
 			<th style="width:15%">Id. Propiedad</th>

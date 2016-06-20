@@ -175,6 +175,7 @@
 	<script src="${pageContext.request.contextPath}/plugins/breakpoints.js" type="text/javascript"></script> 
 	<script src="${pageContext.request.contextPath}/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
 	<script src="${pageContext.request.contextPath}/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/js/sorttable.js" type="text/javascript"></script>
 	<!-- FIN CORE JS FRAMEWORK --> 
 	<!-- INICIO PAGE LEVEL JS --> 
 	<script src="${pageContext.request.contextPath}/plugins/pace/pace.min.js" type="text/javascript"></script>  

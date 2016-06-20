@@ -6,22 +6,25 @@
 <jsp:body>
 	<div style="margin-bottom:20px" class="container">
 	<h1>Lista de Reservas</h1>
-	<table class="table table-condensed">
+	<table class="table table-condensed sortable">
 			<tr>
 				<th>Titulo Propiedad</th>
 				<th>Fecha Reserva</th>
+				<th>Fecha de Entrada</th>
+				<th>Fecha de Salida</th>
 				<th>Precio Reserva</th>
 				<th>Estado</th>
+				<th>Eliminar</th>
 			</tr>
 			<c:forEach items="${listaReservaPropiedades}" var="mapReservasPropiedad">
 				<tr>
 					<td class="linea">${mapReservasPropiedad.value.titulo}</td>
 					<td class="linea">${mapReservasPropiedad.key.fecha_reserva}</td>
+					<td class="linea">${mapReservasPropiedad.key.fecha_checkin}</td>
+					<td class="linea">${mapReservasPropiedad.key.fecha_checkout}</td>
 					<td class="linea">${mapReservasPropiedad.key.precio_reserva}</td>
 					<td class="linea">${mapReservasPropiedad.key.estado}</td>
-					<td><a href="update/${reserva.id_reserva}.html">Edita</a>
-					<td><a href="delete/${reserva.id_reserva}.html">Esborra</a>
-					<button type="button" onclick="pasarIdPropiedadAModal(${mapReservasPropiedad.key.id_reserva})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button>
+					<td><button type="button" onclick="pasarIdPropiedadAModal(${mapReservasPropiedad.key.id_reserva})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Cancelar Reserva</button></td>
 				
 				</tr>
 			</c:forEach>
