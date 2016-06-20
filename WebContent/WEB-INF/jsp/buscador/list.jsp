@@ -38,7 +38,7 @@
 						  		<img src="../img/img12.jpg" alt="mikha real estate theme"></a>
 						  <div class="property-price">
 							<h4>${propiedad.tipo}</h4>
-							<span>${propiedad.precio_propiedad}<small> €/mes</small></span>
+							<span>${propiedad.precio_propiedad}<small> €/dia</small></span>
 						  </div>
 						  <div class="property-status">
 							<span>Alquiler</span>
