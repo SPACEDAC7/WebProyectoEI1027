@@ -1,6 +1,11 @@
 package es.uji.ei1027.proyecto.domain;
 
 public class Credencial {
+	@Override
+	public String toString() {
+		return "Credencial [id_credencial=" + id_credencial + ", nick_usuario=" + nick_usuario + ", password="
+				+ password + ", rol=" + rol + "]";
+	}
 	private int id_credencial;
 	private String nick_usuario;
 	private String password;

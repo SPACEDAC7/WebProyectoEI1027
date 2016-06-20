@@ -66,7 +66,7 @@
 					</div>
 				</div> 
 				<div class="profile-pic"> 
-					<img src="${pageContext.request.contextPath}/img/profiles/avatar_small.jpg"  alt="" data-src="${pageContext.request.contextPath}/img/profiles/avatar_small.jpg" data-src-retina="${pageContext.request.contextPath}/img/profiles/avatar_small2x.jpg" width="35" height="35" /> 
+					<img src="${usuario.url_imagen_perfil}"  alt="" data-src="${usuario.url_imagen_perfil}" data-src-retina="${usuario.url_imagen_perfil}" width="35" height="35" /> 
 				</div>
 			</div>
 			 <ul class="nav quick-section ">
@@ -75,14 +75,14 @@
 						<div class="iconset top-settings-dark "></div> 	
 					</a>
 					<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-	                  <li><a href="${pageContext.request.contextPath}/usuario/perfil.html">Mi perfil</a>
+	                  <li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Mi perfil</a>
 	                  </li>
 	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a>
 	                  </li>
 	                  <li><a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Bandeja de Entrada</a>
 	                  </li>
 	                  <li class="divider"></li>                
-	                  <li><a href="login.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+	                  <li><a href="${pageContext.request.contextPath}/logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Cerrar Sesión</a></li>
 	               </ul>
 				</li> 				
 			</ul>
@@ -103,7 +103,7 @@
 	   <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper"> 
 	   <div class="user-info-wrapper">	
 		<div class="profile-wrapper">
-			<img src="${pageContext.request.contextPath}/img/profiles/avatar.jpg"  alt="" data-src="${pageContext.request.contextPath}/img/profiles/avatar.jpg" data-src-retina="${pageContext.request.contextPath}/img/profiles/avatar2x.jpg" width="69" height="69" />
+			<img src="${usuario.url_imagen_perfil}"  alt="" data-src="${usuario.url_imagen_perfil}" data-src-retina="${usuario.url_imagen_perfil}" width="69" height="69" />
 		</div>
 	    <div class="user-info">
 	      <div class="greeting">Bienvenido</div>
@@ -114,8 +114,16 @@
 	   
 	   <!-- INICIO SIDEBAR MENU -->	
 		<p class="menu-title">MENU PRINCIPAL</p>
-	    <ul>	
-	      <li class="start active "> <a href="${pageContext.request.contextPath}/"> <i class="icon-custom-home"></i> <span class="title">Inicio</span></a> </li>
+	   <ul>
+		
+		<li class="start active "> <a href="${pageContext.request.contextPath}/"> <i class="icon-custom-home"></i> <span class="title">Inicio</span></a> </li>
+	      <li class=""><a href="javascript:;"> <i
+				class="fa fa-folder-open"></i> <span class="title">Utilidades</span> <span class="arrow "></span></a>
+			<ul class="sub-menu">
+				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Mi perfil</a></li>
+				<li><a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Bandeja de Entrada</a></li>
+	            <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a></li>
+			</ul></li>
 	      <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">Usuario</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">
 			  <li > <a href="${pageContext.request.contextPath}/usuario/list.html"> LISTA DE USUARIOS </a> </li>

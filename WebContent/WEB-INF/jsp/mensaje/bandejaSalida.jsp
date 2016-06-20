@@ -8,6 +8,7 @@
 	<h1>Bandeja de Salida</h1>
 		<table class="table table-condensed">
 			<tr>
+				<th>Nick Emisor</th>
 				<th>Nombre Emisor</th>
 				<th>Email Emisor</th>
 				<th>Asunto</th>
@@ -16,17 +17,26 @@
 				<th>Eliminar</th>
 			</tr>
 			<c:forEach items="${listaMensajeReceptor}" var="mapaMensajeReceptor">
-				<tr>
-					<td class="linea">${mapaMensajeReceptor.value.nombre}</td>
-					<td class="linea">${mapaMensajeReceptor.value.email}</td>
-					<td class="linea">${mapaMensajeReceptor.key.asunto}</td>
-					<td class="linea">${mapaMensajeReceptor.key.fecha_mensaje}</td>
-					<td class="linea"><a href="${pageContext.request.contextPath}/mensaje/single/${mapaMensajeReceptor.key.id_mensaje}&${mapaMensajeReceptor.value.id_usuario}.html">VER CONTENIDO</a></td>
-					<td><button type="button" onclick="pasarIdPropiedadAModal(${mapaMensajeReceptor.key.id_mensaje})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button></td>
-				</tr>
+				<c:forEach items="${listaReceptorCredencial}" var="mapaReceptorCredencial">
+				<c:set var="idReceptorMensaje" value="${mapaMensajeReceptor.value.id_usuario}"></c:set>
+				<c:set var="idReceptorCredencial" value="${mapaReceptorCredencial.key.id_usuario}"></c:set>
+				<c:choose>
+				<c:when test='${idReceptorMensaje == idReceptorCredencial}'>
+					<tr>
+						<td class="linea">${mapaReceptorCredencial.value.nick_usuario}</td>
+						<td class="linea">${mapaMensajeReceptor.value.nombre}</td>
+						<td class="linea">${mapaMensajeReceptor.value.email}</td>
+						<td class="linea">${mapaMensajeReceptor.key.asunto}</td>
+						<td class="linea">${mapaMensajeReceptor.key.fecha_mensaje}</td>
+						<td class="linea"><a href="${pageContext.request.contextPath}/mensaje/single/${mapaMensajeReceptor.key.id_mensaje}&${mapaMensajeReceptor.value.id_usuario}.html">VER CONTENIDO</a></td>
+						<td><button type="button" onclick="pasarIdPropiedadAModal(${mapaMensajeReceptor.key.id_mensaje})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="fa fa-trash-o"></i>  Borrar</button></td>
+					</tr>
+				</c:when>
+				</c:choose>
+				</c:forEach>
 			</c:forEach>
 		</table>
-		<a class="btn btn-primary" href="add.html">Redactar</a>
+		<a class="btn btn-primary" href="${pageContext.request.contextPath}/mensaje/redactar.html">Redactar</a>
 		<a class="btn btn-danger" href="${pageContext.request.contextPath}/"> Volver al inicio</a>
 		</div>
 		

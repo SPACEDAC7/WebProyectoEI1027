@@ -15,6 +15,7 @@
 
 				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
+						<li><a class="letras-grises" href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Perfil</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html">Mensajes</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/reserva/misReservas.html">Mis Reservas</a></li>
 						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
@@ -32,7 +33,8 @@
 
 				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
 					<ul class="desplegable bordeado list-unstyled">
-						<li><a class="letras-grises" href="">Mensajes</a></li>
+						<li><a class="letras-grises" href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Perfil</a></li>
+						<li><a class="letras-grises" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html">Mensajes</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/propiedad/misPropiedades.html">Mis Propiedades</a></li>
 						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
 						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
@@ -43,18 +45,6 @@
 					</ul>
 				</li>
 			</ul>
-		</c:when>
-				<c:when test='${rol == "administrador"}'>
-			<ul class="nav navbar-nav navbar-right">
-	<li>
-		<form action="${pageContext.request.contextPath}/logout.html" method="get">
-			<button type="submit" class="btn btn-danger boton-main boton-login entrar centrado">
-				<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-				Salir
-			</button>
-		</form>
-	</li>
-</ul>
 		</c:when>
 	</c:choose>
 <!-- </p>  -->

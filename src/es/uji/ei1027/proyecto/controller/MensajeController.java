@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.MensajeDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
@@ -28,6 +29,7 @@ public class MensajeController {
 	private MensajeDao mensajeDao;
 	
 	private UsuarioDao usuarioDao;
+	private CredencialDao credencialDao;
 	
 	@Autowired
 	public void setMensajeDao( MensajeDao mensajeDao){
@@ -37,6 +39,11 @@ public class MensajeController {
 	@Autowired
 	public void setUsuarioDao(UsuarioDao usuarioDao){
 		this.usuarioDao = usuarioDao;
+	}
+	
+	@Autowired
+	public void setCredencialDao(CredencialDao credencialDao){
+		this.credencialDao = credencialDao;
 	}
 	
 	//Listar
@@ -162,12 +169,17 @@ public class MensajeController {
 			Usuario usuario = (Usuario) session.getAttribute("usuario");
 			if (usuario != null) {
 				Map<Mensaje,Usuario> mapMensajeEmisor = new HashMap<Mensaje, Usuario>();
+				Map<Usuario,Credencial> mapEmisorCredencial = new HashMap<Usuario,Credencial>();
 				for(Mensaje mensaje: mensajeDao.obtenerMensajesReceptor(usuario.getId_usuario())){
+					Usuario emisor = usuarioDao.getUsuario(mensaje.getId_emisor());
+					Credencial credencialEmisor = credencialDao.getCredencial(emisor.getId_credencial());
 					if(mensaje.getEstado_vision() == 1 || mensaje.getEstado_vision()==3){
-						mapMensajeEmisor.put(mensaje, usuarioDao.getUsuario(mensaje.getId_emisor()));
+						mapMensajeEmisor.put(mensaje, emisor);
+						mapEmisorCredencial.put(emisor, credencialEmisor);
 					}
 				}
 				model.addAttribute("listaMensajeEmisor", mapMensajeEmisor);
+				model.addAttribute("listaEmisorCredencial", mapEmisorCredencial);
 				return "mensaje/bandejaEntrada";
 			} else {
 				model.addAttribute("credencial", new Credencial());
@@ -181,12 +193,17 @@ public class MensajeController {
 			Usuario usuario = (Usuario) session.getAttribute("usuario");
 			if (usuario != null) {
 				Map<Mensaje,Usuario> mapMensajeReceptor = new HashMap<Mensaje, Usuario>();
+				Map<Usuario,Credencial> mapReceptorCredencial = new HashMap<Usuario,Credencial>();
 				for(Mensaje mensaje: mensajeDao.obtenerMensajesEmisor(usuario.getId_usuario())){
+					Usuario receptor = usuarioDao.getUsuario(mensaje.getId_receptor());
+					Credencial credencialReceptor = credencialDao.getCredencial(receptor.getId_credencial());
 					if(mensaje.getEstado_vision() == 1 || mensaje.getEstado_vision()==2){
-						mapMensajeReceptor.put(mensaje, usuarioDao.getUsuario(mensaje.getId_emisor()));
+						mapMensajeReceptor.put(mensaje, usuarioDao.getUsuario(mensaje.getId_receptor()));
+						mapReceptorCredencial.put(receptor, credencialReceptor);
 					}
 				}
 				model.addAttribute("listaMensajeReceptor", mapMensajeReceptor);
+				model.addAttribute("listaReceptorCredencial", mapReceptorCredencial);
 				return "mensaje/bandejaSalida";
 			} else {
 				model.addAttribute("credencial", new Credencial());
@@ -201,4 +218,33 @@ public class MensajeController {
 			model.addAttribute("usuarioMen", usuarioDao.getUsuario(id_usuario));
 			return "mensaje/single";
 		}
+		
+		@RequestMapping(value="/redactar")
+		public String redactar(HttpSession session, Model model){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			String retorno;
+			if (usuario == null) {
+				model.addAttribute("credencial", new Credencial());
+				session.setAttribute("nextURL", "redirect:mensaje/add.html");
+				return "login";
+			} else {
+				Mensaje mensaje = new Mensaje();
+				mensaje.setId_emisor(usuario.getId_usuario());
+				mensaje.setId_mensaje(mensajeDao.nuevoIdMensaje());
+				model.addAttribute("mensaje", mensaje);
+				return "/mensaje/redactar";
+			}
 		}
+		
+		@RequestMapping(value="/redactar" , method=RequestMethod.POST)
+		public String redactarMen(@ModelAttribute("mensaje") Mensaje mensaje,
+				BindingResult bindingResult, HttpSession session, Model model){
+			MensajeValidator mensajeValidator = new MensajeValidator();
+			mensajeValidator.validate(mensaje, bindingResult); 
+			if (bindingResult.hasErrors()){
+				return "mensaje/redactar";
+			}
+			mensajeDao.addMensaje(mensaje);
+			return "redirect:bandejaEntrada.html";
+		}
+	}

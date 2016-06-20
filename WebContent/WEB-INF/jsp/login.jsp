@@ -17,7 +17,7 @@
             <form:password class="form-control" path="password" />
             <form:errors style="color:#F44336" path="password" cssClass="error" />
         </div>        
-		<div class="help-block text-right">
+		<div class="help-block">
 		<a href="">¿Has olvidado la contraseña?</a>
 		</div>        
         <input style="font-size:18px" type="submit" class="btn btn-primary" value="Accedir" />

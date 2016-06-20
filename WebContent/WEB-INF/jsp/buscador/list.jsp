@@ -34,7 +34,8 @@
 					<div class="property-container">
 					  <div class="property-content-list">
 						<div class="property-image-list">
-						  <img src="../img/img12.jpg" alt="mikha real estate theme">
+						  <a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">
+						  		<img src="../img/img12.jpg" alt="mikha real estate theme"></a>
 						  <div class="property-price">
 							<h4>${propiedad.tipo}</h4>
 							<span>${propiedad.precio_propiedad}<small> €/mes</small></span>
@@ -94,6 +95,7 @@
 					<form:option value="castellon">Castellon</form:option>
 					<form:option value="valencia">Valencia</form:option>
 					<form:option value="Vila-real">Vila-real</form:option>
+					<form:option value="Barcelona">Barcelona</form:option>
 				  </form:select>
 				</div>
                     <div class="form-group">
@@ -102,6 +104,9 @@
                       	<form:option value="" selected="selected">Tipo de propiedad</form:option>
                         <form:option value="apartamento">Apartamento</form:option>
                         <form:option value="casa">Casa</form:option>
+                        <form:option value="piso">Piso</form:option>
+                        <form:option value="chalet">Chalet</form:option>
+                        <form:option value="mansion">Mansión</form:option>
                       </form:select>
                     </div>
                     <div class="form-group">
