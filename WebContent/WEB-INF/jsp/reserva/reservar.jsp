@@ -25,29 +25,15 @@
           <form:form method="post" modelAttribute="reserva">
 		<table class="table table-condensed">
 			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_reserva">ID. Reserva </form:label></td>
-				<td><form:input class="form-control input-md" path="id_reserva" readonly="true" /></td>
-				<td><form:errors style="color:#F44336" path="id_reserva" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_usuario">ID. Usuario</form:label></td>
-				<td><form:input class="form-control input-md" path="id_usuario" /></td>
-				<td><form:errors style="color:#F44336" path="id_usuario" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="id_propiedad">ID. Propiedad</form:label></td>
-				<td><form:input class="form-control input-md" path="id_propiedad" /></td>
-				<td><form:errors style="color:#F44336" path="id_propiedad" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="fechaReserva">Fecha Reserva</form:label></td>
-				<td><form:input class="form-control input-md datepicker" path="fechaReserva"/></td>
-				<td><form:errors style="color:#F44336" path="fechaReserva" cssClass="error"/></td>
-			</tr>
-			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="fechaCheckIn">Fecha Check In</form:label></td>
 				<td><form:input class="form-control input-md datepicker" path="fechaCheckIn"/></td>
 				<td><form:errors style="color:#F44336" path="fechaCheckIn" cssClass="error"/></td>
+				
+				<td><form:input type="hidden" class="form-control input-md" path="id_reserva" readonly="true" /></td>
+				<td><form:errors style="color:#F44336" path="id_reserva" cssClass="error"/></td>
+			
+				<td><form:input type="hidden" class="form-control input-md datepicker" path="fechaReserva" readonly="true"/></td>
+				<td><form:errors style="color:#F44336" path="fechaReserva" cssClass="error"/></td>
 			</tr>
 			<tr>
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="fechaCheckOut">Fecha Check Out</form:label></td>
@@ -58,10 +44,8 @@
 				<td><form:label class="col-md-3 col-xs-5 control-label" path="precio_reserva">Precio Diario Reserva</form:label></td>
 				<td><form:input class="form-control input-md" path="precio_reserva" /></td>
 				<td><form:errors style="color:#F44336" path="precio_reserva" cssClass="error"/></td>
-			</tr>
-			<tr>
-				<td><form:label class="col-md-3 col-xs-5 control-label" path="estado">Estado</form:label></td>
-				<td><form:input value="pendiente" class="form-control input-md" path="estado" /></td>
+			
+				<td><form:input type="hidden" value="pendiente" class="form-control input-md" path="estado" /></td>
 				<td><form:errors style="color:#F44336" path="estado" cssClass="error"/></td>
 			</tr>
 			<tr>
