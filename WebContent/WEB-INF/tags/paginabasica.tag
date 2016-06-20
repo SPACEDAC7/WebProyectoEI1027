@@ -336,6 +336,7 @@
 	    <script src="${pageContext.request.contextPath}/js/jquery.backstretch.js"></script>
 	    <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.min.js"></script>
 	    <script src="${pageContext.request.contextPath}/js/script.js"></script>
+	    <script src="${pageContext.request.contextPath}/js/sorttable.js" type="text/javascript"></script>
 	</body>
 	</html>
 </c:otherwise>
