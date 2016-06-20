@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.ImagenDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
@@ -33,6 +34,7 @@ private PropiedadDao propiedadDao;
 private DireccionDao direccionDao;
 private UsuarioDao usuarioDao;
 private ImagenDao imagenDao;
+private CredencialDao credencialDao;
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
@@ -79,18 +81,19 @@ private ImagenDao imagenDao;
 	public String listarMisPropiedades(Model model, HttpSession session){
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		if (usuario != null) {
-			Map<Propiedad, Direccion> mapPropiedadesDirecciones = new HashMap<Propiedad, Direccion>();
-			for (Propiedad propiedad: propiedadDao.obtenerPropiedadesPorUsuario(usuario.getId_usuario())) {
-				mapPropiedadesDirecciones.put(propiedad, direccionDao.getDireccion(propiedad.getId_direccion()));
+			String rol = (String) session.getAttribute("rol");
+			if (rol.equals("administrador") || rol.equals("propietario")) {
+				Map<Propiedad, Direccion> mapPropiedadesDirecciones = new HashMap<Propiedad, Direccion>();
+				for (Propiedad propiedad: propiedadDao.obtenerPropiedadesPorUsuario(usuario.getId_usuario())) {
+					mapPropiedadesDirecciones.put(propiedad, direccionDao.getDireccion(propiedad.getId_direccion()));
+				}
+				model.addAttribute("listaPropiedadesDirecciones", mapPropiedadesDirecciones);
+				return "propiedad/misPropiedades";
 			}
-			model.addAttribute("listaPropiedadesDirecciones", mapPropiedadesDirecciones);
-			return "propiedad/misPropiedades";
-		} else {
-			model.addAttribute("credencial", new Credencial());
-			session.setAttribute("nextURL", "redirect:propiedad/add.html");
-			return "login";
 		}
-		
+		model.addAttribute("credencial", new Credencial());
+		session.setAttribute("nextURL", "redirect:propiedad/add.html");
+		return "login";
 	}
 	
 	//A�adir	

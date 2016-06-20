@@ -10,8 +10,7 @@
 	<h3 align="center"><font color=red>${mensajeError.mensaje}</font></h3>
 		<table>
 			<tr>
-		 		<td><a href="${nextURL.mensaje}"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
-		 		</td>
+				<td align="center"><input onclick="history.back()" class="btn btn-primary" type="button" value="Cancelar"/>
 			</tr>
 		</table>
 	</div>

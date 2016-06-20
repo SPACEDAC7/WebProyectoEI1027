@@ -22,6 +22,7 @@ import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.ReservaDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
+import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Periodo;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.Reserva;
@@ -153,12 +154,16 @@ private PeriodoDao periodoDao;
 			retorno = "login";
 		} else {
 			String rol = (String) session.getAttribute("rol");
+			Reserva reservaBorrar = reservaDao.getReserva(id_reserva);
 			if ( rol.equals("administrador") ) {
 				reservaDao.deleteReserva(id_reserva);
 			    retorno = "redirect:../list.html";
-			} else {
+			} else if ( rol.equals("inquilino") && reservaBorrar.getId_usuario() == usuario.getId_usuario() ) {
+				reservaDao.deleteReserva(id_reserva);
+				retorno = "redirect:../misReservas.html";
+			}else {
 				//Acceso no autorizado porque el rol del usuario no es administrador
-				retorno = "redirect:../index.jsp";
+				retorno = "redirect:../../cabecera/inicio.html";
 			}
 		}
 		return retorno;  
@@ -204,6 +209,7 @@ private PeriodoDao periodoDao;
 				reserva.setFecha_reserva(this.fechaDeHoy());
 				reserva.setPrecio_reserva(propiedadDao.getPropiedad(id_propiedad).getPrecio_propiedad());
 				model.addAttribute("reserva", reserva);
+				session.setAttribute("reserva", reserva);
 				System.out.println("Salimos");
 				retorno = "reserva/reservar";
 			} else {
@@ -215,15 +221,24 @@ private PeriodoDao periodoDao;
 	}
 	
 	@RequestMapping(value="/reservar/{id_propiedad}", method=RequestMethod.POST) 
-	public String processReservaSubmit(@ModelAttribute("reserva") Reserva reserva,
+	public String processReservaSubmit(HttpSession session, @ModelAttribute("reserva") Reserva reservaModificada,
 			BindingResult bindingResult) { 
 		System.out.println("Hemos entrado");
 		ReservaValidator reservaValidator = new ReservaValidator();
-		reservaValidator.validate(reserva, bindingResult);
+		reservaModificada.setEstado("pendiente");
+		reservaValidator.validate(reservaModificada, bindingResult);
 		if (bindingResult.hasErrors()){
 			System.out.println("Hay un error");
 			return "reserva/reservar";
 		}
+		Reserva reserva = (Reserva) session.getAttribute("reserva");
+		reserva.setFecha_checkin(reservaModificada.getFecha_checkin());
+		reserva.setFecha_checkout(reservaModificada.getFecha_checkout());
+		reserva.setFechaCheckIn(reservaModificada.getFechaCheckIn());
+		reserva.setFechaCheckOut(reservaModificada.getFechaCheckOut());
+		reserva.setPrecio_reserva(reservaModificada.getPrecio_reserva());
+		reserva.setEstado(reservaModificada.getEstado());
+		
 		reserva.crearFechas();
 		double diasReservados = this.diasEntreFechas(reserva.getFecha_checkin(), reserva.getFecha_checkout());
 		double precioReserva = reserva.getPrecio_reserva() * diasReservados;
@@ -236,13 +251,18 @@ private PeriodoDao periodoDao;
 		Date fechaFin = reserva.getFecha_checkout();
 		for(Periodo periodo: listaPeriodos){
 			if((!fechaInicio.before(periodo.getInicio()) && !fechaFin.before(periodo.getInicio()))&&(!fechaInicio.after(periodo.getFin()) && !fechaFin.after(periodo.getFin()))){
-				System.out.println("No se puede reservar choca");
-				return "reserva/reservar";
+				MensajeError mensajeError = new MensajeError("La propiedad ya tiene una reserva en las fecha solicitadas. Perdone las molestias");
+				mensajeError.setMensaje(mensajeError.getMensaje().toUpperCase());
+				MensajeError m = new MensajeError("../reserva/misReservas.html");
+				session.setAttribute("nextURL", m);
+				session.setAttribute("mensajeError", mensajeError);
+				return "redirect:../../error/mostrarError.html";
 			}
 		}
 		System.out.println("Si que se ha podido");
 		periodoDao.addPeriodo(new Periodo(periodoDao.nuevoIdPeriodo(),reserva.getId_propiedad(),reserva.getFecha_checkin(),reserva.getFecha_checkout()));
 		reservaDao.addReserva(reserva);
+		session.removeAttribute("reserva");
 		return "redirect:../list.html";
 	}
 	
