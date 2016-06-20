@@ -1,5 +1,9 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import es.uji.ei1027.proyecto.dao.DireccionDao;
+import es.uji.ei1027.proyecto.dao.ImagenDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.domain.Buscador;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
+import es.uji.ei1027.proyecto.domain.Imagen;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.PropiedadValidator;
@@ -25,10 +31,22 @@ import es.uji.ei1027.proyecto.validator.PropiedadValidator;
 @RequestMapping("/buscador")
 public class BuscadorController {
 private PropiedadDao propiedadDao;
+private ImagenDao imagenDao;
+private DireccionDao direccionDao;
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
 		this.propiedadDao = propiedadDao;
+	}
+	
+	@Autowired
+	public void setImagenDao( ImagenDao propiedadDao){
+		this.imagenDao = propiedadDao;
+	}
+	
+	@Autowired
+	public void setDireccionDao( DireccionDao propiedadDao){
+		this.direccionDao = propiedadDao;
 	}
 	//Listar
 	@RequestMapping(value="/list", method = RequestMethod.GET)
@@ -36,8 +54,15 @@ private PropiedadDao propiedadDao;
 		String retorno;	
 		Propiedad propiedad = new Propiedad();
 		Buscador buscador = new Buscador();
+		List<Imagen> imagenesFinales = new LinkedList<Imagen>();
+		for(Propiedad p : propiedadDao.getPropiedades()){
+			List<Imagen> aux = imagenDao.getImagenesPropiedad(p.getId_propiedad());
+			imagenesFinales.add(aux.get(0));
+		}
 		model.addAttribute("buscador", buscador);
 		model.addAttribute("propiedades", propiedadDao.getPropiedades());
+		model.addAttribute("direccion", direccionDao.getDireccion(propiedad.getId_direccion()));
+		model.addAttribute("imagenPropiedad", imagenesFinales);
 		retorno = "buscador/list";
 		return retorno;
 	}

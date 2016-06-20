@@ -1,6 +1,11 @@
 package es.uji.ei1027.proyecto.domain;
 
 public class Imagen {
+	@Override
+	public String toString() {
+		return "Imagen [id_imagen=" + id_imagen + ", id_propiedad=" + id_propiedad + ", pie_foto=" + pie_foto
+				+ ", referencia=" + referencia + "]";
+	}
 	private int id_imagen;
 	private int id_propiedad;
 	private String pie_foto;

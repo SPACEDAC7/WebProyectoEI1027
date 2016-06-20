@@ -29,13 +29,21 @@
           <div class="col-md-9 col-md-push-3">
             <!-- begin:product -->
             <div class="row container-realestate">
+				<c:set var="num" value="0"></c:set>
 				<c:forEach items="${propiedades}" var="propiedad">
 				  <div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="property-container">
 					  <div class="property-content-list">
 						<div class="property-image-list">
 						  <a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">
-						  		<img src="../img/img12.jpg" alt="mikha real estate theme"></a>
+						  	<c:choose>
+                            	<c:when test='${num < imagenPropiedad.size() -1}'>
+                            		<img src="${imagenPropiedad.get(num).referencia}" alt="mikha real estate theme"></a>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<img src="../img/img12.jpg" alt="mikha real estate theme"></a>
+                            	</c:otherwise>
+                            </c:choose>
 						  <div class="property-price">
 							<h4>${propiedad.tipo}</h4>
 							<span>${propiedad.precio_propiedad}<small> €/dia</small></span>
@@ -51,13 +59,14 @@
 						  </div>
 						</div>
 						<div class="property-text">
-						  <h3><a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">${propiedad.titulo}</a> <small>${propiedad.id_direccion}</small></h3>
+						  <h3><a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">${propiedad.titulo}</a> <small>${direccion.calle}, ${direccion.localidad}</small></h3>
 						  <p>${propiedad.descripcion}</p>
 						  <p><a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html" class="btn btn-primary">Más detalles &raquo;</a></p>
 						</div>
 					  </div>
 					</div>
 				  </div>
+				  <c:set var="num" value="${num + 1}"></c:set>
 				</c:forEach>
               <!-- break -->
             </div>
