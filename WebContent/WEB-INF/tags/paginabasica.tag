@@ -123,6 +123,7 @@
 				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Mi perfil</a></li>
 				<li><a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Bandeja de Entrada</a></li>
 	            <li><a href="${pageContext.request.contextPath}/mensaje/bandejaSalida.html"> Bandeja de Salida</a></li>
+				<li><a href="${pageContext.request.contextPath}/logout.html"> Salir</a></li>
 			</ul></li>
 	      <li class=""> <a href="javascript:;"> <i class="icon-custom-ui"></i> <span class="title">Usuario</span> <span class="arrow "></span> </a>
 	        <ul class="sub-menu">

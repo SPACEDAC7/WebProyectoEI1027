@@ -65,6 +65,9 @@
                             <span class="glyphicon glyphicon-chevron-right"></span>
                           </a>
                         </div>
+                        <div>
+                        <a class="btn btn-success btn-lg btn-block destacado" href="${pageContext.request.contextPath}/reserva/reservar/${propiedad.id_propiedad}.html"> RESERVAR ESTA PROPIEDAD</a>
+                        </div>
                          <h3>Descripción de la porpiedad</h3>
                         <p>${propiedad.descripcion}</p>
                         

@@ -40,6 +40,10 @@ public class PeriodoDao {
 		return jdbcTemplate.query("select id_periodo, id_propiedad, inicio, fin from periodo", new PeridoMapper());
 	}
 	
+	public List<Periodo> getPeriodosDePropiedad(int id_propiedad){
+		return jdbcTemplate.query("select id_periodo, id_propiedad, inicio, fin from periodo where id_propiedad = ?", new PeridoMapper(), id_propiedad);
+	}
+	
 	public Periodo getPeriodo(int id_periodo) {
 		return jdbcTemplate.queryForObject("select id_periodo, id_propiedad, inicio,fin from periodo where id_periodo=?", new Object[] {id_periodo}, new PeridoMapper());
 	}

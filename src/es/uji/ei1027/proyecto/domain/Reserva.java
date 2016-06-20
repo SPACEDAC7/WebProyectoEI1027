@@ -38,7 +38,7 @@ public class Reserva {
 	public void crearFechas() {
 		//Convierte una fecha tipo String con el formato dd/mm/aaaa a una tipo Date
 		ConvertidorDeFechas c = new ConvertidorDeFechas();
-		fecha_reserva = c.convertirFecha(fechaReserva);
+		//fecha_reserva = c.convertirFecha(fechaReserva);
 		fecha_checkin = c.convertirFecha(fechaCheckIn);
 		fecha_checkout = c.convertirFecha(fechaCheckOut);
 	}
