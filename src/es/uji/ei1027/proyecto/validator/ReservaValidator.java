@@ -30,5 +30,8 @@ public class ReservaValidator implements Validator {
 		if(reserva.getPrecio_reserva()<0.0){
 			errors.rejectValue("precio_reserva", "obligatori", "El precio ha de ser positivo");
 		}
+		if(reserva.getFecha_checkin().after(reserva.getFecha_checkout())){
+			errors.rejectValue("fecha_checkin", "obligatori", "La fecha del check in debe ser anterior al check out");
+		}
 	}
 }
