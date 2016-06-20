@@ -8,16 +8,14 @@
 		<li>
 		<form action="${pageContext.request.contextPath}/login.html"
 			method="get">
-			<button type="submit"
-				class="btn btn-link boton-main entrar navbar-right">
+			<button type="submit" class="btn btn-link entrar navbar-right">
 				<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-				Entrar
+				<a>Entrar</a>
 			</button>
 		</form>
 	</li>
 	<li>
-		<form action="${pageContext.request.contextPath}/signup/addUser.html"
-			method="get">
+		<form action="${pageContext.request.contextPath}/signup/addUser.html" method="get">
 			<button type="submit" style="font-size: 16px"
 				class="btn btn-primary boton-main signup navbar-right">
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>

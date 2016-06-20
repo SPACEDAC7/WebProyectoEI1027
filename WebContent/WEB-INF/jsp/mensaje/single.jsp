@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <h2>Detalles de la Factura</p>
+              <h2>Detalles del Mensaje</p>
             </div>
           </div>
         </div>
@@ -23,12 +23,12 @@
         <div class="row">
           <!-- inicio:article -->
           	 DATOS DEL USUARIO<br>
-             ${usuarioMen.nombre} <br>
-             ${usuarioMen.email}<br>
+             Nombre del usuario : ${usuarioMen.nombre} <br>
+             Email del usuario : ${usuarioMen.email}<br>
           	DATOS DEL MENSAJE<br>
-          	 ${mensaje.asunto}<br>
-             ${mensaje.contenido}<br>
-             ${mensaje.fecha_mensaje}<br>           
+          	 Asunto : ${mensaje.asunto}<br>
+             Contenido : ${mensaje.contenido}<br>
+             Fecha del mensaje : ${mensaje.fecha_mensaje}<br>           
           <!-- fin:article -->
           
         </div>

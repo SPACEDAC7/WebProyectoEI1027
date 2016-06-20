@@ -101,8 +101,8 @@
 				  <form:label path="localidad">Ciudad</form:label>
 				  <form:select class="form-control" path="localidad">
 				  	<form:option value="" selected="selected">Seleccione localidad</form:option>
-					<form:option value="castellon">Castellon</form:option>
-					<form:option value="valencia">Valencia</form:option>
+					<form:option value="Castellon">Castellon</form:option>
+					<form:option value="Valencia">Valencia</form:option>
 					<form:option value="Vila-real">Vila-real</form:option>
 					<form:option value="Barcelona">Barcelona</form:option>
 				  </form:select>

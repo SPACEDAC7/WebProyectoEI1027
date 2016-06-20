@@ -13,15 +13,12 @@
 		
 			<ul class="nav navbar-nav navbar-right desplegable">
 
-				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
-					<ul class="desplegable bordeado list-unstyled">
+				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><strong>${usuario.nombre}</strong></a>
+					<ul class="desplegable list-unstyled">
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Perfil</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html">Mensajes</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/reserva/misReservas.html">Mis Reservas</a></li>
-						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
-						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-						Salir
-						</a>
+						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir</a>
 					</button>
 				</form></li>
 					</ul>
@@ -31,14 +28,12 @@
 				<c:when test='${rol == "propietario"}'>
 			<ul class="nav navbar-nav navbar-right desplegable">
 
-				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><p class="destacado" >${usuario.nombre}</p></a>
-					<ul class="desplegable bordeado list-unstyled">
+				<li><a href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html"><strong>${usuario.nombre}</strong></a>
+					<ul class="desplegable list-unstyled">
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Perfil</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html">Mensajes</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/propiedad/misPropiedades.html">Mis Propiedades</a></li>
-						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html">
-						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-						Salir
+						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir
 						</a>
 					</button>
 				</form></li>
