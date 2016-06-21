@@ -311,14 +311,14 @@ private FacturaDao facturaDao;
 		String retorno;
 		if (usuario == null) {
 			model.addAttribute("credencial", new Credencial());
-			session.setAttribute("nextURL", "redirect:../index.jsp");
+			session.setAttribute("nextURL", "redirect:reserva/aceptar/"+id_reserva+".html");
 			retorno = "login";
 		} else {
 			reservaDao.confirmarReserva(id_reserva);
 			Reserva reservaConfirm = reservaDao.getReserva(id_reserva);
-			mensajeDao.addMensaje(new Mensaje(mensajeDao.nuevoIdMensaje(),reservaConfirm.getId_usuario(),0,"Confirmacion de la reserva", "Tu reserva realizada en la fecha de " +reservaConfirm.getFechaReserva().toString()+" ha sido confirmada",3,this.fechaDeHoy()));
+			mensajeDao.addMensaje(new Mensaje(mensajeDao.nuevoIdMensaje(),reservaConfirm.getId_usuario(),0,"Confirmacion de la reserva", "Tu reserva realizada en la fecha de " +reservaConfirm.getFecha_reserva().toString()+" ha sido confirmada",3,this.fechaDeHoy()));
 			facturaDao.addFactura(new Factura(facturaDao.nuevoIdFactura(),id_reserva,this.fechaDeHoy(),reservaConfirm.getPrecio_reserva()*1.21f,21));
-			return "redirect:../list.html";
+			return "reserva/confirmado";
 		}
 		return retorno;
 	}
@@ -329,13 +329,13 @@ private FacturaDao facturaDao;
 		String retorno;
 		if (usuario == null) {
 			model.addAttribute("credencial", new Credencial());
-			session.setAttribute("nextURL", "redirect:../index.jsp");
+			session.setAttribute("nextURL", "redirect:reserva/rechazar/"+id_reserva+".html");
 			retorno = "login";
 		} else {
 			reservaDao.rechazarReserva(id_reserva);
 			mensajeDao.addMensaje(new Mensaje(mensajeDao.nuevoIdMensaje(),reservaDao.getReserva(id_reserva).getId_usuario(),0,"Rechazo de la reserva", "Tu reserva realizada en la fecha de " +reservaDao.getReserva(id_reserva).getFechaReserva().toString()+" ha sido rechazada",3,this.fechaDeHoy()));
 			periodoDao.eliminarPeriodo(reservaDao.getReserva(id_reserva));
-			return "redirect:../list.html";
+			return "reserva/confirmado";
 		}
 		return retorno;
 	}

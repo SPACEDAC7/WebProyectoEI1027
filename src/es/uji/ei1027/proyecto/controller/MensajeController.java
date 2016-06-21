@@ -248,6 +248,6 @@ public class MensajeController {
 				return "mensaje/redactar";
 			}
 			mensajeDao.addMensaje(mensaje);
-			return "redirect:bandejaEntrada.html";
+			return "mensaje/confirmado";
 		}
 	}
