@@ -17,11 +17,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.FacturaDao;
+import es.uji.ei1027.proyecto.dao.MensajeDao;
 import es.uji.ei1027.proyecto.dao.PeriodoDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.ReservaDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
+import es.uji.ei1027.proyecto.domain.Factura;
+import es.uji.ei1027.proyecto.domain.Mensaje;
 import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Periodo;
 import es.uji.ei1027.proyecto.domain.Propiedad;
@@ -35,10 +39,21 @@ public class ReservaController {
 private ReservaDao reservaDao;
 private PropiedadDao propiedadDao;
 private PeriodoDao periodoDao;
+private MensajeDao mensajeDao;
+private FacturaDao facturaDao;
 	
 	@Autowired
 	public void setReservaDao( ReservaDao reservaDao){
 		this.reservaDao = reservaDao;
+	}
+
+	@Autowired
+	public void setFacturaDao( FacturaDao reservaDao){
+		this.facturaDao = reservaDao;
+	}
+	@Autowired
+	public void setMensajeDao( MensajeDao reservaDao){
+		this.mensajeDao = reservaDao;
 	}
 	
 	@Autowired
@@ -264,6 +279,65 @@ private PeriodoDao periodoDao;
 		reservaDao.addReserva(reserva);
 		session.removeAttribute("reserva");
 		return "redirect:../list.html";
+	}
+	
+	@RequestMapping(value="reservaPropietario/{id_usuario}")
+	public String verPeticiones(@PathVariable int id_usuario,Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:reserva/reservaPropietario/"+id_usuario+".html");
+			retorno = "login";
+		} else {
+			String rol = (String) session.getAttribute("rol");
+			if ( rol.equals("propietario") ) {
+				Map<Reserva, Propiedad> mapReservasPropiedad = new HashMap<Reserva, Propiedad>();
+				for (Reserva reserva: reservaDao.obtenerPeticiones(id_usuario)) {
+					mapReservasPropiedad.put(reserva, propiedadDao.getPropiedad(reserva.getId_propiedad()));
+				}
+				model.addAttribute("listaReservaPropiedades", mapReservasPropiedad);
+				retorno = "reserva/reservasPropietario";
+			}else{
+				retorno = "redirect:../list.html";
+			}
+		}
+		return retorno;
+	}
+	
+	@RequestMapping(value="aceptar/{id_reserva}")
+	public String aceptarReserva(@PathVariable int id_reserva,Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:../index.jsp");
+			retorno = "login";
+		} else {
+			reservaDao.confirmarReserva(id_reserva);
+			Reserva reservaConfirm = reservaDao.getReserva(id_reserva);
+			mensajeDao.addMensaje(new Mensaje(mensajeDao.nuevoIdMensaje(),reservaConfirm.getId_usuario(),0,"Confirmacion de la reserva", "Tu reserva realizada en la fecha de " +reservaConfirm.getFechaReserva().toString()+" ha sido confirmada",3,this.fechaDeHoy()));
+			facturaDao.addFactura(new Factura(facturaDao.nuevoIdFactura(),id_reserva,this.fechaDeHoy(),reservaConfirm.getPrecio_reserva()*1.21f,21));
+			return "redirect:../list.html";
+		}
+		return retorno;
+	}
+	
+	@RequestMapping(value="rechazar/{id_reserva}")
+	public String rechazarReserva(@PathVariable int id_reserva,Model model, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String retorno;
+		if (usuario == null) {
+			model.addAttribute("credencial", new Credencial());
+			session.setAttribute("nextURL", "redirect:../index.jsp");
+			retorno = "login";
+		} else {
+			reservaDao.rechazarReserva(id_reserva);
+			mensajeDao.addMensaje(new Mensaje(mensajeDao.nuevoIdMensaje(),reservaDao.getReserva(id_reserva).getId_usuario(),0,"Rechazo de la reserva", "Tu reserva realizada en la fecha de " +reservaDao.getReserva(id_reserva).getFechaReserva().toString()+" ha sido rechazada",3,this.fechaDeHoy()));
+			periodoDao.eliminarPeriodo(reservaDao.getReserva(id_reserva));
+			return "redirect:../list.html";
+		}
+		return retorno;
 	}
 	
 	private Date fechaDeHoy() {

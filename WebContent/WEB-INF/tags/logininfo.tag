@@ -33,7 +33,8 @@
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/usuario/perfil/${usuario.id_usuario}.html">Perfil</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html">Mensajes</a></li>
 						<li><a class="letras-grises" href="${pageContext.request.contextPath}/propiedad/misPropiedades.html">Mis Propiedades</a></li>
-						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir
+												<li><a class="letras-grises" href="${pageContext.request.contextPath}/reserva/reservaPropietario/${usuario.id_usuario}.html">Peticiones</a></li>
+						<li><a class="elemento-rojo" href="${pageContext.request.contextPath}/logout.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Salir						
 						</a>
 					</button>
 				</form></li>

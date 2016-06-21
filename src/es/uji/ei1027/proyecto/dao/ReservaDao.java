@@ -100,5 +100,17 @@ public class ReservaDao {
 		String sql = "SELECT * FROM reserva WHERE id_usuario = ?";
 		return this.jdbcTemplate.query(sql, new ReservaMapper(), idUsuario);
 	}
-
+	
+	public List<Reserva> obtenerPeticiones(int idUsuario){
+		String sql = "SELECT * FROM reserva WHERE id_propiedad in (SELECT id_propiedad FROM propiedad WHERE id_usuario = ?) and estado = 'pendiente'";
+		return this.jdbcTemplate.query(sql, new ReservaMapper(), idUsuario);
+	}
+	
+	public void confirmarReserva(int idReserva){
+		this.jdbcTemplate.update("update reserva set estado = 'confirmada' where id_reserva = ?",idReserva);
+	}
+	
+	public void rechazarReserva(int idReserva){
+		this.jdbcTemplate.update("update reserva set estado = 'denegada' where id_reserva = ?",idReserva);
+	}
 }

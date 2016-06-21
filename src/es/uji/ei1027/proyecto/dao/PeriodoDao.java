@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import es.uji.ei1027.proyecto.domain.Periodo;
+import es.uji.ei1027.proyecto.domain.Reserva;
 
 @Repository
 public class PeriodoDao {
@@ -60,6 +61,9 @@ public class PeriodoDao {
 		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", periodo.getId_periodo());
 	}
 	
+	public void eliminarPeriodo(Reserva reserva){
+		this.jdbcTemplate.update("DELETE FROM periodo WHERE inicio=? and fin=?", reserva.getFecha_checkin(), reserva.getFecha_checkout());
+	}
 	public void deletePeriodo(int id_periodo) {
 		this.jdbcTemplate.update("DELETE FROM periodo WHERE id_periodo=?", id_periodo);
 	}
