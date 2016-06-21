@@ -239,13 +239,7 @@ private FacturaDao facturaDao;
 	public String processReservaSubmit(HttpSession session, @ModelAttribute("reserva") Reserva reservaModificada,
 			BindingResult bindingResult) { 
 		System.out.println("Hemos entrado");
-		ReservaValidator reservaValidator = new ReservaValidator();
-		reservaModificada.setEstado("pendiente");
-		reservaValidator.validate(reservaModificada, bindingResult);
-		if (bindingResult.hasErrors()){
-			System.out.println("Hay un error");
-			return "reserva/reservar";
-		}
+		
 		Reserva reserva = (Reserva) session.getAttribute("reserva");
 		reserva.setFecha_checkin(reservaModificada.getFecha_checkin());
 		reserva.setFecha_checkout(reservaModificada.getFecha_checkout());
@@ -253,8 +247,18 @@ private FacturaDao facturaDao;
 		reserva.setFechaCheckOut(reservaModificada.getFechaCheckOut());
 		reserva.setPrecio_reserva(reservaModificada.getPrecio_reserva());
 		reserva.setEstado(reservaModificada.getEstado());
-		
 		reserva.crearFechas();
+		reserva.setEstado("pendiente");
+		
+		ReservaValidator reservaValidator = new ReservaValidator();
+		reservaModificada.setEstado("pendiente");
+		reservaValidator.validate(reserva, bindingResult);
+		if (bindingResult.hasErrors()){
+			System.out.println("Hay un error");
+			return "reserva/reservar";
+		}
+		
+		
 		double diasReservados = this.diasEntreFechas(reserva.getFecha_checkin(), reserva.getFecha_checkout());
 		double precioReserva = reserva.getPrecio_reserva() * diasReservados;
 		System.out.println("Dias reservados " + diasReservados);
@@ -278,7 +282,7 @@ private FacturaDao facturaDao;
 		periodoDao.addPeriodo(new Periodo(periodoDao.nuevoIdPeriodo(),reserva.getId_propiedad(),reserva.getFecha_checkin(),reserva.getFecha_checkout()));
 		reservaDao.addReserva(reserva);
 		session.removeAttribute("reserva");
-		return "redirect:../list.html";
+		return "reserva/confirmado";
 	}
 	
 	@RequestMapping(value="reservaPropietario/{id_usuario}")
