@@ -47,9 +47,38 @@
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i> Mensajes</a>
                         <span class="pull-right">
                             <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Editar perfil</a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Eliminar usuario</a>
+                            <button type="button" onclick="pasarIdPropiedadAModal(${usuario.id_usuario})" id="botonBorrar" class="btn btn-danger btn-sm btn-small" data-toggle="modal" data-target="#borrar"><i class="glyphicon glyphicon-remove"></i> Eliminar usuario</button>
                         </span>
 				</div>
+				<div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Confirmación de borrado</h4>
+				      </div>
+				      <div class="modal-body">
+				        <h3>¿Esta seguro de eliminar su cuenta de usuario?<input type="hidden" id="idPropiedad"></h3>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				        <button type="button" class="btn btn-primary" onClick="borrarPropiedad()" >Borrar</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<script>
+				  function pasarIdPropiedadAModal(idPropiedad) {
+					  $('#borrar').on('show.bs.modal', function (event) {
+						  var modal = $(this)
+						  modal.find('.modal-body input').val(idPropiedad)
+					  });
+					};
+					function borrarPropiedad() {
+						var idpropiedad = document.getElementById("idPropiedad").value
+						location.href='../delete/' + idpropiedad + '.html'
+					};
+				  </script>
           </div>
         </div>
 		<div class="col-md-4 toppad" >   

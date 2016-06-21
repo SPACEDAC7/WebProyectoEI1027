@@ -88,11 +88,11 @@ public class UsuarioDao {
 	}
 	
 	public void deleteUsuario(Usuario usuario) {
-		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", usuario.getId_usuario());
+		this.jdbcTemplate.update("update usuario set estado_usuario = false where id_usuario = ?",usuario.getId_usuario() );
 	}
 	
 	public void deleteUsuario(int idUsuario) {
-		this.jdbcTemplate.update("DELETE FROM usuario WHERE id_usuario=?", idUsuario);
+		this.jdbcTemplate.update("update usuario set estado_usuario = false where id_usuario = ?", idUsuario);
 	}
 	
 	public int nuevoIdUsuario() {
