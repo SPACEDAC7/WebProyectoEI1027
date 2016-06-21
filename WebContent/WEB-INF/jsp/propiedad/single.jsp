@@ -85,27 +85,23 @@
                         <h3>Detalles de la propiedad</h3>
                         <table class="table table-bordered">
                           <tr>
-                            <td><strong>Price</strong></td>
+                            <td><strong>Precio diario</strong></td>
                             <td>${propiedad.precio_propiedad}</td>
                           </tr>
                           <tr>
-                            <td><strong>Type</strong></td>
+                            <td><strong>Tipo de porpiedad</strong></td>
                             <td>${propiedad.tipo}</td>
                           </tr>
                           <tr>
-                            <td><strong>Contract</strong></td>
-                            <td>Sale</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Location</strong></td>
+                            <td><strong>Localidad</strong></td>
                             <td>${direccion.localidad}</td>
                           </tr>
                           <tr>
-                            <td><strong>Habitaciones</strong></td>
+                            <td><strong>Numero de Habitaciones</strong></td>
                             <td>${propiedad.num_habitaciones}</td>
                           </tr>
                           <tr>
-                            <td><strong>Camas</strong></td>
+                            <td><strong>Numero de Camas</strong></td>
                             <td>${propiedad.num_camas}</td>
                           </tr>
                           <tr>
@@ -113,44 +109,15 @@
                             <td>${propiedad.area}  m<sup>2</sup> </td>
                           </tr>
                         </table>
-                        <h3>Property Features</h3>
+                        <h3>Servicios</h3>
                         <div class="row">
                           <div class="col-md-4 col-sm-4">
-                            <ul>
-                              <li><i class="fa fa-check"></i> Air conditioning</li>
-                              <li><i class="fa fa-check"></i> Balcony</li>
-                              <li><i class="fa fa-times"></i> Bedding</li>
-                              <li><i class="fa fa-check"></i> Cable TV</li>
-                              <li><i class="fa fa-times"></i> Cleaning after exit</li>
-                              <li><i class="fa fa-check"></i> Cofee pot</li>
-                              <li><i class="fa fa-check"></i> Computer</li>
-                              <li><i class="fa fa-times"></i> Cot</li>
+                            <ul style="list-style:none">
+                            	<c:forEach items="${servicios}" var="servicio">
+	                              <li><i class="fa fa-check"></i> ${servicio.nombreServicio}</li>
+	                              </c:forEach>
                             </ul>
-                          </div>
-                          <div class="col-md-4 col-sm-4">
-                            <ul>
-                              <li><i class="fa fa-check"></i> Internet</li>
-                              <li><i class="fa fa-times"></i> Iron</li>
-                              <li><i class="fa fa-check"></i> Juicer</li>
-                              <li><i class="fa fa-times"></i> Lift</li>
-                              <li><i class="fa fa-times"></i> Microwave</li>
-                              <li><i class="fa fa-check"></i> Oven</li>
-                              <li><i class="fa fa-times"></i> Parking</li>
-                              <li><i class="fa fa-times"></i> Parquet</li>
-                            </ul>
-                          </div>
-                          <div class="col-md-4 col-sm-4">
-                            <ul>
-                              <li><i class="fa fa-times"></i> Radio</li>
-                              <li><i class="fa fa-check"></i> Roof terrace</li>
-                              <li><i class="fa fa-times"></i> Smoking allowed</li>
-                              <li><i class="fa fa-check"></i> Terrace</li>
-                              <li><i class="fa fa-times"></i> Toaster</li>
-                              <li><i class="fa fa-check"></i> Towelwes</li>
-                              <li><i class="fa fa-check"></i> Use of pool</li>
-                              <li><i class="fa fa-check"></i> Video</li>
-                            </ul>
-                          </div>                          
+                          </div>    
                         </div>
                       </div>
                     </div>
@@ -224,7 +191,6 @@
           
         </div>
       </div>
-    </div>
     <!-- fin:content -->
     
     	</jsp:body>

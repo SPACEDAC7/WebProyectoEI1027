@@ -36,6 +36,10 @@ public class PropiedadServicioDao {
 		return this.jdbcTemplate.query("select id_propiedad, id_servicio from propiedad_servicio", new PropiedadServicioMapper());
 	}
 	
+	public List<PropiedadServicio> getPropiedadServicioPropiedad(int id_propiedad){
+		return this.jdbcTemplate.query("select id_propiedad, id_servicio from propiedad_servicio where id_propiedad = ?", new PropiedadServicioMapper(),id_propiedad);
+	}
+	
 	public PropiedadServicio getPropiedadServicio(int id_propiedad, int id_servicio){
 		return this.jdbcTemplate.queryForObject("select id_propiedad, id_servicio from propiedad_servicio where id_propiedad=? and id_servicio=?", new Object[] {id_propiedad, id_servicio}, new PropiedadServicioMapper());
 	}

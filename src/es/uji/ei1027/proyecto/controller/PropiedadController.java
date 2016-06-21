@@ -1,6 +1,8 @@
 package es.uji.ei1027.proyecto.controller;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -18,11 +20,15 @@ import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.ImagenDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
+import es.uji.ei1027.proyecto.dao.PropiedadServicioDao;
+import es.uji.ei1027.proyecto.dao.ServicioDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Propiedad;
+import es.uji.ei1027.proyecto.domain.PropiedadServicio;
+import es.uji.ei1027.proyecto.domain.Servicio;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.DireccionValidator;
 import es.uji.ei1027.proyecto.validator.PropiedadValidator;
@@ -35,6 +41,12 @@ private DireccionDao direccionDao;
 private UsuarioDao usuarioDao;
 private ImagenDao imagenDao;
 private CredencialDao credencialDao;
+
+@Autowired
+private PropiedadServicioDao propiedadServicioDao;
+	
+@Autowired
+private ServicioDao servicioDao;
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
@@ -385,9 +397,17 @@ private CredencialDao credencialDao;
 	
 	@RequestMapping(value="/single/{id_propiedad}")
 	public String processDetails(@PathVariable int id_propiedad , HttpSession session, Model model){
+		List<PropiedadServicio> propServicio = propiedadServicioDao.getPropiedadServicioPropiedad(id_propiedad);
+		List<Servicio> serviciosPropiedad = new LinkedList<Servicio>();
+		for(PropiedadServicio p : propServicio){
+			Servicio aux = servicioDao.getServicio(p.getId_servicio());
+			serviciosPropiedad.add(aux);
+		}
+		
 		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
 		model.addAttribute("usuarioPropiedad", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
+		model.addAttribute("servicios", serviciosPropiedad);
 		model.addAttribute("imagenes", imagenDao.getImagenesPropiedad(id_propiedad));
 		return "propiedad/single";
 	}

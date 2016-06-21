@@ -56,11 +56,11 @@
 				<td><form:errors style="color:#F44336" path="estado_vision" cssClass="error"/></td>
 			</tr>
 			<tr>
+				<td></td>
 				<td><input class="btn btn-primary btn-cons" type="submit" value="Enviar" /></td>
- 				<td><a href="${pageContext.request.contextPath}/mensaje/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
- 				</td>
 			</tr>
 		</table>
+		<a href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"><input class="btn btn-danger btn-cons" type="button" value="Volver a la bandeja de entrada"></a>
 	</form:form>       
           <!-- fin:article -->
           
