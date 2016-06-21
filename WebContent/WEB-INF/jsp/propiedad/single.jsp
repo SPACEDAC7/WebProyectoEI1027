@@ -79,7 +79,7 @@
                         <div>
                         <a class="btn btn-success btn-lg btn-block destacado" href="${pageContext.request.contextPath}/reserva/reservar/${propiedad.id_propiedad}.html"> RESERVAR ESTA PROPIEDAD</a>
                         </div>
-                         <h3>Descripción de la porpiedad</h3>
+                         <h3>Descripción de la propiedad</h3>
                         <p>${propiedad.descripcion}</p>
                         
                         <h3>Detalles de la propiedad</h3>

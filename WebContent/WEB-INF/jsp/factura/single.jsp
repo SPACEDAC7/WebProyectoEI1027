@@ -26,26 +26,26 @@
     <div class="row">
         <div class="col-md-8">
     		<div class="invoice-title">
-    			<h2>Factura</h2><h3 class="pull-right">Factura #${factura.id_factura}</h3>
+    			<h2>Factura</h2>
     		</div>
     		<hr>
     		<div class="row">
     			<div class="col-md-6">
     				<address>
     				<strong>Factura para:</strong><br>
-    					John Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
+    					${usuarioReserva.nombre}, ${usuarioReserva.apellido}<br>
+    					C\ ${direccionUsuario.calle} ${direccionUsuario.numero}<br>
+    					${direccionUsuario.codigo_postal} ,${direccionUsuario.localidad}<br>
+    					${direccionUsuario.provincia}
     				</address>
     			</div>
     			<div class="col-md-6 text-right">
     				<address>
-        			<strong>Dirección de facturación:</strong><br>
-    					Jane Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
+        			<strong>Datos del propietario:</strong><br>
+    					${propietario.nombre}, ${propietario.apellido}<br>
+    					C\ ${direccionUsuarioPropiedad.calle} ${direccionUsuarioPropiedad.numero}<br>
+    					${direccionUsuarioPropiedad.codigo_postal} ,${direccionUsuarioPropiedad.localidad}<br>
+    					${direccionUsuarioPropiedad.provincia}
     				</address>
     			</div>
     		</div>
@@ -73,7 +73,7 @@
                                 <tr>
         							<td><strong>Id producto</strong></td>
         							<td><strong>Nombre</strong></td>
-        							<td class="text-center"><strong>Precio</strong></td>
+        							<td class="text-center"><strong>Precio diario</strong></td>
         							<td class="text-center"><strong>Días de estancia</strong></td>
         							<td class="text-right"><strong>Total</strong></td>
                                 </tr>
@@ -81,10 +81,10 @@
     						<tbody>
     							<!-- foreach ($order->lineItems as $line) or some such thing here -->
     							<tr>
-    								<td>id_propiedad (si es posible)</td>
+    								<td>${propiedad.id_propiedad}</td>
     								<td>${propiedad.titulo}</td>
-    								<td class="text-center">${propiedad.precio_propiedad }</td>
-    								<td class="text-center">calcular los dias </td>
+    								<td class="text-center">${propiedad.precio_propiedad}</td>
+    								<td class="text-center">${diasReserva} </td>
     								<td class="text-right">${factura.precio_factura}</td>
     							</tr>
     						</tbody>

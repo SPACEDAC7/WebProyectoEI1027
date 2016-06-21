@@ -1,5 +1,6 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.FacturaDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.ReservaDao;
+import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.Factura;
@@ -35,6 +38,12 @@ public class FacturaController {
 	
 	@Autowired
 	private PropiedadDao propiedadDao;
+	
+	@Autowired
+	private UsuarioDao usuarioDao;
+	
+	@Autowired
+	private DireccionDao direccionDao;
 	
 	@Autowired
 	public void setFacturaDao( FacturaDao facturaDao){
@@ -194,10 +203,29 @@ public class FacturaController {
 	public String processDetails(@PathVariable int id_factura, HttpSession session, Model model){
 		Factura factura = facturaDao.getFactura(id_factura);
 		Reserva reserva = reservaDao.getReserva(factura.getId_reserva());
+		Usuario usuarioReserva = usuarioDao.getUsuario(reserva.getId_usuario());
+		Direccion direccionUsuario = direccionDao.getDireccion(usuarioReserva.getId_direccion());
 		Propiedad propiedad = propiedadDao.getPropiedad(reserva.getId_propiedad());
+		Usuario propietario = usuarioDao.getUsuario(propiedad.getId_usuario());
+		Direccion direccionUsuarioPropiedad = direccionDao.getDireccion(usuarioDao.getUsuario(propietario.getId_usuario()).getId_direccion());
+		double diasReserva = this.diasEntreFechas(reserva.getFecha_checkin(), reserva.getFecha_checkout());
+		
 		model.addAttribute("factura", factura);
 		model.addAttribute("reserva", reserva);
+		model.addAttribute("usuarioReserva", usuarioReserva);
+		model.addAttribute("direccionUsuario", direccionUsuario);
 		model.addAttribute("propiedad", propiedad);
+		model.addAttribute("propietario", propietario);
+		model.addAttribute("direccionUsuarioPropiedad", direccionUsuarioPropiedad);
+		model.addAttribute("diasReserva", diasReserva);
 		return "factura/single";
+	}
+	
+	private double diasEntreFechas(Date inicio, Date fin){
+		long fechaInicial = inicio.getTime(); //Tanto fecha inicial como fecha final son Date. 
+		long fechaFinal = fin.getTime(); 
+		long diferencia = fechaFinal - fechaInicial; 
+		double dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+		return dias;
 	}
 }
