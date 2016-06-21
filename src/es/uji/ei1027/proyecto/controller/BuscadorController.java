@@ -59,7 +59,9 @@ private DireccionDao direccionDao;
 		for(Propiedad p : propiedadDao.getPropiedades()){
 			List<Imagen> aux = imagenDao.getImagenesPropiedad(p.getId_propiedad());
 			direccionesFinales.add(direccionDao.getDireccion(p.getId_direccion()));
-			imagenesFinales.add(aux.get(0));
+			if(aux.size()!= 0){
+				imagenesFinales.add(aux.get(0));
+			}
 		}
 		model.addAttribute("buscador", buscador);
 		model.addAttribute("propiedades", propiedadDao.getPropiedades());
@@ -73,8 +75,19 @@ private DireccionDao direccionDao;
 	public String listPropiedadesFiltradas(@ModelAttribute("buscador") Buscador buscador, Model model, HttpSession session) {
 		String retorno;	
 		Propiedad propiedad = new Propiedad();
+		List<Direccion> direccionesFinales = new LinkedList<Direccion>();
+		List<Imagen> imagenesFinales = new LinkedList<Imagen>();
+		for(Propiedad p : propiedadDao.obtenerPropiedadesPorFiltro(buscador)){
+			List<Imagen> aux = imagenDao.getImagenesPropiedad(p.getId_propiedad());
+			direccionesFinales.add(direccionDao.getDireccion(p.getId_direccion()));
+			if(aux.size()!= 0){
+				imagenesFinales.add(aux.get(0));
+			}
+		}
 		model.addAttribute("buscador", buscador);
 		model.addAttribute("propiedades", propiedadDao.obtenerPropiedadesPorFiltro(buscador));
+		model.addAttribute("direccion", direccionesFinales);
+		model.addAttribute("imagenPropiedad", imagenesFinales);
 		retorno = "buscador/list";
 		return retorno;
 	}

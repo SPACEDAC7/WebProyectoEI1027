@@ -16,9 +16,10 @@
 										<form:label path="localidad">Ciudad</form:label>
 									  <form:select class="form-control" path="localidad">
 									  	<form:option value="" selected="selected">Seleccione localidad</form:option>
-										<form:option value="castellon">Castellon</form:option>
-										<form:option value="valencia">Valencia</form:option>
+										<form:option value="Castellon">Castellon</form:option>
+										<form:option value="Valencia">Valencia</form:option>
 										<form:option value="Vila-real">Vila-real</form:option>
+										<form:option value="Barcelona">Barcelona</form:option>
 									  </form:select>
 									</div>
 									<div class="form-group">
@@ -41,6 +42,9 @@
 					                      	<form:option value="" selected="selected">Tipo de propiedad</form:option>
 					                        <form:option value="apartamento">Apartamento</form:option>
 					                        <form:option value="casa">Casa</form:option>
+					                        <form:option value="piso">Piso</form:option>
+					                        <form:option value="chalet">Chalet</form:option>
+					                        <form:option value="mansion">Mansion</form:option>
 					                      </form:select>
 									</div>
 									<div class="form-group">
@@ -100,7 +104,7 @@
 									</div>
 								</div>
 								<div class="col-md-12 col-sm-12">
-									<input class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Search">
+									<input class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Buscar">
 								</div>
 							</form:form>
 						</div>

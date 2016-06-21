@@ -37,7 +37,7 @@
 						<div class="property-image-list">
 						  <a href="${pageContext.request.contextPath}/propiedad/single/${propiedad.id_propiedad}.html">
 						  	<c:choose>
-                            	<c:when test='${num < imagenPropiedad.size() -1}'>
+                            	<c:when test='${num < imagenPropiedad.size()}'>
                             		<img src="${imagenPropiedad.get(num).referencia}" alt="mikha real estate theme"></a>
                             	</c:when>
                             	<c:otherwise>
