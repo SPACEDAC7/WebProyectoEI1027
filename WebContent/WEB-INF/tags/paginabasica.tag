@@ -31,6 +31,7 @@
 	<link href="${pageContext.request.contextPath}/css/admin/style.css" rel="stylesheet" type="text/css"/>
 	<link href="${pageContext.request.contextPath}/css/admin/responsive.css" rel="stylesheet" type="text/css"/>
 	<link href="${pageContext.request.contextPath}/css/admin/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+	<link href="${pageContext.request.contextPath}/css/mensaje.css" rel="stylesheet" type="text/css"/>
 	<!-- FIN CSS TEMPLATE -->
 	
 	</head>
@@ -212,6 +213,7 @@
 	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/responsive.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/mensaje.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body id="top">
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">

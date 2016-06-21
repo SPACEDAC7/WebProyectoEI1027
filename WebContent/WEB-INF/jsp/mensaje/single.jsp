@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <h2>Detalles del Mensaje</p>
+              <h2>Detalles del mensaje</p>
             </div>
           </div>
         </div>
@@ -22,15 +22,24 @@
       <div class="container">
         <div class="row">
           <!-- inicio:article -->
-          	 DATOS DEL USUARIO<br>
-             Nombre del usuario : ${usuarioMen.nombre} <br>
-             Email del usuario : ${usuarioMen.email}<br>
-          	DATOS DEL MENSAJE<br>
-          	 Asunto : ${mensaje.asunto}<br>
-             Contenido : ${mensaje.contenido}<br>
-             Fecha del mensaje : ${mensaje.fecha_mensaje}<br>           
+<div class="message-wrap col-md-12">
+	<div class="msg-wrap">
+		<div class="media msg ">
+			<div class="media-body">
+				<small class="pull-right time"><i class="fa fa-calendar"> </i> ${mensaje.fecha_mensaje}</small>
+				<h4 class="media-heading">Nombre: ${usuarioMen.nombre} (${usuarioMen.email})</h4>
+				<h5 class="media-heading">Asunto: ${mensaje.asunto}</h5>
+				<span class="col-md-12"><p>${mensaje.contenido}</p></span>
+			</div>
+		</div>
+	</div>
+</div>
           <!-- fin:article -->
-          
+        </div>
+         <div class="row">
+          <div class="col-md-12 pull-left">
+				<br><a class="btn btn-danger" href="${pageContext.request.contextPath}/mensaje/bandejaEntrada.html"> Volver a la Bandeja de entrada</a>
+          </div>
         </div>
       </div>
     </div>
