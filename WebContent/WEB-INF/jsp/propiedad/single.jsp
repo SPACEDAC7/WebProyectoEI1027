@@ -29,7 +29,8 @@
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
                   <li class="active"><a href="#detail" data-toggle="tab"><i class="fa fa-university"></i> Detalles de la propiedad</a></li>
-                  <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Localización de la propiedad</a></li>
+                  <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Localización y dueño de la propiedad</a></li>
+                  <li><a href="#puntuacion"  data-toggle="tab"> <i class="fa fa-star"></i> Puntuación de la propiedad</a></li>
                 </ul>
 
                 <div id="myTabContent" class="tab-content">
@@ -161,20 +162,20 @@
                       <div class="col-md-6 col-sm-6">
                         <form>
                           <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control input-lg" placeholder="Enter name : ">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control input-lg" placeholder="Introducir nombre : ">
                           </div>
                           <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control input-lg" placeholder="Enter email : ">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control input-lg" placeholder="Introducir email : ">
                           </div>
                           <div class="form-group">
-                            <label for="telp">Telp.</label>
-                            <input type="text" class="form-control input-lg" placeholder="Enter phone number : ">
+                            <label for="telp">Telefono</label>
+                            <input type="text" class="form-control input-lg" placeholder="Introducir numero de telefono: ">
                           </div>
                           <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea class="form-control input-lg" rows="7" placeholder="Type a message : "></textarea>
+                            <label for="message">Mensaje</label>
+                            <textarea class="form-control input-lg" rows="7" placeholder="Mensaje : "></textarea>
                           </div>
                           <div class="form-group">
                             <input type="submit" name="submit" value="Send Message" class="btn btn-primary btn-lg">
@@ -183,10 +184,37 @@
                       </div>
                     </div>
                   </div>
+                   <div class="tab-pane fade" id="puntuacion">
+                    <div class="row">
+                      <div class="col-md-12">
+                      	<h2>Puntuaciones</h2>
+                      	<table class="table table-condensed sortable">
+                      		<tr>
+	                      		<th>Usuario</th>
+	                      		<th>Puntuacion</th>
+	                      		<th>Comentario</th>
+	                      		<th>Ver Respuestas</th>
+	                      		<th>Añadir Puntuacion</th>
+                      		</tr>
+                      		<c:forEach items="${listaPuntuaciones}" var="mapaPuntuacionUsuario">
+                      			<tr>
+                      				<td class="linea">${mapaPuntuacionUsuario.value.nombre}</td>
+                      				<td class="linea">${mapaPuntuacionUsuario.key.valor_puntuacion}</td>
+                      				<td class="linea">${mapaPuntuacionUsuario.key.comentario}</td>
+                      				<td><button onClick="location.href='respuestaPuntuacion/listarPuntuacion/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Respuestas</button></td>
+                      				<td><button onClick="location.href='respuestaPuntuacion/add/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Añadir Puntuación</button></td>
+                      			</tr>
+                      		</c:forEach>
+                      		</table>
+                      </div>
+                    </div>
+                   </div>
+                  
                 </div>
               </div>
             </div>
           </div>
+            
           <!-- fin:article -->
           
         </div>

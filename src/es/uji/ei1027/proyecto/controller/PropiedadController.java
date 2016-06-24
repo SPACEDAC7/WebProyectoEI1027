@@ -21,6 +21,7 @@ import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.ImagenDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.PropiedadServicioDao;
+import es.uji.ei1027.proyecto.dao.PuntuacionDao;
 import es.uji.ei1027.proyecto.dao.ServicioDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
@@ -28,6 +29,7 @@ import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.PropiedadServicio;
+import es.uji.ei1027.proyecto.domain.Puntuacion;
 import es.uji.ei1027.proyecto.domain.Servicio;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.DireccionValidator;
@@ -47,6 +49,9 @@ private PropiedadServicioDao propiedadServicioDao;
 	
 @Autowired
 private ServicioDao servicioDao;
+
+@Autowired
+private PuntuacionDao puntuacionDao;
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
@@ -404,11 +409,18 @@ private ServicioDao servicioDao;
 			serviciosPropiedad.add(aux);
 		}
 		
+		Map<Puntuacion, Usuario> mapPuntuacionUsuario = new HashMap<Puntuacion, Usuario>();
+		for(Puntuacion p : puntuacionDao.getPuntuacionesDePropiedad(id_propiedad)){
+			Usuario usuarioPuntuacion = usuarioDao.getUsuario(p.getId_usuario());
+			mapPuntuacionUsuario.put(p, usuarioPuntuacion);
+		}
+		
 		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
 		model.addAttribute("usuarioPropiedad", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
 		model.addAttribute("servicios", serviciosPropiedad);
 		model.addAttribute("imagenes", imagenDao.getImagenesPropiedad(id_propiedad));
+		model.addAttribute("listaPuntuaciones", mapPuntuacionUsuario);
 		return "propiedad/single";
 	}
 	

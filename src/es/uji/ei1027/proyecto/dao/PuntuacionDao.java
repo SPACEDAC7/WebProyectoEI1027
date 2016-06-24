@@ -43,7 +43,7 @@ public class PuntuacionDao {
 	
 	public List<Puntuacion> getPuntuacionesDePropiedad(int id_propiedad) {
 		return this.jdbcTemplate.query("select id_puntuacion, id_propiedad"
-					+ ", id_usuario, valor_puntuacion, comentario from puntuacion where id_propiedad=?",/* new Object[] {id_propiedad},*/ new PuntuacionMapper());
+					+ ", id_usuario, valor_puntuacion, comentario from puntuacion where id_propiedad=?",new PuntuacionMapper(),id_propiedad);
 	}
 	
 	public Puntuacion getPuntuacion(int id_puntuacion) {
