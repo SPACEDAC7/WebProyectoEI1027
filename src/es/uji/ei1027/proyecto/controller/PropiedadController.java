@@ -412,6 +412,7 @@ public void setMensajeDao(MensajeDao mensajeDao){
 	@RequestMapping(value="/single/{id_propiedad}")
 	public String processDetails(@PathVariable int id_propiedad , HttpSession session, Model model){
 		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		String rol = (String) session.getAttribute("rol");
 		List<PropiedadServicio> propServicio = propiedadServicioDao.getPropiedadServicioPropiedad(id_propiedad);
 		List<Servicio> serviciosPropiedad = new LinkedList<Servicio>();
 		for(PropiedadServicio p : propServicio){
@@ -429,6 +430,7 @@ public void setMensajeDao(MensajeDao mensajeDao){
 		mensaje.setId_mensaje(mensajeDao.nuevoIdMensaje());
 		
 		model.addAttribute("usuarioSesion", usuario);
+		model.addAttribute("rolSesion",rol);
 		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
 		model.addAttribute("usuarioPropiedad", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));

@@ -188,8 +188,19 @@
                           	<form:errors style="color:#F44336" path="estado_vision" cssClass="error"/>
                           </div>
                           <div class="form-group">
-                            <input type="submit" value="Enviar mensaje" class="btn btn-primary btn-lg"></input>
-                          </div>
+                          	<c:choose>
+                          		<c:when test='${rolSesion == "inquilino"}'>
+                          			<input type="submit" value="Enviar mensaje" class="btn btn-primary btn-lg"></input>
+                          			</div>
+                          		</c:when>
+                          		<c:otherwise>
+                          			<input type="submit" value="Enviar mensaje" class="btn btn-primary btn-lg" disabled></input>
+                          			</div>
+                          			<div class="alert alert-danger">
+                          			Solo los inquilinos pueden comunicarse con los propietarios
+                          			</div>
+                          		</c:otherwise>
+                          	</c:choose>
                         </form:form>
                       </div>
                     </div>
