@@ -64,7 +64,7 @@
                           <li><span class="fa fa-check text-success"></span> Consiga el mejor precio</li>
                           <li><span class="fa fa-check text-success"></span> Seguridad garantizada</li>
                           <li><span class="fa fa-check text-success"></span> Servicio de tickets <small>(mensajería)</small></li>
-                          <li><a href="/read-more/"><u>Leer más</u></a></li>
+                          <li><a href="${pageContext.request.contextPath}/cabecera/nosotros.html"><u>Leer más</u></a></li>
                       </ul>
                       <form action="${pageContext.request.contextPath}/signup/addUser.html" method="get">
                      	 <button type="submit" style="font-size: 16px" class="btn btn-info btn-block" > ¡Regístrese!</button>

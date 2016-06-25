@@ -1,5 +1,8 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,5 +138,12 @@ public class RespuestaPuntuacionController {
 			}
 		}
 		return retorno;
+	}
+	
+	@RequestMapping(value="/listarPuntuacion/{id_puntuacion}")
+	public String listarPuntuacion(@PathVariable int id_puntuacion, HttpSession session, Model model){
+		List <RespuestaPuntuacion> respuestas = respuestaPuntuacionDao.getRespuestas(id_puntuacion);
+		model.addAttribute("respuestas", respuestas);
+		return "respuestaPuntuacion/listarPuntuacion";
 	}
 }

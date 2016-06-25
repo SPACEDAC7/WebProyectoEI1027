@@ -38,6 +38,10 @@ public class RespuestaPuntuacionDao {
 		return this.jdbcTemplate.query("select id_respuesta, id_puntuacion, respuesta from respuesta_puntuacion", new RespuestaPuntuacionMapper());
 	}
 	
+	public List<RespuestaPuntuacion> getRespuestas(int id_puntuacion){
+		return this.jdbcTemplate.query("select id_respuesta, id_puntuacion, respuesta from respuesta_puntuacion where id_puntuacion = ?", new RespuestaPuntuacionMapper(), id_puntuacion);
+	}
+	
 	public RespuestaPuntuacion getRespuestaPuntuacion(int id_respuesta) {
 		return this.jdbcTemplate.queryForObject("select id_respuesta, id_puntuacion, respuesta from respuesta_puntuacion where id_respuesta=?;", new Object[] {id_respuesta}, new RespuestaPuntuacionMapper());
 	}
