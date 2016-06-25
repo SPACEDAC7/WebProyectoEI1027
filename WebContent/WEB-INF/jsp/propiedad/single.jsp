@@ -3,6 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="user" scope="request" value='${session.getAttribute("user")}' />
 <t:paginabasica title="Detalles Propiedad">
 	<jsp:body>
  <!-- inicio:header -->
@@ -147,8 +148,9 @@
                             <h3>${usuarioPropiedad.nombre} ${usuarioPropiedad.apellido }</h3>
                             <i class="fa fa-mobile"></i> Numero de telefono : ${usuarioPropiedad.telefono }<br>
                             <i class="fa fa-print"></i> Email : ${usuarioPropiedad.email}</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>Cada propietario tiene la responsabilidad de informar
+                            todo lo que pueda a las personas que 
+                            esten interesadas en sus propiedades.</p>
                             <div class="team-social">
                               <span><a href="#" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
                               <span><a href="#" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
@@ -160,27 +162,35 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <form>
+                      	<!--  Deshabilitar los botones cuando no eres inquilino. Solo los inquilinos pueden mandar mensajes -->
+                        <form:form method="post" modelAttribute="mensaje">
                           <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control input-lg" placeholder="Introducir nombre : ">
+                            <form:input type="hidden" path="id_receptor" class="form-control input-lg" placeholder="Introducir nombre : " value="${usuarioPropiedad.id_usuario}"></form:input>
+                          	<form:errors style="color:#F44336" path="id_receptor" cssClass="error"/>
+
+                            <form:input type="hidden" path="id_mensaje" class="form-control input-lg" placeholder="Introducir nombre : "></form:input>
+                          	<form:errors style="color:#F44336" path="id_mensaje" cssClass="error"/>
+
+                            <form:input type="hidden" path="id_emisor" class="form-control input-lg" placeholder="Introducir nombre : " value="${usuarioSesion.id_usuario}"></form:input>
+                          	<form:errors style="color:#F44336" path="id_emisor" cssClass="error"/>
                           </div>
                           <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control input-lg" placeholder="Introducir email : ">
+                            <form:label  path="asunto">Asunto</form:label>
+                            <form:input class="form-control input-lg" rows="7"  path="asunto" placeholder="Asunto : "></form:input>
+                          	<form:errors style="color:#F44336" path="asunto" cssClass="error"/>
+                          </div>
+                           <div class="form-group">
+                            <form:label  path="contenido">Mensaje</form:label>
+                            <form:textarea class="form-control input-lg" rows="7"  path="contenido" placeholder="Mensaje : "></form:textarea>
+                          	<form:errors style="color:#F44336" path="contenido" cssClass="error"/>
+
+                          	<form:input type="hidden" value="1" class="form-control input-md" path="estado_vision" />
+                          	<form:errors style="color:#F44336" path="estado_vision" cssClass="error"/>
                           </div>
                           <div class="form-group">
-                            <label for="telp">Telefono</label>
-                            <input type="text" class="form-control input-lg" placeholder="Introducir numero de telefono: ">
+                            <input type="submit" value="Enviar mensaje" class="btn btn-primary btn-lg"></input>
                           </div>
-                          <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea class="form-control input-lg" rows="7" placeholder="Mensaje : "></textarea>
-                          </div>
-                          <div class="form-group">
-                            <input type="submit" name="submit" value="Send Message" class="btn btn-primary btn-lg">
-                          </div>
-                        </form>
+                        </form:form>
                       </div>
                     </div>
                   </div>
@@ -203,6 +213,7 @@
                       				<td class="linea">${mapaPuntuacionUsuario.key.comentario}</td>
                       				<td><button onClick="location.href='respuestaPuntuacion/listarPuntuacion/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Respuestas</button></td>
                       				<td><button onClick="location.href='respuestaPuntuacion/add/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Añadir Puntuación</button></td>
+                      				<!-- Falta implementar los metodos qua los que llevan esta cosa -->
                       			</tr>
                       		</c:forEach>
                       		</table>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %> 
+
 <t:paginabasica title="Lista de propiedades">
 <jsp:body>
 	<div style="margin-bottom:20px" class="container">
@@ -18,6 +19,7 @@
 			</tr>
 			<c:forEach items="${listaMensajeEmisor}" var="mapaMensajeEmisor">
 				<c:forEach items="${listaEmisorCredencial}" var="mapaEmisorCredencial">
+				<!-- Aqui hay un fallo de repetición muy cacoso -->
 				<c:set var="idEmisorMensaje" value="${mapaMensajeEmisor.value.id_usuario}"></c:set>
 				<c:set var="idEmisorCredencial" value="${mapaEmisorCredencial.key.id_usuario}"></c:set>
 				<c:choose>

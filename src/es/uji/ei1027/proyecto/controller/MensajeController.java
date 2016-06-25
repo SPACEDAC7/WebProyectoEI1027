@@ -176,7 +176,22 @@ public class MensajeController {
 					Credencial credencialEmisor = credencialDao.getCredencial(emisor.getId_credencial());
 					if(mensaje.getEstado_vision() == 1 || mensaje.getEstado_vision()==3){
 						mapMensajeEmisor.put(mensaje, emisor);
-						mapEmisorCredencial.put(emisor, credencialEmisor);
+						int i = 1;
+						boolean cambiar = true;
+						if(mapEmisorCredencial.isEmpty()){
+							mapEmisorCredencial.put(emisor, credencialEmisor);
+						}else{
+							for (Usuario u : mapEmisorCredencial.keySet()){
+								if(u.getId_credencial() == emisor.getId_credencial()){
+									cambiar = false;
+								}
+								if(u.getId_credencial() != emisor.getId_credencial() && i == mapEmisorCredencial.size() && cambiar){
+									mapEmisorCredencial.put(emisor, credencialEmisor);
+									
+								}
+								i++;
+							}
+						}
 					}
 				}
 				model.addAttribute("listaMensajeEmisor", mapMensajeEmisor);
@@ -200,7 +215,22 @@ public class MensajeController {
 					Credencial credencialReceptor = credencialDao.getCredencial(receptor.getId_credencial());
 					if(mensaje.getEstado_vision() == 1 || mensaje.getEstado_vision()==2){
 						mapMensajeReceptor.put(mensaje, usuarioDao.getUsuario(mensaje.getId_receptor()));
-						mapReceptorCredencial.put(receptor, credencialReceptor);
+						int i = 1;
+						boolean cambiar = true;
+						if(mapReceptorCredencial.isEmpty()){
+							mapReceptorCredencial.put(receptor, credencialReceptor);
+						}else{
+							for (Usuario u : mapReceptorCredencial.keySet()){
+								if(u.getId_credencial() == receptor.getId_credencial()){
+									cambiar = false;
+								}
+								if(u.getId_credencial() != receptor.getId_credencial() && i == mapReceptorCredencial.size() && cambiar){
+									mapReceptorCredencial.put(receptor, credencialReceptor);
+									
+								}
+								i++;
+							}
+						}
 					}
 				}
 				model.addAttribute("listaMensajeReceptor", mapMensajeReceptor);

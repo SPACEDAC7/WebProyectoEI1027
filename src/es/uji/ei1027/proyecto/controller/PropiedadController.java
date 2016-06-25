@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.ImagenDao;
+import es.uji.ei1027.proyecto.dao.MensajeDao;
 import es.uji.ei1027.proyecto.dao.PropiedadDao;
 import es.uji.ei1027.proyecto.dao.PropiedadServicioDao;
 import es.uji.ei1027.proyecto.dao.PuntuacionDao;
@@ -26,6 +27,7 @@ import es.uji.ei1027.proyecto.dao.ServicioDao;
 import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
+import es.uji.ei1027.proyecto.domain.Mensaje;
 import es.uji.ei1027.proyecto.domain.MensajeError;
 import es.uji.ei1027.proyecto.domain.Propiedad;
 import es.uji.ei1027.proyecto.domain.PropiedadServicio;
@@ -33,6 +35,7 @@ import es.uji.ei1027.proyecto.domain.Puntuacion;
 import es.uji.ei1027.proyecto.domain.Servicio;
 import es.uji.ei1027.proyecto.domain.Usuario;
 import es.uji.ei1027.proyecto.validator.DireccionValidator;
+import es.uji.ei1027.proyecto.validator.MensajeValidator;
 import es.uji.ei1027.proyecto.validator.PropiedadValidator;
 
 @Controller
@@ -43,6 +46,7 @@ private DireccionDao direccionDao;
 private UsuarioDao usuarioDao;
 private ImagenDao imagenDao;
 private CredencialDao credencialDao;
+private MensajeDao mensajeDao;
 
 @Autowired
 private PropiedadServicioDao propiedadServicioDao;
@@ -52,6 +56,11 @@ private ServicioDao servicioDao;
 
 @Autowired
 private PuntuacionDao puntuacionDao;
+
+@Autowired
+public void setMensajeDao(MensajeDao mensajeDao){
+	this.mensajeDao=mensajeDao;
+}
 	
 	@Autowired
 	public void setPropiedadDao( PropiedadDao propiedadDao){
@@ -402,6 +411,7 @@ private PuntuacionDao puntuacionDao;
 	
 	@RequestMapping(value="/single/{id_propiedad}")
 	public String processDetails(@PathVariable int id_propiedad , HttpSession session, Model model){
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		List<PropiedadServicio> propServicio = propiedadServicioDao.getPropiedadServicioPropiedad(id_propiedad);
 		List<Servicio> serviciosPropiedad = new LinkedList<Servicio>();
 		for(PropiedadServicio p : propServicio){
@@ -415,16 +425,29 @@ private PuntuacionDao puntuacionDao;
 			mapPuntuacionUsuario.put(p, usuarioPuntuacion);
 		}
 		
+		Mensaje mensaje = new Mensaje();
+		mensaje.setId_mensaje(mensajeDao.nuevoIdMensaje());
+		
+		model.addAttribute("usuarioSesion", usuario);
 		model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
 		model.addAttribute("direccion", direccionDao.getDireccion(propiedadDao.getPropiedad(id_propiedad).getId_direccion()));
 		model.addAttribute("usuarioPropiedad", usuarioDao.getUsuario(propiedadDao.getPropiedad(id_propiedad).getId_propiedad()));
 		model.addAttribute("servicios", serviciosPropiedad);
 		model.addAttribute("imagenes", imagenDao.getImagenesPropiedad(id_propiedad));
 		model.addAttribute("listaPuntuaciones", mapPuntuacionUsuario);
+		model.addAttribute("mensaje", mensaje);
 		return "propiedad/single";
 	}
 	
-	
-	
-	
+	@RequestMapping(value="/single/{id_propiedad}", method=RequestMethod.POST)
+	public String enviarMensaje(@PathVariable int id_propiedad , HttpSession session, Model model,@ModelAttribute("mensaje") Mensaje mensaje, BindingResult bindingResult){
+		MensajeValidator mensajeValidator = new MensajeValidator();
+		mensajeValidator.validate(mensaje, bindingResult); 
+		if (bindingResult.hasErrors()){
+			return "propiedad/single";
+		}
+		mensajeDao.addMensaje(mensaje);
+		return "propiedad/confirmado";
+	}
+				
 }
