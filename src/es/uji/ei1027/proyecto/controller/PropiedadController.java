@@ -1,5 +1,6 @@
 package es.uji.ei1027.proyecto.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import es.uji.ei1027.proyecto.dao.CredencialDao;
 import es.uji.ei1027.proyecto.dao.DireccionDao;
 import es.uji.ei1027.proyecto.dao.ImagenDao;
 import es.uji.ei1027.proyecto.dao.MensajeDao;
@@ -45,7 +44,6 @@ private PropiedadDao propiedadDao;
 private DireccionDao direccionDao;
 private UsuarioDao usuarioDao;
 private ImagenDao imagenDao;
-private CredencialDao credencialDao;
 private MensajeDao mensajeDao;
 
 @Autowired
@@ -81,6 +79,18 @@ public void setMensajeDao(MensajeDao mensajeDao){
 	public void setImagenDao(ImagenDao imagenDao){
 		this.imagenDao = imagenDao;
 	}
+	
+	@ModelAttribute("servicios")
+    public List<String> createHobbiesList()
+    {
+        List<Servicio> listaServicios = servicioDao.getServicios();
+		List<String> listaServiciosString = new ArrayList<String>();
+		for (Servicio s : listaServicios) {
+			listaServiciosString.add(s.getNombreServicio());
+		}
+		return listaServiciosString;
+    }
+	
 	//Listar
 	@RequestMapping("/list")
 	public String listPropiedades(Model model, HttpSession session){
@@ -182,6 +192,7 @@ public void setMensajeDao(MensajeDao mensajeDao){
 	@RequestMapping(value="/anadirDireccionAPropiedad", method=RequestMethod.POST)
 	public String addDireccionAPropiedad(Model model, @ModelAttribute("nuevaPropiedadPropietario") Propiedad propiedad,
 			BindingResult bindingResult, HttpSession session) {
+		
 		PropiedadValidator propiedadValidator = new PropiedadValidator();
 		propiedadValidator.validate(propiedad, bindingResult); 
 		if (bindingResult.hasErrors())
@@ -207,6 +218,15 @@ public void setMensajeDao(MensajeDao mensajeDao){
 		propiedad.setId_direccion(nuevoIdDireccion);
 		direccionDao.addDireccion(direccion);
 		propiedadDao.addPropiedad(propiedad);
+		
+		//Añade la lista de servicios que tiene la propiedad
+		PropiedadServicio ps = new PropiedadServicio();
+		int idPropiedad = propiedad.getId_propiedad();
+		ps.setId_propiedad(idPropiedad);
+		for (String s: propiedad.getServicios()) {
+			ps.setId_servicio(servicioDao.idServicioAPartirDeNombreServicio(s));
+			propiedadServicioDao.addPropiedadServicio(ps);
+		}
 		return "redirect:misPropiedades.html";
 	}
 
@@ -229,9 +249,17 @@ public void setMensajeDao(MensajeDao mensajeDao){
 				int idUsuarioAutenticado = usuario.getId_usuario();
 				Propiedad supuestaPropiedadUsuario = propiedadDao.getPropiedad(id_propiedad);
 				if (supuestaPropiedadUsuario.getId_usuario() == idUsuarioAutenticado) {
+					List<PropiedadServicio> listaServicios = propiedadServicioDao.getPropiedadServicioPropiedad(supuestaPropiedadUsuario.getId_propiedad());
+					String[] listaServiciosString = new String[listaServicios.size()];
+					for (int i = 0; i < listaServicios.size(); i++) {
+						int idServicio = listaServicios.get(i).getId_servicio();
+						listaServiciosString[i] = servicioDao.getServicio(idServicio).getNombreServicio();
+					}
+					supuestaPropiedadUsuario.setServicios(listaServiciosString);
 					model.addAttribute("propiedadAModificar", supuestaPropiedadUsuario);
 					Direccion direccion = direccionDao.getDireccion(supuestaPropiedadUsuario.getId_direccion());
 					model.addAttribute("direccionAModificar", direccion);
+					
 					retorno = "propiedad/formModificarPropiedadUsuario";
 				} else {
 					retorno = "propiedad/misPropiedades";

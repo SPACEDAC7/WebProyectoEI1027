@@ -97,6 +97,11 @@
 				<td><form:errors style="color:#F44336" path="url_mapa" cssClass="error"/></td>
 			</tr>
 			<tr>
+				<td>
+					<form:checkboxes path="servicios" items="${servicios}"/>
+				</td>
+			</tr>
+			<tr>
  				<td><input class="btn btn-primary btn-cons" type="submit" value="Siguiente" />
  				<a href="${pageContext.request.contextPath}/propiedad/misPropiedades.html"><input class="btn btn-danger" type="button" value="Cancelar"></a>
  				</td>

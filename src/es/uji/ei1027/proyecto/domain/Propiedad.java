@@ -14,6 +14,7 @@ public class Propiedad {
 	private float precio_propiedad;
 	private int id_direccion;
 	private String url_mapa;
+	private String[] servicios;
 	
 	public Propiedad(int id_propiedad, int id_usuario, String titulo,
 			String descripcion, String tipo, int capacidad,
@@ -111,6 +112,13 @@ public class Propiedad {
 		this.url_mapa = url_mapa;
 	}
 
+	public String[] getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(String[] servicios) {
+		this.servicios = servicios;
+	}
 	
 	@Override
 	public String toString() {

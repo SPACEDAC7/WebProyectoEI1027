@@ -76,4 +76,9 @@ public class ServicioDao {
 		return max+1;
 	}
 	
+	public int idServicioAPartirDeNombreServicio(String servicio) {
+		String sql = "SELECT id_servicio from servicio where nombre_servicio = ?";
+		return this.jdbcTemplate.queryForObject(sql, Integer.class, servicio);
+	}
+	
 }
