@@ -20,8 +20,8 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-primary" href="${pageContext.request.contextPath}/respuestaPuntuacion/anadirRespuesta.html">A&ntilde;adir Respuesta</a>
+		<a class="btn btn-primary" href="${pageContext.request.contextPath}/respuestaPuntuacion/anadirRespuesta/${puntuacion}.html">A&ntilde;adir Respuesta</a>
 		<a class="btn btn-danger" href="${pageContext.request.contextPath}/cabecera/inicio.html"> Volver al inicio</a>
 		</div>
 	</jsp:body>
-</t:paginabasica>
+</t:paginabasica> 

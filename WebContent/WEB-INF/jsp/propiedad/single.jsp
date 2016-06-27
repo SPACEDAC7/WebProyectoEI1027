@@ -181,7 +181,7 @@
                           </div>
                            <div class="form-group">
                             <form:label  path="contenido">Mensaje</form:label>
-                            <form:textarea class="form-control input-lg" rows="7"  path="contenido" placeholder="Mensaje : "></form:textarea>
+                            <form:textarea style="resize:none" class="form-control input-lg" rows="7"  path="contenido" placeholder="Escribe el mensaje "></form:textarea>
                           	<form:errors style="color:#F44336" path="contenido" cssClass="error"/>
 
                           	<form:input type="hidden" value="1" class="form-control input-md" path="estado_vision" />

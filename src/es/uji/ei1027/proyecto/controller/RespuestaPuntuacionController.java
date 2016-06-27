@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.ei1027.proyecto.dao.PuntuacionDao;
 import es.uji.ei1027.proyecto.dao.RespuestaPuntuacionDao;
+import es.uji.ei1027.proyecto.dao.UsuarioDao;
 import es.uji.ei1027.proyecto.domain.Credencial;
 import es.uji.ei1027.proyecto.domain.Direccion;
 import es.uji.ei1027.proyecto.domain.RespuestaPuntuacion;
@@ -25,6 +27,13 @@ import es.uji.ei1027.proyecto.validator.RespuestaPuntuacionValidator;
 @RequestMapping("/respuestaPuntuacion")
 public class RespuestaPuntuacionController {
 	private RespuestaPuntuacionDao respuestaPuntuacionDao;
+	
+	@Autowired
+	private UsuarioDao usuarioDao;
+	
+	@Autowired
+	private PuntuacionDao puntuacionDao;
+	
 	
 	@Autowired
 	public void setRespuestaPuntuacionDao( RespuestaPuntuacionDao respuesaPuntuacionDao){
@@ -144,6 +153,44 @@ public class RespuestaPuntuacionController {
 	public String listarPuntuacion(@PathVariable int id_puntuacion, HttpSession session, Model model){
 		List <RespuestaPuntuacion> respuestas = respuestaPuntuacionDao.getRespuestas(id_puntuacion);
 		model.addAttribute("respuestas", respuestas);
+		model.addAttribute("puntuacion",id_puntuacion);
 		return "respuestaPuntuacion/listarPuntuacion";
 	}
+	
+	//A�adir	
+		@RequestMapping(value="/anadirRespuesta/{id_puntuacion}") 
+		public String anadirRespuestaPuntuacion(@PathVariable int id_puntuacion, Model model, HttpSession session) {
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			String retorno;
+			if (usuario == null) {
+				model.addAttribute("credencial", new Credencial());
+				session.setAttribute("nextURL", "redirect:respuestaPuntuacion/anadirRespuesta/" +id_puntuacion +".html");
+				retorno = "login";
+			} else {
+				String rol = (String) session.getAttribute("rol");
+				Usuario uProp = usuarioDao.getUsuario(puntuacionDao.getPuntuacion(id_puntuacion).getId_usuario());
+				if ( rol.equals("inquilino") || usuario.getId_usuario() == uProp.getId_usuario()) {
+					RespuestaPuntuacion respuesta = new RespuestaPuntuacion();
+					respuesta.setId_respuesta(respuestaPuntuacionDao.nuevoIdRespuestaPuntuacion());
+					respuesta.setId_puntuacion(id_puntuacion);
+					model.addAttribute("respuestaPuntuacion", respuesta);
+					retorno = "respuestaPuntuacion/anadirRespuesta";
+				} else {
+					//Acceso no autorizado porque el rol del usuario no es administrador
+					retorno = "redirect:../index.jsp";
+				}
+			}
+			return retorno;
+		}
+
+		@RequestMapping(value="/anadirRespuesta/{id_puntuacion}", method=RequestMethod.POST) 
+		public String processAnadirSubmit(@PathVariable int id_puntuacion,@ModelAttribute("respuestaPuntuacion") RespuestaPuntuacion respuesta_puntuacion,
+				BindingResult bindingResult) { 
+			RespuestaPuntuacionValidator respuestaPuntuacionValidator = new RespuestaPuntuacionValidator();
+			respuestaPuntuacionValidator.validate(respuesta_puntuacion, bindingResult); 
+			if (bindingResult.hasErrors())
+				return "respuestaPuntuacion/anadirRespuesta";
+			respuestaPuntuacionDao.addRespuestaPuntuacion(respuesta_puntuacion);
+			return "redirect:../list.html";
+		}
 }

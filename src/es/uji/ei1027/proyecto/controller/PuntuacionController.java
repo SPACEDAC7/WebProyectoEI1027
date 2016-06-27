@@ -164,12 +164,12 @@ private PuntuacionDao puntuacionDao;
 		}
 		
 		@RequestMapping(value="/anadir/{id_propiedad}", method=RequestMethod.POST) 
-		public String processAnadirSubmit(@ModelAttribute("puntuacion") Puntuacion puntuacion,
+		public String processAnadirSubmit(@PathVariable int id_propiedad,@ModelAttribute("puntuacion") Puntuacion puntuacion,
 				BindingResult bindingResult) { 
 			PuntuacionValidator puntuacionValidator = new PuntuacionValidator();
 			puntuacionValidator.validate(puntuacion, bindingResult); 
 			if (bindingResult.hasErrors())
-				return "puntuacion/add";
+				return "puntuacion/anadir/" + id_propiedad;
 			puntuacionDao.addPuntuacion(puntuacion);
 			return "redirect:../list.html";
 		}
