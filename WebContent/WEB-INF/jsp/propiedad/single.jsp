@@ -223,7 +223,7 @@
                       				<td class="linea">${mapaPuntuacionUsuario.key.valor_puntuacion}</td>
                       				<td class="linea">${mapaPuntuacionUsuario.key.comentario}</td>
                       				<td><button onClick="location.href='../../respuestaPuntuacion/listarPuntuacion/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Respuestas</button></td>
-                      				<td><button onClick="location.href='puntuacion/anadir/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Añadir Puntuación</button></td>
+                      				<td><button onClick="location.href='../../puntuacion/anadir/${mapaPuntuacionUsuario.key.id_puntuacion}.html'" type="button" class="btn btn-primary btn-sm btn-small"> Añadir Puntuación</button></td>
                       				<!-- Falta implementar los metodos qua los que llevan esta cosa -->
                       			</tr>
                       		</c:forEach>

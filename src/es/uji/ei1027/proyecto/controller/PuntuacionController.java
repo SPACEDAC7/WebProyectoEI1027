@@ -136,4 +136,42 @@ private PuntuacionDao puntuacionDao;
 		}
 		return retorno; 
 	}
+	
+	//A�adir	
+		@RequestMapping(value="/anadir/{id_propiedad}") 
+		public String anadirPuntuacion(@PathVariable int id_propiedad,Model model, HttpSession session) {
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			String retorno;
+			if (usuario == null) {
+				model.addAttribute("credencial", new Credencial());
+				session.setAttribute("nextURL", "redirect:puntuacion/anadir/"+ id_propiedad +".html");
+				retorno = "login";
+			} else {
+				String rol = (String) session.getAttribute("rol");
+				if ( rol.equals("inquilino") ) {
+					Puntuacion puntuacion = new Puntuacion();
+					puntuacion.setId_puntuacion(puntuacionDao.nuevoIdPuntuacion());
+					puntuacion.setId_propiedad(id_propiedad);
+					puntuacion.setId_usuario(usuario.getId_usuario());
+					model.addAttribute("puntuacion", puntuacion);
+					retorno = "puntuacion/anadir";
+				} else {
+					//Acceso no autorizado porque el rol del usuario no es administrador
+					retorno = "redirect:../index.jsp";
+				}
+			}
+			return retorno;
+		}
+		
+		@RequestMapping(value="/anadir/{id_propiedad}", method=RequestMethod.POST) 
+		public String processAnadirSubmit(@ModelAttribute("puntuacion") Puntuacion puntuacion,
+				BindingResult bindingResult) { 
+			PuntuacionValidator puntuacionValidator = new PuntuacionValidator();
+			puntuacionValidator.validate(puntuacion, bindingResult); 
+			if (bindingResult.hasErrors())
+				return "puntuacion/add";
+			puntuacionDao.addPuntuacion(puntuacion);
+			return "redirect:../list.html";
+		}
+	
 }
