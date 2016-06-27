@@ -1,7 +1,9 @@
+<%@ tag description="Logininfo"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!-- La sessió està disponible automàticament en l’objecte "session" -->
+<!-- La sessioÌ estaÌ disponible automaÌticament en lâobjecte "session" -->
 <c:set var="user" scope="request" value='${session.getAttribute("user")}' />
 <c:set var="rol" scope="request" value='${session.getAttribute("rol")}' />
 <!-- <p style="margin: 0px 0px 0px 0px;" class="loggeduser">  -->
