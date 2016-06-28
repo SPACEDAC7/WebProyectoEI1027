@@ -41,6 +41,10 @@
 				<td><form:errors style="color:#F44336" path="referencia" cssClass="error"/></td>
 			</tr>
 			<tr>
+           		<td>Selecciona fichero: </td>
+           		<td><input type="file" name="fichero" /></td>
+        	</tr>
+			<tr>
 				<td><input class="btn btn-primary btn-cons" type="submit" value="Añadir Imagen" /></td>
  				<td><a href="${pageContext.request.contextPath}/imagen/list.html"><input class="btn btn-default btn-cons" type="button" value="Cancelar"></a>
  				</td>

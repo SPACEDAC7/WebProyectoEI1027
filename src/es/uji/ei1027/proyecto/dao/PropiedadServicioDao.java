@@ -60,4 +60,10 @@ public class PropiedadServicioDao {
 	public void deletePropiedadServicio(int id_propiedad, int id_servicio) {
 		this.jdbcTemplate.update("DELETE FROM propiedad_servicio WHERE id_propiedad=? and id_servicio=?", id_propiedad, id_servicio);
 	}
+	
+	public void borrarPropiedadServicioPorPropiedad( int idPropiedad ){
+		String sql = "DELETE FROM propiedad_servicio WHERE id_propiedad = ?";
+		this.jdbcTemplate.update(sql, idPropiedad);
+	}
+	
 }

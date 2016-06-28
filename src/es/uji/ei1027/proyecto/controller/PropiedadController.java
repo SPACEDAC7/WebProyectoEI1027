@@ -119,6 +119,8 @@ public void setMensajeDao(MensajeDao mensajeDao){
 		if (usuario != null) {
 			String rol = (String) session.getAttribute("rol");
 			if (rol.equals("administrador") || rol.equals("propietario")) {
+				session.removeAttribute("propiedadAModificar");
+				session.removeAttribute("direccionAModificar");
 				Map<Propiedad, Direccion> mapPropiedadesDirecciones = new HashMap<Propiedad, Direccion>();
 				for (Propiedad propiedad: propiedadDao.obtenerPropiedadesPorUsuario(usuario.getId_usuario())) {
 					mapPropiedadesDirecciones.put(propiedad, direccionDao.getDireccion(propiedad.getId_direccion()));
@@ -218,6 +220,8 @@ public void setMensajeDao(MensajeDao mensajeDao){
 		propiedad.setId_direccion(nuevoIdDireccion);
 		direccionDao.addDireccion(direccion);
 		propiedadDao.addPropiedad(propiedad);
+		session.removeAttribute("nuevaPropiedadPropietario");
+		session.setAttribute("idPropiedad", propiedad.getId_propiedad());
 		
 		//Añade la lista de servicios que tiene la propiedad
 		PropiedadServicio ps = new PropiedadServicio();
@@ -228,6 +232,12 @@ public void setMensajeDao(MensajeDao mensajeDao){
 			propiedadServicioDao.addPropiedadServicio(ps);
 		}
 		return "redirect:misPropiedades.html";
+	}
+	
+	@RequestMapping(value="/anadirImagenAPropiedad", method=RequestMethod.POST)
+	public String anadirImagenAPropiedad(BindingResult bindingResult, HttpSession session) {
+		int idPropiedad = (Integer) session.getAttribute("idPropiedad");
+		
 	}
 
 
@@ -243,7 +253,16 @@ public void setMensajeDao(MensajeDao mensajeDao){
 		} else {
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
-				model.addAttribute("propiedad", propiedadDao.getPropiedad(id_propiedad));
+				Propiedad propiedad = propiedadDao.getPropiedad(id_propiedad);
+				List<PropiedadServicio> listaServicios = propiedadServicioDao.getPropiedadServicioPropiedad(propiedad.getId_propiedad());
+				String[] listaServiciosString = new String[listaServicios.size()];
+				for (int i = 0; i < listaServicios.size(); i++) {
+					int idServicio = listaServicios.get(i).getId_servicio();
+					listaServiciosString[i] = servicioDao.getServicio(idServicio).getNombreServicio();
+				}
+				propiedad.setServicios(listaServiciosString);
+
+				model.addAttribute("propiedad", propiedad);
 				retorno = "propiedad/update";
 			} else if (rol.equals("propietario")){
 				int idUsuarioAutenticado = usuario.getId_usuario();
@@ -287,6 +306,13 @@ public void setMensajeDao(MensajeDao mensajeDao){
 				if (propiedadAModificar == null) {
 					propiedadAModificar = propiedadDao.getPropiedad(id_propiedad);
 				} 
+				List<PropiedadServicio> listaServicios = propiedadServicioDao.getPropiedadServicioPropiedad(propiedadAModificar.getId_propiedad());
+				String[] listaServiciosString = new String[listaServicios.size()];
+				for (int i = 0; i < listaServicios.size(); i++) {
+					int idServicio = listaServicios.get(i).getId_servicio();
+					listaServiciosString[i] = servicioDao.getServicio(idServicio).getNombreServicio();
+				}
+				propiedadAModificar.setServicios(listaServiciosString);
 				model.addAttribute("propiedadAModificar", propiedadAModificar);
 				Direccion direccionAModificar = direccionDao.getDireccion(propiedadAModificar.getId_direccion());
 				session.setAttribute("propiedadAModificar", propiedadAModificar);
@@ -350,6 +376,16 @@ public void setMensajeDao(MensajeDao mensajeDao){
 		
 		
 		Propiedad propiedadModificada = (Propiedad) session.getAttribute("propiedadAModificar");
+		
+		PropiedadServicio ps = new PropiedadServicio();
+		int idPropiedad = propiedadModificada.getId_propiedad();
+		ps.setId_propiedad(idPropiedad);
+		propiedadServicioDao.borrarPropiedadServicioPorPropiedad(idPropiedad);
+		for (String s: propiedadModificada.getServicios()) {
+			ps.setId_servicio(servicioDao.idServicioAPartirDeNombreServicio(s));
+			propiedadServicioDao.addPropiedadServicio(ps);
+		}
+		
 		direccionDao.updateDireccion(direccionModificada);
 		propiedadDao.updatePropiedad(propiedadModificada);
 		session.removeAttribute("propiedadAModificar");
@@ -391,6 +427,16 @@ public void setMensajeDao(MensajeDao mensajeDao){
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) 
 			return "propiedad/update";
+		
+		PropiedadServicio ps = new PropiedadServicio();
+		int idPropiedad = propiedad.getId_propiedad();
+		ps.setId_propiedad(idPropiedad);
+		propiedadServicioDao.borrarPropiedadServicioPorPropiedad(idPropiedad);
+		for (String s: propiedad.getServicios()) {
+			ps.setId_servicio(servicioDao.idServicioAPartirDeNombreServicio(s));
+			propiedadServicioDao.addPropiedadServicio(ps);
+		}
+		
 		propiedadDao.updatePropiedad(propiedad);
 		return "redirect:../list.html"; 
 	}
@@ -410,6 +456,7 @@ public void setMensajeDao(MensajeDao mensajeDao){
 			String rol = (String) session.getAttribute("rol");
 			if ( rol.equals("administrador") ) {
 				propiedadDao.deletePropiedad(id_propiedad);
+				propiedadServicioDao.borrarPropiedadServicioPorPropiedad(id_propiedad);
 			    retorno = "redirect:../list.html";
 			} else if (rol.equals("propietario")){
 				int idUsuarioAutenticado = usuario.getId_usuario();
@@ -424,8 +471,10 @@ public void setMensajeDao(MensajeDao mensajeDao){
 						session.setAttribute("mensajeError", mensajeError);
 						retorno = "redirect:../../error/mostrarError.html";
 					}
-					else
+					else {
+						propiedadServicioDao.borrarPropiedadServicioPorPropiedad(id_propiedad);
 						retorno = "redirect:../misPropiedades.html";
+					}
 				} else {
 					retorno = "redirect:../cabecera/inicio.jsp";
 				}
